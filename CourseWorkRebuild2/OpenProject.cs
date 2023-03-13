@@ -35,14 +35,14 @@ namespace CourseWorkRebuild2
             String dbFilePath = "";
             String pngFilePath = "";
             String txtFilePath = "";
-            String fileName = Path.GetFileName(projectRoot);
+            String fileName = "";
             if (projectRoot.Equals(""))
             {
                 // throw new NullProjectRootException("Не указана папка с проектом");
             }
             else
             {
-                
+                fileName = Path.GetFullPath(projectRoot);
                 OpenFileDialog chooseFile = new OpenFileDialog();
                 chooseFile.InitialDirectory = projectRoot;
                 chooseFile.Multiselect = false;

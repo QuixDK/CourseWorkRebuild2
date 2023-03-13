@@ -18,6 +18,7 @@ namespace CourseWorkRebuild2
         private DataTable dataTable = new DataTable();
         private System.Data.SQLite.SQLiteConnection sqlConnection;
         private Repository repository;
+        private int activeForms = 0;
         public MainForm()
         {
             InitializeComponent();
@@ -86,6 +87,7 @@ namespace CourseWorkRebuild2
             
         }
 
+
         private void addNewRow_Click(object sender, EventArgs e)
         {
             elevatorTable.Rows.Add();
@@ -130,9 +132,19 @@ namespace CourseWorkRebuild2
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            OpenProject openProject = new OpenProject();
-            values = openProject.Open();
-            reDrawMainForm();
+            if (activeForms > 0)
+            {
+                NewProjectForm newProjectForm = new NewProjectForm();
+                newProjectForm.ShowDialog();
+            }
+            else
+            {
+                OpenProject openProject = new OpenProject();
+                values = openProject.Open();
+                reDrawMainForm();
+                activeForms++;
+            }
+            
         }
 
         private void openRarButton_Click(object sender, EventArgs e)
@@ -148,6 +160,7 @@ namespace CourseWorkRebuild2
             {
                 values[value] = "";
             }
+            activeForms--;
             reDrawMainForm();
         }
 
@@ -165,6 +178,18 @@ namespace CourseWorkRebuild2
         {  
             repository.DeleteRow((elevatorTable.Rows.Count - 2).ToString());
             elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count-2);
+        }
+
+        private void changeTValueButton_Click(object sender, EventArgs e)
+        {
+            ChangeValueForm changeValueForm = new ChangeValueForm();
+            changeValueForm.ShowDialog();
+        }
+
+        private void changeAValueButton_Click(object sender, EventArgs e)
+        {
+            ChangeValueForm changeValueForm = new ChangeValueForm();
+            changeValueForm.ShowDialog();
         }
     }
 }

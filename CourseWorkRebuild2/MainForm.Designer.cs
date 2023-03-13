@@ -67,8 +67,6 @@
             this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.valueOfTLabel = new System.Windows.Forms.Label();
             this.valueOfALabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -88,7 +86,7 @@
             this.toolStripMenuItem4});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(840, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(840, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +105,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 24);
             this.toolStripMenuItem1.Text = "Файл";
             // 
             // createButton
@@ -187,7 +185,7 @@
             this.changeAValue,
             this.changeBuildingsCount});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(137, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(137, 24);
             this.toolStripMenuItem2.Text = "Редактирование";
             // 
             // addEpochButton
@@ -228,12 +226,14 @@
             this.changeTValue.Name = "changeTValue";
             this.changeTValue.Size = new System.Drawing.Size(313, 26);
             this.changeTValue.Text = "Изменить значение T";
+            this.changeTValue.Click += new System.EventHandler(this.changeTValueButton_Click);
             // 
             // changeAValue
             // 
             this.changeAValue.Name = "changeAValue";
             this.changeAValue.Size = new System.Drawing.Size(313, 26);
             this.changeAValue.Text = "Изменить значение a";
+            this.changeAValue.Click += new System.EventHandler(this.changeAValueButton_Click);
             // 
             // changeBuildingsCount
             // 
@@ -244,7 +244,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(58, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(58, 24);
             this.toolStripMenuItem3.Text = "Окна";
             // 
             // toolStripMenuItem4
@@ -255,7 +255,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(81, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(81, 24);
             this.toolStripMenuItem4.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -286,18 +286,16 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(840, 421);
+            this.tabControl1.Size = new System.Drawing.Size(840, 423);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
             // 
             this.dataPage.Controls.Add(this.valueOfALabel);
             this.dataPage.Controls.Add(this.valueOfTLabel);
-            this.dataPage.Controls.Add(this.button2);
-            this.dataPage.Controls.Add(this.button1);
             this.dataPage.Controls.Add(this.label3);
             this.dataPage.Controls.Add(this.DeleteLastEpoch);
             this.dataPage.Controls.Add(this.AddNewEpochButton);
@@ -308,7 +306,7 @@
             this.dataPage.Location = new System.Drawing.Point(4, 25);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3);
-            this.dataPage.Size = new System.Drawing.Size(832, 392);
+            this.dataPage.Size = new System.Drawing.Size(832, 394);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -345,6 +343,7 @@
             // 
             // objectPicture
             // 
+            this.objectPicture.BackColor = System.Drawing.Color.White;
             this.objectPicture.Location = new System.Drawing.Point(513, 44);
             this.objectPicture.Name = "objectPicture";
             this.objectPicture.Size = new System.Drawing.Size(311, 179);
@@ -391,24 +390,6 @@
             this.label3.Size = new System.Drawing.Size(133, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Начальные данные";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 48);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Изменить значение T";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(162, 81);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 48);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Изменить значение A";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // valueOfTLabel
             // 
@@ -491,8 +472,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteEpochButton;
         private System.Windows.Forms.Label valueOfALabel;
         private System.Windows.Forms.Label valueOfTLabel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
     }
 }
