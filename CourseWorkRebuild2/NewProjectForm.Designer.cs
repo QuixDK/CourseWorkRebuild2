@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProjectForm));
             this.changeTValue = new System.Windows.Forms.ToolStripMenuItem();
             this.changeBuildingsCount = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -52,14 +52,17 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProjectButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCopyButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.redactorMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addEpochButton = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseEpochToDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.epochCountBox = new System.Windows.Forms.ToolStripComboBox();
@@ -83,22 +86,22 @@
             this.changeBuildingsCount.Size = new System.Drawing.Size(313, 26);
             this.changeBuildingsCount.Text = "Изменить количество объектов";
             // 
-            // toolStripMenuItem3
+            // windowsMenu
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(58, 24);
-            this.toolStripMenuItem3.Text = "Окна";
+            this.windowsMenu.Name = "windowsMenu";
+            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Text = "Окна";
             // 
-            // toolStripMenuItem4
+            // refMenu
             // 
-            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem13,
             this.aboutProgramButton,
             this.toolStripSeparator3,
             this.infoAboutSystem});
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(81, 24);
-            this.toolStripMenuItem4.Text = "Справка";
+            this.refMenu.Name = "refMenu";
+            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
             // 
@@ -195,6 +198,7 @@
             this.DeleteLastEpoch.TabIndex = 5;
             this.DeleteLastEpoch.Text = "Удалить последнюю эпоху";
             this.DeleteLastEpoch.UseVisualStyleBackColor = true;
+            this.DeleteLastEpoch.Click += new System.EventHandler(this.deleteLastEpoch_Click);
             // 
             // AddNewEpochButton
             // 
@@ -204,6 +208,7 @@
             this.AddNewEpochButton.TabIndex = 4;
             this.AddNewEpochButton.Text = "Добавить эпоху";
             this.AddNewEpochButton.UseVisualStyleBackColor = true;
+            this.AddNewEpochButton.Click += new System.EventHandler(this.addNewEpoch_Click);
             // 
             // label2
             // 
@@ -243,13 +248,14 @@
             this.elevatorTable.RowTemplate.Height = 24;
             this.elevatorTable.Size = new System.Drawing.Size(816, 159);
             this.elevatorTable.TabIndex = 0;
+            this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(832, 394);
+            this.tabPage2.Size = new System.Drawing.Size(832, 393);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -263,83 +269,107 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.fileMenu,
+            this.redactorMenu,
+            this.windowsMenu,
+            this.refMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(840, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
+            // fileMenu
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openProjectButton,
+            this.toolStripMenuItem5,
+            this.toolStripSeparator1,
             this.closeButton,
             this.saveButton,
             this.saveAsButton,
             this.saveCopyButton,
             this.toolStripSeparator2,
             this.exitButton});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 24);
-            this.toolStripMenuItem1.Text = "Файл";
+            this.fileMenu.Name = "fileMenu";
+            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Text = "Файл";
+            // 
+            // openProjectButton
+            // 
+            this.openProjectButton.Name = "openProjectButton";
+            this.openProjectButton.Size = new System.Drawing.Size(278, 26);
+            this.openProjectButton.Text = "Открыть...";
+            this.openProjectButton.Click += new System.EventHandler(this.openProjectButton_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(278, 26);
+            this.toolStripMenuItem5.Text = "Открыть архив с проектом";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(275, 6);
             // 
             // closeButton
             // 
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(224, 26);
+            this.closeButton.Size = new System.Drawing.Size(278, 26);
             this.closeButton.Text = "Закрыть";
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(224, 26);
+            this.saveButton.Size = new System.Drawing.Size(278, 26);
             this.saveButton.Text = "Сохранить";
             // 
             // saveAsButton
             // 
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(224, 26);
+            this.saveAsButton.Size = new System.Drawing.Size(278, 26);
             this.saveAsButton.Text = "Сохранить как...";
             // 
             // saveCopyButton
             // 
             this.saveCopyButton.Name = "saveCopyButton";
-            this.saveCopyButton.Size = new System.Drawing.Size(224, 26);
+            this.saveCopyButton.Size = new System.Drawing.Size(278, 26);
             this.saveCopyButton.Text = "Сохранить копию";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(275, 6);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(224, 26);
+            this.exitButton.Size = new System.Drawing.Size(278, 26);
             this.exitButton.Text = "Выход";
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // toolStripMenuItem2
+            // redactorMenu
             // 
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.redactorMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEpochButton,
             this.chooseEpochToDelete,
             this.toolStripSeparator4,
             this.changeTValue,
             this.changeAValue,
             this.changeBuildingsCount});
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(137, 24);
-            this.toolStripMenuItem2.Text = "Редактирование";
+            this.redactorMenu.Name = "redactorMenu";
+            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
             // 
             this.addEpochButton.Name = "addEpochButton";
             this.addEpochButton.Size = new System.Drawing.Size(313, 26);
             this.addEpochButton.Text = "Добавить эпоху";
+            this.addEpochButton.Click += new System.EventHandler(this.addNewEpoch_Click);
             // 
             // chooseEpochToDelete
             // 
@@ -358,8 +388,9 @@
             // deleteEpochButton
             // 
             this.deleteEpochButton.Name = "deleteEpochButton";
-            this.deleteEpochButton.Size = new System.Drawing.Size(195, 26);
+            this.deleteEpochButton.Size = new System.Drawing.Size(224, 26);
             this.deleteEpochButton.Text = "Удалить";
+            this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
             // 
             // NewProjectForm
             // 
@@ -387,8 +418,8 @@
 
         private System.Windows.Forms.ToolStripMenuItem changeTValue;
         private System.Windows.Forms.ToolStripMenuItem changeBuildingsCount;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem windowsMenu;
+        private System.Windows.Forms.ToolStripMenuItem refMenu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -408,17 +439,20 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem closeButton;
         private System.Windows.Forms.ToolStripMenuItem saveButton;
         private System.Windows.Forms.ToolStripMenuItem saveAsButton;
         private System.Windows.Forms.ToolStripMenuItem saveCopyButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitButton;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem redactorMenu;
         private System.Windows.Forms.ToolStripMenuItem addEpochButton;
         private System.Windows.Forms.ToolStripMenuItem chooseEpochToDelete;
         private System.Windows.Forms.ToolStripComboBox epochCountBox;
         private System.Windows.Forms.ToolStripMenuItem deleteEpochButton;
+        private System.Windows.Forms.ToolStripMenuItem openProjectButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }

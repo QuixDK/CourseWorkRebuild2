@@ -125,46 +125,55 @@ namespace CourseWorkRebuild2
 
         public List<String> UnzipRar()
         {
-            projectRoot = "";
-            String archivePath = "";
-            OpenFileDialog chooseRarFile = new OpenFileDialog();
-            chooseRarFile.Title = "Выберите архив с проектом";
-            chooseRarFile.Filter = "RAR files(*.rar) | *.rar";
-            chooseRarFile.Multiselect = false;
-
-            if (chooseRarFile.ShowDialog() == DialogResult.OK)
+            try
             {
-                archivePath = Path.GetFullPath(chooseRarFile.FileName);
-            }
+                projectRoot = "";
+                String archivePath = "";
+                OpenFileDialog chooseRarFile = new OpenFileDialog();
+                chooseRarFile.Title = "Выберите архив с проектом";
+                chooseRarFile.Filter = "RAR files(*.rar) | *.rar";
+                chooseRarFile.Multiselect = false;
 
-            String filePath = "D:\\Projects";
-
-            if (archivePath != "")
-            {
-                using (var archive = ArchiveFactory.Open(archivePath))
+                if (chooseRarFile.ShowDialog() == DialogResult.OK)
                 {
+                    archivePath = Path.GetFullPath(chooseRarFile.FileName);
+                }
 
-                    foreach (var entry in archive.Entries)
+                String filePath = "D:\\Projects";
+
+                if (archivePath != "")
+                {
+                    using (var archive = ArchiveFactory.Open(archivePath))
                     {
-                        
-                        string outputPath = Path.Combine(filePath, entry.Key);
 
-                        Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
-
-                        entry.WriteToDirectory(filePath, new ExtractionOptions
+                        foreach (var entry in archive.Entries)
                         {
-                            ExtractFullPath = true,
-                            Overwrite = true
-                        });
 
-                        if (archive.Entries.Count() == 3)
-                        {
-                            projectRoot = Path.GetFullPath(Path.GetDirectoryName(outputPath));
+                            string outputPath = Path.Combine(filePath, entry.Key);
+
+                            Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
+
+                            entry.WriteToDirectory(filePath, new ExtractionOptions
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+
+                            if (archive.Entries.Count() == 3)
+                            {
+                                projectRoot = Path.GetFullPath(Path.GetDirectoryName(outputPath));
+                            }
                         }
                     }
                 }
+                return Open();
             }
-            return Open();
+            catch (System.IO.IOException ex)
+            {
+                MessageBox.Show("Файл уже открыт в другом окне, выберите другой файл");
+                projectRoot = "";
+                return Open(); 
+            }
         }
         private String ChoosePathToFile(String projectRoot, OpenFileDialog chooseFile)
         {
