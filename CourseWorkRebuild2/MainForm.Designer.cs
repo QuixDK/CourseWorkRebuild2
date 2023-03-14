@@ -490,62 +490,6 @@
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // acceptNewTValue
-            // 
-            this.acceptNewTValue.Name = "acceptNewTValue";
-            this.acceptNewTValue.Size = new System.Drawing.Size(224, 26);
-            this.acceptNewTValue.Text = "Применить";
-            this.acceptNewTValue.Click += new System.EventHandler(this.newTValue_Enter);
-            // 
-            // acceptNewAValue
-            // 
-            this.acceptNewAValue.Name = "acceptNewAValue";
-            this.acceptNewAValue.Size = new System.Drawing.Size(224, 26);
-            this.acceptNewAValue.Text = "Применить";
-            this.acceptNewAValue.Click += new System.EventHandler(this.newAValue_Enter);
-            // 
-            // acceptNewBlocksCount
-            // 
-            this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
-            this.acceptNewBlocksCount.Size = new System.Drawing.Size(224, 26);
-            this.acceptNewBlocksCount.Text = "Применить";
-            this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
-            // 
-            // buildingCountValue
-            // 
-            this.buildingCountValue.AutoSize = true;
-            this.buildingCountValue.BackColor = System.Drawing.Color.White;
-            this.buildingCountValue.Location = new System.Drawing.Point(8, 93);
-            this.buildingCountValue.Name = "buildingCountValue";
-            this.buildingCountValue.Size = new System.Drawing.Size(0, 16);
-            this.buildingCountValue.TabIndex = 11;
-            // 
-            // markCount
-            // 
-            this.markCount.AutoSize = true;
-            this.markCount.BackColor = System.Drawing.Color.White;
-            this.markCount.Location = new System.Drawing.Point(8, 116);
-            this.markCount.Name = "markCount";
-            this.markCount.Size = new System.Drawing.Size(0, 16);
-            this.markCount.TabIndex = 12;
-            // 
-            // changeElevatorTablePath
-            // 
-            this.changeElevatorTablePath.Name = "changeElevatorTablePath";
-            this.changeElevatorTablePath.Size = new System.Drawing.Size(313, 26);
-            this.changeElevatorTablePath.Text = "Указать новую таблицу";
-            // 
-            // changeObjectPicture
-            // 
-            this.changeObjectPicture.Name = "changeObjectPicture";
-            this.changeObjectPicture.Size = new System.Drawing.Size(313, 26);
-            this.changeObjectPicture.Text = "Указать новую схему объекта";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(310, 6);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -610,20 +554,6 @@
         private System.Windows.Forms.Label valueOfALabel;
         private System.Windows.Forms.Label valueOfTLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ToolStripMenuItem saveAsZipArchieve;
-        private System.Windows.Forms.ToolStripMenuItem saveAsRarArchive;
-        private System.Windows.Forms.ToolStripMenuItem saveAsNewFolder;
-        private System.Windows.Forms.ToolStripTextBox newTValue;
-        private System.Windows.Forms.ToolStripTextBox newAValue;
-        private System.Windows.Forms.ToolStripTextBox newBlocksCount;
-        private System.Windows.Forms.ToolStripMenuItem acceptNewTValue;
-        private System.Windows.Forms.ToolStripMenuItem acceptNewAValue;
-        private System.Windows.Forms.ToolStripMenuItem acceptNewBlocksCount;
-        private System.Windows.Forms.Label markCount;
-        private System.Windows.Forms.Label buildingCountValue;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem changeElevatorTablePath;
-        private System.Windows.Forms.ToolStripMenuItem changeObjectPicture;
     }
 }
 
