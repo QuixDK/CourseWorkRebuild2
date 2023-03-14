@@ -39,6 +39,9 @@
             this.closeAllButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsZipArchieve = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsRarArchive = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsNewFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCopyButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +52,11 @@
             this.deleteEpochButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.changeTValue = new System.Windows.Forms.ToolStripMenuItem();
+            this.newTValue = new System.Windows.Forms.ToolStripTextBox();
             this.changeAValue = new System.Windows.Forms.ToolStripMenuItem();
+            this.newAValue = new System.Windows.Forms.ToolStripTextBox();
             this.changeBuildingsCount = new System.Windows.Forms.ToolStripMenuItem();
+            this.newBlocksCount = new System.Windows.Forms.ToolStripTextBox();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +75,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.acceptNewTValue = new System.Windows.Forms.ToolStripMenuItem();
+            this.acceptNewAValue = new System.Windows.Forms.ToolStripMenuItem();
+            this.acceptNewBlocksCount = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildingCountValue = new System.Windows.Forms.Label();
+            this.markCount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -152,12 +163,38 @@
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(278, 26);
             this.saveButton.Text = "Сохранить";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // saveAsButton
             // 
+            this.saveAsButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsZipArchieve,
+            this.saveAsRarArchive,
+            this.saveAsNewFolder});
             this.saveAsButton.Name = "saveAsButton";
             this.saveAsButton.Size = new System.Drawing.Size(278, 26);
             this.saveAsButton.Text = "Сохранить как...";
+            // 
+            // saveAsZipArchieve
+            // 
+            this.saveAsZipArchieve.Name = "saveAsZipArchieve";
+            this.saveAsZipArchieve.Size = new System.Drawing.Size(183, 26);
+            this.saveAsZipArchieve.Text = "Архив Zip";
+            this.saveAsZipArchieve.Click += new System.EventHandler(this.saveAsZipArchieve_Click);
+            // 
+            // saveAsRarArchive
+            // 
+            this.saveAsRarArchive.Name = "saveAsRarArchive";
+            this.saveAsRarArchive.Size = new System.Drawing.Size(183, 26);
+            this.saveAsRarArchive.Text = "Архив Rar";
+            this.saveAsRarArchive.Click += new System.EventHandler(this.saveAsRarArchive_Click);
+            // 
+            // saveAsNewFolder
+            // 
+            this.saveAsNewFolder.Name = "saveAsNewFolder";
+            this.saveAsNewFolder.Size = new System.Drawing.Size(183, 26);
+            this.saveAsNewFolder.Text = "Новую папку";
+            this.saveAsNewFolder.Click += new System.EventHandler(this.saveAsNewFolder_Click);
             // 
             // saveCopyButton
             // 
@@ -225,23 +262,56 @@
             // 
             // changeTValue
             // 
+            this.changeTValue.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newTValue,
+            this.acceptNewTValue});
             this.changeTValue.Name = "changeTValue";
             this.changeTValue.Size = new System.Drawing.Size(313, 26);
             this.changeTValue.Text = "Изменить значение T";
             this.changeTValue.Click += new System.EventHandler(this.changeTValueButton_Click);
             // 
+            // newTValue
+            // 
+            this.newTValue.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.newTValue.Name = "newTValue";
+            this.newTValue.Size = new System.Drawing.Size(100, 27);
+            this.newTValue.Enter += new System.EventHandler(this.newTValue_Enter);
+            this.newTValue.Leave += new System.EventHandler(this.newTValue_Enter);
+            // 
             // changeAValue
             // 
+            this.changeAValue.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newAValue,
+            this.acceptNewAValue});
             this.changeAValue.Name = "changeAValue";
             this.changeAValue.Size = new System.Drawing.Size(313, 26);
             this.changeAValue.Text = "Изменить значение a";
             this.changeAValue.Click += new System.EventHandler(this.changeAValueButton_Click);
             // 
+            // newAValue
+            // 
+            this.newAValue.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.newAValue.Name = "newAValue";
+            this.newAValue.Size = new System.Drawing.Size(100, 27);
+            this.newAValue.Enter += new System.EventHandler(this.newAValue_Enter);
+            this.newAValue.Leave += new System.EventHandler(this.newAValue_Enter);
+            // 
             // changeBuildingsCount
             // 
+            this.changeBuildingsCount.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newBlocksCount,
+            this.acceptNewBlocksCount});
             this.changeBuildingsCount.Name = "changeBuildingsCount";
             this.changeBuildingsCount.Size = new System.Drawing.Size(313, 26);
             this.changeBuildingsCount.Text = "Изменить количество объектов";
+            // 
+            // newBlocksCount
+            // 
+            this.newBlocksCount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.newBlocksCount.Name = "newBlocksCount";
+            this.newBlocksCount.Size = new System.Drawing.Size(100, 27);
+            this.newBlocksCount.Enter += new System.EventHandler(this.newBlocksCount_Enter);
+            this.newBlocksCount.Leave += new System.EventHandler(this.newBlocksCount_Enter);
             // 
             // windowsMenu
             // 
@@ -282,6 +352,7 @@
             this.infoAboutSystem.Name = "infoAboutSystem";
             this.infoAboutSystem.Size = new System.Drawing.Size(265, 26);
             this.infoAboutSystem.Text = "Информация о системе";
+            this.infoAboutSystem.Click += new System.EventHandler(this.infoAboutSystem_Click);
             // 
             // tabControl1
             // 
@@ -296,6 +367,8 @@
             // 
             // dataPage
             // 
+            this.dataPage.Controls.Add(this.markCount);
+            this.dataPage.Controls.Add(this.buildingCountValue);
             this.dataPage.Controls.Add(this.valueOfALabel);
             this.dataPage.Controls.Add(this.valueOfTLabel);
             this.dataPage.Controls.Add(this.label3);
@@ -411,6 +484,45 @@
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // acceptNewTValue
+            // 
+            this.acceptNewTValue.Name = "acceptNewTValue";
+            this.acceptNewTValue.Size = new System.Drawing.Size(224, 26);
+            this.acceptNewTValue.Text = "Применить";
+            this.acceptNewTValue.Click += new System.EventHandler(this.newTValue_Enter);
+            // 
+            // acceptNewAValue
+            // 
+            this.acceptNewAValue.Name = "acceptNewAValue";
+            this.acceptNewAValue.Size = new System.Drawing.Size(224, 26);
+            this.acceptNewAValue.Text = "Применить";
+            this.acceptNewAValue.Click += new System.EventHandler(this.newAValue_Enter);
+            // 
+            // acceptNewBlocksCount
+            // 
+            this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(224, 26);
+            this.acceptNewBlocksCount.Text = "Применить";
+            this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
+            // 
+            // buildingCountValue
+            // 
+            this.buildingCountValue.AutoSize = true;
+            this.buildingCountValue.BackColor = System.Drawing.Color.White;
+            this.buildingCountValue.Location = new System.Drawing.Point(8, 93);
+            this.buildingCountValue.Name = "buildingCountValue";
+            this.buildingCountValue.Size = new System.Drawing.Size(0, 16);
+            this.buildingCountValue.TabIndex = 11;
+            // 
+            // markCount
+            // 
+            this.markCount.AutoSize = true;
+            this.markCount.BackColor = System.Drawing.Color.White;
+            this.markCount.Location = new System.Drawing.Point(8, 116);
+            this.markCount.Name = "markCount";
+            this.markCount.Size = new System.Drawing.Size(0, 16);
+            this.markCount.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -475,6 +587,17 @@
         private System.Windows.Forms.Label valueOfALabel;
         private System.Windows.Forms.Label valueOfTLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem saveAsZipArchieve;
+        private System.Windows.Forms.ToolStripMenuItem saveAsRarArchive;
+        private System.Windows.Forms.ToolStripMenuItem saveAsNewFolder;
+        private System.Windows.Forms.ToolStripTextBox newTValue;
+        private System.Windows.Forms.ToolStripTextBox newAValue;
+        private System.Windows.Forms.ToolStripTextBox newBlocksCount;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewTValue;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewAValue;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewBlocksCount;
+        private System.Windows.Forms.Label markCount;
+        private System.Windows.Forms.Label buildingCountValue;
     }
 }
 

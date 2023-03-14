@@ -119,6 +119,7 @@ namespace CourseWorkRebuild2
             result.Add(markCount); //4
             result.Add(buildingCount); //5
             result.Add(fileName); //6
+            result.Add(txtFilePath); //7
             projectRoot = "";
             return result;
         }

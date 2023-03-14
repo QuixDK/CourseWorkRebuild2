@@ -222,5 +222,11 @@ namespace CourseWorkRebuild2
             repository.DeleteRow((elevatorTable.Rows.Count - 2).ToString());
             elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count - 2);
         }
+
+        private void infoAboutSystem_Click(object sender, EventArgs e)
+        {
+            SystemInfo systemInfo = new SystemInfo();
+            systemInfo.ShowDialog();
+        }
     }
 }
