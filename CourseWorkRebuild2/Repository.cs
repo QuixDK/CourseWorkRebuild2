@@ -21,6 +21,10 @@ namespace CourseWorkRebuild
         {
             this.pathToElevatorTable = pathToElevatorTable;
         }
+        public void closeSQLConnection()
+        {
+            sqlConnection.Close();
+        }
 
         public SQLiteConnection GetDbConnection()
         {

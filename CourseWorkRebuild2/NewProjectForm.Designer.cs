@@ -125,6 +125,7 @@
             this.infoAboutSystem.Name = "infoAboutSystem";
             this.infoAboutSystem.Size = new System.Drawing.Size(265, 26);
             this.infoAboutSystem.Text = "Информация о системе";
+            this.infoAboutSystem.Click += new System.EventHandler(this.infoAboutSystem_Click);
             // 
             // changeAValue
             // 
