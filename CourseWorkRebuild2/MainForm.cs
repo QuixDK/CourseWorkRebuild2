@@ -51,7 +51,6 @@ namespace CourseWorkRebuild2
         private void reDrawMainForm()
         {
 
-            
             if (values[0] != null & values[0] != "")
             {
                 epochCountBox.Items.Clear();
@@ -210,7 +209,11 @@ namespace CourseWorkRebuild2
                 OpenProject openProject = new OpenProject();
                 values = openProject.Open();
                 reDrawMainForm();
-                activeForm++;
+                if (!(values[0] == "") & !(values[1] == "") & !(values[7] == ""))
+                {
+                    activeForm++;
+                }
+
             }
             
         }
@@ -276,16 +279,6 @@ namespace CourseWorkRebuild2
             elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count-2);
         }
 
-        private void changeTValueButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void changeAValueButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -295,19 +288,6 @@ namespace CourseWorkRebuild2
         {
             SystemInfo systemInfo = new SystemInfo();
             systemInfo.ShowDialog();
-        }
-        private void savePackage(List<String> filePaths, String packagePath)
-        {
-            // Create a new ZIP archive for the package
-            using (ZipArchive archive = ZipFile.Open(packagePath, ZipArchiveMode.Create))
-            {
-                
-                // Add each file to the archive
-                foreach (String filePath in filePaths)
-                {
-                    archive.CreateEntryFromFile(filePath, Path.GetFileName(filePath));
-                }
-            }
         }
 
         private void saveAsZipArchieve_Click(object sender, EventArgs e)
@@ -328,7 +308,7 @@ namespace CourseWorkRebuild2
             repository.closeSQLConnection();
             closeButton_Click(sender, e);
             sqlConnection.Close();
-            savePackage(filesToSave, "SaveProjects\\newProject.zip");
+            //savePackage(filesToSave, "SaveProjects\\newProject.zip");
         }
 
         private void saveAsRarArchive_Click(object sender, EventArgs e)
@@ -349,7 +329,7 @@ namespace CourseWorkRebuild2
             repository.closeSQLConnection();
             closeButton_Click(sender, e);
             sqlConnection.Close();
-            savePackage(filesToSave, "SaveProjects\\newProject.rar");
+            //savePackage(filesToSave, "SaveProjects\\newProject.rar");
         }
 
         private void saveAsNewFolder_Click(object sender, EventArgs e)
@@ -367,9 +347,9 @@ namespace CourseWorkRebuild2
                 {
                     sourceDirectory = Path.GetDirectoryName(values[1]);
                 }
-                else if (values[2] != "" & values[2] != null)
+                else if (values[7] != "" & values[7] != null)
                 {
-                    sourceDirectory = Path.GetDirectoryName(values[2]);
+                    sourceDirectory = Path.GetDirectoryName(values[7]);
                 }
                 if (sourceDirectory != "")
                 {
@@ -441,37 +421,44 @@ namespace CourseWorkRebuild2
                 e.Handled = true;
         }
 
-        private void changeElevatorTablePath_Click(object sender, EventArgs e)
+        private String getNewFilePath(String title,String filter)
         {
             OpenFileDialog chooseFile = new OpenFileDialog();
             chooseFile.Multiselect = false;
-            String dbFilePath = "";
-            chooseFile.Title = "Выберите таблицу высот";
-            chooseFile.Filter = "SQLite files (*.sqlite)|*.sqlite";
+            String newFilePath = "";
+            chooseFile.Title = title;
+            chooseFile.Filter = filter;
             if (chooseFile.ShowDialog() == DialogResult.OK)
             {
-                dbFilePath = Path.GetFullPath(chooseFile.FileName);
+                newFilePath = Path.GetFullPath(chooseFile.FileName);
+
             }
-            if (dbFilePath == "") { return; }
+            return newFilePath;
+        }
+
+        private void changeElevatorTablePath_Click(object sender, EventArgs e)
+        {
+            String title = "Выберите таблицу высот";
+            String filter = "SQLite files (*.sqlite)|*.sqlite";
             oldElevatorTablePath = values[0];
-            values[0] = dbFilePath;
+            values[0] = getNewFilePath(title, filter);
+            if (values[0] == "")
+            {
+                values[0] = oldElevatorTablePath;
+            }
             reDrawMainForm();
         }
 
         private void changeObjectPicture_Click(object sender, EventArgs e)
         {
-            OpenFileDialog chooseFile = new OpenFileDialog();
-            chooseFile.Multiselect = false;
-            String pictureFilePath = "";
-            chooseFile.Title = "Выберите схему объекта";
-            chooseFile.Filter = "PNG files (*.png)|*.png";
-            if (chooseFile.ShowDialog() == DialogResult.OK)
-            {
-                pictureFilePath = Path.GetFullPath(chooseFile.FileName);
-            }
-            if (pictureFilePath == "") { return; }
+            String title = "Выберите схему объекта";
+            String filter = "PNG files (*.png)|*.png";
             oldObjectPicturePath = values[1];
-            values[1] = pictureFilePath;
+            values[1] = getNewFilePath(title,filter);
+            if (values[1] == "")
+            {
+                values[1] = oldObjectPicturePath;
+            }
             reDrawMainForm();
         }
 

@@ -277,7 +277,6 @@
             this.changeTValue.Name = "changeTValue";
             this.changeTValue.Size = new System.Drawing.Size(313, 26);
             this.changeTValue.Text = "Изменить значение T";
-            this.changeTValue.Click += new System.EventHandler(this.changeTValueButton_Click);
             // 
             // newTValue
             // 
@@ -303,7 +302,6 @@
             this.changeAValue.Name = "changeAValue";
             this.changeAValue.Size = new System.Drawing.Size(313, 26);
             this.changeAValue.Text = "Изменить значение a";
-            this.changeAValue.Click += new System.EventHandler(this.changeAValueButton_Click);
             // 
             // newAValue
             // 

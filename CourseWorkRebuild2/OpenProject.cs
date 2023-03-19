@@ -115,6 +115,10 @@ namespace CourseWorkRebuild2
             result.Add(dbFilePath); //0
             result.Add(pngFilePath); //1
             result.Add(valueOfT); //2
+            if (dbFilePath == "" & pngFilePath == "" & txtFilePath == "")
+            {
+                defaultValueA = "";
+            }
             result.Add(defaultValueA); //3
             result.Add(markCount); //4
             result.Add(buildingCount); //5
