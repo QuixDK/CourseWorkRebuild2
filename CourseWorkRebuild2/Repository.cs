@@ -40,7 +40,8 @@ namespace CourseWorkRebuild
             SQLiteCommand command = new SQLiteCommand(SQLQuery, sqlConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             String tableName = "";
-
+            
+            //сделать выбор таблицы
             while (reader.Read())
             {
                 tableName = reader.GetString(0);

@@ -141,7 +141,7 @@ namespace CourseWorkRebuild2
                 }
 
                 String filePath = "D:\\Projects";
-
+                
                 if (archivePath != "")
                 {
                     using (var archive = ArchiveFactory.Open(archivePath))
@@ -149,7 +149,7 @@ namespace CourseWorkRebuild2
 
                         foreach (var entry in archive.Entries)
                         {
-
+                            
                             string outputPath = Path.Combine(filePath, entry.Key);
 
                             Directory.CreateDirectory(Path.GetDirectoryName(outputPath));

@@ -16,9 +16,22 @@ namespace CourseWorkRebuild2
 {
     internal class Save
     {
-        public void SaveElevatorTable(DataTable dataTable, DataGridView dataGridView, SQLiteConnection connection, String pathToTable)
+        public void SaveNewFile(String pathToNewFile, String oldPathToFile, String pattern)
         {
-
+            String destinationFilePath = Path.Combine(Path.GetDirectoryName(oldPathToFile), Path.GetFileName(pathToNewFile));
+            File.Copy(pathToNewFile, destinationFilePath, true);
+            string[] oldFiles = Directory.GetFiles(Path.GetDirectoryName(oldPathToFile), pattern);
+            for (int i = 0; i < oldFiles.Length; i++)
+            {
+                
+                if (!Path.GetFileName(oldFiles[i]).Equals(Path.GetFileName(pathToNewFile)))
+                {
+                    File.Delete(oldFiles[i]);
+                } 
+                
+            }
+            
+            
         }
 
         public void SaveTxtFile(String pathToFile, Double tValue, int buildingsCount, int marksCount)
@@ -58,6 +71,23 @@ namespace CourseWorkRebuild2
             }
             File.WriteAllText(pathToFile, content, Encoding.Unicode);
             
+        }
+
+        public void SaveFilesToNewFolder (string sourceFolderPath)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                string[] filesToCopy = Directory.GetFiles(sourceFolderPath);
+                foreach (string fileToCopy in filesToCopy)
+                {
+                    string fileName = Path.GetFileName(fileToCopy);
+                    string destinationFilePath = Path.Combine(folderBrowserDialog.SelectedPath, fileName);
+                    File.Copy(fileToCopy, destinationFilePath);
+                }
+
+            }
         }
 
     }

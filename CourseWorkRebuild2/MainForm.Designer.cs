@@ -53,10 +53,16 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.changeTValue = new System.Windows.Forms.ToolStripMenuItem();
             this.newTValue = new System.Windows.Forms.ToolStripTextBox();
+            this.acceptNewTValue = new System.Windows.Forms.ToolStripMenuItem();
             this.changeAValue = new System.Windows.Forms.ToolStripMenuItem();
             this.newAValue = new System.Windows.Forms.ToolStripTextBox();
+            this.acceptNewAValue = new System.Windows.Forms.ToolStripMenuItem();
             this.changeBuildingsCount = new System.Windows.Forms.ToolStripMenuItem();
             this.newBlocksCount = new System.Windows.Forms.ToolStripTextBox();
+            this.acceptNewBlocksCount = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeElevatorTablePath = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeObjectPicture = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +71,8 @@
             this.infoAboutSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.dataPage = new System.Windows.Forms.TabPage();
+            this.markCount = new System.Windows.Forms.Label();
+            this.buildingCountValue = new System.Windows.Forms.Label();
             this.valueOfALabel = new System.Windows.Forms.Label();
             this.valueOfTLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,14 +83,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.acceptNewTValue = new System.Windows.Forms.ToolStripMenuItem();
-            this.acceptNewAValue = new System.Windows.Forms.ToolStripMenuItem();
-            this.acceptNewBlocksCount = new System.Windows.Forms.ToolStripMenuItem();
-            this.buildingCountValue = new System.Windows.Forms.Label();
-            this.markCount = new System.Windows.Forms.Label();
-            this.changeElevatorTablePath = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeObjectPicture = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteSelectedRowsButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -100,7 +101,7 @@
             this.refMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(840, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(840, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -119,7 +120,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(59, 26);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -230,7 +231,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -257,7 +258,7 @@
             // deleteEpochButton
             // 
             this.deleteEpochButton.Name = "deleteEpochButton";
-            this.deleteEpochButton.Size = new System.Drawing.Size(224, 26);
+            this.deleteEpochButton.Size = new System.Drawing.Size(195, 26);
             this.deleteEpochButton.Text = "Удалить";
             this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
             // 
@@ -283,6 +284,14 @@
             this.newTValue.Size = new System.Drawing.Size(100, 27);
             this.newTValue.Enter += new System.EventHandler(this.newTValue_Enter);
             this.newTValue.Leave += new System.EventHandler(this.newTValue_Enter);
+            this.newTValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newTValue_KeyPress);
+            // 
+            // acceptNewTValue
+            // 
+            this.acceptNewTValue.Name = "acceptNewTValue";
+            this.acceptNewTValue.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewTValue.Text = "Применить";
+            this.acceptNewTValue.Click += new System.EventHandler(this.newTValue_Enter);
             // 
             // changeAValue
             // 
@@ -301,6 +310,14 @@
             this.newAValue.Size = new System.Drawing.Size(100, 27);
             this.newAValue.Enter += new System.EventHandler(this.newAValue_Enter);
             this.newAValue.Leave += new System.EventHandler(this.newAValue_Enter);
+            this.newAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAValue_KeyPress);
+            // 
+            // acceptNewAValue
+            // 
+            this.acceptNewAValue.Name = "acceptNewAValue";
+            this.acceptNewAValue.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewAValue.Text = "Применить";
+            this.acceptNewAValue.Click += new System.EventHandler(this.newAValue_Enter);
             // 
             // changeBuildingsCount
             // 
@@ -318,11 +335,38 @@
             this.newBlocksCount.Size = new System.Drawing.Size(100, 27);
             this.newBlocksCount.Enter += new System.EventHandler(this.newBlocksCount_Enter);
             this.newBlocksCount.Leave += new System.EventHandler(this.newBlocksCount_Enter);
+            this.newBlocksCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newBlocksCount_KeyPress);
+            // 
+            // acceptNewBlocksCount
+            // 
+            this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewBlocksCount.Text = "Применить";
+            this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(310, 6);
+            // 
+            // changeElevatorTablePath
+            // 
+            this.changeElevatorTablePath.Name = "changeElevatorTablePath";
+            this.changeElevatorTablePath.Size = new System.Drawing.Size(313, 26);
+            this.changeElevatorTablePath.Text = "Указать новую таблицу";
+            this.changeElevatorTablePath.Click += new System.EventHandler(this.changeElevatorTablePath_Click);
+            // 
+            // changeObjectPicture
+            // 
+            this.changeObjectPicture.Name = "changeObjectPicture";
+            this.changeObjectPicture.Size = new System.Drawing.Size(313, 26);
+            this.changeObjectPicture.Text = "Указать новую схему объекта";
+            this.changeObjectPicture.Click += new System.EventHandler(this.changeObjectPicture_Click);
             // 
             // windowsMenu
             // 
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
             this.windowsMenu.Text = "Окна";
             // 
             // refMenu
@@ -333,7 +377,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(81, 26);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -365,14 +409,15 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(840, 423);
+            this.tabControl1.Size = new System.Drawing.Size(840, 421);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
             // 
+            this.dataPage.Controls.Add(this.deleteSelectedRowsButton);
             this.dataPage.Controls.Add(this.markCount);
             this.dataPage.Controls.Add(this.buildingCountValue);
             this.dataPage.Controls.Add(this.valueOfALabel);
@@ -387,10 +432,28 @@
             this.dataPage.Location = new System.Drawing.Point(4, 25);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3);
-            this.dataPage.Size = new System.Drawing.Size(832, 394);
+            this.dataPage.Size = new System.Drawing.Size(832, 392);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
+            // 
+            // markCount
+            // 
+            this.markCount.AutoSize = true;
+            this.markCount.BackColor = System.Drawing.Color.White;
+            this.markCount.Location = new System.Drawing.Point(8, 116);
+            this.markCount.Name = "markCount";
+            this.markCount.Size = new System.Drawing.Size(0, 16);
+            this.markCount.TabIndex = 12;
+            // 
+            // buildingCountValue
+            // 
+            this.buildingCountValue.AutoSize = true;
+            this.buildingCountValue.BackColor = System.Drawing.Color.White;
+            this.buildingCountValue.Location = new System.Drawing.Point(8, 93);
+            this.buildingCountValue.Name = "buildingCountValue";
+            this.buildingCountValue.Size = new System.Drawing.Size(0, 16);
+            this.buildingCountValue.TabIndex = 11;
             // 
             // valueOfALabel
             // 
@@ -490,6 +553,16 @@
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // deleteSelectedRowsButton
+            // 
+            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(316, 172);
+            this.deleteSelectedRowsButton.Name = "deleteSelectedRowsButton";
+            this.deleteSelectedRowsButton.Size = new System.Drawing.Size(119, 51);
+            this.deleteSelectedRowsButton.TabIndex = 13;
+            this.deleteSelectedRowsButton.Text = "Удалить выделенные";
+            this.deleteSelectedRowsButton.UseVisualStyleBackColor = true;
+            this.deleteSelectedRowsButton.Click += new System.EventHandler(this.deleteSelectedRowsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -554,6 +627,21 @@
         private System.Windows.Forms.Label valueOfALabel;
         private System.Windows.Forms.Label valueOfTLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem saveAsZipArchieve;
+        private System.Windows.Forms.ToolStripMenuItem saveAsRarArchive;
+        private System.Windows.Forms.ToolStripMenuItem saveAsNewFolder;
+        private System.Windows.Forms.ToolStripTextBox newTValue;
+        private System.Windows.Forms.ToolStripTextBox newAValue;
+        private System.Windows.Forms.ToolStripTextBox newBlocksCount;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewTValue;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewAValue;
+        private System.Windows.Forms.ToolStripMenuItem acceptNewBlocksCount;
+        private System.Windows.Forms.Label markCount;
+        private System.Windows.Forms.Label buildingCountValue;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem changeElevatorTablePath;
+        private System.Windows.Forms.ToolStripMenuItem changeObjectPicture;
+        private System.Windows.Forms.Button deleteSelectedRowsButton;
     }
 }
 

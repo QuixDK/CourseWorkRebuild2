@@ -1,4 +1,5 @@
 ﻿using CourseWorkRebuild;
+using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CourseWorkRebuild2
 {
@@ -21,7 +23,9 @@ namespace CourseWorkRebuild2
         private DataTable dataTable = new DataTable();
         private System.Data.SQLite.SQLiteConnection sqlConnection;
         private Repository repository;
-        private int activeForms = 0;
+        private String oldObjectPicturePath = "";
+        private String oldElevatorTablePath = "";
+        private int activeForm = 0;
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +40,7 @@ namespace CourseWorkRebuild2
             this.saveAsButton.Enabled = false;
             this.saveButton.Enabled = false;
             this.saveCopyButton.Enabled = false;
+            this.deleteSelectedRowsButton.Enabled = false;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,6 +74,7 @@ namespace CourseWorkRebuild2
                 this.closeAllButton.Enabled = true;
                 this.saveCopyButton.Enabled = true;
                 this.saveButton.Enabled = true;
+                this.deleteSelectedRowsButton.Enabled = true;
             }
             else
             {
@@ -80,6 +86,7 @@ namespace CourseWorkRebuild2
                 this.addEpochButton.Enabled = false;
                 this.chooseEpochToDelete.Enabled = false;
                 this.deleteEpochButton.Enabled = false;
+                this.deleteSelectedRowsButton.Enabled = false;
             }
             if (values[1] != null & values[1] != "")
             {
@@ -120,7 +127,6 @@ namespace CourseWorkRebuild2
             else
             {
                 valueOfALabel.Text = "";
-                this.changeAValue.Enabled = false;
             }
             if (values[4] != null & values[4] != "")
             {
@@ -135,7 +141,7 @@ namespace CourseWorkRebuild2
             else buildingCountValue.Text = "";
             if (values[6] != null & values[6] != "")
             {
-                this.Text = values[6] + "              Открыто окон " + activeForms;
+                this.Text = values[6];
                 this.closeButton.Enabled = true;
                 this.saveAsButton.Enabled = true;
                 this.closeAllButton.Enabled = true;
@@ -192,39 +198,39 @@ namespace CourseWorkRebuild2
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            if (activeForms > 0)
+            if (activeForm > 0)
             {
                 NewProjectForm newProjectForm = new NewProjectForm();
                 openForms.Add(newProjectForm);
                 newProjectForm.Show();
-                activeForms++;
+                activeForm++;
             }
             else
             {
                 OpenProject openProject = new OpenProject();
                 values = openProject.Open();
                 reDrawMainForm();
-                activeForms++;
+                activeForm++;
             }
             
         }
 
         private void openRarButton_Click(object sender, EventArgs e)
         {
-            if (activeForms > 0)
+            if (activeForm > 0)
             {
                 NewProjectForm newProjectForm = new NewProjectForm();
                 openForms.Add(newProjectForm);
                 newProjectForm.SetParameter(1);
                 newProjectForm.Show();
-                activeForms++;
+                activeForm++;
             }
             else
             {
                 OpenProject openProject = new OpenProject();
                 values = openProject.UnzipRar();
                 reDrawMainForm();
-                activeForms++;
+                activeForm++;
             }
            
         }
@@ -235,11 +241,13 @@ namespace CourseWorkRebuild2
             {
                 values[value] = "";
             }
-            activeForms = 0;
+            activeForm = 0;
             foreach (NewProjectForm form in openForms)
             {
                 form.Close();
+                
             }
+            openForms.Clear();
             reDrawMainForm();
         }
         private void closeButton_Click(object sender, EventArgs e)
@@ -248,7 +256,7 @@ namespace CourseWorkRebuild2
             {
                 values[value] = "";
             }
-            activeForms--;
+            activeForm = 0;
             reDrawMainForm();
         }
 
@@ -270,14 +278,12 @@ namespace CourseWorkRebuild2
 
         private void changeTValueButton_Click(object sender, EventArgs e)
         {
-            ChangeValueForm changeValueForm = new ChangeValueForm();
-            changeValueForm.ShowDialog();
+
         }
 
         private void changeAValueButton_Click(object sender, EventArgs e)
         {
-            ChangeValueForm changeValueForm = new ChangeValueForm();
-            changeValueForm.ShowDialog();
+
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -348,26 +354,36 @@ namespace CourseWorkRebuild2
 
         private void saveAsNewFolder_Click(object sender, EventArgs e)
         {
-            List<String> filesToSave = new List<String>();
-            if (values[0] != null & values[0] != "")
-            {
-                filesToSave.Add(values[0]); // save DB
-            }
-            if (values[1] != null & values[1] != "")
-            {
-                filesToSave.Add(values[1]); // save png
-            }
-            if (values[7] != null & values[7] != "")
-            {
-                filesToSave.Add(values[7]); // save txt
-            }
-            repository.closeSQLConnection();
-            closeButton_Click(sender, e);
+            
             sqlConnection.Close();
-            Directory.CreateDirectory("SaveProjects\\newProject");
-            File.Copy(filesToSave[0], "newProject1");
-            File.Copy(filesToSave[1], "newProject2");
-            File.Copy(filesToSave[2], "newProject3");
+            try
+            {
+                String sourceDirectory = "";
+                if (values[0] != "" & values[0] != null)
+                {
+                    sourceDirectory = Path.GetDirectoryName(values[0]);
+                }
+                else if (values[1] != "" & values[1] != null)
+                {
+                    sourceDirectory = Path.GetDirectoryName(values[1]);
+                }
+                else if (values[2] != "" & values[2] != null)
+                {
+                    sourceDirectory = Path.GetDirectoryName(values[2]);
+                }
+                if (sourceDirectory != "")
+                {
+                    Save save = new Save();
+                    save.SaveFilesToNewFolder(sourceDirectory);
+                    sqlConnection = repository.GetDbConnection();
+                }
+                MessageBox.Show("Сохранение успешно!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Сохранение не удалось, попробуйте еще раз");
+            }
+            
         }
 
         private void newBlocksCount_Enter(object sender, EventArgs e)
@@ -390,8 +406,87 @@ namespace CourseWorkRebuild2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            String tempTableFile = values[0];
+            String tempPngFile = values[1];
+            values[0] = "";
+            values[1] = "";
+            reDrawMainForm();
             Save save = new Save();
             save.SaveTxtFile(values[7], Convert.ToDouble(values[2]), Convert.ToInt32(values[5]), Convert.ToInt32(values[4]));
+            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(values[1], oldObjectPicturePath, "*.png"); }
+            if (oldElevatorTablePath != "" & oldElevatorTablePath != tempTableFile) { save.SaveNewFile(tempTableFile, oldElevatorTablePath, "*.sqlite"); }
+            values[0] = tempTableFile;
+            values[1] = tempPngFile;
+            reDrawMainForm();
+        }
+
+        private void newTValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) | (e.KeyChar.Equals(',')) | e.KeyChar.Equals('\b')) return;
+            else
+                e.Handled = true;
+        }
+
+        private void newAValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) | (e.KeyChar.Equals(',')) | e.KeyChar.Equals('\b')) return;
+            else
+                e.Handled = true;
+        }
+
+        private void newBlocksCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) | (e.KeyChar.Equals(',')) | e.KeyChar.Equals('\b')) return;
+            else
+                e.Handled = true;
+        }
+
+        private void changeElevatorTablePath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseFile = new OpenFileDialog();
+            chooseFile.Multiselect = false;
+            String dbFilePath = "";
+            chooseFile.Title = "Выберите таблицу высот";
+            chooseFile.Filter = "SQLite files (*.sqlite)|*.sqlite";
+            if (chooseFile.ShowDialog() == DialogResult.OK)
+            {
+                dbFilePath = Path.GetFullPath(chooseFile.FileName);
+            }
+            if (dbFilePath == "") { return; }
+            oldElevatorTablePath = values[0];
+            values[0] = dbFilePath;
+            reDrawMainForm();
+        }
+
+        private void changeObjectPicture_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseFile = new OpenFileDialog();
+            chooseFile.Multiselect = false;
+            String pictureFilePath = "";
+            chooseFile.Title = "Выберите схему объекта";
+            chooseFile.Filter = "PNG files (*.png)|*.png";
+            if (chooseFile.ShowDialog() == DialogResult.OK)
+            {
+                pictureFilePath = Path.GetFullPath(chooseFile.FileName);
+            }
+            if (pictureFilePath == "") { return; }
+            oldObjectPicturePath = values[1];
+            values[1] = pictureFilePath;
+            reDrawMainForm();
+        }
+
+        private void deleteSelectedRowsButton_Click(object sender, EventArgs e)
+        {
+            if (elevatorTable.SelectedRows.Count > 0)
+            {
+                var selectedRows = elevatorTable.SelectedRows;
+                for (int i = 0; i < elevatorTable.SelectedRows.Count; i++)
+                {
+                    repository.DeleteRow(elevatorTable.SelectedRows[i].Index.ToString());
+
+                }
+            }
+            reDrawMainForm();
         }
     }
 }
