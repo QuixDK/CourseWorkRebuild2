@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -13,12 +12,12 @@ namespace CourseWorkRebuild2
     internal class OpenProject
     {
         private String projectRoot = "";
-        public List<String> Open() 
+        public List<String> Open()
         {
             String valueOfT = "";
             String buildingCount = "";
             String markCount = "";
-            String defaultValueA = "0.9";
+            String defaultValueA = "0,9";
             List<String> result = new List<String>();
 
             if (projectRoot == "")
@@ -145,7 +144,7 @@ namespace CourseWorkRebuild2
                 }
 
                 String filePath = "D:\\Projects";
-                
+
                 if (archivePath != "")
                 {
                     using (var archive = ArchiveFactory.Open(archivePath))
@@ -153,7 +152,7 @@ namespace CourseWorkRebuild2
 
                         foreach (var entry in archive.Entries)
                         {
-                            
+
                             string outputPath = Path.Combine(filePath, entry.Key);
 
                             Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
@@ -177,7 +176,7 @@ namespace CourseWorkRebuild2
             {
                 MessageBox.Show("Файл уже открыт в другом окне, выберите другой файл");
                 projectRoot = "";
-                return Open(); 
+                return Open();
             }
         }
         private String ChoosePathToFile(String projectRoot, OpenFileDialog chooseFile)

@@ -1,16 +1,10 @@
-﻿using SharpCompress.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace CourseWorkRebuild2
 {
@@ -23,15 +17,15 @@ namespace CourseWorkRebuild2
             string[] oldFiles = Directory.GetFiles(Path.GetDirectoryName(oldPathToFile), pattern);
             for (int i = 0; i < oldFiles.Length; i++)
             {
-                
+
                 if (!Path.GetFileName(oldFiles[i]).Equals(Path.GetFileName(pathToNewFile)))
                 {
                     File.Delete(oldFiles[i]);
-                } 
-                
+                }
+
             }
-            
-            
+
+
         }
 
         public void SaveTxtFile(String pathToFile, Double tValue, int buildingsCount, int marksCount)
@@ -40,7 +34,7 @@ namespace CourseWorkRebuild2
             StreamReader reader = new StreamReader(pathToFile, Encoding.Unicode);
             String content = reader.ReadToEnd();
             reader.Close();
-            
+
 
             foreach (String line in valueLines)
             {
@@ -51,8 +45,8 @@ namespace CourseWorkRebuild2
                     String newLine = "Точность измерений: " + tValue + "м";
 
                     content = Regex.Replace(content, line, newLine);
-                    
-                    
+
+
                 }
                 if (line.StartsWith("Количество структурных блоков"))
                 {
@@ -60,25 +54,25 @@ namespace CourseWorkRebuild2
                     String newLine = "Количество структурных блоков: " + buildingsCount;
 
                     content = Regex.Replace(content, line, newLine);
-                    
+
                 }
                 if (line.StartsWith("Количество геодезических марок, закрепленных в теле объекта"))
                 {
                     String newLine = "Количество геодезических марок, закрепленных в теле объекта: " + marksCount;
                     content = Regex.Replace(content, line, newLine);
-                    
+
                 }
             }
             File.WriteAllText(pathToFile, content, Encoding.Unicode);
-            
+
         }
 
-        public void SaveFilesToNewFolder (string sourceFolderPath)
+        public void SaveFilesToNewFolder(string sourceFolderPath)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                
+
                 string[] filesToCopy = Directory.GetFiles(sourceFolderPath);
                 foreach (string fileToCopy in filesToCopy)
                 {

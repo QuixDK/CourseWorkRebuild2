@@ -1,14 +1,8 @@
 ﻿using CourseWorkRebuild;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -37,7 +31,7 @@ namespace CourseWorkRebuild2
             {
                 return;
             }
-            
+
             if (values[0] != null & values[0] != "")
             {
                 epochCountBox.Items.Clear();
@@ -151,11 +145,20 @@ namespace CourseWorkRebuild2
 
         private void openProjectButton_Click(object sender, EventArgs e)
         {
-            closeButton_Click(sender, e);
-            OpenProject openProject = new OpenProject();
-            values = openProject.Open();
             
-            reDrawCurrentForm();
+            OpenProject openProject = new OpenProject();
+            List<String> newValues = new List<String>();
+            newValues = openProject.Open();
+            foreach (String value in newValues)
+            {
+                if (!value.Equals(""))
+                {
+                    values = newValues;
+                    reDrawCurrentForm();
+                }
+            }
+            
+            
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -163,7 +166,7 @@ namespace CourseWorkRebuild2
             closeButton_Click(sender, e);
             OpenProject openProject = new OpenProject();
             values = openProject.UnzipRar();
-            
+
             reDrawCurrentForm();
         }
 

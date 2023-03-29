@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,11 +87,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.functionDiagrams = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.functionDiagrams)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -101,8 +113,8 @@
             this.refMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(630, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(834, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -410,10 +422,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 28);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(630, 338);
+            this.tabControl1.Size = new System.Drawing.Size(834, 419);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
@@ -430,21 +442,21 @@
             this.dataPage.Controls.Add(this.objectPicture);
             this.dataPage.Controls.Add(this.label1);
             this.dataPage.Controls.Add(this.elevatorTable);
-            this.dataPage.Location = new System.Drawing.Point(4, 22);
-            this.dataPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataPage.Location = new System.Drawing.Point(4, 25);
+            this.dataPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPage.Name = "dataPage";
-            this.dataPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataPage.Size = new System.Drawing.Size(622, 312);
+            this.dataPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataPage.Size = new System.Drawing.Size(826, 390);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
             // 
             // deleteSelectedRowsButton
             // 
-            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(237, 140);
-            this.deleteSelectedRowsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(316, 172);
+            this.deleteSelectedRowsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteSelectedRowsButton.Name = "deleteSelectedRowsButton";
-            this.deleteSelectedRowsButton.Size = new System.Drawing.Size(89, 41);
+            this.deleteSelectedRowsButton.Size = new System.Drawing.Size(119, 50);
             this.deleteSelectedRowsButton.TabIndex = 13;
             this.deleteSelectedRowsButton.Text = "Удалить выделенные";
             this.deleteSelectedRowsButton.UseVisualStyleBackColor = true;
@@ -454,59 +466,54 @@
             // 
             this.markCount.AutoSize = true;
             this.markCount.BackColor = System.Drawing.Color.White;
-            this.markCount.Location = new System.Drawing.Point(6, 94);
-            this.markCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.markCount.Location = new System.Drawing.Point(8, 116);
             this.markCount.Name = "markCount";
-            this.markCount.Size = new System.Drawing.Size(0, 15);
+            this.markCount.Size = new System.Drawing.Size(0, 16);
             this.markCount.TabIndex = 12;
             // 
             // buildingCountValue
             // 
             this.buildingCountValue.AutoSize = true;
             this.buildingCountValue.BackColor = System.Drawing.Color.White;
-            this.buildingCountValue.Location = new System.Drawing.Point(6, 76);
-            this.buildingCountValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.buildingCountValue.Location = new System.Drawing.Point(8, 94);
             this.buildingCountValue.Name = "buildingCountValue";
-            this.buildingCountValue.Size = new System.Drawing.Size(0, 15);
+            this.buildingCountValue.Size = new System.Drawing.Size(0, 16);
             this.buildingCountValue.TabIndex = 11;
             // 
             // valueOfALabel
             // 
             this.valueOfALabel.AutoSize = true;
             this.valueOfALabel.BackColor = System.Drawing.Color.White;
-            this.valueOfALabel.Location = new System.Drawing.Point(119, 43);
-            this.valueOfALabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.valueOfALabel.Location = new System.Drawing.Point(159, 53);
             this.valueOfALabel.Name = "valueOfALabel";
-            this.valueOfALabel.Size = new System.Drawing.Size(0, 15);
+            this.valueOfALabel.Size = new System.Drawing.Size(0, 16);
             this.valueOfALabel.TabIndex = 10;
             // 
             // valueOfTLabel
             // 
             this.valueOfTLabel.AutoSize = true;
             this.valueOfTLabel.BackColor = System.Drawing.Color.White;
-            this.valueOfTLabel.Location = new System.Drawing.Point(6, 43);
-            this.valueOfTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.valueOfTLabel.Location = new System.Drawing.Point(8, 53);
             this.valueOfTLabel.Name = "valueOfTLabel";
-            this.valueOfTLabel.Size = new System.Drawing.Size(0, 15);
+            this.valueOfTLabel.Size = new System.Drawing.Size(0, 16);
             this.valueOfTLabel.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(6, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(8, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 15);
+            this.label3.Size = new System.Drawing.Size(133, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Начальные данные";
             // 
             // DeleteLastEpoch
             // 
-            this.DeleteLastEpoch.Location = new System.Drawing.Point(122, 140);
-            this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteLastEpoch.Location = new System.Drawing.Point(163, 172);
+            this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteLastEpoch.Name = "DeleteLastEpoch";
-            this.DeleteLastEpoch.Size = new System.Drawing.Size(111, 41);
+            this.DeleteLastEpoch.Size = new System.Drawing.Size(148, 50);
             this.DeleteLastEpoch.TabIndex = 5;
             this.DeleteLastEpoch.Text = "Удалить последнюю эпоху";
             this.DeleteLastEpoch.UseVisualStyleBackColor = true;
@@ -514,10 +521,10 @@
             // 
             // AddNewEpochButton
             // 
-            this.AddNewEpochButton.Location = new System.Drawing.Point(6, 140);
-            this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddNewEpochButton.Location = new System.Drawing.Point(8, 172);
+            this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddNewEpochButton.Name = "AddNewEpochButton";
-            this.AddNewEpochButton.Size = new System.Drawing.Size(111, 41);
+            this.AddNewEpochButton.Size = new System.Drawing.Size(148, 50);
             this.AddNewEpochButton.TabIndex = 4;
             this.AddNewEpochButton.Text = "Добавить эпоху";
             this.AddNewEpochButton.UseVisualStyleBackColor = true;
@@ -527,20 +534,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(466, 20);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(621, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 15);
+            this.label2.Size = new System.Drawing.Size(105, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Схема объекта";
             // 
             // objectPicture
             // 
             this.objectPicture.BackColor = System.Drawing.Color.White;
-            this.objectPicture.Location = new System.Drawing.Point(385, 36);
-            this.objectPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.objectPicture.Location = new System.Drawing.Point(513, 44);
+            this.objectPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.objectPicture.Name = "objectPicture";
-            this.objectPicture.Size = new System.Drawing.Size(233, 145);
+            this.objectPicture.Size = new System.Drawing.Size(311, 178);
             this.objectPicture.TabIndex = 2;
             this.objectPicture.TabStop = false;
             // 
@@ -548,45 +554,128 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(6, 124);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(8, 153);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.Size = new System.Drawing.Size(106, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Таблица высот";
             // 
             // elevatorTable
             // 
             this.elevatorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elevatorTable.Location = new System.Drawing.Point(6, 186);
-            this.elevatorTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.elevatorTable.Location = new System.Drawing.Point(8, 229);
+            this.elevatorTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.elevatorTable.Name = "elevatorTable";
             this.elevatorTable.RowHeadersWidth = 51;
             this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(612, 129);
+            this.elevatorTable.Size = new System.Drawing.Size(816, 159);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Controls.Add(this.listBox6);
+            this.tabPage2.Controls.Add(this.listBox5);
+            this.tabPage2.Controls.Add(this.listBox4);
+            this.tabPage2.Controls.Add(this.listBox3);
+            this.tabPage2.Controls.Add(this.listBox2);
+            this.tabPage2.Controls.Add(this.listBox1);
+            this.tabPage2.Controls.Add(this.functionDiagrams);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(622, 316);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1477, 533);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // listBox6
+            // 
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.ItemHeight = 16;
+            this.listBox6.Location = new System.Drawing.Point(904, 6);
+            this.listBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(169, 500);
+            this.listBox6.TabIndex = 6;
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.ItemHeight = 16;
+            this.listBox5.Location = new System.Drawing.Point(725, 6);
+            this.listBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(169, 500);
+            this.listBox5.TabIndex = 5;
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 16;
+            this.listBox4.Location = new System.Drawing.Point(547, 6);
+            this.listBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(169, 500);
+            this.listBox4.TabIndex = 4;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 16;
+            this.listBox3.Location = new System.Drawing.Point(368, 6);
+            this.listBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(169, 500);
+            this.listBox3.TabIndex = 3;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Location = new System.Drawing.Point(189, 6);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(169, 500);
+            this.listBox2.TabIndex = 2;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(11, 6);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(169, 500);
+            this.listBox1.TabIndex = 1;
+            // 
+            // functionDiagrams
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.functionDiagrams.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.functionDiagrams.Legends.Add(legend1);
+            this.functionDiagrams.Location = new System.Drawing.Point(1083, 6);
+            this.functionDiagrams.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.functionDiagrams.Name = "functionDiagrams";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.functionDiagrams.Series.Add(series1);
+            this.functionDiagrams.Size = new System.Drawing.Size(379, 501);
+            this.functionDiagrams.TabIndex = 0;
+            this.functionDiagrams.Text = "chart1";
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 366);
+            this.ClientSize = new System.Drawing.Size(834, 447);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
@@ -596,6 +685,8 @@
             this.dataPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.functionDiagrams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,6 +749,13 @@
         private System.Windows.Forms.ToolStripMenuItem changeElevatorTablePath;
         private System.Windows.Forms.ToolStripMenuItem changeObjectPicture;
         private System.Windows.Forms.Button deleteSelectedRowsButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart functionDiagrams;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
 

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild
@@ -40,7 +34,7 @@ namespace CourseWorkRebuild
             SQLiteCommand command = new SQLiteCommand(SQLQuery, sqlConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             String tableName = "";
-            
+
             //сделать выбор таблицы
             while (reader.Read())
             {

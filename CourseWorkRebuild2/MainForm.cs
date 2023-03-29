@@ -1,18 +1,10 @@
 ﻿using CourseWorkRebuild;
-using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CourseWorkRebuild2
 {
@@ -25,7 +17,10 @@ namespace CourseWorkRebuild2
         private Repository repository;
         private String oldObjectPicturePath = "";
         private String oldElevatorTablePath = "";
+        private Decomposition decomposition = new Decomposition();
+        private List<ListBox> lists = new List<ListBox>();
         private int activeForm = 0;
+        private int epochCount;
         public MainForm()
         {
             InitializeComponent();
@@ -41,6 +36,12 @@ namespace CourseWorkRebuild2
             this.saveButton.Enabled = false;
             this.saveCopyButton.Enabled = false;
             this.deleteSelectedRowsButton.Enabled = false;
+            lists.Add(listBox1);
+            lists.Add(listBox2);
+            lists.Add(listBox3);
+            lists.Add(listBox4);
+            lists.Add(listBox5);
+            lists.Add(listBox6);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,7 +58,7 @@ namespace CourseWorkRebuild2
                 repository = new Repository(values[0]);
                 sqlConnection = repository.GetDbConnection();
                 elevatorTable = repository.ShowTable(dataTable, elevatorTable);
-                for (int row = 0; row < elevatorTable.Rows.Count-1; row++)
+                for (int row = 0; row < elevatorTable.Rows.Count - 1; row++)
                 {
                     epochCountBox.Items.Add(elevatorTable.Rows[row].Cells[0].Value);
                 }
@@ -148,10 +149,12 @@ namespace CourseWorkRebuild2
                 this.saveButton.Enabled = true;
             }
             else { this.Text = ""; }
-            
-            
-        }
 
+            if (values[0] != "" & values[2] != "" & values[3] != "")
+            {
+                lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
+            }
+        }
 
         private void addNewRow_Click(object sender, EventArgs e)
         {
@@ -159,10 +162,12 @@ namespace CourseWorkRebuild2
             Double delta = 0;
             Double averageDelta = 0;
             Double newCellValue = 0;
-            int newRow = elevatorTable.RowCount-1;
+            int newRow = elevatorTable.RowCount - 1;
             Random random = new Random();
+            
             elevatorTable.Rows[newRow - 1].Cells[0].Value = Convert.ToInt32(elevatorTable.Rows[newRow - 2].Cells[0].Value) + 1;
             repository.AddNewRow(Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[0].Value));
+
             for (int i = 1; i < elevatorTable.Columns.Count; i++)
             {
 
@@ -215,7 +220,7 @@ namespace CourseWorkRebuild2
                 }
 
             }
-            
+
         }
 
         private void openRarButton_Click(object sender, EventArgs e)
@@ -235,7 +240,7 @@ namespace CourseWorkRebuild2
                 reDrawMainForm();
                 activeForm++;
             }
-           
+
         }
 
         private void closeAllButton_Click(object sender, EventArgs e)
@@ -248,7 +253,7 @@ namespace CourseWorkRebuild2
             foreach (NewProjectForm form in openForms)
             {
                 form.Close();
-                
+
             }
             openForms.Clear();
             reDrawMainForm();
@@ -268,15 +273,15 @@ namespace CourseWorkRebuild2
             if (epochCountBox.SelectedIndex != null)
             {
                 repository.DeleteRow(epochCountBox.Text);
-                elevatorTable.Rows.RemoveAt(epochCountBox.SelectedIndex -1 );
+                elevatorTable.Rows.RemoveAt(epochCountBox.SelectedIndex - 1);
             }
             reDrawMainForm();
         }
 
         private void deleteLastEpoch_Click(object sender, EventArgs e)
-        {  
+        {
             repository.DeleteRow((elevatorTable.Rows.Count - 2).ToString());
-            elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count-2);
+            elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count - 2);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -334,7 +339,7 @@ namespace CourseWorkRebuild2
 
         private void saveAsNewFolder_Click(object sender, EventArgs e)
         {
-            
+
             sqlConnection.Close();
             try
             {
@@ -363,7 +368,7 @@ namespace CourseWorkRebuild2
             {
                 MessageBox.Show("Сохранение не удалось, попробуйте еще раз");
             }
-            
+
         }
 
         private void newBlocksCount_Enter(object sender, EventArgs e)
@@ -421,7 +426,7 @@ namespace CourseWorkRebuild2
                 e.Handled = true;
         }
 
-        private String getNewFilePath(String title,String filter)
+        private String getNewFilePath(String title, String filter)
         {
             OpenFileDialog chooseFile = new OpenFileDialog();
             chooseFile.Multiselect = false;
@@ -454,7 +459,7 @@ namespace CourseWorkRebuild2
             String title = "Выберите схему объекта";
             String filter = "PNG files (*.png)|*.png";
             oldObjectPicturePath = values[1];
-            values[1] = getNewFilePath(title,filter);
+            values[1] = getNewFilePath(title, filter);
             if (values[1] == "")
             {
                 values[1] = oldObjectPicturePath;
