@@ -107,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculations.cs" />
+    <Compile Include="ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartDiagramService.cs" />
     <Compile Include="Decomposition.cs" />
     <Compile Include="MainForm.cs">
@@ -132,6 +138,9 @@
     <Compile Include="SystemInfo.Designer.cs">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

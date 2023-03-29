@@ -145,7 +145,7 @@ namespace CourseWorkRebuild2
 
         private void openProjectButton_Click(object sender, EventArgs e)
         {
-            
+
             OpenProject openProject = new OpenProject();
             List<String> newValues = new List<String>();
             newValues = openProject.Open();
@@ -157,8 +157,8 @@ namespace CourseWorkRebuild2
                     reDrawCurrentForm();
                 }
             }
-            
-            
+
+
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)

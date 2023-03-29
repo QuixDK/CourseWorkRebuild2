@@ -1,17 +1,14 @@
-﻿using CourseWorkRebuild;
-using CourseWorkRebuild2;
+﻿using CourseWorkRebuild2;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 public class ChartDiagramService
 {
     Calculations calculations = new Calculations();
 
-    public Chart addLine(List<Double> listOfMValues, List<Double> listOfAValues, Chart functionDiagrams, String serieName, ListBox listBox, ListBox listBox2)
+    public System.Windows.Forms.DataVisualization.Charting.Chart addLine(List<Double> listOfMValues, List<Double> listOfAValues, System.Windows.Forms.DataVisualization.Charting.Chart functionDiagrams, String serieName, ListBox listBox, ListBox listBox2)
     {
         functionDiagrams.ChartAreas[0].AxisX.Title = "M";
         functionDiagrams.ChartAreas[0].AxisY.Title = "Alpha";
@@ -27,23 +24,23 @@ public class ChartDiagramService
             functionDiagrams.Series[serieName].Points.AddXY(listOfMValues[i], listOfAValues[i]);
         }
 
-        addValuesToListBox(listOfMValues, listOfMValues, listBox, listBox2);
+        addValuesToListBox(listOfMValues, listOfAValues, listBox, listBox2);
 
         return functionDiagrams;
     }
 
-    public Chart addforecastFunction(String serieName, List<Double> listOfMValues, List<Double> listOfAlphaValues, Chart functionDiagrams, ListBox listBox, ListBox listBox2)
+    public System.Windows.Forms.DataVisualization.Charting.Chart addforecastFunction(String serieName, List<Double> listOfMValues, List<Double> listOfAlphaValues, System.Windows.Forms.DataVisualization.Charting.Chart functionDiagrams, ListBox listBox, ListBox listBox2)
     {
 
         functionDiagrams.Series.Add(serieName);
         functionDiagrams.Series[serieName].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
         functionDiagrams.Series[serieName].Points.AddXY(listOfMValues.Last(), listOfAlphaValues.Last());
 
-        addValuesToListBox(listOfMValues, listOfMValues, listBox, listBox2);
+        addValuesToListBox(listOfMValues, listOfAlphaValues, listBox, listBox2);
 
         return functionDiagrams;
     }
-    public Chart removeLine(Chart functionDiagrams, String serieName)
+    public System.Windows.Forms.DataVisualization.Charting.Chart removeLine(System.Windows.Forms.DataVisualization.Charting.Chart functionDiagrams, String serieName)
     {
         functionDiagrams.Series[serieName].Points.Clear();
         functionDiagrams.Series.Remove(functionDiagrams.Series[serieName]);

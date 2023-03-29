@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -87,5 +85,5 @@ namespace CourseWorkRebuild2
             return lists;
         }
     }
-    
+
 }

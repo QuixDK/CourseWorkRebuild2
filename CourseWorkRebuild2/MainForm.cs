@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -19,6 +18,7 @@ namespace CourseWorkRebuild2
         private String oldElevatorTablePath = "";
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
+        private ChartDiagramService chartDiagramService = new ChartDiagramService();
         private int activeForm = 0;
         private int epochCount;
         public MainForm()
@@ -164,7 +164,7 @@ namespace CourseWorkRebuild2
             Double newCellValue = 0;
             int newRow = elevatorTable.RowCount - 1;
             Random random = new Random();
-            
+
             elevatorTable.Rows[newRow - 1].Cells[0].Value = Convert.ToInt32(elevatorTable.Rows[newRow - 2].Cells[0].Value) + 1;
             repository.AddNewRow(Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[0].Value));
 
@@ -297,72 +297,49 @@ namespace CourseWorkRebuild2
 
         private void saveAsZipArchieve_Click(object sender, EventArgs e)
         {
-            List<String> filesToSave = new List<String>();
-            if (values[0] != null & values[0] != "")
-            {
-                filesToSave.Add(values[0]); // save DB
-            }
-            if (values[1] != null & values[1] != "")
-            {
-                filesToSave.Add(values[1]); // save png
-            }
-            if (values[7] != null & values[7] != "")
-            {
-                filesToSave.Add(values[7]); // save txt
-            }
-            repository.closeSQLConnection();
-            closeButton_Click(sender, e);
-            sqlConnection.Close();
-            //savePackage(filesToSave, "SaveProjects\\newProject.zip");
+            saveAsNewFolder_Click(sender, e);
         }
 
         private void saveAsRarArchive_Click(object sender, EventArgs e)
         {
-            List<String> filesToSave = new List<String>();
-            if (values[0] != null & values[0] != "")
+            saveAsNewFolder_Click(sender, e);
+        }
+
+        private String getPathToSave()
+        {
+            String sourceDirectory = "";
+            if (values[0] != "" & values[0] != null)
             {
-                filesToSave.Add(values[0]); // save DB
+                sourceDirectory = Path.GetDirectoryName(values[0]);
             }
-            if (values[1] != null & values[1] != "")
+            else if (values[1] != "" & values[1] != null)
             {
-                filesToSave.Add(values[1]); // save png
+                sourceDirectory = Path.GetDirectoryName(values[1]);
             }
-            if (values[7] != null & values[7] != "")
+            else if (values[7] != "" & values[7] != null)
             {
-                filesToSave.Add(values[7]); // save txt
+                sourceDirectory = Path.GetDirectoryName(values[7]);
             }
-            repository.closeSQLConnection();
-            closeButton_Click(sender, e);
-            sqlConnection.Close();
-            //savePackage(filesToSave, "SaveProjects\\newProject.rar");
+            return sourceDirectory;
         }
 
         private void saveAsNewFolder_Click(object sender, EventArgs e)
         {
-
-            sqlConnection.Close();
             try
             {
-                String sourceDirectory = "";
-                if (values[0] != "" & values[0] != null)
-                {
-                    sourceDirectory = Path.GetDirectoryName(values[0]);
-                }
-                else if (values[1] != "" & values[1] != null)
-                {
-                    sourceDirectory = Path.GetDirectoryName(values[1]);
-                }
-                else if (values[7] != "" & values[7] != null)
-                {
-                    sourceDirectory = Path.GetDirectoryName(values[7]);
-                }
+                String sourceDirectory = getPathToSave();
                 if (sourceDirectory != "")
                 {
+                    sqlConnection.Close();
                     Save save = new Save();
                     save.SaveFilesToNewFolder(sourceDirectory);
                     sqlConnection = repository.GetDbConnection();
+                    MessageBox.Show("Сохранение успешно!");
                 }
-                MessageBox.Show("Сохранение успешно!");
+                else
+                {
+                    MessageBox.Show("Не найдены файлы для сохранения");
+                }
             }
             catch (Exception ex)
             {
@@ -480,5 +457,13 @@ namespace CourseWorkRebuild2
             }
             reDrawMainForm();
         }
+
+        private void chartButton_Click(object sender, EventArgs e)
+        {
+            ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
+            chartForm.Show();
+        }
+
+
     }
 }

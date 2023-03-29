@@ -94,6 +94,7 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.functionDiagrams = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartButton = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -114,7 +115,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(834, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(834, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -133,7 +134,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(59, 26);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -245,7 +246,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -377,8 +378,10 @@
             // 
             // windowsMenu
             // 
+            this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chartButton});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
             this.windowsMenu.Text = "Окна";
             // 
             // refMenu
@@ -389,7 +392,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(81, 26);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -421,11 +424,11 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(834, 419);
+            this.tabControl1.Size = new System.Drawing.Size(834, 417);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
@@ -446,7 +449,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataPage.Size = new System.Drawing.Size(826, 390);
+            this.dataPage.Size = new System.Drawing.Size(826, 388);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -585,7 +588,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1477, 533);
+            this.tabPage2.Size = new System.Drawing.Size(826, 390);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -595,7 +598,7 @@
             this.listBox6.FormattingEnabled = true;
             this.listBox6.ItemHeight = 16;
             this.listBox6.Location = new System.Drawing.Point(904, 6);
-            this.listBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox6.Margin = new System.Windows.Forms.Padding(4);
             this.listBox6.Name = "listBox6";
             this.listBox6.Size = new System.Drawing.Size(169, 500);
             this.listBox6.TabIndex = 6;
@@ -605,7 +608,7 @@
             this.listBox5.FormattingEnabled = true;
             this.listBox5.ItemHeight = 16;
             this.listBox5.Location = new System.Drawing.Point(725, 6);
-            this.listBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox5.Margin = new System.Windows.Forms.Padding(4);
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(169, 500);
             this.listBox5.TabIndex = 5;
@@ -615,7 +618,7 @@
             this.listBox4.FormattingEnabled = true;
             this.listBox4.ItemHeight = 16;
             this.listBox4.Location = new System.Drawing.Point(547, 6);
-            this.listBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox4.Margin = new System.Windows.Forms.Padding(4);
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(169, 500);
             this.listBox4.TabIndex = 4;
@@ -625,7 +628,7 @@
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 16;
             this.listBox3.Location = new System.Drawing.Point(368, 6);
-            this.listBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox3.Margin = new System.Windows.Forms.Padding(4);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(169, 500);
             this.listBox3.TabIndex = 3;
@@ -635,7 +638,7 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
             this.listBox2.Location = new System.Drawing.Point(189, 6);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(169, 500);
             this.listBox2.TabIndex = 2;
@@ -645,7 +648,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(11, 6);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(169, 500);
             this.listBox1.TabIndex = 1;
@@ -657,7 +660,7 @@
             legend1.Name = "Legend1";
             this.functionDiagrams.Legends.Add(legend1);
             this.functionDiagrams.Location = new System.Drawing.Point(1083, 6);
-            this.functionDiagrams.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.functionDiagrams.Margin = new System.Windows.Forms.Padding(4);
             this.functionDiagrams.Name = "functionDiagrams";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -666,6 +669,13 @@
             this.functionDiagrams.Size = new System.Drawing.Size(379, 501);
             this.functionDiagrams.TabIndex = 0;
             this.functionDiagrams.Text = "chart1";
+            // 
+            // chartButton
+            // 
+            this.chartButton.Name = "chartButton";
+            this.chartButton.Size = new System.Drawing.Size(224, 26);
+            this.chartButton.Text = "График";
+            this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
             // MainForm
             // 
@@ -756,6 +766,7 @@
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ToolStripMenuItem chartButton;
     }
 }
 

@@ -389,7 +389,7 @@
             // deleteEpochButton
             // 
             this.deleteEpochButton.Name = "deleteEpochButton";
-            this.deleteEpochButton.Size = new System.Drawing.Size(224, 26);
+            this.deleteEpochButton.Size = new System.Drawing.Size(195, 26);
             this.deleteEpochButton.Text = "Удалить";
             this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
             // 

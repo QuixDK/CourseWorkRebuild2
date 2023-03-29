@@ -24,8 +24,6 @@ namespace CourseWorkRebuild2
                 }
 
             }
-
-
         }
 
         public void SaveTxtFile(String pathToFile, Double tValue, int buildingsCount, int marksCount)
@@ -83,6 +81,8 @@ namespace CourseWorkRebuild2
 
             }
         }
+
+
 
     }
 }
