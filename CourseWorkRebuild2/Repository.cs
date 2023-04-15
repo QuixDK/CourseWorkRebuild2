@@ -102,9 +102,9 @@ namespace CourseWorkRebuild
             command.CommandText = SQLQuery;
             command.ExecuteNonQuery();
         }
-        public void AddNewRow(Double value)
+        public void AddNewRow(int index)
         {
-            String SQLQuery = "INSERT INTO [" + GetTableNames() + "] (Эпоха) VALUES (\"" + value + "\")";
+            String SQLQuery = "INSERT INTO [" + GetTableNames() + "] (Эпоха) VALUES (\"" + index + "\")";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
             command.ExecuteNonQuery();

@@ -36,40 +36,40 @@ namespace CourseWorkRebuild2
         {
             String serieName = "Функция отклика";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addLine(listOfMValues, listOfAValues, functionDiagrams, serieName, listBox1, listBox2);
+            else chartDiagramService.addLine(listOfMValues, listOfAValues, functionDiagrams, serieName);
         }
         private void forecastResponseFunctionSelectBox_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Прогнозное значение";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addforecastFunction(serieName, forecastMValue, forecastAValue, functionDiagrams, listBox3, listBox4);
+            else chartDiagramService.addforecastFunction(serieName, forecastMValue, forecastAValue, functionDiagrams);
         }
 
         private void bottomLineSelectBox_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Нижняя граница";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addLine(listOfBottomLineMValues, listOfBottomLineAValues, functionDiagrams, serieName, listBox5, listBox6);
+            else chartDiagramService.addLine(listOfBottomLineMValues, listOfBottomLineAValues, functionDiagrams, serieName);
         }
         private void forecastBottomValues_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Прогнозное значение для нижней границы";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addforecastFunction(serieName, forecastBottomLineMValue, forecastBottomLineAValue, functionDiagrams, listBox7, listBox8);
+            else chartDiagramService.addforecastFunction(serieName, forecastBottomLineMValue, forecastBottomLineAValue, functionDiagrams);
         }
 
         private void topLineSelectBox_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Верхняя граница";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addLine(listOfTopLineMValues, listOfTopLineAValues, functionDiagrams, serieName, listBox9, listBox10);
+            else chartDiagramService.addLine(listOfTopLineMValues, listOfTopLineAValues, functionDiagrams, serieName);
         }
 
         private void forecastTopLineValues_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Прогнозное значение для верхней границы";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addforecastFunction(serieName, forecastTopLineMValue, forecastTopLineAValue, functionDiagrams, listBox11, listBox12);
+            else chartDiagramService.addforecastFunction(serieName, forecastTopLineMValue, forecastTopLineAValue, functionDiagrams);
         }
 
         private void Chart_Load(object sender, EventArgs e)

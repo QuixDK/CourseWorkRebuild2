@@ -179,8 +179,8 @@ namespace CourseWorkRebuild2
             int newRow = elevatorTable.RowCount - 1;
             Random random = new Random();
             elevatorTable.Rows[newRow - 1].Cells[0].Value = Convert.ToInt32(elevatorTable.Rows[newRow - 2].Cells[0].Value) + 1;
-            repository.AddNewRow(Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[0].Value));
-            for (int i = 1; i < elevatorTable.Columns.Count; i++)
+            repository.AddNewRow(Convert.ToInt32(elevatorTable.Rows[newRow - 1].Cells[0].Value));
+           /* for (int i = 1; i < elevatorTable.Columns.Count; i++)
             {
 
                 for (int j = 0; j < elevatorTable.Rows.Count - 1; j++)
@@ -199,7 +199,7 @@ namespace CourseWorkRebuild2
                 elevatorTable.Rows[newRow - 1].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 2].Cells[i].Value), 4);
                 repository.AddNewValuesInRow(i, newRow - 1, Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value));
                 averageDelta = 0;
-            }
+            }*/
             reDrawCurrentForm();
 
         }
@@ -230,6 +230,12 @@ namespace CourseWorkRebuild2
         {
             SystemInfo systemInfo = new SystemInfo();
             systemInfo.ShowDialog();
+        }
+
+        private void OpenChart_Click(object sender, EventArgs e)
+        {
+            ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
+            chartForm.Show();
         }
     }
 }

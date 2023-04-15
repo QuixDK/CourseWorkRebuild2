@@ -67,6 +67,7 @@
             this.chooseEpochToDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.epochCountBox = new System.Windows.Forms.ToolStripComboBox();
             this.deleteEpochButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenChart = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
@@ -88,8 +89,10 @@
             // 
             // windowsMenu
             // 
+            this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenChart});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
             this.windowsMenu.Text = "Окна";
             // 
             // refMenu
@@ -100,7 +103,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(81, 26);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -138,10 +141,10 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(840, 422);
+            this.tabControl1.Size = new System.Drawing.Size(840, 420);
             this.tabControl1.TabIndex = 3;
             // 
             // dataPage
@@ -158,7 +161,7 @@
             this.dataPage.Location = new System.Drawing.Point(4, 25);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3);
-            this.dataPage.Size = new System.Drawing.Size(832, 393);
+            this.dataPage.Size = new System.Drawing.Size(832, 391);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -276,7 +279,7 @@
             this.refMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(840, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(840, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -293,7 +296,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(59, 26);
             this.fileMenu.Text = "Файл";
             // 
             // openProjectButton
@@ -362,7 +365,7 @@
             this.changeAValue,
             this.changeBuildingsCount});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -392,6 +395,13 @@
             this.deleteEpochButton.Size = new System.Drawing.Size(195, 26);
             this.deleteEpochButton.Text = "Удалить";
             this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
+            // 
+            // OpenChart
+            // 
+            this.OpenChart.Name = "OpenChart";
+            this.OpenChart.Size = new System.Drawing.Size(224, 26);
+            this.OpenChart.Text = "График";
+            this.OpenChart.Click += new System.EventHandler(this.OpenChart_Click);
             // 
             // NewProjectForm
             // 
@@ -455,5 +465,6 @@
         private System.Windows.Forms.ToolStripMenuItem openProjectButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem OpenChart;
     }
 }

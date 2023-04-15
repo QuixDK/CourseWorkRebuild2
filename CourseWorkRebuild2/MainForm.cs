@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CourseWorkRebuild2
 {
@@ -19,6 +20,7 @@ namespace CourseWorkRebuild2
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
         private ChartDiagramService chartDiagramService = new ChartDiagramService();
+        private CheckValuesForm checkValuesForm;
         private int activeForm = 0;
         private int epochCount;
         public MainForm()
@@ -36,12 +38,13 @@ namespace CourseWorkRebuild2
             this.saveButton.Enabled = false;
             this.saveCopyButton.Enabled = false;
             this.deleteSelectedRowsButton.Enabled = false;
-            lists.Add(listBox1);
-            lists.Add(listBox2);
-            lists.Add(listBox3);
-            lists.Add(listBox4);
-            lists.Add(listBox5);
-            lists.Add(listBox6);
+            checkValuesForm = new CheckValuesForm();
+            lists.Add(checkValuesForm.GetListBox1());
+            lists.Add(checkValuesForm.GetListBox2());
+            lists.Add(checkValuesForm.GetListBox3());
+            lists.Add(checkValuesForm.GetListBox4());
+            lists.Add(checkValuesForm.GetListBox5());
+            lists.Add(checkValuesForm.GetListBox6());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,7 +54,7 @@ namespace CourseWorkRebuild2
 
         private void reDrawMainForm()
         {
-
+            
             if (values[0] != null & values[0] != "")
             {
                 epochCountBox.Items.Clear();
@@ -152,21 +155,24 @@ namespace CourseWorkRebuild2
 
             if (values[0] != "" & values[2] != "" & values[3] != "")
             {
+                Int32 epochCount = elevatorTable.RowCount;
                 lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
+                firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount);
             }
+            epochCount = elevatorTable.Rows.Count - 1;
         }
 
         private void addNewRow_Click(object sender, EventArgs e)
         {
-            elevatorTable.Rows.Add();
+            
             Double delta = 0;
             Double averageDelta = 0;
             Double newCellValue = 0;
             int newRow = elevatorTable.RowCount - 1;
             Random random = new Random();
 
-            elevatorTable.Rows[newRow - 1].Cells[0].Value = Convert.ToInt32(elevatorTable.Rows[newRow - 2].Cells[0].Value) + 1;
-            repository.AddNewRow(Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[0].Value));
+            elevatorTable.Rows[newRow].Cells[0].Value = epochCount;
+            repository.AddNewRow(epochCount);
 
             for (int i = 1; i < elevatorTable.Columns.Count; i++)
             {
@@ -184,10 +190,12 @@ namespace CourseWorkRebuild2
 
                 averageDelta /= elevatorTable.Rows.Count;
                 newCellValue = random.NextDouble() * (averageDelta - (-averageDelta)) + averageDelta;
-                elevatorTable.Rows[newRow - 1].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 2].Cells[i].Value), 4);
-                repository.AddNewValuesInRow(i, newRow - 1, Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value));
+                elevatorTable.Rows[newRow].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value), 4);
+                repository.AddNewValuesInRow(i, epochCount, Convert.ToDouble(elevatorTable.Rows[newRow].Cells[i].Value));
                 averageDelta = 0;
             }
+            epochCount++;
+            elevatorTable.Rows.Add();
             reDrawMainForm();
 
         }
@@ -280,7 +288,7 @@ namespace CourseWorkRebuild2
 
         private void deleteLastEpoch_Click(object sender, EventArgs e)
         {
-            repository.DeleteRow((elevatorTable.Rows.Count - 2).ToString());
+            repository.DeleteRow((elevatorTable.Rows.Count - 1).ToString());
             elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count - 2);
         }
 
@@ -464,6 +472,9 @@ namespace CourseWorkRebuild2
             chartForm.Show();
         }
 
-
+        private void checkValues_Click(object sender, EventArgs e)
+        {
+            checkValuesForm.ShowDialog();
+        }
     }
 }

@@ -84,6 +84,73 @@ namespace CourseWorkRebuild2
             }
             return lists;
         }
+        
+        public DataGridView DrawTable(DataGridView dataTable, List<ListBox> lists, Int32 epochCount)
+        {
+            dataTable.Rows.Clear();
+            dataTable.Columns.Clear();
+
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns.Add(new DataGridViewTextBoxColumn());
+            dataTable.Columns[0].Name = "Эпоха";
+            dataTable.Columns[1].Name = "М(нижнее)";
+            dataTable.Columns[2].Name = "М";
+            dataTable.Columns[3].Name = "М(верхнее)";
+            dataTable.Columns[4].Name = "2E";
+            dataTable.Columns[5].Name = "L";
+            dataTable.Columns[6].Name = "Состояние";
+            for (int i = 0; i < epochCount; i++)
+            {
+                dataTable.Rows.Add();
+                dataTable.Rows[i].Cells[0].Value = i;
+            }
+            int counter = 0;
+            foreach (Double s in lists[0].Items)
+            {    
+                dataTable.Rows[counter].Cells[1].Value = s;
+                counter++; 
+            }
+            counter = 0;
+            foreach (Double s in lists[1].Items)
+            {
+                dataTable.Rows[counter].Cells[2].Value = s;
+                counter++;
+            }
+            counter = 0;
+            foreach (Double s in lists[2].Items)
+            {
+                dataTable.Rows[counter].Cells[3].Value = s;
+                counter++;
+            }
+            counter = 0;
+            foreach (Double s in lists[3].Items)
+            {
+                dataTable.Rows[counter].Cells[4].Value = s;
+                counter++;
+            }
+            counter = 0;
+            foreach (Double s in lists[4].Items)
+            {
+                dataTable.Rows[counter].Cells[5].Value = s;
+                counter++;
+            }
+            counter = 0;
+            foreach (String s in lists[5].Items)
+            {
+                dataTable.Rows[counter].Cells[6].Value = s;
+                counter++;
+            }
+            for (int column = 0; column < dataTable.Columns.Count; column++)
+            {
+                dataTable.Columns[column].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            return dataTable;
+        }
     }
 
 }

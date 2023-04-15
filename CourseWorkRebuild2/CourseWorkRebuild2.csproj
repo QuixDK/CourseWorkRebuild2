@@ -114,6 +114,12 @@
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ChartDiagramService.cs" />
+    <Compile Include="CheckValuesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckValuesForm.Designer.cs">
+      <DependentUpon>CheckValuesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Decomposition.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -140,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckValuesForm.resx">
+      <DependentUpon>CheckValuesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
