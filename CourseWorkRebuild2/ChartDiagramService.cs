@@ -13,10 +13,6 @@ public class ChartDiagramService
     {
         functionDiagrams.ChartAreas[0].AxisX.Title = "M";
         functionDiagrams.ChartAreas[0].AxisY.Title = "Alpha";
-        /*functionDiagrams.ChartAreas[0].AxisX.Maximum = listOfMValues.Max();
-        functionDiagrams.ChartAreas[0].AxisX.Minimum = listOfMValues.Min();
-        functionDiagrams.ChartAreas[0].AxisY.Maximum = listOfAValues.Max();
-        functionDiagrams.ChartAreas[0].AxisY.Minimum = listOfAValues.Min();*/
         string serieName2 = serieName + "2";
         functionDiagrams.Series.Add(serieName2);
         functionDiagrams.Series.Add(serieName);

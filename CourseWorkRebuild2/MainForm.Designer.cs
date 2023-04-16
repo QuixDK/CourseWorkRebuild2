@@ -71,7 +71,7 @@
             this.aboutProgramButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.infoAboutSystem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.dataPage = new System.Windows.Forms.TabPage();
             this.deleteSelectedRowsButton = new System.Windows.Forms.Button();
             this.markCount = new System.Windows.Forms.Label();
@@ -87,13 +87,26 @@
             this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.firstLevelDecompositionTable = new System.Windows.Forms.TabPage();
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
+            this.secondLevel = new System.Windows.Forms.TabPage();
+            this.removeMarkFromBlock = new System.Windows.Forms.Button();
+            this.addMarkToBlock = new System.Windows.Forms.Button();
+            this.objectDiagram = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.sortedMarks = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.marksBox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
             this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
+            this.secondLevel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -426,17 +439,18 @@
             this.infoAboutSystem.Text = "Информация о системе";
             this.infoAboutSystem.Click += new System.EventHandler(this.infoAboutSystem_Click);
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.dataPage);
-            this.tabControl1.Controls.Add(this.firstLevelDecompositionTable);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(631, 345);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl.Controls.Add(this.dataPage);
+            this.tabControl.Controls.Add(this.firstLevelDecompositionTable);
+            this.tabControl.Controls.Add(this.secondLevel);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 28);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(631, 345);
+            this.tabControl.TabIndex = 1;
             // 
             // dataPage
             // 
@@ -596,7 +610,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 317);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -611,12 +625,109 @@
             this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(612, 311);
             this.firstLevelOfDecompositionTable.TabIndex = 0;
             // 
+            // secondLevel
+            // 
+            this.secondLevel.Controls.Add(this.secondLevelOfDecompositionTable);
+            this.secondLevel.Controls.Add(this.label6);
+            this.secondLevel.Controls.Add(this.removeMarkFromBlock);
+            this.secondLevel.Controls.Add(this.addMarkToBlock);
+            this.secondLevel.Controls.Add(this.objectDiagram);
+            this.secondLevel.Controls.Add(this.label5);
+            this.secondLevel.Controls.Add(this.sortedMarks);
+            this.secondLevel.Controls.Add(this.label4);
+            this.secondLevel.Controls.Add(this.marksBox);
+            this.secondLevel.Location = new System.Drawing.Point(4, 22);
+            this.secondLevel.Name = "secondLevel";
+            this.secondLevel.Padding = new System.Windows.Forms.Padding(3);
+            this.secondLevel.Size = new System.Drawing.Size(623, 319);
+            this.secondLevel.TabIndex = 2;
+            this.secondLevel.Text = "Уровень 2";
+            this.secondLevel.UseVisualStyleBackColor = true;
+            this.secondLevel.Enter += new System.EventHandler(this.secondLevel_Enter);
+            // 
+            // removeMarkFromBlock
+            // 
+            this.removeMarkFromBlock.Location = new System.Drawing.Point(129, 139);
+            this.removeMarkFromBlock.Name = "removeMarkFromBlock";
+            this.removeMarkFromBlock.Size = new System.Drawing.Size(31, 23);
+            this.removeMarkFromBlock.TabIndex = 6;
+            this.removeMarkFromBlock.Text = "<-";
+            this.removeMarkFromBlock.UseVisualStyleBackColor = true;
+            this.removeMarkFromBlock.Click += new System.EventHandler(this.removeMarkFromBlock_Click);
+            // 
+            // addMarkToBlock
+            // 
+            this.addMarkToBlock.Location = new System.Drawing.Point(130, 110);
+            this.addMarkToBlock.Name = "addMarkToBlock";
+            this.addMarkToBlock.Size = new System.Drawing.Size(31, 23);
+            this.addMarkToBlock.TabIndex = 5;
+            this.addMarkToBlock.Text = "->";
+            this.addMarkToBlock.UseVisualStyleBackColor = true;
+            this.addMarkToBlock.Click += new System.EventHandler(this.addMarkToBlock_Click);
+            // 
+            // objectDiagram
+            // 
+            this.objectDiagram.Location = new System.Drawing.Point(310, 26);
+            this.objectDiagram.Name = "objectDiagram";
+            this.objectDiagram.Size = new System.Drawing.Size(305, 277);
+            this.objectDiagram.TabIndex = 4;
+            this.objectDiagram.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(164, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 15);
+            this.label5.TabIndex = 3;
+            // 
+            // sortedMarks
+            // 
+            this.sortedMarks.FormattingEnabled = true;
+            this.sortedMarks.Location = new System.Drawing.Point(167, 26);
+            this.sortedMarks.Name = "sortedMarks";
+            this.sortedMarks.Size = new System.Drawing.Size(115, 277);
+            this.sortedMarks.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.TabIndex = 1;
+            // 
+            // marksBox
+            // 
+            this.marksBox.FormattingEnabled = true;
+            this.marksBox.Location = new System.Drawing.Point(8, 26);
+            this.marksBox.Name = "marksBox";
+            this.marksBox.Size = new System.Drawing.Size(115, 277);
+            this.marksBox.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(307, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 15);
+            this.label6.TabIndex = 7;
+            // 
+            // secondLevelOfDecompositionTable
+            // 
+            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 26);
+            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
+            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(609, 285);
+            this.secondLevelOfDecompositionTable.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 373);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -624,13 +735,17 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.dataPage.ResumeLayout(false);
             this.dataPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).EndInit();
             this.firstLevelDecompositionTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
+            this.secondLevel.ResumeLayout(false);
+            this.secondLevel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,7 +779,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutProgramButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem infoAboutSystem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage dataPage;
         private System.Windows.Forms.Button DeleteLastEpoch;
         private System.Windows.Forms.Button AddNewEpochButton;
@@ -696,6 +811,16 @@
         private System.Windows.Forms.ToolStripMenuItem chartButton;
         private System.Windows.Forms.DataGridView firstLevelOfDecompositionTable;
         private System.Windows.Forms.ToolStripMenuItem checkValues;
+        private System.Windows.Forms.TabPage secondLevel;
+        private System.Windows.Forms.Button removeMarkFromBlock;
+        private System.Windows.Forms.Button addMarkToBlock;
+        private System.Windows.Forms.PictureBox objectDiagram;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox sortedMarks;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox marksBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView secondLevelOfDecompositionTable;
     }
 }
 

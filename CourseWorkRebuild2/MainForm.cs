@@ -19,11 +19,13 @@ namespace CourseWorkRebuild2
         private String oldElevatorTablePath = "";
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
-        private ChartDiagramService chartDiagramService = new ChartDiagramService();
         private CheckValuesForm checkValuesForm;
         Calculations calculations = new Calculations();
         private int activeForm = 0;
         private int epochCount = 0;
+        private int needMarksCount;
+        private int blockIndex = 0;
+        private List<List<String>> marksByBlocks = new List<List<String>>();
         public MainForm()
         {
             InitializeComponent();
@@ -75,7 +77,90 @@ namespace CourseWorkRebuild2
             }
         }
 
-        private void reDrawObjectPicture()
+        private bool checkSortedMarks(int needMarksCount)
+        {
+            if (sortedMarks.Items.Count == needMarksCount)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void secondLevel_Enter(object sender, EventArgs e)
+        {
+            secondLevelOfDecompositionTable.Hide();
+            int startMarksCount = Convert.ToInt32(values[4]);
+            while (startMarksCount % Convert.ToInt32(values[5]) != 0)
+            {
+                startMarksCount--;
+            }
+            needMarksCount = startMarksCount / Convert.ToInt32(values[5]);
+            label4.Text = "Всего марок: " + values[4];
+            label5.Text = "Блок " + blockIndex;
+            label6.Text = "Количество структурных блоков: " + values[5];
+            if (Convert.ToInt32(values[4]) % 2 == 0) { 
+            }
+            for (int i = 1; i < elevatorTable.Columns.Count; i++)
+            {
+                marksBox.Items.Add(elevatorTable.Columns[i].Name);
+            }
+            if (values[1] != null & values[1] != "")
+            {
+                objectDiagram.Load(values[1]);
+                objectDiagram.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                objectDiagram.Image = null;
+            }
+
+        }
+
+        private void addMarkToBlock_Click(object sender, EventArgs e)
+        {
+            if (marksBox.Items.Count > 0)
+            {
+                
+                sortedMarks.Items.Add(marksBox.Items[0]);
+                marksBox.Items.Remove(marksBox.Items[0]);
+                if (checkSortedMarks(needMarksCount))
+                {
+                    marksByBlocks.Add(new List<String>());
+                    foreach (String mark in sortedMarks.Items)
+                    {
+                        marksByBlocks[blockIndex].Add(mark);
+                    }
+                    blockIndex++;
+                    sortedMarks.Items.Clear();
+                    label5.Text = "Блок " + blockIndex;
+                }
+                if (blockIndex == Convert.ToInt32(values[5]))
+                {
+                    marksBox.Hide();
+                    sortedMarks.Hide();
+                    label5.Hide(); 
+                    label6.Hide();
+                    label4.Hide();
+                    addMarkToBlock.Hide();
+                    removeMarkFromBlock.Hide();
+                    objectDiagram.Hide();
+                    secondLevelOfDecompositionTable.Show();
+                }
+            }
+            
+        }
+
+        private void removeMarkFromBlock_Click(object sender, EventArgs e)
+        {
+            if (sortedMarks.Items.Count > 0)
+            {
+                marksBox.Items.Add(sortedMarks.Items[0]);
+                sortedMarks.Items.Remove(sortedMarks.Items[0]);
+            }
+            
+        }
+
+        private void reDrawObjectPicture() 
         {
             //Если есть путь к картинке
             if (values[1] != null & values[1] != "")
