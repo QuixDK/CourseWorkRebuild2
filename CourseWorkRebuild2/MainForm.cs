@@ -21,6 +21,7 @@ namespace CourseWorkRebuild2
         private List<ListBox> lists = new List<ListBox>();
         private ChartDiagramService chartDiagramService = new ChartDiagramService();
         private CheckValuesForm checkValuesForm;
+        Calculations calculations = new Calculations();
         private int activeForm = 0;
         private int epochCount;
         public MainForm()
@@ -65,6 +66,7 @@ namespace CourseWorkRebuild2
         {
             reDrawElevatorTable();
             initEpochCount();
+            reDrawValues();
             if (values[1] != null & values[1] != "")
             {
                 objectPicture.Load(values[1]);
@@ -79,43 +81,7 @@ namespace CourseWorkRebuild2
             {
                 objectPicture.Image = null;
             }
-            if (values[2] != null & values[2] != "")
-            {
-                valueOfTLabel.Text = "T: " + values[2];
-                this.closeButton.Enabled = true;
-                this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
-                this.saveCopyButton.Enabled = true;
-                this.saveButton.Enabled = true;
-            }
-            else
-            {
-                valueOfTLabel.Text = "";
-            }
-            if (values[3] != null & values[3] != "")
-            {
-                valueOfALabel.Text = "A: " + values[3];
-                this.closeButton.Enabled = true;
-                this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
-                this.saveCopyButton.Enabled = true;
-                this.saveButton.Enabled = true;
-            }
-            else
-            {
-                valueOfALabel.Text = "";
-            }
-            if (values[4] != null & values[4] != "")
-            {
-                markCount.Text = "Количество марок: " + values[4];
-            }
-            else markCount.Text = "";
-            if (values[5] != null & values[5] != "")
-            {
-                buildingCountValue.Text = "Количество объектов: " + values[5];
-
-            }
-            else buildingCountValue.Text = "";
+            
             if (values[6] != null & values[6] != "")
             {
                 this.Text = values[6];
@@ -136,6 +102,43 @@ namespace CourseWorkRebuild2
             
         }
 
+        private void reDrawValues()
+        {
+            //Если есть значение Т
+            if (values[2] != null & values[2] != "")
+            {
+                valueOfTLabel.Text = "T: " + values[2];
+                enableButtonsForValues();
+            }
+            else
+            {
+                valueOfTLabel.Text = "";
+            }
+            //Если есть значение А (для сглаживания)
+            if (values[3] != null & values[3] != "")
+            {
+                valueOfALabel.Text = "A: " + values[3];
+                enableButtonsForValues();
+            }
+            else
+            {
+                valueOfALabel.Text = "";
+            }
+            //Если известно количество марок
+            if (values[4] != null & values[4] != "")
+            {
+                markCount.Text = "Количество марок: " + values[4];
+            }
+            else markCount.Text = "";
+            //Если известно количество объектов
+            if (values[5] != null & values[5] != "")
+            {
+                buildingCountValue.Text = "Количество объектов: " + values[5];
+
+            }
+            else buildingCountValue.Text = "";
+        }
+
         private void reDrawElevatorTable()
         {
             if (values[0] != null & values[0] != "")
@@ -149,43 +152,24 @@ namespace CourseWorkRebuild2
                     epochCountBox.Items.Add(elevatorTable.Rows[row].Cells[0].Value);
                 }
                 epochCountBox.SelectedIndex = 0;
-                this.AddNewEpochButton.Enabled = true;
-                this.deleteEpochButton.Enabled = true;
-                this.DeleteLastEpoch.Enabled = true;
-                this.redactorMenu.Enabled = true;
-                this.addEpochButton.Enabled = true;
-                this.chooseEpochToDelete.Enabled = true;
-                this.closeButton.Enabled = true;
-                this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
-                this.saveCopyButton.Enabled = true;
-                this.saveButton.Enabled = true;
-                this.deleteSelectedRowsButton.Enabled = true;
+                enableButtonsForTable();
             }
             else
             {
                 elevatorTable.Rows.Clear();
                 elevatorTable.Columns.Clear();
-                this.AddNewEpochButton.Enabled = false;
-                this.DeleteLastEpoch.Enabled = false;
-                this.redactorMenu.Enabled = false;
-                this.addEpochButton.Enabled = false;
-                this.chooseEpochToDelete.Enabled = false;
-                this.deleteEpochButton.Enabled = false;
-                this.deleteSelectedRowsButton.Enabled = false;
+                disableButtonsForTable();
             }
         }
 
         private void addNewRow_Click(object sender, EventArgs e)
         {
-            Calculations calculations = new Calculations();
             int newRow = elevatorTable.RowCount - 1;
             elevatorTable.Rows[newRow].Cells[0].Value = epochCount;
             repository.AddNewRow(epochCount);
             calculations.AddNewValuesInRow(elevatorTable, repository, epochCount);
             epochCount++;
             reDrawElevatorTable();
-
         }
 
         private void elevatorTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -214,9 +198,7 @@ namespace CourseWorkRebuild2
                 {
                     activeForm++;
                 }
-
             }
-
         }
 
         private void openRarButton_Click(object sender, EventArgs e)
@@ -241,15 +223,13 @@ namespace CourseWorkRebuild2
 
         private void closeAllButton_Click(object sender, EventArgs e)
         {
-            for (int value = 0; value < values.Count; value++)
-            {
-                values[value] = "";
-            }
-            activeForm = 0;
+            //Очищаем пути ко всем Файлам и все известные значения
+            closeButton_Click(sender, e);
+
+            //Дропаем все открытые формы
             foreach (NewProjectForm form in openForms)
             {
                 form.Close();
-
             }
             openForms.Clear();
             reDrawMainForm();
@@ -265,20 +245,17 @@ namespace CourseWorkRebuild2
         }
 
         private void deleteEpochButton_Click(object sender, EventArgs e)
-        {
-            if (epochCountBox.SelectedIndex != null)
-            {
-                repository.DeleteRow(epochCountBox.Text);
-                elevatorTable.Rows.RemoveAt(epochCountBox.SelectedIndex - 1);
-            }
-            reDrawMainForm();
+        {  
+            repository.DeleteRow(epochCountBox.Text);
+            elevatorTable.Rows.RemoveAt(epochCountBox.SelectedIndex - 1);
+            reDrawElevatorTable();
         }
 
         private void deleteLastEpoch_Click(object sender, EventArgs e)
         {
             string lastRowIndex = elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value.ToString();
             repository.DeleteRow(lastRowIndex);
-            reDrawMainForm();
+            reDrawElevatorTable();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -348,19 +325,19 @@ namespace CourseWorkRebuild2
         private void newBlocksCount_Enter(object sender, EventArgs e)
         {
             values[5] = this.newBlocksCount.Text;
-            reDrawMainForm();
+            reDrawValues();
         }
 
         private void newAValue_Enter(object sender, EventArgs e)
         {
             values[3] = this.newAValue.Text;
-            reDrawMainForm();
+            reDrawValues();
         }
 
         private void newTValue_Enter(object sender, EventArgs e)
         {
             values[2] = this.newTValue.Text;
-            reDrawMainForm();
+            reDrawValues();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -425,7 +402,7 @@ namespace CourseWorkRebuild2
             {
                 values[0] = oldElevatorTablePath;
             }
-            reDrawMainForm();
+            reDrawElevatorTable();
         }
 
         private void changeObjectPicture_Click(object sender, EventArgs e)
@@ -449,10 +426,9 @@ namespace CourseWorkRebuild2
                 for (int i = 0; i < elevatorTable.SelectedRows.Count; i++)
                 {
                     repository.DeleteRow(elevatorTable.SelectedRows[i].Index.ToString());
-
                 }
             }
-            reDrawMainForm();
+            reDrawElevatorTable();
         }
 
         private void chartButton_Click(object sender, EventArgs e)
@@ -464,6 +440,42 @@ namespace CourseWorkRebuild2
         private void checkValues_Click(object sender, EventArgs e)
         {
             checkValuesForm.ShowDialog();
+        }
+
+        private void enableButtonsForTable()
+        {
+            this.AddNewEpochButton.Enabled = true;
+            this.deleteEpochButton.Enabled = true;
+            this.DeleteLastEpoch.Enabled = true;
+            this.redactorMenu.Enabled = true;
+            this.addEpochButton.Enabled = true;
+            this.chooseEpochToDelete.Enabled = true;
+            this.closeButton.Enabled = true;
+            this.saveAsButton.Enabled = true;
+            this.closeAllButton.Enabled = true;
+            this.saveCopyButton.Enabled = true;
+            this.saveButton.Enabled = true;
+            this.deleteSelectedRowsButton.Enabled = true;
+        }
+
+        private void disableButtonsForTable()
+        {
+            this.AddNewEpochButton.Enabled = false;
+            this.DeleteLastEpoch.Enabled = false;
+            this.redactorMenu.Enabled = false;
+            this.addEpochButton.Enabled = false;
+            this.chooseEpochToDelete.Enabled = false;
+            this.deleteEpochButton.Enabled = false;
+            this.deleteSelectedRowsButton.Enabled = false;
+        }
+
+        private void enableButtonsForValues()
+        {
+            this.closeButton.Enabled = true;
+            this.saveAsButton.Enabled = true;
+            this.closeAllButton.Enabled = true;
+            this.saveCopyButton.Enabled = true;
+            this.saveButton.Enabled = true;
         }
     }
 }
