@@ -358,7 +358,7 @@
             // acceptNewBlocksCount
             // 
             this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
-            this.acceptNewBlocksCount.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(224, 26);
             this.acceptNewBlocksCount.Text = "Применить";
             this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
             // 
