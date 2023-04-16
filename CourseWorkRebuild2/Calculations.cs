@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWorkRebuild;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,38 @@ namespace CourseWorkRebuild2
 {
     internal class Calculations
     {
+
+        public DataGridView AddNewValuesInRow(DataGridView elevatorTable, Repository repository, int epochCount)
+        {
+            Double delta = 0;
+            Double averageDelta = 0;
+            Double newCellValue = 0;
+            int newRow = elevatorTable.RowCount - 1;
+            Random random = new Random();
+            for (int i = 1; i < elevatorTable.Columns.Count; i++)
+            {
+
+                for (int j = 0; j < elevatorTable.Rows.Count - 1; j++)
+                {
+                    if (Convert.ToDouble(elevatorTable.Rows[j + 1].Cells[i].Value) != 0)
+                    {
+                        delta = Math.Abs(Convert.ToDouble(elevatorTable.Rows[j].Cells[i].Value) - Convert.ToDouble(elevatorTable.Rows[j + 1].Cells[i].Value));
+                    }
+
+                    averageDelta += delta;
+                    delta = 0;
+                }
+
+                averageDelta /= elevatorTable.Rows.Count;
+                newCellValue = random.NextDouble() * (averageDelta - (-averageDelta)) + averageDelta;
+                elevatorTable.Rows[newRow].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value), 4);
+                repository.AddNewValuesInRow(i, epochCount, Convert.ToDouble(elevatorTable.Rows[newRow].Cells[i].Value));
+                averageDelta = 0;
+            }
+            
+            elevatorTable.Rows.Add();
+            return elevatorTable;
+        }
 
         public List<Double> calculateMValues(DataGridView elevatorTable)
         {

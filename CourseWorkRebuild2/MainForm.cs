@@ -45,6 +45,7 @@ namespace CourseWorkRebuild2
             lists.Add(checkValuesForm.GetListBox4());
             lists.Add(checkValuesForm.GetListBox5());
             lists.Add(checkValuesForm.GetListBox6());
+            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,45 +53,18 @@ namespace CourseWorkRebuild2
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
+        private void initEpochCount()
+        {
+            if (epochCount == 0)
+            {
+                epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value)+1;
+            }
+        }
+
         private void reDrawMainForm()
         {
-            
-            if (values[0] != null & values[0] != "")
-            {
-                epochCountBox.Items.Clear();
-                repository = new Repository(values[0]);
-                sqlConnection = repository.GetDbConnection();
-                elevatorTable = repository.ShowTable(dataTable, elevatorTable);
-                for (int row = 0; row < elevatorTable.Rows.Count - 1; row++)
-                {
-                    epochCountBox.Items.Add(elevatorTable.Rows[row].Cells[0].Value);
-                }
-                epochCountBox.SelectedIndex = 0;
-                this.AddNewEpochButton.Enabled = true;
-                this.deleteEpochButton.Enabled = true;
-                this.DeleteLastEpoch.Enabled = true;
-                this.redactorMenu.Enabled = true;
-                this.addEpochButton.Enabled = true;
-                this.chooseEpochToDelete.Enabled = true;
-                this.closeButton.Enabled = true;
-                this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
-                this.saveCopyButton.Enabled = true;
-                this.saveButton.Enabled = true;
-                this.deleteSelectedRowsButton.Enabled = true;
-            }
-            else
-            {
-                elevatorTable.Rows.Clear();
-                elevatorTable.Columns.Clear();
-                this.AddNewEpochButton.Enabled = false;
-                this.DeleteLastEpoch.Enabled = false;
-                this.redactorMenu.Enabled = false;
-                this.addEpochButton.Enabled = false;
-                this.chooseEpochToDelete.Enabled = false;
-                this.deleteEpochButton.Enabled = false;
-                this.deleteSelectedRowsButton.Enabled = false;
-            }
+            reDrawElevatorTable();
+            initEpochCount();
             if (values[1] != null & values[1] != "")
             {
                 objectPicture.Load(values[1]);
@@ -159,44 +133,58 @@ namespace CourseWorkRebuild2
                 lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
                 firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount);
             }
-            epochCount = elevatorTable.Rows.Count - 1;
+            
+        }
+
+        private void reDrawElevatorTable()
+        {
+            if (values[0] != null & values[0] != "")
+            {
+                epochCountBox.Items.Clear();
+                repository = new Repository(values[0]);
+                sqlConnection = repository.GetDbConnection();
+                elevatorTable = repository.ShowTable(dataTable, elevatorTable);
+                for (int row = 0; row < elevatorTable.Rows.Count - 1; row++)
+                {
+                    epochCountBox.Items.Add(elevatorTable.Rows[row].Cells[0].Value);
+                }
+                epochCountBox.SelectedIndex = 0;
+                this.AddNewEpochButton.Enabled = true;
+                this.deleteEpochButton.Enabled = true;
+                this.DeleteLastEpoch.Enabled = true;
+                this.redactorMenu.Enabled = true;
+                this.addEpochButton.Enabled = true;
+                this.chooseEpochToDelete.Enabled = true;
+                this.closeButton.Enabled = true;
+                this.saveAsButton.Enabled = true;
+                this.closeAllButton.Enabled = true;
+                this.saveCopyButton.Enabled = true;
+                this.saveButton.Enabled = true;
+                this.deleteSelectedRowsButton.Enabled = true;
+            }
+            else
+            {
+                elevatorTable.Rows.Clear();
+                elevatorTable.Columns.Clear();
+                this.AddNewEpochButton.Enabled = false;
+                this.DeleteLastEpoch.Enabled = false;
+                this.redactorMenu.Enabled = false;
+                this.addEpochButton.Enabled = false;
+                this.chooseEpochToDelete.Enabled = false;
+                this.deleteEpochButton.Enabled = false;
+                this.deleteSelectedRowsButton.Enabled = false;
+            }
         }
 
         private void addNewRow_Click(object sender, EventArgs e)
         {
-            
-            Double delta = 0;
-            Double averageDelta = 0;
-            Double newCellValue = 0;
+            Calculations calculations = new Calculations();
             int newRow = elevatorTable.RowCount - 1;
-            Random random = new Random();
-
             elevatorTable.Rows[newRow].Cells[0].Value = epochCount;
             repository.AddNewRow(epochCount);
-
-            for (int i = 1; i < elevatorTable.Columns.Count; i++)
-            {
-
-                for (int j = 0; j < elevatorTable.Rows.Count - 1; j++)
-                {
-                    if (Convert.ToDouble(elevatorTable.Rows[j + 1].Cells[i].Value) != 0)
-                    {
-                        delta = Math.Abs(Convert.ToDouble(elevatorTable.Rows[j].Cells[i].Value) - Convert.ToDouble(elevatorTable.Rows[j + 1].Cells[i].Value));
-                    }
-
-                    averageDelta += delta;
-                    delta = 0;
-                }
-
-                averageDelta /= elevatorTable.Rows.Count;
-                newCellValue = random.NextDouble() * (averageDelta - (-averageDelta)) + averageDelta;
-                elevatorTable.Rows[newRow].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value), 4);
-                repository.AddNewValuesInRow(i, epochCount, Convert.ToDouble(elevatorTable.Rows[newRow].Cells[i].Value));
-                averageDelta = 0;
-            }
+            calculations.AddNewValuesInRow(elevatorTable, repository, epochCount);
             epochCount++;
-            elevatorTable.Rows.Add();
-            reDrawMainForm();
+            reDrawElevatorTable();
 
         }
 
@@ -288,8 +276,9 @@ namespace CourseWorkRebuild2
 
         private void deleteLastEpoch_Click(object sender, EventArgs e)
         {
-            repository.DeleteRow((elevatorTable.Rows.Count - 1).ToString());
-            elevatorTable.Rows.RemoveAt(elevatorTable.Rows.Count - 2);
+            string lastRowIndex = elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value.ToString();
+            repository.DeleteRow(lastRowIndex);
+            reDrawMainForm();
         }
 
         private void exitButton_Click(object sender, EventArgs e)

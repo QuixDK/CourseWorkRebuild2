@@ -107,7 +107,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(631, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +126,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(59, 26);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -238,7 +238,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -374,7 +374,7 @@
             this.chartButton,
             this.checkValues});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
             this.windowsMenu.Text = "Окна";
             // 
             // chartButton
@@ -392,7 +392,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(81, 26);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -424,11 +424,11 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(631, 345);
+            this.tabControl1.Size = new System.Drawing.Size(631, 343);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
@@ -589,7 +589,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(623, 319);
+            this.tabPage2.Size = new System.Drawing.Size(623, 317);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
