@@ -23,22 +23,11 @@ namespace CourseWorkRebuild2
         private CheckValuesForm checkValuesForm;
         Calculations calculations = new Calculations();
         private int activeForm = 0;
-        private int epochCount;
+        private int epochCount = 0;
         public MainForm()
         {
             InitializeComponent();
-            this.addEpochButton.Enabled = false;
-            this.chooseEpochToDelete.Enabled = false;
-            this.deleteEpochButton.Enabled = false;
-            this.redactorMenu.Enabled = false;
-            this.AddNewEpochButton.Enabled = false;
-            this.DeleteLastEpoch.Enabled = false;
-            this.closeAllButton.Enabled = false;
-            this.closeButton.Enabled = false;
-            this.saveAsButton.Enabled = false;
-            this.saveButton.Enabled = false;
-            this.saveCopyButton.Enabled = false;
-            this.deleteSelectedRowsButton.Enabled = false;
+            disableStartButtons();
             checkValuesForm = new CheckValuesForm();
             lists.Add(checkValuesForm.GetListBox1());
             lists.Add(checkValuesForm.GetListBox2());
@@ -46,12 +35,6 @@ namespace CourseWorkRebuild2
             lists.Add(checkValuesForm.GetListBox4());
             lists.Add(checkValuesForm.GetListBox5());
             lists.Add(checkValuesForm.GetListBox6());
-            
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
         private void initEpochCount()
@@ -67,21 +50,7 @@ namespace CourseWorkRebuild2
             reDrawElevatorTable();
             initEpochCount();
             reDrawValues();
-            if (values[1] != null & values[1] != "")
-            {
-                objectPicture.Load(values[1]);
-                objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.closeButton.Enabled = true;
-                this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
-                this.saveCopyButton.Enabled = true;
-                this.saveButton.Enabled = true;
-            }
-            else
-            {
-                objectPicture.Image = null;
-            }
-            
+            reDrawObjectPicture();
             if (values[6] != null & values[6] != "")
             {
                 this.Text = values[6];
@@ -100,6 +69,25 @@ namespace CourseWorkRebuild2
                 firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount);
             }
             
+        }
+
+        private void reDrawObjectPicture()
+        {
+            //Если есть путь к картинке
+            if (values[1] != null & values[1] != "")
+            {
+                objectPicture.Load(values[1]);
+                objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.closeButton.Enabled = true;
+                this.saveAsButton.Enabled = true;
+                this.closeAllButton.Enabled = true;
+                this.saveCopyButton.Enabled = true;
+                this.saveButton.Enabled = true;
+            }
+            else
+            {
+                objectPicture.Image = null;
+            }
         }
 
         private void reDrawValues()
@@ -141,6 +129,7 @@ namespace CourseWorkRebuild2
 
         private void reDrawElevatorTable()
         {
+            //Если есть путь к БД
             if (values[0] != null & values[0] != "")
             {
                 epochCountBox.Items.Clear();
@@ -255,6 +244,17 @@ namespace CourseWorkRebuild2
         {
             string lastRowIndex = elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value.ToString();
             repository.DeleteRow(lastRowIndex);
+            reDrawElevatorTable();
+        }
+        private void deleteSelectedRowsButton_Click(object sender, EventArgs e)
+        {
+            if (elevatorTable.SelectedRows.Count > 0)
+            {
+                for (int i = 0; i < elevatorTable.SelectedRows.Count; i++)
+                {
+                    repository.DeleteRow(elevatorTable.Rows[elevatorTable.SelectedRows[i].Index].Cells[0].Value.ToString());
+                }
+            }
             reDrawElevatorTable();
         }
 
@@ -418,19 +418,6 @@ namespace CourseWorkRebuild2
             reDrawMainForm();
         }
 
-        private void deleteSelectedRowsButton_Click(object sender, EventArgs e)
-        {
-            if (elevatorTable.SelectedRows.Count > 0)
-            {
-                var selectedRows = elevatorTable.SelectedRows;
-                for (int i = 0; i < elevatorTable.SelectedRows.Count; i++)
-                {
-                    repository.DeleteRow(elevatorTable.SelectedRows[i].Index.ToString());
-                }
-            }
-            reDrawElevatorTable();
-        }
-
         private void chartButton_Click(object sender, EventArgs e)
         {
             ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
@@ -469,6 +456,16 @@ namespace CourseWorkRebuild2
             this.deleteSelectedRowsButton.Enabled = false;
         }
 
+        private void disableStartButtons()
+        {
+            disableButtonsForTable();
+            this.closeAllButton.Enabled = false;
+            this.closeButton.Enabled = false;
+            this.saveAsButton.Enabled = false;
+            this.saveButton.Enabled = false;
+            this.saveCopyButton.Enabled = false;
+        }
+
         private void enableButtonsForValues()
         {
             this.closeButton.Enabled = true;
@@ -477,5 +474,10 @@ namespace CourseWorkRebuild2
             this.saveCopyButton.Enabled = true;
             this.saveButton.Enabled = true;
         }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+
     }
 }
