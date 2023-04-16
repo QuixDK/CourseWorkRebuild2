@@ -258,11 +258,6 @@ namespace CourseWorkRebuild2
             reDrawElevatorTable();
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void infoAboutSystem_Click(object sender, EventArgs e)
         {
             SystemInfo systemInfo = new SystemInfo();
@@ -322,6 +317,22 @@ namespace CourseWorkRebuild2
 
         }
 
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            String tempTableFile = values[0];
+            String tempPngFile = values[1];
+            values[0] = "";
+            values[1] = "";
+            reDrawMainForm();
+            Save save = new Save();
+            save.SaveTxtFile(values[7], Convert.ToDouble(values[2]), Convert.ToInt32(values[5]), Convert.ToInt32(values[4]));
+            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(values[1], oldObjectPicturePath, "*.png"); }
+            if (oldElevatorTablePath != "" & oldElevatorTablePath != tempTableFile) { save.SaveNewFile(tempTableFile, oldElevatorTablePath, "*.sqlite"); }
+            values[0] = tempTableFile;
+            values[1] = tempPngFile;
+            reDrawMainForm();
+        }
+
         private void newBlocksCount_Enter(object sender, EventArgs e)
         {
             values[5] = this.newBlocksCount.Text;
@@ -338,22 +349,6 @@ namespace CourseWorkRebuild2
         {
             values[2] = this.newTValue.Text;
             reDrawValues();
-        }
-
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            String tempTableFile = values[0];
-            String tempPngFile = values[1];
-            values[0] = "";
-            values[1] = "";
-            reDrawMainForm();
-            Save save = new Save();
-            save.SaveTxtFile(values[7], Convert.ToDouble(values[2]), Convert.ToInt32(values[5]), Convert.ToInt32(values[4]));
-            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(values[1], oldObjectPicturePath, "*.png"); }
-            if (oldElevatorTablePath != "" & oldElevatorTablePath != tempTableFile) { save.SaveNewFile(tempTableFile, oldElevatorTablePath, "*.sqlite"); }
-            values[0] = tempTableFile;
-            values[1] = tempPngFile;
-            reDrawMainForm();
         }
 
         private void newTValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -477,6 +472,10 @@ namespace CourseWorkRebuild2
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
