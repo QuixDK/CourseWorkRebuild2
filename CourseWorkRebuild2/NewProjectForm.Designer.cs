@@ -32,6 +32,7 @@
             this.changeTValue = new System.Windows.Forms.ToolStripMenuItem();
             this.changeBuildingsCount = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenChart = new System.Windows.Forms.ToolStripMenuItem();
             this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,7 @@
             this.chooseEpochToDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.epochCountBox = new System.Windows.Forms.ToolStripComboBox();
             this.deleteEpochButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenChart = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteSelectedRowsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
@@ -92,8 +93,15 @@
             this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenChart});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
             this.windowsMenu.Text = "Окна";
+            // 
+            // OpenChart
+            // 
+            this.OpenChart.Name = "OpenChart";
+            this.OpenChart.Size = new System.Drawing.Size(142, 26);
+            this.OpenChart.Text = "График";
+            this.OpenChart.Click += new System.EventHandler(this.OpenChart_Click);
             // 
             // refMenu
             // 
@@ -103,7 +111,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 26);
+            this.refMenu.Size = new System.Drawing.Size(81, 24);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -141,14 +149,16 @@
             this.tabControl1.Controls.Add(this.dataPage);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(840, 420);
+            this.tabControl1.Size = new System.Drawing.Size(630, 338);
             this.tabControl1.TabIndex = 3;
             // 
             // dataPage
             // 
+            this.dataPage.Controls.Add(this.deleteSelectedRowsButton);
             this.dataPage.Controls.Add(this.valueOfALabel);
             this.dataPage.Controls.Add(this.valueOfTLabel);
             this.dataPage.Controls.Add(this.label3);
@@ -158,10 +168,11 @@
             this.dataPage.Controls.Add(this.objectPicture);
             this.dataPage.Controls.Add(this.label1);
             this.dataPage.Controls.Add(this.elevatorTable);
-            this.dataPage.Location = new System.Drawing.Point(4, 25);
+            this.dataPage.Location = new System.Drawing.Point(4, 22);
+            this.dataPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataPage.Name = "dataPage";
-            this.dataPage.Padding = new System.Windows.Forms.Padding(3);
-            this.dataPage.Size = new System.Drawing.Size(832, 391);
+            this.dataPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataPage.Size = new System.Drawing.Size(622, 312);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -170,35 +181,39 @@
             // 
             this.valueOfALabel.AutoSize = true;
             this.valueOfALabel.BackColor = System.Drawing.Color.White;
-            this.valueOfALabel.Location = new System.Drawing.Point(159, 53);
+            this.valueOfALabel.Location = new System.Drawing.Point(119, 43);
+            this.valueOfALabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valueOfALabel.Name = "valueOfALabel";
-            this.valueOfALabel.Size = new System.Drawing.Size(0, 16);
+            this.valueOfALabel.Size = new System.Drawing.Size(0, 15);
             this.valueOfALabel.TabIndex = 10;
             // 
             // valueOfTLabel
             // 
             this.valueOfTLabel.AutoSize = true;
             this.valueOfTLabel.BackColor = System.Drawing.Color.White;
-            this.valueOfTLabel.Location = new System.Drawing.Point(8, 53);
+            this.valueOfTLabel.Location = new System.Drawing.Point(6, 43);
+            this.valueOfTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valueOfTLabel.Name = "valueOfTLabel";
-            this.valueOfTLabel.Size = new System.Drawing.Size(0, 16);
+            this.valueOfTLabel.Size = new System.Drawing.Size(0, 15);
             this.valueOfTLabel.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(8, 25);
+            this.label3.Location = new System.Drawing.Point(6, 20);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 16);
+            this.label3.Size = new System.Drawing.Size(120, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Начальные данные";
             // 
             // DeleteLastEpoch
             // 
-            this.DeleteLastEpoch.Location = new System.Drawing.Point(162, 172);
+            this.DeleteLastEpoch.Location = new System.Drawing.Point(122, 140);
+            this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DeleteLastEpoch.Name = "DeleteLastEpoch";
-            this.DeleteLastEpoch.Size = new System.Drawing.Size(148, 51);
+            this.DeleteLastEpoch.Size = new System.Drawing.Size(111, 41);
             this.DeleteLastEpoch.TabIndex = 5;
             this.DeleteLastEpoch.Text = "Удалить последнюю эпоху";
             this.DeleteLastEpoch.UseVisualStyleBackColor = true;
@@ -206,9 +221,10 @@
             // 
             // AddNewEpochButton
             // 
-            this.AddNewEpochButton.Location = new System.Drawing.Point(8, 172);
+            this.AddNewEpochButton.Location = new System.Drawing.Point(6, 140);
+            this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddNewEpochButton.Name = "AddNewEpochButton";
-            this.AddNewEpochButton.Size = new System.Drawing.Size(148, 51);
+            this.AddNewEpochButton.Size = new System.Drawing.Size(111, 41);
             this.AddNewEpochButton.TabIndex = 4;
             this.AddNewEpochButton.Text = "Добавить эпоху";
             this.AddNewEpochButton.UseVisualStyleBackColor = true;
@@ -218,18 +234,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(621, 25);
+            this.label2.Location = new System.Drawing.Point(466, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 16);
+            this.label2.Size = new System.Drawing.Size(95, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Схема объекта";
             // 
             // objectPicture
             // 
             this.objectPicture.BackColor = System.Drawing.Color.White;
-            this.objectPicture.Location = new System.Drawing.Point(513, 44);
+            this.objectPicture.Location = new System.Drawing.Point(385, 36);
+            this.objectPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectPicture.Name = "objectPicture";
-            this.objectPicture.Size = new System.Drawing.Size(311, 179);
+            this.objectPicture.Size = new System.Drawing.Size(233, 145);
             this.objectPicture.TabIndex = 2;
             this.objectPicture.TabStop = false;
             // 
@@ -237,29 +255,32 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 153);
+            this.label1.Location = new System.Drawing.Point(6, 124);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.Size = new System.Drawing.Size(95, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Таблица высот";
             // 
             // elevatorTable
             // 
             this.elevatorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elevatorTable.Location = new System.Drawing.Point(8, 229);
+            this.elevatorTable.Location = new System.Drawing.Point(6, 186);
+            this.elevatorTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.elevatorTable.Name = "elevatorTable";
             this.elevatorTable.RowHeadersWidth = 51;
             this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(816, 159);
+            this.elevatorTable.Size = new System.Drawing.Size(612, 129);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(832, 393);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(622, 315);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Уровень 1";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -279,7 +300,8 @@
             this.refMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(840, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(630, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -296,7 +318,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 26);
+            this.fileMenu.Size = new System.Drawing.Size(59, 24);
             this.fileMenu.Text = "Файл";
             // 
             // openProjectButton
@@ -365,7 +387,7 @@
             this.changeAValue,
             this.changeBuildingsCount});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -396,21 +418,26 @@
             this.deleteEpochButton.Text = "Удалить";
             this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
             // 
-            // OpenChart
+            // deleteSelectedRowsButton
             // 
-            this.OpenChart.Name = "OpenChart";
-            this.OpenChart.Size = new System.Drawing.Size(224, 26);
-            this.OpenChart.Text = "График";
-            this.OpenChart.Click += new System.EventHandler(this.OpenChart_Click);
+            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(237, 140);
+            this.deleteSelectedRowsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteSelectedRowsButton.Name = "deleteSelectedRowsButton";
+            this.deleteSelectedRowsButton.Size = new System.Drawing.Size(89, 41);
+            this.deleteSelectedRowsButton.TabIndex = 14;
+            this.deleteSelectedRowsButton.Text = "Удалить выделенные";
+            this.deleteSelectedRowsButton.UseVisualStyleBackColor = true;
+            this.deleteSelectedRowsButton.Click += new System.EventHandler(this.deleteSelectedRowsButton_Click);
             // 
             // NewProjectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 450);
+            this.ClientSize = new System.Drawing.Size(630, 366);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "NewProjectForm";
             this.Load += new System.EventHandler(this.NewProjectForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -466,5 +493,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem OpenChart;
+        private System.Windows.Forms.Button deleteSelectedRowsButton;
     }
 }

@@ -61,14 +61,18 @@ namespace CourseWorkRebuild2
                 this.saveButton.Enabled = true;
             }
             else { this.Text = ""; }
-
-            if (values[0] != "" & values[2] != "" & values[3] != "")
+        }
+        private void firstLevelDecomposition_Enter(object sender, EventArgs e)
+        {
+            //Если достаточно данных для расчетов
+            if (values.Count > 0 && values[0] != "" & values[2] != "" & values[3] != "")
             {
                 Int32 epochCount = elevatorTable.RowCount;
+                //Тут получаем значения из расчетов
                 lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
-                firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount);
+                //А тут заполняем табличку
+                firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount, elevatorTable);
             }
-            
         }
 
         private void reDrawObjectPicture()
@@ -229,6 +233,7 @@ namespace CourseWorkRebuild2
             {
                 values[value] = "";
             }
+            decomposition.ClearTable(firstLevelOfDecompositionTable);
             activeForm = 0;
             reDrawMainForm();
         }
@@ -410,7 +415,7 @@ namespace CourseWorkRebuild2
             {
                 values[1] = oldObjectPicturePath;
             }
-            reDrawMainForm();
+            reDrawObjectPicture();
         }
 
         private void chartButton_Click(object sender, EventArgs e)
@@ -477,6 +482,5 @@ namespace CourseWorkRebuild2
         {
             this.Close();
         }
-
     }
 }

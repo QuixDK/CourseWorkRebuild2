@@ -39,49 +39,49 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(32, 42);
+            this.listBox1.Location = new System.Drawing.Point(12, 42);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.Size = new System.Drawing.Size(132, 303);
             this.listBox1.TabIndex = 0;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(169, 42);
+            this.listBox2.Location = new System.Drawing.Point(150, 42);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 95);
+            this.listBox2.Size = new System.Drawing.Size(127, 303);
             this.listBox2.TabIndex = 1;
             // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(304, 42);
+            this.listBox3.Location = new System.Drawing.Point(283, 42);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 95);
+            this.listBox3.Size = new System.Drawing.Size(126, 303);
             this.listBox3.TabIndex = 2;
             // 
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(445, 42);
+            this.listBox4.Location = new System.Drawing.Point(415, 42);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 95);
+            this.listBox4.Size = new System.Drawing.Size(133, 303);
             this.listBox4.TabIndex = 3;
             // 
             // listBox5
             // 
             this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(586, 42);
+            this.listBox5.Location = new System.Drawing.Point(554, 42);
             this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(120, 95);
+            this.listBox5.Size = new System.Drawing.Size(120, 303);
             this.listBox5.TabIndex = 4;
             // 
             // listBox6
             // 
             this.listBox6.FormattingEnabled = true;
-            this.listBox6.Location = new System.Drawing.Point(340, 178);
+            this.listBox6.Location = new System.Drawing.Point(680, 42);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(120, 95);
+            this.listBox6.Size = new System.Drawing.Size(131, 303);
             this.listBox6.TabIndex = 5;
             // 
             // CheckValuesForm

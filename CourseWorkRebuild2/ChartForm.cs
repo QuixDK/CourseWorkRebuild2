@@ -22,6 +22,7 @@ namespace CourseWorkRebuild2
         private List<Double> forecastMValue = new List<Double>();
         private List<Double> forecastAValue = new List<Double>();
         private DataGridView elevatorTable;
+        Calculations calculations = new Calculations();
         private DataTable dataTable;
         private List<String> values;
         public ChartForm(DataGridView elevatorTable, DataTable dataTable, List<string> values)
@@ -31,18 +32,17 @@ namespace CourseWorkRebuild2
             this.dataTable = dataTable;
             this.values = values;
         }
-
-        private void showResponseFunctionSelectBox_CheckedChanged(object sender, EventArgs e)
-        {
-            String serieName = "Функция отклика";
-            if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addLine(listOfMValues, listOfAValues, functionDiagrams, serieName);
-        }
         private void forecastResponseFunctionSelectBox_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Прогнозное значение";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
             else chartDiagramService.addforecastFunction(serieName, forecastMValue, forecastAValue, functionDiagrams);
+        }
+        private void responseFunctionSelectBox_CheckedChanged(object sender, EventArgs e)
+        {
+            String serieName = "Функция отклика";
+            if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
+            else chartDiagramService.addLine(listOfMValues, listOfAValues, functionDiagrams, serieName);
         }
 
         private void bottomLineSelectBox_CheckedChanged(object sender, EventArgs e)
@@ -57,6 +57,12 @@ namespace CourseWorkRebuild2
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
             else chartDiagramService.addforecastFunction(serieName, forecastBottomLineMValue, forecastBottomLineAValue, functionDiagrams);
         }
+        private void forecastTopValues_CheckedChanged(object sender, EventArgs e)
+        {
+            String serieName = "Прогнозное значение для верхней границы";
+            if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
+            else chartDiagramService.addforecastFunction(serieName, forecastTopLineMValue, forecastTopLineAValue, functionDiagrams);
+        }
 
         private void topLineSelectBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -65,16 +71,12 @@ namespace CourseWorkRebuild2
             else chartDiagramService.addLine(listOfTopLineMValues, listOfTopLineAValues, functionDiagrams, serieName);
         }
 
-        private void forecastTopLineValues_CheckedChanged(object sender, EventArgs e)
-        {
-            String serieName = "Прогнозное значение для верхней границы";
-            if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(functionDiagrams, serieName);
-            else chartDiagramService.addforecastFunction(serieName, forecastTopLineMValue, forecastTopLineAValue, functionDiagrams);
-        }
-
         private void Chart_Load(object sender, EventArgs e)
         {
-            Calculations calculations = new Calculations();
+            if (values.Count == 0)
+            {
+                return;
+            }
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
             DataGridView bottomLineTable = calculations.calculateBottomLine(dataTable, T, elevatorTable);
@@ -85,13 +87,16 @@ namespace CourseWorkRebuild2
             listOfTopLineAValues = calculations.calculateLineAValues(topLineTable, listOfTopLineMValues);
             forecastTopLineMValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
             forecastBottomLineMValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
-            forecastTopLineAValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
-            forecastBottomLineAValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
+            forecastTopLineAValue = calculations.getForecastValue(listOfTopLineAValues, Alpha);
+            forecastBottomLineAValue = calculations.getForecastValue(listOfBottomLineAValues, Alpha);
             listOfMValues = calculations.calculateMValues(elevatorTable);
-            listOfAValues = calculations.calculateAValues(elevatorTable, listOfMValues);
+            listOfAValues = calculations.calculateAValuesForChart(elevatorTable, listOfMValues);
             listOfMValues.Remove(listOfMValues.Last());
+            listOfAValues.Remove(listOfAValues.Last());
             forecastMValue = calculations.getForecastValue(listOfMValues, Alpha);
             forecastAValue = calculations.getForecastValue(listOfAValues, Alpha);
         }
+
+
     }
 }

@@ -65,6 +65,7 @@
             this.changeObjectPicture = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.chartButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkValues = new System.Windows.Forms.ToolStripMenuItem();
             this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,15 +85,14 @@
             this.objectPicture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.elevatorTable = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.firstLevelDecompositionTable = new System.Windows.Forms.TabPage();
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
-            this.checkValues = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +107,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +126,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 26);
+            this.fileMenu.Size = new System.Drawing.Size(59, 24);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -238,7 +238,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -374,15 +374,22 @@
             this.chartButton,
             this.checkValues});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
             this.windowsMenu.Text = "Окна";
             // 
             // chartButton
             // 
             this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(224, 26);
+            this.chartButton.Size = new System.Drawing.Size(161, 26);
             this.chartButton.Text = "График";
             this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
+            // 
+            // checkValues
+            // 
+            this.checkValues.Name = "checkValues";
+            this.checkValues.Size = new System.Drawing.Size(161, 26);
+            this.checkValues.Text = "Проверка";
+            this.checkValues.Click += new System.EventHandler(this.checkValues_Click);
             // 
             // refMenu
             // 
@@ -392,7 +399,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 26);
+            this.refMenu.Size = new System.Drawing.Size(81, 24);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -422,13 +429,13 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.dataPage);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.firstLevelDecompositionTable);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(631, 343);
+            this.tabControl1.Size = new System.Drawing.Size(631, 345);
             this.tabControl1.TabIndex = 1;
             // 
             // dataPage
@@ -449,7 +456,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2);
-            this.dataPage.Size = new System.Drawing.Size(623, 317);
+            this.dataPage.Size = new System.Drawing.Size(623, 319);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -582,17 +589,18 @@
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             // 
-            // tabPage2
+            // firstLevelDecompositionTable
             // 
-            this.tabPage2.Controls.Add(this.firstLevelOfDecompositionTable);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(623, 317);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Уровень 1";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.firstLevelDecompositionTable.Controls.Add(this.firstLevelOfDecompositionTable);
+            this.firstLevelDecompositionTable.Location = new System.Drawing.Point(4, 22);
+            this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
+            this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
+            this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
+            this.firstLevelDecompositionTable.TabIndex = 1;
+            this.firstLevelDecompositionTable.Text = "Уровень 1";
+            this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
+            this.firstLevelDecompositionTable.Enter += new System.EventHandler(this.firstLevelDecomposition_Enter);
             // 
             // firstLevelOfDecompositionTable
             // 
@@ -602,13 +610,6 @@
             this.firstLevelOfDecompositionTable.RowHeadersWidth = 51;
             this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(612, 311);
             this.firstLevelOfDecompositionTable.TabIndex = 0;
-            // 
-            // checkValues
-            // 
-            this.checkValues.Name = "checkValues";
-            this.checkValues.Size = new System.Drawing.Size(224, 26);
-            this.checkValues.Text = "Проверка";
-            this.checkValues.Click += new System.EventHandler(this.checkValues_Click);
             // 
             // MainForm
             // 
@@ -628,7 +629,7 @@
             this.dataPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.firstLevelDecompositionTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -671,7 +672,7 @@
         private System.Windows.Forms.PictureBox objectPicture;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView elevatorTable;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage firstLevelDecompositionTable;
         private System.Windows.Forms.ToolStripMenuItem openRarButton;
         private System.Windows.Forms.ToolStripMenuItem deleteEpochButton;
         private System.Windows.Forms.Label valueOfALabel;

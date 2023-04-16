@@ -117,8 +117,8 @@ namespace CourseWorkRebuild2
                 summPr /= listOfMValues[0];
                 summPr /= listOfMValues[i + 1];
                 calculateAcos = Math.Acos(summPr);
-                calculateDegree = 180 * calculateAcos / Math.PI;
-                listOfAlphaValues.Add(calculateDegree);
+                //calculateDegree = 180 * calculateAcos / Math.PI;
+                listOfAlphaValues.Add(calculateAcos);
 
             }
             return listOfAlphaValues;
@@ -150,6 +150,35 @@ namespace CourseWorkRebuild2
                 calculateAcos = Math.Acos(summPr);
                 calculateDegree = 180 * calculateAcos / Math.PI;
                 listOfAlphaValues.Add(calculateDegree);
+
+            }
+            return listOfAlphaValues;
+
+        }
+
+        public List<Double> calculateAValuesForChart(DataGridView elevatorTable, List<Double> listOfMValues)
+        {
+            Double calculateAcos = 0;
+            Double calculateDegree = 0;
+            Double summPr = 0;
+            Double firstValue = 0;
+            Double secondValue = 0;
+            List<Double> listOfAlphaValues = new List<Double>();
+            listOfAlphaValues.Add(0);
+
+            for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
+            {
+                summPr = 0;
+                for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                {
+                    firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[j].Value);
+                    secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[j].Value);
+                    summPr += firstValue * secondValue;
+                }
+                summPr /= listOfMValues[0];
+                summPr /= listOfMValues[i + 1];
+                calculateAcos = Math.Acos(summPr);
+                listOfAlphaValues.Add(calculateAcos);
 
             }
             return listOfAlphaValues;

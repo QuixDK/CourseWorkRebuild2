@@ -84,12 +84,18 @@ namespace CourseWorkRebuild2
             }
             return lists;
         }
+
+        public DataGridView ClearTable(DataGridView dataTable)
+        {
+            dataTable.Columns.Clear();
+            dataTable.Rows.Clear();
+            return dataTable;
+        }
         
-        public DataGridView DrawTable(DataGridView dataTable, List<ListBox> lists, Int32 epochCount)
+        public DataGridView DrawTable(DataGridView dataTable, List<ListBox> lists, Int32 epochCount, DataGridView elevatorTable)
         {
             dataTable.Rows.Clear();
             dataTable.Columns.Clear();
-
             dataTable.Columns.Add(new DataGridViewTextBoxColumn());
             dataTable.Columns.Add(new DataGridViewTextBoxColumn());
             dataTable.Columns.Add(new DataGridViewTextBoxColumn());
@@ -104,10 +110,10 @@ namespace CourseWorkRebuild2
             dataTable.Columns[4].Name = "2E";
             dataTable.Columns[5].Name = "L";
             dataTable.Columns[6].Name = "Состояние";
-            for (int i = 0; i < epochCount; i++)
+            for (int i = 0; i < elevatorTable.RowCount; i++)
             {
                 dataTable.Rows.Add();
-                dataTable.Rows[i].Cells[0].Value = i;
+                dataTable.Rows[i].Cells[0].Value = elevatorTable.Rows[i].Cells[0].Value;
             }
             int counter = 0;
             foreach (Double s in lists[0].Items)
