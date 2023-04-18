@@ -134,10 +134,5 @@ namespace CourseWorkRebuild2
                 forecastAValue = calculations.getForecastValue(listOfAValues, Alpha);
             }
         }
-
-        private void functionDiagrams_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

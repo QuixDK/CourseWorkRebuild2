@@ -52,7 +52,6 @@
             this.functionDiagrams.Size = new System.Drawing.Size(808, 448);
             this.functionDiagrams.TabIndex = 0;
             this.functionDiagrams.Text = "chart1";
-            this.functionDiagrams.Click += new System.EventHandler(this.functionDiagrams_Click);
             // 
             // checkBox1
             // 

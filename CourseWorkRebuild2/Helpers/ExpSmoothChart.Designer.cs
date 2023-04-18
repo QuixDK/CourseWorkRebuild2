@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.expSmooth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MChart = new System.Windows.Forms.CheckBox();
             this.alphaChart = new System.Windows.Forms.CheckBox();
@@ -38,10 +38,10 @@
             // 
             // expSmooth
             // 
-            chartArea2.Name = "ChartArea1";
-            this.expSmooth.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.expSmooth.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.expSmooth.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.expSmooth.Legends.Add(legend1);
             this.expSmooth.Location = new System.Drawing.Point(12, 12);
             this.expSmooth.Name = "expSmooth";
             this.expSmooth.Size = new System.Drawing.Size(652, 426);

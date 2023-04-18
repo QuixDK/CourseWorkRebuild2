@@ -73,7 +73,7 @@
             this.aboutProgramButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.infoAboutSystem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabContol = new System.Windows.Forms.TabControl();
             this.dataPage = new System.Windows.Forms.TabPage();
             this.deleteSelectedRowsButton = new System.Windows.Forms.Button();
             this.markCount = new System.Windows.Forms.Label();
@@ -102,8 +102,10 @@
             this.sortedMarks = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.marksBox = new System.Windows.Forms.ListBox();
+            this.thirdLevel = new System.Windows.Forms.TabPage();
+            this.fourthLevel = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
-            this.tabControl.SuspendLayout();
+            this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
@@ -125,7 +127,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -144,7 +146,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 26);
+            this.fileMenu.Size = new System.Drawing.Size(59, 24);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -256,7 +258,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -394,7 +396,7 @@
             this.toolStripSeparator6,
             this.checkValues});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
             this.windowsMenu.Text = "Окна";
             // 
             // chartButton
@@ -431,7 +433,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 26);
+            this.refMenu.Size = new System.Drawing.Size(81, 24);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -458,18 +460,20 @@
             this.infoAboutSystem.Text = "Информация о системе";
             this.infoAboutSystem.Click += new System.EventHandler(this.infoAboutSystem_Click);
             // 
-            // tabControl
+            // tabContol
             // 
-            this.tabControl.Controls.Add(this.dataPage);
-            this.tabControl.Controls.Add(this.firstLevelDecompositionTable);
-            this.tabControl.Controls.Add(this.secondLevel);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 30);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(631, 343);
-            this.tabControl.TabIndex = 1;
+            this.tabContol.Controls.Add(this.dataPage);
+            this.tabContol.Controls.Add(this.firstLevelDecompositionTable);
+            this.tabContol.Controls.Add(this.secondLevel);
+            this.tabContol.Controls.Add(this.thirdLevel);
+            this.tabContol.Controls.Add(this.fourthLevel);
+            this.tabContol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabContol.Location = new System.Drawing.Point(0, 28);
+            this.tabContol.Margin = new System.Windows.Forms.Padding(2);
+            this.tabContol.Name = "tabContol";
+            this.tabContol.SelectedIndex = 0;
+            this.tabContol.Size = new System.Drawing.Size(631, 345);
+            this.tabContol.TabIndex = 1;
             // 
             // dataPage
             // 
@@ -489,7 +493,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2);
-            this.dataPage.Size = new System.Drawing.Size(623, 317);
+            this.dataPage.Size = new System.Drawing.Size(623, 319);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -629,7 +633,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 317);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -661,7 +665,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.secondLevel.Size = new System.Drawing.Size(623, 319);
+            this.secondLevel.Size = new System.Drawing.Size(623, 317);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -772,12 +776,32 @@
             this.marksBox.Size = new System.Drawing.Size(115, 277);
             this.marksBox.TabIndex = 0;
             // 
+            // thirdLevel
+            // 
+            this.thirdLevel.Location = new System.Drawing.Point(4, 22);
+            this.thirdLevel.Name = "thirdLevel";
+            this.thirdLevel.Padding = new System.Windows.Forms.Padding(3);
+            this.thirdLevel.Size = new System.Drawing.Size(623, 319);
+            this.thirdLevel.TabIndex = 3;
+            this.thirdLevel.Text = "Уровень 3";
+            this.thirdLevel.UseVisualStyleBackColor = true;
+            // 
+            // fourthLevel
+            // 
+            this.fourthLevel.Location = new System.Drawing.Point(4, 22);
+            this.fourthLevel.Name = "fourthLevel";
+            this.fourthLevel.Padding = new System.Windows.Forms.Padding(3);
+            this.fourthLevel.Size = new System.Drawing.Size(623, 319);
+            this.fourthLevel.TabIndex = 4;
+            this.fourthLevel.Text = "Уровень 4";
+            this.fourthLevel.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 373);
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.tabContol);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -785,7 +809,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl.ResumeLayout(false);
+            this.tabContol.ResumeLayout(false);
             this.dataPage.ResumeLayout(false);
             this.dataPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
@@ -829,7 +853,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutProgramButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem infoAboutSystem;
-        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabControl tabContol;
         private System.Windows.Forms.TabPage dataPage;
         private System.Windows.Forms.Button DeleteLastEpoch;
         private System.Windows.Forms.Button AddNewEpochButton;
@@ -876,6 +900,8 @@
         private System.Windows.Forms.Button reSortMarks;
         private System.Windows.Forms.ToolStripMenuItem expSmoothChartButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.TabPage thirdLevel;
+        private System.Windows.Forms.TabPage fourthLevel;
     }
 }
 

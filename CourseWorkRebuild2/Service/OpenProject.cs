@@ -163,9 +163,10 @@ namespace CourseWorkRebuild2
                                 Overwrite = true
                             });
 
-                            if (archive.Entries.Count() == 3)
+                            if (archive.Entries.Count() == 4)
                             {
                                 projectRoot = Path.GetFullPath(Path.GetDirectoryName(outputPath));
+                                break;
                             }
                         }
                     }

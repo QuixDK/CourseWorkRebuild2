@@ -621,9 +621,10 @@ namespace CourseWorkRebuild2
             this.saveCopyButton.Enabled = true;
             this.saveButton.Enabled = true;
             this.deleteSelectedRowsButton.Enabled = true;
-            this.tabControl.Enabled = true;
+            this.tabContol.Enabled = true;
             this.checkValues.Enabled = true;
             this.chartButton.Enabled = true;
+            this.expSmoothChartButton.Enabled = true;
         }
 
         private void disableButtonsForTable()
@@ -635,8 +636,9 @@ namespace CourseWorkRebuild2
             this.chooseEpochToDelete.Enabled = false;
             this.deleteEpochButton.Enabled = false;
             this.deleteSelectedRowsButton.Enabled = false;
-            this.tabControl.Enabled = false;
+            this.tabContol.Enabled = false;
             this.chartButton.Enabled = false;
+            this.expSmoothChartButton.Enabled = false;
             this.checkValues.Enabled = false;
         }
 
