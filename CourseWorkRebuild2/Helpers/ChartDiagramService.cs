@@ -9,6 +9,27 @@ public class ChartDiagramService
 {
     Calculations calculations = new Calculations();
 
+    public Chart AddExpSmoothLine(String serieName, List<Int32> listOfXValues, List<Double> listOfYValues, Chart chart)
+    {
+        chart.ChartAreas[0].AxisX.Title = "Эпоха";
+        chart.ChartAreas[0].AxisY.Title = "Значение";
+        string serieName2 = serieName + "2";
+        chart.Series.Add(serieName2);
+        chart.Series.Add(serieName);
+        chart.Series[serieName2].ChartType = SeriesChartType.Line;
+        chart.Series[serieName2].IsVisibleInLegend = false;
+        chart.Series[serieName].ChartType = SeriesChartType.Point;
+        chart.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
+        chart.Series[serieName].MarkerSize = 5;
+        for (int i = 0; i < listOfYValues.Count; i++)
+        {
+            chart.Series[serieName2].Points.AddXY(listOfXValues[i], listOfYValues[i]);
+            chart.Series[serieName].Points.AddXY(listOfXValues[i], listOfYValues[i]);
+
+        }
+        return chart;
+    }
+
     public Chart addLine(List<Double> listOfMValues, List<Double> listOfAValues, Chart functionDiagrams, String serieName)
     {
         functionDiagrams.ChartAreas[0].AxisX.Title = "M";

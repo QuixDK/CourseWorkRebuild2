@@ -65,6 +65,8 @@
             this.changeObjectPicture = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.chartButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.expSmoothChartButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.checkValues = new System.Windows.Forms.ToolStripMenuItem();
             this.refMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +90,9 @@
             this.firstLevelDecompositionTable = new System.Windows.Forms.TabPage();
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.secondLevel = new System.Windows.Forms.TabPage();
+            this.reSortMarks = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chooseBlock = new System.Windows.Forms.ComboBox();
             this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.removeMarkFromBlock = new System.Windows.Forms.Button();
@@ -97,9 +102,6 @@
             this.sortedMarks = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.marksBox = new System.Windows.Forms.ListBox();
-            this.chooseBlock = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.reSortMarks = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -123,7 +125,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(631, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -142,7 +144,7 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(59, 26);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
@@ -254,7 +256,7 @@
             this.changeElevatorTablePath,
             this.changeObjectPicture});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(137, 26);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
@@ -388,22 +390,36 @@
             // 
             this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chartButton,
+            this.expSmoothChartButton,
+            this.toolStripSeparator6,
             this.checkValues});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(58, 26);
             this.windowsMenu.Text = "Окна";
             // 
             // chartButton
             // 
             this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(224, 26);
-            this.chartButton.Text = "График";
+            this.chartButton.Size = new System.Drawing.Size(381, 26);
+            this.chartButton.Text = "График z(t) + Прогноз";
             this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
+            // 
+            // expSmoothChartButton
+            // 
+            this.expSmoothChartButton.Name = "expSmoothChartButton";
+            this.expSmoothChartButton.Size = new System.Drawing.Size(381, 26);
+            this.expSmoothChartButton.Text = "График экспоненциального сглаживания";
+            this.expSmoothChartButton.Click += new System.EventHandler(this.expSmoothChartButton_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(378, 6);
             // 
             // checkValues
             // 
             this.checkValues.Name = "checkValues";
-            this.checkValues.Size = new System.Drawing.Size(224, 26);
+            this.checkValues.Size = new System.Drawing.Size(381, 26);
             this.checkValues.Text = "Проверка";
             this.checkValues.Click += new System.EventHandler(this.checkValues_Click);
             // 
@@ -415,7 +431,7 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(81, 26);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
@@ -448,11 +464,11 @@
             this.tabControl.Controls.Add(this.firstLevelDecompositionTable);
             this.tabControl.Controls.Add(this.secondLevel);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 28);
+            this.tabControl.Location = new System.Drawing.Point(0, 30);
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(631, 345);
+            this.tabControl.Size = new System.Drawing.Size(631, 343);
             this.tabControl.TabIndex = 1;
             // 
             // dataPage
@@ -473,7 +489,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2);
-            this.dataPage.Size = new System.Drawing.Size(623, 319);
+            this.dataPage.Size = new System.Drawing.Size(623, 317);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -651,6 +667,34 @@
             this.secondLevel.UseVisualStyleBackColor = true;
             this.secondLevel.Enter += new System.EventHandler(this.secondLevel_Enter);
             // 
+            // reSortMarks
+            // 
+            this.reSortMarks.Location = new System.Drawing.Point(313, 1);
+            this.reSortMarks.Name = "reSortMarks";
+            this.reSortMarks.Size = new System.Drawing.Size(302, 23);
+            this.reSortMarks.TabIndex = 11;
+            this.reSortMarks.Text = "Перераспределить марки";
+            this.reSortMarks.UseVisualStyleBackColor = true;
+            this.reSortMarks.Click += new System.EventHandler(this.reSortMarks_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Выберите блок:";
+            // 
+            // chooseBlock
+            // 
+            this.chooseBlock.FormattingEnabled = true;
+            this.chooseBlock.Location = new System.Drawing.Point(113, 3);
+            this.chooseBlock.Name = "chooseBlock";
+            this.chooseBlock.Size = new System.Drawing.Size(121, 21);
+            this.chooseBlock.TabIndex = 9;
+            this.chooseBlock.SelectedIndexChanged += new System.EventHandler(this.chooseBlock_SelectedIndexChanged);
+            // 
             // secondLevelOfDecompositionTable
             // 
             this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -727,34 +771,6 @@
             this.marksBox.Name = "marksBox";
             this.marksBox.Size = new System.Drawing.Size(115, 277);
             this.marksBox.TabIndex = 0;
-            // 
-            // chooseBlock
-            // 
-            this.chooseBlock.FormattingEnabled = true;
-            this.chooseBlock.Location = new System.Drawing.Point(113, 3);
-            this.chooseBlock.Name = "chooseBlock";
-            this.chooseBlock.Size = new System.Drawing.Size(121, 21);
-            this.chooseBlock.TabIndex = 9;
-            this.chooseBlock.SelectedIndexChanged += new System.EventHandler(this.chooseBlock_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Выберите блок:";
-            // 
-            // reSortMarks
-            // 
-            this.reSortMarks.Location = new System.Drawing.Point(313, 1);
-            this.reSortMarks.Name = "reSortMarks";
-            this.reSortMarks.Size = new System.Drawing.Size(302, 23);
-            this.reSortMarks.TabIndex = 11;
-            this.reSortMarks.Text = "Перераспределить марки";
-            this.reSortMarks.UseVisualStyleBackColor = true;
-            this.reSortMarks.Click += new System.EventHandler(this.reSortMarks_Click);
             // 
             // MainForm
             // 
@@ -858,6 +874,8 @@
         private System.Windows.Forms.ComboBox chooseBlock;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button reSortMarks;
+        private System.Windows.Forms.ToolStripMenuItem expSmoothChartButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using CourseWorkRebuild;
+using CourseWorkRebuild2.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -571,16 +572,30 @@ namespace CourseWorkRebuild2
             reDrawObjectPicture();
         }
 
-        private void chartButton_Click(object sender, EventArgs e)
+        private void expSmoothChartButton_Click(object sender, EventArgs e)
         {
             if (a == 1)
             {
-                ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values, a);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, a);
                 chartForm.Show();
             }
             else if (a == 2)
             {
-                ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
+                chartForm.Show();
+            }
+        }
+
+        private void chartButton_Click(object sender, EventArgs e)
+        {
+            if (a == 1)
+            {
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, a);
+                chartForm.Show();
+            }
+            else if (a == 2)
+            {
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
             
@@ -651,7 +666,6 @@ namespace CourseWorkRebuild2
         {
             this.Close();
         }
-
 
     }
 }

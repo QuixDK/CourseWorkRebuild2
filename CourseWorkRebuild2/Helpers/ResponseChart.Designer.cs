@@ -1,6 +1,6 @@
 ﻿namespace CourseWorkRebuild2
 {
-    partial class ChartForm
+    partial class ResponseChart
     {
         /// <summary>
         /// Required designer variable.
@@ -140,7 +140,7 @@
             this.Controls.Add(this.functionDiagrams);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ChartForm";
-            this.Text = "График";
+            this.Text = "График z(t) + Прогноз";
             this.Load += new System.EventHandler(this.Chart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.functionDiagrams)).EndInit();
             this.ResumeLayout(false);

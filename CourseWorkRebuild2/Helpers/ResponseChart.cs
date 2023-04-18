@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
 {
-    public partial class ChartForm : Form
+    public partial class ResponseChart : Form
     {
         ChartDiagramService chartDiagramService = new ChartDiagramService();
         private List<Double> listOfMValues = new List<Double>();
@@ -27,7 +27,7 @@ namespace CourseWorkRebuild2
         private List<String> values;
         private int a = 0;
         private List<String> mark;
-        public ChartForm(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a)
+        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a)
         {
             InitializeComponent();
             this.elevatorTable = elevatorTable;
@@ -35,7 +35,7 @@ namespace CourseWorkRebuild2
             this.values = values;
             this.a = a;
         }
-        public ChartForm(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a, List<String> mark)
+        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a, List<String> mark)
         {
             InitializeComponent();
             this.elevatorTable = elevatorTable;
