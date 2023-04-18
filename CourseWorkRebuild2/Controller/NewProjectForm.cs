@@ -203,8 +203,8 @@ namespace CourseWorkRebuild2
 
         private void OpenChart_Click(object sender, EventArgs e)
         {
-            ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
-            chartForm.Show();
+            //ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
+            //chartForm.Show();
         }
 
         private void disableStartButtons()

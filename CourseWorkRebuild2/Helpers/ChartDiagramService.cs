@@ -20,6 +20,7 @@ public class ChartDiagramService
         functionDiagrams.Series[serieName2].IsVisibleInLegend = false;
         functionDiagrams.Series[serieName].ChartType = SeriesChartType.Point;
         functionDiagrams.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
+        functionDiagrams.Series[serieName].MarkerSize = 10;
         for (int i = 0; i < listOfMValues.Count; i++)
         {
             functionDiagrams.Series[serieName2].Points.AddXY(listOfMValues[i], listOfAValues[i]);
@@ -35,6 +36,7 @@ public class ChartDiagramService
 
         functionDiagrams.Series.Add(serieName);
         functionDiagrams.Series[serieName].ChartType = SeriesChartType.Point;
+        functionDiagrams.Series[serieName].MarkerSize = 10;
         functionDiagrams.Series[serieName].Points.AddXY(listOfMValues.Last(), listOfAlphaValues.Last());
         functionDiagrams.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
 

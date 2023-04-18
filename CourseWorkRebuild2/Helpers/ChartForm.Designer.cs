@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.functionDiagrams = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -42,16 +42,17 @@
             // 
             // functionDiagrams
             // 
-            chartArea2.Name = "ChartArea1";
-            this.functionDiagrams.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.functionDiagrams.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.functionDiagrams.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.functionDiagrams.Legends.Add(legend1);
             this.functionDiagrams.Location = new System.Drawing.Point(9, 10);
             this.functionDiagrams.Margin = new System.Windows.Forms.Padding(2);
             this.functionDiagrams.Name = "functionDiagrams";
             this.functionDiagrams.Size = new System.Drawing.Size(808, 448);
             this.functionDiagrams.TabIndex = 0;
             this.functionDiagrams.Text = "chart1";
+            this.functionDiagrams.Click += new System.EventHandler(this.functionDiagrams_Click);
             // 
             // checkBox1
             // 

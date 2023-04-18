@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms.VisualStyles;
 
 namespace CourseWorkRebuild2
@@ -19,12 +20,15 @@ namespace CourseWorkRebuild2
         private String oldElevatorTablePath = "";
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
+        private List<ListBox> listsForSecondLevel = new List<ListBox>();
         private CheckValuesForm checkValuesForm;
         Calculations calculations = new Calculations();
         private int activeForm = 0;
         private int epochCount = 0;
         private int needMarksCount;
         private int blockIndex = 0;
+        private int marker = 0;
+        private int a = 0;
         private List<List<String>> marksByBlocks = new List<List<String>>();
         public MainForm()
         {
@@ -37,14 +41,25 @@ namespace CourseWorkRebuild2
             lists.Add(checkValuesForm.GetListBox4());
             lists.Add(checkValuesForm.GetListBox5());
             lists.Add(checkValuesForm.GetListBox6());
+
+            listsForSecondLevel.Add(checkValuesForm.GetListBox7());
+            listsForSecondLevel.Add(checkValuesForm.GetListBox8());
+            listsForSecondLevel.Add(checkValuesForm.GetListBox9());
+            listsForSecondLevel.Add(checkValuesForm.GetListBox10());
+            listsForSecondLevel.Add(checkValuesForm.GetListBox11());
+            listsForSecondLevel.Add(checkValuesForm.GetListBox12());
         }
 
         private void initEpochCount()
         {
-            if (epochCount == 0)
+            if (openForms.Count > 0)
             {
-                epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value)+1;
+                if (epochCount == 0)
+                {
+                    epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
+                }
             }
+            
         }
 
         private void reDrawMainForm()
@@ -73,8 +88,9 @@ namespace CourseWorkRebuild2
                 //Тут получаем значения из расчетов
                 lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
                 //А тут заполняем табличку
-                firstLevelOfDecompositionTable = decomposition.DrawTable(firstLevelOfDecompositionTable, lists, epochCount, elevatorTable);
+                firstLevelOfDecompositionTable = decomposition.FillTable(firstLevelOfDecompositionTable, lists, elevatorTable);
             }
+            a = 1;
         }
 
         private bool checkSortedMarks(int needMarksCount)
@@ -88,7 +104,16 @@ namespace CourseWorkRebuild2
 
         private void secondLevel_Enter(object sender, EventArgs e)
         {
-            secondLevelOfDecompositionTable.Hide();
+            if (marker == 0)
+            {
+                reSortMarks.Hide();
+                chooseBlock.Hide();
+                label7.Hide();
+                secondLevelOfDecompositionTable.Hide();
+            }
+            marker = 1;
+            sortedMarks.Items.Clear();
+            marksBox.Items.Clear();
             int startMarksCount = Convert.ToInt32(values[4]);
             while (startMarksCount % Convert.ToInt32(values[5]) != 0)
             {
@@ -113,11 +138,38 @@ namespace CourseWorkRebuild2
             {
                 objectDiagram.Image = null;
             }
-
+            a = 2;
         }
 
+        private void reSortMarks_Click(object sender, EventArgs e)
+        {
+            secondLevelOfDecompositionTable.Rows.Clear();
+            secondLevelOfDecompositionTable.Columns.Clear();
+            marksBox.Items.Clear();
+            sortedMarks.Items.Clear();
+            foreach (List<String> list in marksByBlocks)
+            {
+                list.Clear();
+            }
+            chooseBlock.Items.Clear();
+            marksBox.Show();
+            sortedMarks.Show();
+            label5.Show();
+            label6.Show();
+            label4.Show();
+            addMarkToBlock.Show();
+            removeMarkFromBlock.Show();
+            objectDiagram.Show();
+            reSortMarks.Hide();
+            chooseBlock.Hide();
+            label7.Hide();
+            secondLevelOfDecompositionTable.Hide();
+            blockIndex = 0;
+            secondLevel_Enter(sender, e);
+        }
         private void addMarkToBlock_Click(object sender, EventArgs e)
         {
+
             if (marksBox.Items.Count > 0)
             {
                 
@@ -138,16 +190,30 @@ namespace CourseWorkRebuild2
                 {
                     marksBox.Hide();
                     sortedMarks.Hide();
+                    label7.Show();
                     label5.Hide(); 
                     label6.Hide();
                     label4.Hide();
                     addMarkToBlock.Hide();
                     removeMarkFromBlock.Hide();
                     objectDiagram.Hide();
+                    chooseBlock.Show();
                     secondLevelOfDecompositionTable.Show();
+                    reSortMarks.Show();
+                    for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                    {
+                        chooseBlock.Items.Add(i);
+                    }
+
+                    decomposition.SecondLevel(elevatorTable, values, listsForSecondLevel, marksByBlocks, chooseBlock);
                 }
             }
             
+        }
+        private void chooseBlock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listsForSecondLevel = decomposition.SecondLevel(elevatorTable, values, lists, marksByBlocks, chooseBlock);
+            decomposition.FillTable(secondLevelOfDecompositionTable, listsForSecondLevel, elevatorTable);
         }
 
         private void removeMarkFromBlock_Click(object sender, EventArgs e)
@@ -238,6 +304,7 @@ namespace CourseWorkRebuild2
                 elevatorTable.Columns.Clear();
                 disableButtonsForTable();
             }
+
         }
 
         private void addNewRow_Click(object sender, EventArgs e)
@@ -319,6 +386,7 @@ namespace CourseWorkRebuild2
                 values[value] = "";
             }
             decomposition.ClearTable(firstLevelOfDecompositionTable);
+            decomposition.ClearTable(secondLevelOfDecompositionTable);
             activeForm = 0;
             reDrawMainForm();
         }
@@ -505,8 +573,18 @@ namespace CourseWorkRebuild2
 
         private void chartButton_Click(object sender, EventArgs e)
         {
-            ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values);
-            chartForm.Show();
+            if (a == 1)
+            {
+                ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values, a);
+                chartForm.Show();
+            }
+            else if (a == 2)
+            {
+                ChartForm chartForm = new ChartForm(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
+                chartForm.Show();
+            }
+            
+            
         }
 
         private void checkValues_Click(object sender, EventArgs e)
@@ -528,6 +606,9 @@ namespace CourseWorkRebuild2
             this.saveCopyButton.Enabled = true;
             this.saveButton.Enabled = true;
             this.deleteSelectedRowsButton.Enabled = true;
+            this.tabControl.Enabled = true;
+            this.checkValues.Enabled = true;
+            this.chartButton.Enabled = true;
         }
 
         private void disableButtonsForTable()
@@ -539,6 +620,9 @@ namespace CourseWorkRebuild2
             this.chooseEpochToDelete.Enabled = false;
             this.deleteEpochButton.Enabled = false;
             this.deleteSelectedRowsButton.Enabled = false;
+            this.tabControl.Enabled = false;
+            this.chartButton.Enabled = false;
+            this.checkValues.Enabled = false;
         }
 
         private void disableStartButtons()
@@ -567,6 +651,7 @@ namespace CourseWorkRebuild2
         {
             this.Close();
         }
+
 
     }
 }

@@ -46,5 +46,29 @@ namespace CourseWorkRebuild2
         {
             return listBox6;
         }
+        public ListBox GetListBox7()
+        {
+            return listBox7;
+        }
+        public ListBox GetListBox8()
+        {
+            return listBox8;
+        }
+        public ListBox GetListBox9()
+        {
+            return listBox9;
+        }
+        public ListBox GetListBox10()
+        {
+            return listBox10;
+        }
+        public ListBox GetListBox11()
+        {
+            return listBox11;
+        }
+        public ListBox GetListBox12()
+        {
+            return listBox12;
+        }
     }
 }

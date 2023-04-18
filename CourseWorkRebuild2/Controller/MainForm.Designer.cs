@@ -88,6 +88,8 @@
             this.firstLevelDecompositionTable = new System.Windows.Forms.TabPage();
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.secondLevel = new System.Windows.Forms.TabPage();
+            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
             this.removeMarkFromBlock = new System.Windows.Forms.Button();
             this.addMarkToBlock = new System.Windows.Forms.Button();
             this.objectDiagram = new System.Windows.Forms.PictureBox();
@@ -95,8 +97,9 @@
             this.sortedMarks = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.marksBox = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
+            this.chooseBlock = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.reSortMarks = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -105,8 +108,8 @@
             this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
             this.secondLevel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -358,7 +361,7 @@
             // acceptNewBlocksCount
             // 
             this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
-            this.acceptNewBlocksCount.Size = new System.Drawing.Size(224, 26);
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(174, 26);
             this.acceptNewBlocksCount.Text = "Применить";
             this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
             // 
@@ -393,14 +396,14 @@
             // chartButton
             // 
             this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(161, 26);
+            this.chartButton.Size = new System.Drawing.Size(224, 26);
             this.chartButton.Text = "График";
             this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
             // checkValues
             // 
             this.checkValues.Name = "checkValues";
-            this.checkValues.Size = new System.Drawing.Size(161, 26);
+            this.checkValues.Size = new System.Drawing.Size(224, 26);
             this.checkValues.Text = "Проверка";
             this.checkValues.Click += new System.EventHandler(this.checkValues_Click);
             // 
@@ -610,7 +613,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 317);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -627,6 +630,9 @@
             // 
             // secondLevel
             // 
+            this.secondLevel.Controls.Add(this.reSortMarks);
+            this.secondLevel.Controls.Add(this.label7);
+            this.secondLevel.Controls.Add(this.chooseBlock);
             this.secondLevel.Controls.Add(this.secondLevelOfDecompositionTable);
             this.secondLevel.Controls.Add(this.label6);
             this.secondLevel.Controls.Add(this.removeMarkFromBlock);
@@ -644,6 +650,23 @@
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
             this.secondLevel.Enter += new System.EventHandler(this.secondLevel_Enter);
+            // 
+            // secondLevelOfDecompositionTable
+            // 
+            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 26);
+            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
+            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(609, 285);
+            this.secondLevelOfDecompositionTable.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(307, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 15);
+            this.label6.TabIndex = 7;
             // 
             // removeMarkFromBlock
             // 
@@ -705,22 +728,33 @@
             this.marksBox.Size = new System.Drawing.Size(115, 277);
             this.marksBox.TabIndex = 0;
             // 
-            // label6
+            // chooseBlock
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(307, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 15);
-            this.label6.TabIndex = 7;
+            this.chooseBlock.FormattingEnabled = true;
+            this.chooseBlock.Location = new System.Drawing.Point(113, 3);
+            this.chooseBlock.Name = "chooseBlock";
+            this.chooseBlock.Size = new System.Drawing.Size(121, 21);
+            this.chooseBlock.TabIndex = 9;
+            this.chooseBlock.SelectedIndexChanged += new System.EventHandler(this.chooseBlock_SelectedIndexChanged);
             // 
-            // secondLevelOfDecompositionTable
+            // label7
             // 
-            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 26);
-            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
-            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(609, 285);
-            this.secondLevelOfDecompositionTable.TabIndex = 8;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Выберите блок:";
+            // 
+            // reSortMarks
+            // 
+            this.reSortMarks.Location = new System.Drawing.Point(313, 1);
+            this.reSortMarks.Name = "reSortMarks";
+            this.reSortMarks.Size = new System.Drawing.Size(302, 23);
+            this.reSortMarks.TabIndex = 11;
+            this.reSortMarks.Text = "Перераспределить марки";
+            this.reSortMarks.UseVisualStyleBackColor = true;
+            this.reSortMarks.Click += new System.EventHandler(this.reSortMarks_Click);
             // 
             // MainForm
             // 
@@ -744,8 +778,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
             this.secondLevel.ResumeLayout(false);
             this.secondLevel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -821,6 +855,9 @@
         private System.Windows.Forms.ListBox marksBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView secondLevelOfDecompositionTable;
+        private System.Windows.Forms.ComboBox chooseBlock;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button reSortMarks;
     }
 }
 

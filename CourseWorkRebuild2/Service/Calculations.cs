@@ -10,6 +10,54 @@ namespace CourseWorkRebuild2
     internal class Calculations
     {
 
+        public DataGridView calculateTopLineToSecondLevel(DataGridView elevatorTable, List<String> marks, Double T)
+        {
+            DataGridView TopLineTable = new DataGridView();
+            for (int i = 0; i < marks.Count; i++)
+            {
+                TopLineTable.Columns.Add(new DataGridViewTextBoxColumn());
+                TopLineTable.Columns[i].Name = marks[i];
+            }
+
+            for (int i = 0; i < elevatorTable.Rows.Count; i++)
+            {
+                TopLineTable.Rows.Add();
+                foreach (DataGridViewColumn col in elevatorTable.Columns)
+                {
+                    if (marks.Contains(col.Name))
+                    {
+                        TopLineTable.Rows[i].Cells[col.Name].Value = Convert.ToDouble(elevatorTable.Rows[i].Cells[col.Name].Value) + T;
+                        
+                    }
+                }
+            }
+            return TopLineTable;
+        }
+
+        public DataGridView calculateBottomLineToSecondLevel(DataGridView elevatorTable,List<String> marks, Double T)
+        {
+            DataGridView bottomLineTable = new DataGridView();
+            for (int i = 0; i < marks.Count; i++)
+            {
+                bottomLineTable.Columns.Add(new DataGridViewTextBoxColumn());
+                bottomLineTable.Columns[i].Name = marks[i];
+            }
+
+            for (int i = 0; i < elevatorTable.Rows.Count; i++)
+            {
+                
+                bottomLineTable.Rows.Add();
+                foreach (DataGridViewColumn col in elevatorTable.Columns)
+                {
+                    if (marks.Contains(col.Name))
+                    {
+                        bottomLineTable.Rows[i].Cells[col.Name].Value = Convert.ToDouble(elevatorTable.Rows[i].Cells[col.Name].Value) - T;
+                        
+                    }   
+                }
+            }
+            return bottomLineTable;
+        }
         public DataGridView AddNewValuesInRow(DataGridView elevatorTable, Repository repository, int epochCount)
         {
             Double delta = 0;
@@ -42,6 +90,71 @@ namespace CourseWorkRebuild2
             return elevatorTable;
         }
 
+        public List<Double> calculateMValuesForSecondLevel(DataGridView elevatorTable, List<String> marks)
+        {
+            Double M = 0;
+
+            List<Double> values = new List<Double>();
+
+            List<Double> listOfMValues = new List<Double>();
+
+            for (int i = 0; i < elevatorTable.RowCount; i++)
+            {
+                foreach (DataGridViewColumn col in elevatorTable.Columns)
+                {
+                    if (marks.Contains(col.Name))
+                    {
+                        values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[col.Name].Value));
+                        
+                    }
+                    
+                }    
+                foreach (double c in values)
+                {
+                    M += (c * c);
+                }
+                listOfMValues.Add(Math.Sqrt(M));
+                M = 0;
+                values.Clear();
+
+            }
+            return listOfMValues;
+
+        }
+        public List<Double> calculateAValuesForSecondLevel(DataGridView elevatorTable, List<Double> listOfMValues, List<String> marks)
+        {
+            Double calculateAcos = 0;
+            Double calculateDegree = 0;
+            Double summPr = 0;
+            Double firstValue = 0;
+            Double secondValue = 0;
+            List<Double> listOfAlphaValues = new List<Double>();
+            listOfAlphaValues.Add(0);
+
+            for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
+            {
+                summPr = 0;
+                foreach (DataGridViewColumn col in elevatorTable.Columns)
+                {
+                    if (marks.Contains(col.Name))
+                    {
+                        firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[col.Name].Value);
+                        secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[col.Name].Value);
+                        summPr += firstValue * secondValue;
+                        
+                    }
+                }
+                summPr /= listOfMValues[0];
+                summPr /= listOfMValues[i + 1];
+                calculateAcos = Math.Acos(summPr);
+               // calculateDegree = 180 * calculateAcos / Math.PI;
+                listOfAlphaValues.Add(calculateAcos);
+
+            }
+            return listOfAlphaValues;
+
+        }
+
         public List<Double> calculateMValues(DataGridView elevatorTable)
         {
             Double M = 0;
@@ -52,9 +165,19 @@ namespace CourseWorkRebuild2
 
             for (int i = 0; i < elevatorTable.RowCount; i++)
             {
-                for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                if (elevatorTable.Columns[0].Name.Equals("Эпоха"))
                 {
-                    values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                    {
+                        values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < elevatorTable.ColumnCount; j++)
+                    {
+                        values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    }
                 }
                 foreach (double c in values)
                 {
@@ -79,9 +202,19 @@ namespace CourseWorkRebuild2
 
             for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
             {
-                for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                if (elevatorTable.Columns[0].Name.Equals("Эпоха"))
                 {
-                    values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                    {
+                        values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < elevatorTable.ColumnCount; j++)
+                    {
+                        values.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[j].Value));
+                    }
                 }
                 foreach (double c in values)
                 {
@@ -108,14 +241,27 @@ namespace CourseWorkRebuild2
             for (int i = 0; i < elevatorTable.Rows.Count - 2; i++)
             {
                 summPr = 0;
-                for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                if (elevatorTable.Columns[0].Name.Equals("Эпоха"))
                 {
-                    firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[j].Value);
-                    secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[j].Value);
-                    summPr += firstValue * secondValue;
+                    for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                    {
+                        firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[j].Value);
+                        secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[j].Value);
+                        summPr += firstValue * secondValue;
+                    }
                 }
+                else
+                {
+                    for (int j = 0; j < elevatorTable.ColumnCount; j++)
+                    {
+                        firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[j].Value);
+                        secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[j].Value);
+                        summPr += firstValue * secondValue;
+                    }
+                }
+                
                 summPr /= listOfMValues[0];
-                summPr /= listOfMValues[i + 1];
+                summPr /= listOfMValues[i+1];
                 calculateAcos = Math.Acos(summPr);
                 //calculateDegree = 180 * calculateAcos / Math.PI;
                 listOfAlphaValues.Add(calculateAcos);
@@ -124,7 +270,6 @@ namespace CourseWorkRebuild2
             return listOfAlphaValues;
 
         }
-
 
         public List<Double> calculateAValues(DataGridView elevatorTable, List<Double> listOfMValues)
         {
@@ -136,20 +281,20 @@ namespace CourseWorkRebuild2
             List<Double> listOfAlphaValues = new List<Double>();
             listOfAlphaValues.Add(0);
 
-            for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
+            for (int i = 0; i < elevatorTable.Rows.Count - 3; i++)
             {
                 summPr = 0;
-                for (int j = 1; j < elevatorTable.ColumnCount; j++)
+                for (int j = 0; j < elevatorTable.ColumnCount; j++)
                 {
                     firstValue = Convert.ToDouble(elevatorTable.Rows[0].Cells[j].Value);
                     secondValue = Convert.ToDouble(elevatorTable.Rows[i + 1].Cells[j].Value);
                     summPr += firstValue * secondValue;
                 }
                 summPr /= listOfMValues[0];
-                summPr /= listOfMValues[i + 1];
+                summPr /= listOfMValues[i +1];
                 calculateAcos = Math.Acos(summPr);
-                calculateDegree = 180 * calculateAcos / Math.PI;
-                listOfAlphaValues.Add(calculateDegree);
+                //calculateDegree = 180 * calculateAcos / Math.PI;
+                listOfAlphaValues.Add(calculateAcos);
 
             }
             return listOfAlphaValues;

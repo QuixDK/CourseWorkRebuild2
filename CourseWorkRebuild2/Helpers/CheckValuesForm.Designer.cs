@@ -34,6 +34,12 @@
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
+            this.listBox7 = new System.Windows.Forms.ListBox();
+            this.listBox8 = new System.Windows.Forms.ListBox();
+            this.listBox9 = new System.Windows.Forms.ListBox();
+            this.listBox10 = new System.Windows.Forms.ListBox();
+            this.listBox11 = new System.Windows.Forms.ListBox();
+            this.listBox12 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -84,11 +90,65 @@
             this.listBox6.Size = new System.Drawing.Size(131, 303);
             this.listBox6.TabIndex = 5;
             // 
+            // listBox7
+            // 
+            this.listBox7.FormattingEnabled = true;
+            this.listBox7.Location = new System.Drawing.Point(13, 361);
+            this.listBox7.Name = "listBox7";
+            this.listBox7.Size = new System.Drawing.Size(131, 303);
+            this.listBox7.TabIndex = 11;
+            // 
+            // listBox8
+            // 
+            this.listBox8.FormattingEnabled = true;
+            this.listBox8.Location = new System.Drawing.Point(150, 361);
+            this.listBox8.Name = "listBox8";
+            this.listBox8.Size = new System.Drawing.Size(120, 303);
+            this.listBox8.TabIndex = 10;
+            // 
+            // listBox9
+            // 
+            this.listBox9.FormattingEnabled = true;
+            this.listBox9.Location = new System.Drawing.Point(283, 361);
+            this.listBox9.Name = "listBox9";
+            this.listBox9.Size = new System.Drawing.Size(133, 303);
+            this.listBox9.TabIndex = 9;
+            // 
+            // listBox10
+            // 
+            this.listBox10.FormattingEnabled = true;
+            this.listBox10.Location = new System.Drawing.Point(422, 361);
+            this.listBox10.Name = "listBox10";
+            this.listBox10.Size = new System.Drawing.Size(126, 303);
+            this.listBox10.TabIndex = 8;
+            // 
+            // listBox11
+            // 
+            this.listBox11.FormattingEnabled = true;
+            this.listBox11.Location = new System.Drawing.Point(554, 361);
+            this.listBox11.Name = "listBox11";
+            this.listBox11.Size = new System.Drawing.Size(127, 303);
+            this.listBox11.TabIndex = 7;
+            // 
+            // listBox12
+            // 
+            this.listBox12.FormattingEnabled = true;
+            this.listBox12.Location = new System.Drawing.Point(687, 361);
+            this.listBox12.Name = "listBox12";
+            this.listBox12.Size = new System.Drawing.Size(132, 303);
+            this.listBox12.TabIndex = 6;
+            // 
             // CheckValuesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1050, 685);
+            this.Controls.Add(this.listBox7);
+            this.Controls.Add(this.listBox8);
+            this.Controls.Add(this.listBox9);
+            this.Controls.Add(this.listBox10);
+            this.Controls.Add(this.listBox11);
+            this.Controls.Add(this.listBox12);
             this.Controls.Add(this.listBox6);
             this.Controls.Add(this.listBox5);
             this.Controls.Add(this.listBox4);
@@ -110,5 +170,11 @@
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.ListBox listBox7;
+        private System.Windows.Forms.ListBox listBox8;
+        private System.Windows.Forms.ListBox listBox9;
+        private System.Windows.Forms.ListBox listBox10;
+        private System.Windows.Forms.ListBox listBox11;
+        private System.Windows.Forms.ListBox listBox12;
     }
 }
