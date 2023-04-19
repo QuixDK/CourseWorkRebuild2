@@ -53,25 +53,9 @@ namespace CourseWorkRebuild2
             }
             List<String> mark = new List<String>();
             mark = marks[0];
-            if (chooseBlock.SelectedIndex == 0)
+            if (chooseBlock.SelectedIndex != null)
             {
-                mark = marks[0];
-            }
-            else if (chooseBlock.SelectedIndex == 1)
-            {
-                mark = marks[1];
-            }
-            else if (chooseBlock.SelectedIndex == 2)
-            {
-                mark = marks[2];
-            }
-            else if (chooseBlock.SelectedIndex == 3)
-            {
-                mark = marks[3];
-            }
-            else if (chooseBlock.SelectedIndex == 4)
-            {
-                mark = marks[4];
+                mark = marks[chooseBlock.SelectedIndex];
             }
             
             Double T = Convert.ToDouble(values[2]);
