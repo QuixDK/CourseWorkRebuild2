@@ -18,7 +18,7 @@ namespace CourseWorkRebuild2.Helpers
         private List<Double> AValues = new List<Double>();
         private List<Double> smoothMValues = new List<Double>();
         private List<Double> smoothAValues = new List<Double>();
-        private List<Int32> epochList = new List<Int32>();
+        private List<Double> epochList = new List<Double>();
         private DataGridView elevatorTable;
         private DataTable dataTable;
         private List<String> values;
@@ -47,22 +47,22 @@ namespace CourseWorkRebuild2.Helpers
         {
             String serieName = "Длина вектора М (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(expSmooth, serieName);
-            else chartDiagramService.AddExpSmoothLine(serieName, epochList, MValues, expSmooth);
+            else chartDiagramService.AddXYLine(serieName, epochList, MValues, expSmooth);
 
             String serieName2 = "Длина вектора М (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.removeLine(expSmooth, serieName2);
-            else chartDiagramService.AddExpSmoothLine(serieName2, epochList, smoothMValues, expSmooth);
+            else chartDiagramService.AddXYLine(serieName2, epochList, smoothMValues, expSmooth);
         }
 
         private void alphaChart_CheckedChanged(object sender, EventArgs e)
         {
             String serieName = "Угол а (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.removeLine(expSmooth, serieName);
-            else chartDiagramService.AddExpSmoothLine(serieName, epochList, AValues, expSmooth);
+            else chartDiagramService.AddXYLine(serieName, epochList, AValues, expSmooth);
 
             String serieName2 = "Угол а (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.removeLine(expSmooth, serieName2);
-            else chartDiagramService.AddExpSmoothLine(serieName2, epochList, smoothAValues, expSmooth);
+            else chartDiagramService.AddXYLine(serieName2, epochList, smoothAValues, expSmooth);
         }
 
         private void ExpSmoothChart_Load(object sender, EventArgs e)

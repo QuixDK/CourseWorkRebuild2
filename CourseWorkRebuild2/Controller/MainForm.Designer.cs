@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +106,14 @@
             this.marksBox = new System.Windows.Forms.ListBox();
             this.thirdLevel = new System.Windows.Forms.TabPage();
             this.fourthLevel = new System.Windows.Forms.TabPage();
+            this.displayedMarks = new System.Windows.Forms.ListBox();
+            this.availableMarks = new System.Windows.Forms.ListBox();
+            this.chooseBlockMessage = new System.Windows.Forms.Label();
+            this.chooseBlock2 = new System.Windows.Forms.ComboBox();
+            this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.defaultMessage = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -114,6 +124,8 @@
             this.secondLevel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
+            this.fourthLevel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -127,7 +139,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(629, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -472,7 +484,7 @@
             this.tabContol.Margin = new System.Windows.Forms.Padding(2);
             this.tabContol.Name = "tabContol";
             this.tabContol.SelectedIndex = 0;
-            this.tabContol.Size = new System.Drawing.Size(631, 345);
+            this.tabContol.Size = new System.Drawing.Size(629, 340);
             this.tabContol.TabIndex = 1;
             // 
             // dataPage
@@ -633,7 +645,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 317);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -665,7 +677,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.secondLevel.Size = new System.Drawing.Size(623, 317);
+            this.secondLevel.Size = new System.Drawing.Size(623, 319);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -702,7 +714,7 @@
             // secondLevelOfDecompositionTable
             // 
             this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 26);
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(8, 26);
             this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
             this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
             this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(609, 285);
@@ -775,6 +787,7 @@
             this.marksBox.Name = "marksBox";
             this.marksBox.Size = new System.Drawing.Size(115, 277);
             this.marksBox.TabIndex = 0;
+            this.marksBox.DoubleClick += new System.EventHandler(this.marksBox_DoubleClick);
             // 
             // thirdLevel
             // 
@@ -788,19 +801,103 @@
             // 
             // fourthLevel
             // 
+            this.fourthLevel.Controls.Add(this.label9);
+            this.fourthLevel.Controls.Add(this.label8);
+            this.fourthLevel.Controls.Add(this.displayedMarks);
+            this.fourthLevel.Controls.Add(this.availableMarks);
+            this.fourthLevel.Controls.Add(this.chooseBlockMessage);
+            this.fourthLevel.Controls.Add(this.chooseBlock2);
+            this.fourthLevel.Controls.Add(this.fourthLevelChart);
+            this.fourthLevel.Controls.Add(this.defaultMessage);
             this.fourthLevel.Location = new System.Drawing.Point(4, 22);
             this.fourthLevel.Name = "fourthLevel";
             this.fourthLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.fourthLevel.Size = new System.Drawing.Size(623, 319);
+            this.fourthLevel.Size = new System.Drawing.Size(621, 314);
             this.fourthLevel.TabIndex = 4;
             this.fourthLevel.Text = "Уровень 4";
             this.fourthLevel.UseVisualStyleBackColor = true;
+            this.fourthLevel.Enter += new System.EventHandler(this.fourthLevel_Enter);
+            // 
+            // displayedMarks
+            // 
+            this.displayedMarks.FormattingEnabled = true;
+            this.displayedMarks.Location = new System.Drawing.Point(456, 189);
+            this.displayedMarks.Name = "displayedMarks";
+            this.displayedMarks.Size = new System.Drawing.Size(161, 121);
+            this.displayedMarks.TabIndex = 15;
+            this.displayedMarks.DoubleClick += new System.EventHandler(this.displayedMarks_DoubleClick);
+            // 
+            // availableMarks
+            // 
+            this.availableMarks.FormattingEnabled = true;
+            this.availableMarks.Location = new System.Drawing.Point(456, 50);
+            this.availableMarks.Name = "availableMarks";
+            this.availableMarks.Size = new System.Drawing.Size(159, 108);
+            this.availableMarks.TabIndex = 14;
+            this.availableMarks.DoubleClick += new System.EventHandler(this.availableMarks_DoubleClick);
+            // 
+            // chooseBlockMessage
+            // 
+            this.chooseBlockMessage.AutoSize = true;
+            this.chooseBlockMessage.Location = new System.Drawing.Point(6, 7);
+            this.chooseBlockMessage.Name = "chooseBlockMessage";
+            this.chooseBlockMessage.Size = new System.Drawing.Size(99, 15);
+            this.chooseBlockMessage.TabIndex = 12;
+            this.chooseBlockMessage.Text = "Выберите блок:";
+            // 
+            // chooseBlock2
+            // 
+            this.chooseBlock2.FormattingEnabled = true;
+            this.chooseBlock2.Location = new System.Drawing.Point(111, 4);
+            this.chooseBlock2.Name = "chooseBlock2";
+            this.chooseBlock2.Size = new System.Drawing.Size(121, 21);
+            this.chooseBlock2.TabIndex = 11;
+            this.chooseBlock2.SelectedIndexChanged += new System.EventHandler(this.chooseBlock2_SelectedIndexChanged);
+            // 
+            // fourthLevelChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.fourthLevelChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.fourthLevelChart.Legends.Add(legend1);
+            this.fourthLevelChart.Location = new System.Drawing.Point(6, 32);
+            this.fourthLevelChart.Name = "fourthLevelChart";
+            this.fourthLevelChart.Size = new System.Drawing.Size(441, 278);
+            this.fourthLevelChart.TabIndex = 0;
+            this.fourthLevelChart.Text = "chart1";
+            // 
+            // defaultMessage
+            // 
+            this.defaultMessage.AutoSize = true;
+            this.defaultMessage.Location = new System.Drawing.Point(162, 4);
+            this.defaultMessage.Name = "defaultMessage";
+            this.defaultMessage.Size = new System.Drawing.Size(288, 15);
+            this.defaultMessage.TabIndex = 13;
+            this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(456, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Доступные марки";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(453, 171);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 15);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Отображенные марки";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(631, 373);
+            this.ClientSize = new System.Drawing.Size(629, 368);
             this.Controls.Add(this.tabContol);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -820,6 +917,9 @@
             this.secondLevel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
+            this.fourthLevel.ResumeLayout(false);
+            this.fourthLevel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -902,6 +1002,14 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.TabPage thirdLevel;
         private System.Windows.Forms.TabPage fourthLevel;
+        private System.Windows.Forms.Label chooseBlockMessage;
+        private System.Windows.Forms.ComboBox chooseBlock2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart fourthLevelChart;
+        private System.Windows.Forms.Label defaultMessage;
+        private System.Windows.Forms.ListBox displayedMarks;
+        private System.Windows.Forms.ListBox availableMarks;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

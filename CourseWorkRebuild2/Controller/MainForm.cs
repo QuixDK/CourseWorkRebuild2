@@ -176,40 +176,45 @@ namespace CourseWorkRebuild2
                 
                 sortedMarks.Items.Add(marksBox.Items[0]);
                 marksBox.Items.Remove(marksBox.Items[0]);
-                if (checkSortedMarks(needMarksCount))
-                {
-                    marksByBlocks.Add(new List<String>());
-                    foreach (String mark in sortedMarks.Items)
-                    {
-                        marksByBlocks[blockIndex].Add(mark);
-                    }
-                    blockIndex++;
-                    sortedMarks.Items.Clear();
-                    label5.Text = "Блок " + blockIndex;
-                }
-                if (blockIndex == Convert.ToInt32(values[5]))
-                {
-                    marksBox.Hide();
-                    sortedMarks.Hide();
-                    label7.Show();
-                    label5.Hide(); 
-                    label6.Hide();
-                    label4.Hide();
-                    addMarkToBlock.Hide();
-                    removeMarkFromBlock.Hide();
-                    objectDiagram.Hide();
-                    chooseBlock.Show();
-                    secondLevelOfDecompositionTable.Show();
-                    reSortMarks.Show();
-                    for (int i = 0; i < Convert.ToInt32(values[5]); i++)
-                    {
-                        chooseBlock.Items.Add(i);
-                    }
-
-                    decomposition.SecondLevel(elevatorTable, values, listsForSecondLevel, marksByBlocks, chooseBlock);
-                }
+                sortMarks();
             }
             
+        }
+
+        private void sortMarks()
+        {
+            if (checkSortedMarks(needMarksCount))
+            {
+                marksByBlocks.Add(new List<String>());
+                foreach (String mark in sortedMarks.Items)
+                {
+                    marksByBlocks[blockIndex].Add(mark);
+                }
+                blockIndex++;
+                sortedMarks.Items.Clear();
+                label5.Text = "Блок " + blockIndex;
+            }
+            if (blockIndex == Convert.ToInt32(values[5]))
+            {
+                marksBox.Hide();
+                sortedMarks.Hide();
+                label7.Show();
+                label5.Hide();
+                label6.Hide();
+                label4.Hide();
+                addMarkToBlock.Hide();
+                removeMarkFromBlock.Hide();
+                objectDiagram.Hide();
+                chooseBlock.Show();
+                secondLevelOfDecompositionTable.Show();
+                reSortMarks.Show();
+                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                {
+                    chooseBlock.Items.Add(i);
+                }
+
+                decomposition.SecondLevel(elevatorTable, values, listsForSecondLevel, marksByBlocks, chooseBlock);
+            }
         }
         private void chooseBlock_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -669,5 +674,113 @@ namespace CourseWorkRebuild2
             this.Close();
         }
 
+        private void marksBox_DoubleClick(object sender, EventArgs e)
+        {
+            if (marksBox.SelectedItem != null)
+            {
+                sortedMarks.Items.Add(marksBox.SelectedItem);
+                marksBox.Items.Remove(marksBox.SelectedItem);
+                sortMarks();
+            }
+            
+        }
+
+        private void fourthLevel_Enter(object sender, EventArgs e)
+        {
+            if (marksByBlocks.Count > 0)
+            {
+                defaultMessage.Hide();
+                fourthLevelChart.Show();
+                chooseBlock2.Show();
+                chooseBlockMessage.Show();
+                availableMarks.Show();
+                displayedMarks.Show();
+                label8.Show();
+                label9.Show();
+                availableMarks.Items.Clear();
+                displayedMarks.Items.Clear();
+                chooseBlock2.Items.Clear();
+                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                {
+                    chooseBlock2.Items.Add(i);
+                }
+                
+            }
+            else
+            {
+                defaultMessage.Show();
+                fourthLevelChart.Hide();
+                chooseBlock2.Hide();
+                chooseBlockMessage.Hide();
+                availableMarks.Hide();
+                displayedMarks.Hide();
+                label8.Hide();
+                label9.Hide();
+            }
+        }
+
+        private void chooseBlock2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            availableMarks.Items.Clear();
+            displayedMarks.Items.Clear();
+            foreach (String mark in marksByBlocks[chooseBlock2.SelectedIndex])
+            {
+                availableMarks.Items.Add(mark);
+                
+            }
+            fourthLevelChart.Series.Clear();
+        }
+
+        private void availableMarks_DoubleClick(object sender, EventArgs e)
+        {
+            if (availableMarks.SelectedItem != null)
+            {
+                displayedMarks.Items.Add(availableMarks.SelectedItem);
+                fourthLevelChartAdd(availableMarks.SelectedItem.ToString());
+                availableMarks.Items.Remove(availableMarks.SelectedItem);
+            }
+            
+        }
+
+        private void displayedMarks_DoubleClick(object sender, EventArgs e)
+        {
+            if (displayedMarks.SelectedItem != null)
+            {
+                availableMarks.Items.Add(displayedMarks.SelectedItem);
+                fourthLevelChartRemove(displayedMarks.SelectedItem.ToString());
+                displayedMarks.Items.Remove(displayedMarks.SelectedItem);
+            }
+            
+        }
+
+        private void fourthLevelChartAdd(String mark)
+        {
+            ChartDiagramService chartDiagramService = new ChartDiagramService();
+            List<Double> listOfEpoch = new List<Double>();
+            List<Double> listOfMarkValues = new List<Double>();
+            List<Double> listOfSmoothValues = new List<Double>();
+            for (int i = 0; i < elevatorTable.Rows.Count-1; i++)
+            {
+                listOfEpoch.Add(Convert.ToInt32(elevatorTable.Rows[i].Cells[0].Value));
+            }
+            for (int i = 0; i < elevatorTable.Rows.Count -1; i++)
+            {
+                listOfMarkValues.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[mark].Value));
+            }
+            listOfSmoothValues = calculations.getForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
+            chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
+            String forecastMark = "Прогноз " + mark; 
+            chartDiagramService.addforecastFunction(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
+
+        }
+
+        private void fourthLevelChartRemove(String mark)
+        {
+            ChartDiagramService chartDiagramService = new ChartDiagramService();
+            String forecastMark = "Прогноз " + mark;
+            chartDiagramService.removeLine(fourthLevelChart,mark);
+            chartDiagramService.removeLine(fourthLevelChart, forecastMark);
+        }
     }
 }
