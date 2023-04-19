@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -14,6 +15,35 @@ namespace CourseWorkRebuild2
         private List<Double> forecastTopLineMValue = new List<Double>();
         private List<Double> forecastBottomLineMValue = new List<Double>();
         private List<Double> forecastMValue = new List<Double>();
+        Calculations calculations = new Calculations();
+
+        public void FourthLevelChartAddLine(String mark, DataGridView elevatorTable, List<String> values, Chart fourthLevelChart)
+        {
+            ChartDiagramService chartDiagramService = new ChartDiagramService();
+            List<Double> listOfEpoch = new List<Double>();
+            List<Double> listOfMarkValues = new List<Double>();
+            List<Double> listOfSmoothValues = new List<Double>();
+            for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
+            {
+                listOfEpoch.Add(Convert.ToInt32(elevatorTable.Rows[i].Cells[0].Value));
+            }
+            for (int i = 0; i < elevatorTable.Rows.Count - 1; i++)
+            {
+                listOfMarkValues.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[mark].Value));
+            }
+            listOfSmoothValues = calculations.GetForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
+            chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
+            String forecastMark = "Прогноз " + mark;
+            chartDiagramService.AddForecastValue(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
+
+        }
+        public void FourthLevelChartRemoveLine(String mark, Chart fourthLevelChart)
+        {
+            ChartDiagramService chartDiagramService = new ChartDiagramService();
+            String forecastMark = "Прогноз " + mark;
+            chartDiagramService.RemoveLine(fourthLevelChart, mark);
+            chartDiagramService.RemoveLine(fourthLevelChart, forecastMark);
+        }
 
         public List<ListBox> SecondLevel(DataGridView elevatorTable, List<String> values, List<ListBox> lists, List<List<String>> marks, ComboBox chooseBlock)
         {
@@ -43,7 +73,7 @@ namespace CourseWorkRebuild2
             {
                 mark = marks[4];
             }
-            Calculations calculations = new Calculations();
+            
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
             DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "-");
@@ -64,7 +94,6 @@ namespace CourseWorkRebuild2
             {
                 listBox.Items.Clear();
             }
-            Calculations calculations = new Calculations();
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
             DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "-");

@@ -31,7 +31,7 @@ public class ChartDiagramService
         return chart;
     }
 
-    public Chart addLine(List<Double> listOfMValues, List<Double> listOfAValues, Chart functionDiagrams, String serieName)
+    public Chart AddMALine(List<Double> listOfMValues, List<Double> listOfAValues, Chart functionDiagrams, String serieName)
     {
         functionDiagrams.ChartAreas[0].AxisX.Title = "M";
         functionDiagrams.ChartAreas[0].AxisY.Title = "Alpha";
@@ -51,7 +51,7 @@ public class ChartDiagramService
         return functionDiagrams;
     }
 
-    public Chart addforecastFunction(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart functionDiagrams)
+    public Chart AddForecastValue(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart functionDiagrams)
     {
 
         functionDiagrams.Series.Add(serieName);
@@ -63,7 +63,7 @@ public class ChartDiagramService
 
         return functionDiagrams;
     }
-    public Chart removeLine(Chart functionDiagrams, String serieName)
+    public Chart RemoveLine(Chart functionDiagrams, String serieName)
     {
         functionDiagrams.Series[serieName].Points.Clear();
         functionDiagrams.Series.Remove(functionDiagrams.Series[serieName]);

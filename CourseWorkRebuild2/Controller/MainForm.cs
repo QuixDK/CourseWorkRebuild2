@@ -737,7 +737,7 @@ namespace CourseWorkRebuild2
             if (availableMarks.SelectedItem != null)
             {
                 displayedMarks.Items.Add(availableMarks.SelectedItem);
-                fourthLevelChartAdd(availableMarks.SelectedItem.ToString());
+                decomposition.FourthLevelChartAddLine(availableMarks.SelectedItem.ToString(), elevatorTable, values, fourthLevelChart);
                 availableMarks.Items.Remove(availableMarks.SelectedItem);
             }
             
@@ -748,39 +748,11 @@ namespace CourseWorkRebuild2
             if (displayedMarks.SelectedItem != null)
             {
                 availableMarks.Items.Add(displayedMarks.SelectedItem);
-                fourthLevelChartRemove(displayedMarks.SelectedItem.ToString());
+                decomposition.FourthLevelChartRemoveLine(displayedMarks.SelectedItem.ToString(), fourthLevelChart);
                 displayedMarks.Items.Remove(displayedMarks.SelectedItem);
             }
             
         }
 
-        private void fourthLevelChartAdd(String mark)
-        {
-            ChartDiagramService chartDiagramService = new ChartDiagramService();
-            List<Double> listOfEpoch = new List<Double>();
-            List<Double> listOfMarkValues = new List<Double>();
-            List<Double> listOfSmoothValues = new List<Double>();
-            for (int i = 0; i < elevatorTable.Rows.Count-1; i++)
-            {
-                listOfEpoch.Add(Convert.ToInt32(elevatorTable.Rows[i].Cells[0].Value));
-            }
-            for (int i = 0; i < elevatorTable.Rows.Count -1; i++)
-            {
-                listOfMarkValues.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[mark].Value));
-            }
-            listOfSmoothValues = calculations.GetForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
-            chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
-            String forecastMark = "Прогноз " + mark; 
-            chartDiagramService.addforecastFunction(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
-
-        }
-
-        private void fourthLevelChartRemove(String mark)
-        {
-            ChartDiagramService chartDiagramService = new ChartDiagramService();
-            String forecastMark = "Прогноз " + mark;
-            chartDiagramService.removeLine(fourthLevelChart,mark);
-            chartDiagramService.removeLine(fourthLevelChart, forecastMark);
-        }
     }
 }
