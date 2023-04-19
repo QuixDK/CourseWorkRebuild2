@@ -768,7 +768,7 @@ namespace CourseWorkRebuild2
             {
                 listOfMarkValues.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[mark].Value));
             }
-            listOfSmoothValues = calculations.getForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
+            listOfSmoothValues = calculations.GetForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
             chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
             String forecastMark = "Прогноз " + mark; 
             chartDiagramService.addforecastFunction(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);

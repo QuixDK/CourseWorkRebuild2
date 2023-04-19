@@ -142,7 +142,7 @@
             // 
             this.changeAValue.Name = "changeAValue";
             this.changeAValue.Size = new System.Drawing.Size(313, 26);
-            this.changeAValue.Text = "Изменить значение a";
+            this.changeAValue.Text = "Изменить значение decompositionLevel";
             // 
             // tabControl1
             // 

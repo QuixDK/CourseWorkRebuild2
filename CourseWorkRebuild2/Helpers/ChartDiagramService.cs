@@ -58,7 +58,6 @@ public class ChartDiagramService
         functionDiagrams.Series[serieName].ChartType = SeriesChartType.Point;
         functionDiagrams.Series[serieName].MarkerStyle = MarkerStyle.Circle;
         functionDiagrams.Series[serieName].MarkerSize = 10;
-        functionDiagrams.Series[serieName].Color = functionDiagrams.Series[serieName.Split(' ')[1]].Color;
         functionDiagrams.Series[serieName].Points.AddXY(listOfXValues.Last(), listOfYValues.Last());
         functionDiagrams.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
 

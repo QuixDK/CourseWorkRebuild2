@@ -82,23 +82,19 @@ namespace CourseWorkRebuild2.Helpers
             {
                 Double T = Convert.ToDouble(values[2]);
                 Double Alpha = Convert.ToDouble(values[3]);
-                MValues = calculations.calculateMValues(elevatorTable);
-                AValues = calculations.calculateAValuesForChart(elevatorTable, MValues);
-                MValues.Remove(MValues.Last());
-                AValues.Remove(AValues.Last());
-                smoothMValues = calculations.getForecastValue(MValues, Alpha);
-                smoothAValues = calculations.getForecastValue(AValues, Alpha);
+                MValues = calculations.CalculateMValues(elevatorTable);
+                AValues = calculations.CalculateAValues(elevatorTable, MValues);
+                smoothMValues = calculations.GetForecastValue(MValues, Alpha);
+                smoothAValues = calculations.GetForecastValue(AValues, Alpha);
             }
             else if (a == 2)
             {
                 Double T = Convert.ToDouble(values[2]);
                 Double Alpha = Convert.ToDouble(values[3]);
-                MValues = calculations.calculateMValuesForSecondLevel(elevatorTable, mark);
-                AValues = calculations.calculateAValuesForSecondLevel(elevatorTable, MValues, mark);
-                MValues.Remove(MValues.Last());
-                smoothMValues = calculations.getForecastValue(MValues, Alpha);
-                AValues.Remove(AValues.Last());
-                smoothAValues = calculations.getForecastValue(AValues, Alpha);
+                MValues = calculations.CalculateMValues(elevatorTable, mark);
+                AValues = calculations.CalculateAValues(elevatorTable, MValues, mark);
+                smoothMValues = calculations.GetForecastValue(MValues, Alpha);
+                smoothAValues = calculations.GetForecastValue(AValues, Alpha);
             }
         }
     }

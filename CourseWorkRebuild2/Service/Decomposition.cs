@@ -46,17 +46,14 @@ namespace CourseWorkRebuild2
             Calculations calculations = new Calculations();
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
-            DataGridView bottomLineTable = calculations.calculateBottomLineToSecondLevel(elevatorTable, mark, T);
-            DataGridView topLineTable = calculations.calculateTopLineToSecondLevel(elevatorTable, mark, T);
-            listOfBottomLineMValues = calculations.calculateLineMValues(bottomLineTable);
-            listOfBottomLineMValues.Remove(listOfBottomLineMValues.Last());
-            listOfTopLineMValues = calculations.calculateLineMValues(topLineTable);
-            listOfTopLineMValues.Remove(listOfTopLineMValues.Last());
-            forecastTopLineMValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
-            forecastBottomLineMValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
-            listOfMValues = calculations.calculateMValuesForSecondLevel(elevatorTable, mark);
-            listOfMValues.Remove(listOfMValues.Last());
-            forecastMValue = calculations.getForecastValue(listOfMValues, Alpha);
+            DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "-");
+            DataGridView topLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "+");
+            listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+            listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+            forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
+            forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+            listOfMValues = calculations.CalculateMValues(elevatorTable, mark);
+            forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
 
             return fillListBoxes(lists);
         }
@@ -70,15 +67,14 @@ namespace CourseWorkRebuild2
             Calculations calculations = new Calculations();
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
-            DataGridView bottomLineTable = calculations.calculateBottomLine(dataTable, T, elevatorTable);
-            DataGridView topLineTable = calculations.calculateTopLine(dataTable, T, elevatorTable);
-            listOfBottomLineMValues = calculations.calculateLineMValues(bottomLineTable);
-            listOfTopLineMValues = calculations.calculateLineMValues(topLineTable);
-            forecastTopLineMValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
-            forecastBottomLineMValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
-            listOfMValues = calculations.calculateMValues(elevatorTable);
-            listOfMValues.Remove(listOfMValues.Last());
-            forecastMValue = calculations.getForecastValue(listOfMValues, Alpha);
+            DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "-");
+            DataGridView topLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "+");
+            listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+            listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+            forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
+            forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+            listOfMValues = calculations.CalculateMValues(elevatorTable);
+            forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
 
             return fillListBoxes(lists);
         }

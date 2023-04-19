@@ -25,23 +25,23 @@ namespace CourseWorkRebuild2
         Calculations calculations = new Calculations();
         private DataTable dataTable;
         private List<String> values;
-        private int a = 0;
+        private int decompositionLevel = 0;
         private List<String> mark;
-        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a)
+        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int decompositionLevel)
         {
             InitializeComponent();
             this.elevatorTable = elevatorTable;
             this.dataTable = dataTable;
             this.values = values;
-            this.a = a;
+            this.decompositionLevel = decompositionLevel;
         }
-        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int a, List<String> mark)
+        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> values, int decompositionLevel, List<String> mark)
         {
             InitializeComponent();
             this.elevatorTable = elevatorTable;
             this.dataTable = dataTable;
             this.values = values;
-            this.a = a;
+            this.decompositionLevel = decompositionLevel;
             this.mark = mark;
         }
         private void forecastResponseFunctionSelectBox_CheckedChanged(object sender, EventArgs e)
@@ -89,49 +89,43 @@ namespace CourseWorkRebuild2
             {
                 return;
             }
-            if (a == 1)
+            if (decompositionLevel == 1)
             {
                 Double T = Convert.ToDouble(values[2]);
                 Double Alpha = Convert.ToDouble(values[3]);
-                DataGridView bottomLineTable = calculations.calculateBottomLine(dataTable, T, elevatorTable);
-                DataGridView topLineTable = calculations.calculateTopLine(dataTable, T, elevatorTable);
-                listOfBottomLineMValues = calculations.calculateLineMValues(bottomLineTable);
-                listOfBottomLineAValues = calculations.calculateLineAValues(bottomLineTable, listOfBottomLineMValues);
-                listOfTopLineMValues = calculations.calculateLineMValues(topLineTable);
-                listOfTopLineAValues = calculations.calculateLineAValues(topLineTable, listOfTopLineMValues);
-                forecastTopLineMValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
-                forecastBottomLineMValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
-                forecastTopLineAValue = calculations.getForecastValue(listOfTopLineAValues, Alpha);
-                forecastBottomLineAValue = calculations.getForecastValue(listOfBottomLineAValues, Alpha);
-                listOfMValues = calculations.calculateMValues(elevatorTable);
-                listOfAValues = calculations.calculateAValuesForChart(elevatorTable, listOfMValues);
-                listOfMValues.Remove(listOfMValues.Last());
-                listOfAValues.Remove(listOfAValues.Last());
-                forecastMValue = calculations.getForecastValue(listOfMValues, Alpha);
-                forecastAValue = calculations.getForecastValue(listOfAValues, Alpha);
+                DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "-");
+                DataGridView topLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "+");
+                listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+                listOfBottomLineAValues = calculations.CalculateAValues(bottomLineTable, listOfBottomLineMValues);
+                listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+                listOfTopLineAValues = calculations.CalculateAValues(topLineTable, listOfTopLineMValues);
+                forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
+                forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+                forecastTopLineAValue = calculations.GetForecastValue(listOfTopLineAValues, Alpha);
+                forecastBottomLineAValue = calculations.GetForecastValue(listOfBottomLineAValues, Alpha);
+                listOfMValues = calculations.CalculateMValues(elevatorTable);
+                listOfAValues = calculations.CalculateAValues(elevatorTable, listOfMValues);
+                forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
+                forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
             }
-            else if (a == 2)
+            else if (decompositionLevel == 2)
             {
                 Double T = Convert.ToDouble(values[2]);
                 Double Alpha = Convert.ToDouble(values[3]);
-                DataGridView bottomLineTable = calculations.calculateBottomLineToSecondLevel(elevatorTable, mark, T);
-                DataGridView topLineTable = calculations.calculateTopLineToSecondLevel(elevatorTable, mark, T);
-                listOfBottomLineMValues = calculations.calculateLineMValues(bottomLineTable);
-                listOfBottomLineMValues.Remove(listOfBottomLineMValues.Last());
-                listOfBottomLineAValues = calculations.calculateAValues(bottomLineTable, listOfBottomLineMValues);
-                listOfTopLineMValues = calculations.calculateLineMValues(topLineTable);
-                listOfTopLineMValues.Remove(listOfTopLineMValues.Last());
-                listOfTopLineAValues = calculations.calculateAValues(topLineTable, listOfTopLineMValues);
-                forecastTopLineMValue = calculations.getForecastValue(listOfTopLineMValues, Alpha);
-                forecastBottomLineMValue = calculations.getForecastValue(listOfBottomLineMValues, Alpha);
-                forecastTopLineAValue = calculations.getForecastValue(listOfTopLineAValues, Alpha);
-                forecastBottomLineAValue = calculations.getForecastValue(listOfBottomLineAValues, Alpha);
-                listOfMValues = calculations.calculateMValuesForSecondLevel(elevatorTable, mark);
-                listOfAValues = calculations.calculateAValuesForSecondLevel(elevatorTable, listOfMValues, mark);
-                listOfMValues.Remove(listOfMValues.Last());
-                forecastMValue = calculations.getForecastValue(listOfMValues, Alpha);
-                listOfAValues.Remove(listOfAValues.Last());
-                forecastAValue = calculations.getForecastValue(listOfAValues, Alpha);
+                DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "-");
+                DataGridView topLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "+");
+                listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+                listOfBottomLineAValues = calculations.CalculateAValues(bottomLineTable, listOfBottomLineMValues);
+                listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+                listOfTopLineAValues = calculations.CalculateAValues(topLineTable, listOfTopLineMValues);
+                forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
+                forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+                forecastTopLineAValue = calculations.GetForecastValue(listOfTopLineAValues, Alpha);
+                forecastBottomLineAValue = calculations.GetForecastValue(listOfBottomLineAValues, Alpha);
+                listOfMValues = calculations.CalculateMValues(elevatorTable, mark);
+                listOfAValues = calculations.CalculateAValues(elevatorTable, listOfMValues, mark);
+                forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
+                forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
             }
         }
     }

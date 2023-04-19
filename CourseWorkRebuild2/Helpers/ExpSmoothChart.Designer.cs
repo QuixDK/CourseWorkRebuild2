@@ -66,7 +66,7 @@
             this.alphaChart.Name = "alphaChart";
             this.alphaChart.Size = new System.Drawing.Size(74, 19);
             this.alphaChart.TabIndex = 2;
-            this.alphaChart.Text = "Угол (a)";
+            this.alphaChart.Text = "Угол (decompositionLevel)";
             this.alphaChart.UseVisualStyleBackColor = true;
             this.alphaChart.CheckedChanged += new System.EventHandler(this.alphaChart_CheckedChanged);
             // 
