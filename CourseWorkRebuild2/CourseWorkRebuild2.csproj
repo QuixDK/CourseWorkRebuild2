@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\UserInterface.cs" />
+    <Compile Include="Helpers\ChartUserSettings.cs" />
     <Compile Include="Helpers\ExpSmoothChart.cs">
       <SubType>Form</SubType>
     </Compile>

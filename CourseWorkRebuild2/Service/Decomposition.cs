@@ -53,7 +53,8 @@ namespace CourseWorkRebuild2
             }
             List<String> mark = new List<String>();
             mark = marks[0];
-            if (chooseBlock.SelectedIndex != null)
+
+            if (chooseBlock.SelectedItem != null)
             {
                 mark = marks[chooseBlock.SelectedIndex];
             }

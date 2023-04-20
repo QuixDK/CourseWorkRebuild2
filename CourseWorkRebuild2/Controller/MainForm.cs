@@ -29,7 +29,7 @@ namespace CourseWorkRebuild2
         private int needMarksCount;
         private int blockIndex = 0;
         private int marker = 0;
-        private int a = 0;
+        private int decompositionLevel = 0;
         private List<List<String>> marksByBlocks = new List<List<String>>();
         public MainForm()
         {
@@ -91,7 +91,7 @@ namespace CourseWorkRebuild2
                 //А тут заполняем табличку
                 firstLevelOfDecompositionTable = decomposition.FillTable(firstLevelOfDecompositionTable, lists, elevatorTable);
             }
-            a = 1;
+            decompositionLevel = 1;
         }
 
         private bool checkSortedMarks(int needMarksCount)
@@ -139,7 +139,7 @@ namespace CourseWorkRebuild2
             {
                 objectDiagram.Image = null;
             }
-            a = 2;
+            decompositionLevel = 2;
         }
 
         private void reSortMarks_Click(object sender, EventArgs e)
@@ -230,6 +230,75 @@ namespace CourseWorkRebuild2
                 sortedMarks.Items.Remove(sortedMarks.Items[0]);
             }
             
+        }
+        private void fourthLevel_Enter(object sender, EventArgs e)
+        {
+            if (marksByBlocks.Count > 0)
+            {
+                fourthLevelChart.Series.Clear();
+                defaultMessage.Hide();
+                fourthLevelChart.Show();
+                chooseBlock2.Show();
+                chooseBlockMessage.Show();
+                availableMarks.Show();
+                displayedMarks.Show();
+                label8.Show();
+                label9.Show();
+                availableMarks.Items.Clear();
+                displayedMarks.Items.Clear();
+                chooseBlock2.Items.Clear();
+                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                {
+                    chooseBlock2.Items.Add(i);
+                }
+
+            }
+            else
+            {
+                defaultMessage.Show();
+                fourthLevelChart.Hide();
+                chooseBlock2.Hide();
+                chooseBlockMessage.Hide();
+                availableMarks.Hide();
+                displayedMarks.Hide();
+                label8.Hide();
+                label9.Hide();
+            }
+        }
+
+        private void chooseBlock2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            availableMarks.Items.Clear();
+            displayedMarks.Items.Clear();
+            foreach (String mark in marksByBlocks[chooseBlock2.SelectedIndex])
+            {
+                availableMarks.Items.Add(mark);
+
+            }
+            fourthLevelChart.Series.Clear();
+        }
+
+        private void availableMarks_DoubleClick(object sender, EventArgs e)
+        {
+            if (availableMarks.SelectedItem != null)
+            {
+                displayedMarks.Items.Add(availableMarks.SelectedItem);
+                decomposition.FourthLevelChartAddLine(availableMarks.SelectedItem.ToString(), elevatorTable, values, fourthLevelChart);
+                availableMarks.Items.Remove(availableMarks.SelectedItem);
+            }
+
+        }
+
+        private void displayedMarks_DoubleClick(object sender, EventArgs e)
+        {
+            if (displayedMarks.SelectedItem != null)
+            {
+                availableMarks.Items.Add(displayedMarks.SelectedItem);
+                decomposition.FourthLevelChartRemoveLine(displayedMarks.SelectedItem.ToString(), fourthLevelChart);
+                displayedMarks.Items.Remove(displayedMarks.SelectedItem);
+            }
+
         }
 
         private void reDrawObjectPicture() 
@@ -579,28 +648,28 @@ namespace CourseWorkRebuild2
 
         private void expSmoothChartButton_Click(object sender, EventArgs e)
         {
-            if (a == 1)
+            if (decompositionLevel == 1)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, a);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, decompositionLevel);
                 chartForm.Show();
             }
-            else if (a == 2)
+            else if (decompositionLevel == 2)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
         }
 
         private void chartButton_Click(object sender, EventArgs e)
         {
-            if (a == 1)
+            if (decompositionLevel == 1)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, a);
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, decompositionLevel);
                 chartForm.Show();
             }
-            else if (a == 2)
+            else if (decompositionLevel == 2)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, a, marksByBlocks[chooseBlock.SelectedIndex]);
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
             
@@ -681,75 +750,6 @@ namespace CourseWorkRebuild2
                 sortedMarks.Items.Add(marksBox.SelectedItem);
                 marksBox.Items.Remove(marksBox.SelectedItem);
                 sortMarks();
-            }
-            
-        }
-
-        private void fourthLevel_Enter(object sender, EventArgs e)
-        {
-            if (marksByBlocks.Count > 0)
-            {
-                defaultMessage.Hide();
-                fourthLevelChart.Show();
-                chooseBlock2.Show();
-                chooseBlockMessage.Show();
-                availableMarks.Show();
-                displayedMarks.Show();
-                label8.Show();
-                label9.Show();
-                availableMarks.Items.Clear();
-                displayedMarks.Items.Clear();
-                chooseBlock2.Items.Clear();
-                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
-                {
-                    chooseBlock2.Items.Add(i);
-                }
-                
-            }
-            else
-            {
-                defaultMessage.Show();
-                fourthLevelChart.Hide();
-                chooseBlock2.Hide();
-                chooseBlockMessage.Hide();
-                availableMarks.Hide();
-                displayedMarks.Hide();
-                label8.Hide();
-                label9.Hide();
-            }
-        }
-
-        private void chooseBlock2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            availableMarks.Items.Clear();
-            displayedMarks.Items.Clear();
-            foreach (String mark in marksByBlocks[chooseBlock2.SelectedIndex])
-            {
-                availableMarks.Items.Add(mark);
-                
-            }
-            fourthLevelChart.Series.Clear();
-        }
-
-        private void availableMarks_DoubleClick(object sender, EventArgs e)
-        {
-            if (availableMarks.SelectedItem != null)
-            {
-                displayedMarks.Items.Add(availableMarks.SelectedItem);
-                decomposition.FourthLevelChartAddLine(availableMarks.SelectedItem.ToString(), elevatorTable, values, fourthLevelChart);
-                availableMarks.Items.Remove(availableMarks.SelectedItem);
-            }
-            
-        }
-
-        private void displayedMarks_DoubleClick(object sender, EventArgs e)
-        {
-            if (displayedMarks.SelectedItem != null)
-            {
-                availableMarks.Items.Add(displayedMarks.SelectedItem);
-                decomposition.FourthLevelChartRemoveLine(displayedMarks.SelectedItem.ToString(), fourthLevelChart);
-                displayedMarks.Items.Remove(displayedMarks.SelectedItem);
             }
             
         }
