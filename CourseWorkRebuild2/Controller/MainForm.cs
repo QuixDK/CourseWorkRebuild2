@@ -19,6 +19,7 @@ namespace CourseWorkRebuild2
         private Repository repository;
         private String oldObjectPicturePath = "";
         private String oldElevatorTablePath = "";
+        private String oldTxtFile = "";
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
         private List<ListBox> listsForSecondLevel = new List<ListBox>();
@@ -60,7 +61,7 @@ namespace CourseWorkRebuild2
                     epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
                 }
             }
-            
+
         }
 
         private void reDrawMainForm()
@@ -124,7 +125,8 @@ namespace CourseWorkRebuild2
             label4.Text = "Всего марок: " + values[4];
             label5.Text = "Блок " + blockIndex;
             label6.Text = "Количество структурных блоков: " + values[5];
-            if (Convert.ToInt32(values[4]) % 2 == 0) { 
+            if (Convert.ToInt32(values[4]) % 2 == 0)
+            {
             }
             for (int i = 1; i < elevatorTable.Columns.Count; i++)
             {
@@ -173,12 +175,12 @@ namespace CourseWorkRebuild2
 
             if (marksBox.Items.Count > 0)
             {
-                
+
                 sortedMarks.Items.Add(marksBox.Items[0]);
                 marksBox.Items.Remove(marksBox.Items[0]);
                 sortMarks();
             }
-            
+
         }
 
         private void sortMarks()
@@ -229,7 +231,7 @@ namespace CourseWorkRebuild2
                 marksBox.Items.Add(sortedMarks.Items[0]);
                 sortedMarks.Items.Remove(sortedMarks.Items[0]);
             }
-            
+
         }
         private void fourthLevel_Enter(object sender, EventArgs e)
         {
@@ -301,7 +303,7 @@ namespace CourseWorkRebuild2
 
         }
 
-        private void reDrawObjectPicture() 
+        private void reDrawObjectPicture()
         {
             //Если есть путь к картинке
             if (values[1] != null & values[1] != "")
@@ -330,7 +332,7 @@ namespace CourseWorkRebuild2
             }
             else
             {
-                valueOfTLabel.Text = "";
+                valueOfTLabel.Text = "Значение T не найдено";
             }
             //Если есть значение А (для сглаживания)
             if (values[3] != null & values[3] != "")
@@ -340,21 +342,21 @@ namespace CourseWorkRebuild2
             }
             else
             {
-                valueOfALabel.Text = "";
+                valueOfALabel.Text = "Значение А не найдено";
             }
             //Если известно количество марок
             if (values[4] != null & values[4] != "")
             {
                 markCount.Text = "Количество марок: " + values[4];
             }
-            else markCount.Text = "";
+            else markCount.Text = "Количество марок не найдено";
             //Если известно количество объектов
             if (values[5] != null & values[5] != "")
             {
                 buildingCountValue.Text = "Количество объектов: " + values[5];
 
             }
-            else buildingCountValue.Text = "";
+            else buildingCountValue.Text = "Количество объектов не найдено";
         }
 
         private void reDrawElevatorTable()
@@ -467,7 +469,7 @@ namespace CourseWorkRebuild2
         }
 
         private void deleteEpochButton_Click(object sender, EventArgs e)
-        {  
+        {
             repository.DeleteRow(epochCountBox.Text);
             elevatorTable.Rows.RemoveAt(epochCountBox.SelectedIndex - 1);
             reDrawElevatorTable();
@@ -672,8 +674,8 @@ namespace CourseWorkRebuild2
                 ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
-            
-            
+
+
         }
 
         private void checkValues_Click(object sender, EventArgs e)
@@ -751,8 +753,54 @@ namespace CourseWorkRebuild2
                 marksBox.Items.Remove(marksBox.SelectedItem);
                 sortMarks();
             }
-            
+
         }
 
+        private void elevatorTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+            if (elevatorTable.CurrentCell.ColumnIndex != 0) // замените "0" на индекс столбца, в котором нужно ограничить ввод
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= TextBox_KeyPress; // отписываемся от старого обработчика
+                    textBox.KeyPress += TextBox_KeyPress; // подписываемся на новый обработчик
+                }
+            }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true; // отменяем ввод, если это не цифра или запятая
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true; // отменяем ввод, если запятая уже есть в ячейке
+            }
+
+        }
+
+        private void changeTxtFile_Click(object sender, EventArgs e)
+        {
+            OpenProject openProject = new OpenProject();
+            String title = "Выберите файл с документацией";
+            String filter = "Txt files (*.txt)|*.txt";
+            oldTxtFile = values[7];
+            values[7] = getNewFilePath(title, filter);
+            if (values[7] == "")
+            {
+                values[7] = oldTxtFile;
+            }
+            List<String> newValues = new List<String>();
+            newValues = openProject.ReadValuesFromTxtFile(values[7]);
+            values[2] = newValues[2];
+            values[5] = newValues[1];
+            values[4] = newValues[0];
+            reDrawValues();
+        }
     }
+        
 }

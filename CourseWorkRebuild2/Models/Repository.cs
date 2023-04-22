@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWorkRebuild2;
+using System;
 using System.Data;
 using System.Data.SQLite;
 using System.Threading;
@@ -10,14 +11,11 @@ namespace CourseWorkRebuild
     {
         public String pathToElevatorTable = "";
         private SQLiteConnection sqlConnection;
+        private String tableName = "";
 
         public Repository(String pathToElevatorTable)
         {
             this.pathToElevatorTable = pathToElevatorTable;
-        }
-        public void closeSQLConnection()
-        {
-            sqlConnection.Close();
         }
 
         public SQLiteConnection GetDbConnection()
@@ -33,20 +31,25 @@ namespace CourseWorkRebuild
             String SQLQuery = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
             SQLiteCommand command = new SQLiteCommand(SQLQuery, sqlConnection);
             SQLiteDataReader reader = command.ExecuteReader();
-            String tableName = "";
-
-            //сделать выбор таблицы
+            ChooseTableForm form = new ChooseTableForm();
             while (reader.Read())
             {
-                tableName = reader.GetString(0);
+                form.GetComboBox().Items.Add(reader.GetString(0));
             }
-
+            if (form.GetComboBox().Items.Count > 1)
+            {
+                form.ShowDialog();
+                tableName = form.GetApplyedTable();
+                form.Close();
+            }
+            else tableName = form.GetComboBox().Items[0].ToString() ;
             return tableName;
         }
 
         public DataGridView ShowTable(DataTable dataTable, DataGridView elevatorTable)
         {
-            String SQLQuery = "SELECT * FROM [" + GetTableNames() + "]";
+            GetTableNames();
+            String SQLQuery = "SELECT * FROM [" + tableName + "]";
             dataTable.Rows.Clear();
             dataTable.Columns.Clear();
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
@@ -55,7 +58,7 @@ namespace CourseWorkRebuild
 
             for (int i = 1; i < dataTable.Columns.Count; i++)
             {
-                String replaceCommosToDots = "UPDATE [" + GetTableNames() + "] SET[" + i + "] = REPLACE([" + i + "],',','.')";
+                String replaceCommosToDots = "UPDATE [" + tableName + "] SET[" + i + "] = REPLACE([" + i + "],',','.')";
                 command.CommandText = replaceCommosToDots;
                 command.ExecuteNonQuery();
                 Thread.Sleep(10);
@@ -88,7 +91,7 @@ namespace CourseWorkRebuild
 
         public DataGridView UpdateValue(DataGridView elevatorTable, int currentColumn, int currentRow, Double newValue)
         {
-            String updateQuery = "UPDATE [" + GetTableNames() + "] SET \"" + currentColumn + "\" = \"" + newValue + "\" WHERE Эпоха = \'" + currentRow + "\'";
+            String updateQuery = "UPDATE [" + tableName + "] SET \"" + currentColumn + "\" = \"" + newValue + "\" WHERE Эпоха = \'" + currentRow + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = updateQuery;
             command.ExecuteNonQuery();
@@ -97,21 +100,21 @@ namespace CourseWorkRebuild
 
         public void AddNewValuesInRow(int column, int row, Double value)
         {
-            String SQLQuery = "UPDATE [" + GetTableNames() + "] SET \"" + column + "\" = \"" + value + "\" WHERE Эпоха = \'" + row + "\'";
+            String SQLQuery = "UPDATE [" + tableName + "] SET \"" + column + "\" = \"" + value + "\" WHERE Эпоха = \'" + row + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
             command.ExecuteNonQuery();
         }
         public void AddNewRow(int index)
         {
-            String SQLQuery = "INSERT INTO [" + GetTableNames() + "] (Эпоха) VALUES (\"" + index + "\")";
+            String SQLQuery = "INSERT INTO [" + tableName + "] (Эпоха) VALUES (\"" + index + "\")";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
             command.ExecuteNonQuery();
         }
         public void DeleteRow(String index)
         {
-            String SQLQuery = "DELETE FROM [" + GetTableNames() + "] WHERE Эпоха = \'" + index + "\'";
+            String SQLQuery = "DELETE FROM [" + tableName + "] WHERE Эпоха = \'" + index + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
             command.ExecuteNonQuery();

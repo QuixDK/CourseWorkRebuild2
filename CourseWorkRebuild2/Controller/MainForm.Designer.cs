@@ -106,14 +106,15 @@
             this.marksBox = new System.Windows.Forms.ListBox();
             this.thirdLevel = new System.Windows.Forms.TabPage();
             this.fourthLevel = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.displayedMarks = new System.Windows.Forms.ListBox();
             this.availableMarks = new System.Windows.Forms.ListBox();
             this.chooseBlockMessage = new System.Windows.Forms.Label();
             this.chooseBlock2 = new System.Windows.Forms.ComboBox();
             this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.defaultMessage = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.changeTxtFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -139,7 +140,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(629, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(629, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -158,52 +159,52 @@
             this.toolStripSeparator2,
             this.exitButton});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(59, 24);
+            this.fileMenu.Size = new System.Drawing.Size(48, 20);
             this.fileMenu.Text = "Файл";
             // 
             // createButton
             // 
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(278, 26);
+            this.createButton.Size = new System.Drawing.Size(222, 22);
             this.createButton.Text = "Создать...";
             // 
             // openButton
             // 
             this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(278, 26);
+            this.openButton.Size = new System.Drawing.Size(222, 22);
             this.openButton.Text = "Открыть...";
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // openRarButton
             // 
             this.openRarButton.Name = "openRarButton";
-            this.openRarButton.Size = new System.Drawing.Size(278, 26);
+            this.openRarButton.Size = new System.Drawing.Size(222, 22);
             this.openRarButton.Text = "Открыть архив с проектом";
             this.openRarButton.Click += new System.EventHandler(this.openRarButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(275, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(219, 6);
             // 
             // closeButton
             // 
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(278, 26);
+            this.closeButton.Size = new System.Drawing.Size(222, 22);
             this.closeButton.Text = "Закрыть";
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // closeAllButton
             // 
             this.closeAllButton.Name = "closeAllButton";
-            this.closeAllButton.Size = new System.Drawing.Size(278, 26);
+            this.closeAllButton.Size = new System.Drawing.Size(222, 22);
             this.closeAllButton.Text = "Закрыть всё";
             this.closeAllButton.Click += new System.EventHandler(this.closeAllButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(278, 26);
+            this.saveButton.Size = new System.Drawing.Size(222, 22);
             this.saveButton.Text = "Сохранить";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
@@ -214,46 +215,46 @@
             this.saveAsRarArchive,
             this.saveAsNewFolder});
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(278, 26);
+            this.saveAsButton.Size = new System.Drawing.Size(222, 22);
             this.saveAsButton.Text = "Сохранить как...";
             // 
             // saveAsZipArchieve
             // 
             this.saveAsZipArchieve.Name = "saveAsZipArchieve";
-            this.saveAsZipArchieve.Size = new System.Drawing.Size(183, 26);
+            this.saveAsZipArchieve.Size = new System.Drawing.Size(147, 22);
             this.saveAsZipArchieve.Text = "Архив Zip";
             this.saveAsZipArchieve.Click += new System.EventHandler(this.saveAsZipArchieve_Click);
             // 
             // saveAsRarArchive
             // 
             this.saveAsRarArchive.Name = "saveAsRarArchive";
-            this.saveAsRarArchive.Size = new System.Drawing.Size(183, 26);
+            this.saveAsRarArchive.Size = new System.Drawing.Size(147, 22);
             this.saveAsRarArchive.Text = "Архив Rar";
             this.saveAsRarArchive.Click += new System.EventHandler(this.saveAsRarArchive_Click);
             // 
             // saveAsNewFolder
             // 
             this.saveAsNewFolder.Name = "saveAsNewFolder";
-            this.saveAsNewFolder.Size = new System.Drawing.Size(183, 26);
+            this.saveAsNewFolder.Size = new System.Drawing.Size(147, 22);
             this.saveAsNewFolder.Text = "Новую папку";
             this.saveAsNewFolder.Click += new System.EventHandler(this.saveAsNewFolder_Click);
             // 
             // saveCopyButton
             // 
             this.saveCopyButton.Name = "saveCopyButton";
-            this.saveCopyButton.Size = new System.Drawing.Size(278, 26);
+            this.saveCopyButton.Size = new System.Drawing.Size(222, 22);
             this.saveCopyButton.Text = "Сохранить копию";
             this.saveCopyButton.Click += new System.EventHandler(this.saveAsNewFolder_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(275, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(219, 6);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(278, 26);
+            this.exitButton.Size = new System.Drawing.Size(222, 22);
             this.exitButton.Text = "Выход";
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
@@ -268,15 +269,16 @@
             this.changeBuildingsCount,
             this.toolStripSeparator5,
             this.changeElevatorTablePath,
-            this.changeObjectPicture});
+            this.changeObjectPicture,
+            this.changeTxtFile});
             this.redactorMenu.Name = "redactorMenu";
-            this.redactorMenu.Size = new System.Drawing.Size(137, 24);
+            this.redactorMenu.Size = new System.Drawing.Size(108, 20);
             this.redactorMenu.Text = "Редактирование";
             // 
             // addEpochButton
             // 
             this.addEpochButton.Name = "addEpochButton";
-            this.addEpochButton.Size = new System.Drawing.Size(313, 26);
+            this.addEpochButton.Size = new System.Drawing.Size(292, 22);
             this.addEpochButton.Text = "Добавить эпоху";
             this.addEpochButton.Click += new System.EventHandler(this.addNewRow_Click);
             // 
@@ -286,25 +288,25 @@
             this.epochCountBox,
             this.deleteEpochButton});
             this.chooseEpochToDelete.Name = "chooseEpochToDelete";
-            this.chooseEpochToDelete.Size = new System.Drawing.Size(313, 26);
+            this.chooseEpochToDelete.Size = new System.Drawing.Size(292, 22);
             this.chooseEpochToDelete.Text = "Удалить эпоху";
             // 
             // epochCountBox
             // 
             this.epochCountBox.Name = "epochCountBox";
-            this.epochCountBox.Size = new System.Drawing.Size(121, 28);
+            this.epochCountBox.Size = new System.Drawing.Size(121, 23);
             // 
             // deleteEpochButton
             // 
             this.deleteEpochButton.Name = "deleteEpochButton";
-            this.deleteEpochButton.Size = new System.Drawing.Size(195, 26);
+            this.deleteEpochButton.Size = new System.Drawing.Size(181, 22);
             this.deleteEpochButton.Text = "Удалить";
             this.deleteEpochButton.Click += new System.EventHandler(this.deleteEpochButton_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(310, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(289, 6);
             // 
             // changeTValue
             // 
@@ -312,14 +314,14 @@
             this.newTValue,
             this.acceptNewTValue});
             this.changeTValue.Name = "changeTValue";
-            this.changeTValue.Size = new System.Drawing.Size(313, 26);
+            this.changeTValue.Size = new System.Drawing.Size(292, 22);
             this.changeTValue.Text = "Изменить значение T";
             // 
             // newTValue
             // 
             this.newTValue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newTValue.Name = "newTValue";
-            this.newTValue.Size = new System.Drawing.Size(100, 27);
+            this.newTValue.Size = new System.Drawing.Size(100, 23);
             this.newTValue.Enter += new System.EventHandler(this.newTValue_Enter);
             this.newTValue.Leave += new System.EventHandler(this.newTValue_Enter);
             this.newTValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newTValue_KeyPress);
@@ -327,7 +329,7 @@
             // acceptNewTValue
             // 
             this.acceptNewTValue.Name = "acceptNewTValue";
-            this.acceptNewTValue.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewTValue.Size = new System.Drawing.Size(160, 22);
             this.acceptNewTValue.Text = "Применить";
             this.acceptNewTValue.Click += new System.EventHandler(this.newTValue_Enter);
             // 
@@ -337,14 +339,14 @@
             this.newAValue,
             this.acceptNewAValue});
             this.changeAValue.Name = "changeAValue";
-            this.changeAValue.Size = new System.Drawing.Size(313, 26);
+            this.changeAValue.Size = new System.Drawing.Size(292, 22);
             this.changeAValue.Text = "Изменить значение decompositionLevel";
             // 
             // newAValue
             // 
             this.newAValue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newAValue.Name = "newAValue";
-            this.newAValue.Size = new System.Drawing.Size(100, 27);
+            this.newAValue.Size = new System.Drawing.Size(100, 23);
             this.newAValue.Enter += new System.EventHandler(this.newAValue_Enter);
             this.newAValue.Leave += new System.EventHandler(this.newAValue_Enter);
             this.newAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAValue_KeyPress);
@@ -352,7 +354,7 @@
             // acceptNewAValue
             // 
             this.acceptNewAValue.Name = "acceptNewAValue";
-            this.acceptNewAValue.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewAValue.Size = new System.Drawing.Size(160, 22);
             this.acceptNewAValue.Text = "Применить";
             this.acceptNewAValue.Click += new System.EventHandler(this.newAValue_Enter);
             // 
@@ -362,14 +364,14 @@
             this.newBlocksCount,
             this.acceptNewBlocksCount});
             this.changeBuildingsCount.Name = "changeBuildingsCount";
-            this.changeBuildingsCount.Size = new System.Drawing.Size(313, 26);
+            this.changeBuildingsCount.Size = new System.Drawing.Size(292, 22);
             this.changeBuildingsCount.Text = "Изменить количество объектов";
             // 
             // newBlocksCount
             // 
             this.newBlocksCount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newBlocksCount.Name = "newBlocksCount";
-            this.newBlocksCount.Size = new System.Drawing.Size(100, 27);
+            this.newBlocksCount.Size = new System.Drawing.Size(100, 23);
             this.newBlocksCount.Enter += new System.EventHandler(this.newBlocksCount_Enter);
             this.newBlocksCount.Leave += new System.EventHandler(this.newBlocksCount_Enter);
             this.newBlocksCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newBlocksCount_KeyPress);
@@ -377,26 +379,26 @@
             // acceptNewBlocksCount
             // 
             this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
-            this.acceptNewBlocksCount.Size = new System.Drawing.Size(174, 26);
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(160, 22);
             this.acceptNewBlocksCount.Text = "Применить";
             this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(310, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(289, 6);
             // 
             // changeElevatorTablePath
             // 
             this.changeElevatorTablePath.Name = "changeElevatorTablePath";
-            this.changeElevatorTablePath.Size = new System.Drawing.Size(313, 26);
+            this.changeElevatorTablePath.Size = new System.Drawing.Size(292, 22);
             this.changeElevatorTablePath.Text = "Указать новую таблицу";
             this.changeElevatorTablePath.Click += new System.EventHandler(this.changeElevatorTablePath_Click);
             // 
             // changeObjectPicture
             // 
             this.changeObjectPicture.Name = "changeObjectPicture";
-            this.changeObjectPicture.Size = new System.Drawing.Size(313, 26);
+            this.changeObjectPicture.Size = new System.Drawing.Size(292, 22);
             this.changeObjectPicture.Text = "Указать новую схему объекта";
             this.changeObjectPicture.Click += new System.EventHandler(this.changeObjectPicture_Click);
             // 
@@ -408,32 +410,32 @@
             this.toolStripSeparator6,
             this.checkValues});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(58, 24);
+            this.windowsMenu.Size = new System.Drawing.Size(47, 20);
             this.windowsMenu.Text = "Окна";
             // 
             // chartButton
             // 
             this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(381, 26);
+            this.chartButton.Size = new System.Drawing.Size(304, 22);
             this.chartButton.Text = "График z(t) + Прогноз";
             this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
             // expSmoothChartButton
             // 
             this.expSmoothChartButton.Name = "expSmoothChartButton";
-            this.expSmoothChartButton.Size = new System.Drawing.Size(381, 26);
+            this.expSmoothChartButton.Size = new System.Drawing.Size(304, 22);
             this.expSmoothChartButton.Text = "График экспоненциального сглаживания";
             this.expSmoothChartButton.Click += new System.EventHandler(this.expSmoothChartButton_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(378, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(301, 6);
             // 
             // checkValues
             // 
             this.checkValues.Name = "checkValues";
-            this.checkValues.Size = new System.Drawing.Size(381, 26);
+            this.checkValues.Size = new System.Drawing.Size(304, 22);
             this.checkValues.Text = "Проверка";
             this.checkValues.Click += new System.EventHandler(this.checkValues_Click);
             // 
@@ -445,30 +447,30 @@
             this.toolStripSeparator3,
             this.infoAboutSystem});
             this.refMenu.Name = "refMenu";
-            this.refMenu.Size = new System.Drawing.Size(81, 24);
+            this.refMenu.Size = new System.Drawing.Size(65, 20);
             this.refMenu.Text = "Справка";
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(265, 26);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(212, 22);
             this.toolStripMenuItem13.Text = "Справка по программе...";
             // 
             // aboutProgramButton
             // 
             this.aboutProgramButton.Name = "aboutProgramButton";
-            this.aboutProgramButton.Size = new System.Drawing.Size(265, 26);
+            this.aboutProgramButton.Size = new System.Drawing.Size(212, 22);
             this.aboutProgramButton.Text = "О программе...";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(262, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(209, 6);
             // 
             // infoAboutSystem
             // 
             this.infoAboutSystem.Name = "infoAboutSystem";
-            this.infoAboutSystem.Size = new System.Drawing.Size(265, 26);
+            this.infoAboutSystem.Size = new System.Drawing.Size(212, 22);
             this.infoAboutSystem.Text = "Информация о системе";
             this.infoAboutSystem.Click += new System.EventHandler(this.infoAboutSystem_Click);
             // 
@@ -480,11 +482,11 @@
             this.tabContol.Controls.Add(this.thirdLevel);
             this.tabContol.Controls.Add(this.fourthLevel);
             this.tabContol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabContol.Location = new System.Drawing.Point(0, 28);
+            this.tabContol.Location = new System.Drawing.Point(0, 24);
             this.tabContol.Margin = new System.Windows.Forms.Padding(2);
             this.tabContol.Name = "tabContol";
             this.tabContol.SelectedIndex = 0;
-            this.tabContol.Size = new System.Drawing.Size(629, 340);
+            this.tabContol.Size = new System.Drawing.Size(629, 344);
             this.tabContol.TabIndex = 1;
             // 
             // dataPage
@@ -505,7 +507,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2);
-            this.dataPage.Size = new System.Drawing.Size(623, 319);
+            this.dataPage.Size = new System.Drawing.Size(621, 318);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -528,7 +530,7 @@
             this.markCount.Location = new System.Drawing.Point(6, 94);
             this.markCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.markCount.Name = "markCount";
-            this.markCount.Size = new System.Drawing.Size(0, 15);
+            this.markCount.Size = new System.Drawing.Size(0, 13);
             this.markCount.TabIndex = 12;
             // 
             // buildingCountValue
@@ -538,17 +540,17 @@
             this.buildingCountValue.Location = new System.Drawing.Point(6, 76);
             this.buildingCountValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.buildingCountValue.Name = "buildingCountValue";
-            this.buildingCountValue.Size = new System.Drawing.Size(0, 15);
+            this.buildingCountValue.Size = new System.Drawing.Size(0, 13);
             this.buildingCountValue.TabIndex = 11;
             // 
             // valueOfALabel
             // 
             this.valueOfALabel.AutoSize = true;
             this.valueOfALabel.BackColor = System.Drawing.Color.White;
-            this.valueOfALabel.Location = new System.Drawing.Point(119, 43);
+            this.valueOfALabel.Location = new System.Drawing.Point(139, 43);
             this.valueOfALabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valueOfALabel.Name = "valueOfALabel";
-            this.valueOfALabel.Size = new System.Drawing.Size(0, 15);
+            this.valueOfALabel.Size = new System.Drawing.Size(0, 13);
             this.valueOfALabel.TabIndex = 10;
             // 
             // valueOfTLabel
@@ -558,7 +560,7 @@
             this.valueOfTLabel.Location = new System.Drawing.Point(6, 43);
             this.valueOfTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.valueOfTLabel.Name = "valueOfTLabel";
-            this.valueOfTLabel.Size = new System.Drawing.Size(0, 15);
+            this.valueOfTLabel.Size = new System.Drawing.Size(0, 13);
             this.valueOfTLabel.TabIndex = 9;
             // 
             // label3
@@ -568,7 +570,7 @@
             this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 15);
+            this.label3.Size = new System.Drawing.Size(105, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Начальные данные";
             // 
@@ -601,7 +603,7 @@
             this.label2.Location = new System.Drawing.Point(466, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 15);
+            this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Схема объекта";
             // 
@@ -622,7 +624,7 @@
             this.label1.Location = new System.Drawing.Point(6, 124);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Таблица высот";
             // 
@@ -637,6 +639,7 @@
             this.elevatorTable.Size = new System.Drawing.Size(612, 129);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
+            this.elevatorTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.elevatorTable_EditingControlShowing);
             // 
             // firstLevelDecompositionTable
             // 
@@ -645,7 +648,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(623, 319);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(621, 318);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -677,7 +680,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.secondLevel.Size = new System.Drawing.Size(623, 319);
+            this.secondLevel.Size = new System.Drawing.Size(621, 318);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -698,7 +701,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(8, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 15);
+            this.label7.Size = new System.Drawing.Size(87, 13);
             this.label7.TabIndex = 10;
             this.label7.Text = "Выберите блок:";
             // 
@@ -725,7 +728,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(307, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 15);
+            this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 7;
             // 
             // removeMarkFromBlock
@@ -761,7 +764,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(164, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 15);
+            this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 3;
             // 
             // sortedMarks
@@ -777,7 +780,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 1;
             // 
             // marksBox
@@ -794,7 +797,7 @@
             this.thirdLevel.Location = new System.Drawing.Point(4, 22);
             this.thirdLevel.Name = "thirdLevel";
             this.thirdLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.thirdLevel.Size = new System.Drawing.Size(623, 319);
+            this.thirdLevel.Size = new System.Drawing.Size(621, 318);
             this.thirdLevel.TabIndex = 3;
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
@@ -812,11 +815,29 @@
             this.fourthLevel.Location = new System.Drawing.Point(4, 22);
             this.fourthLevel.Name = "fourthLevel";
             this.fourthLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.fourthLevel.Size = new System.Drawing.Size(621, 314);
+            this.fourthLevel.Size = new System.Drawing.Size(621, 318);
             this.fourthLevel.TabIndex = 4;
             this.fourthLevel.Text = "Уровень 4";
             this.fourthLevel.UseVisualStyleBackColor = true;
             this.fourthLevel.Enter += new System.EventHandler(this.fourthLevel_Enter);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(453, 171);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Отображенные марки";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(456, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Доступные марки";
             // 
             // displayedMarks
             // 
@@ -841,7 +862,7 @@
             this.chooseBlockMessage.AutoSize = true;
             this.chooseBlockMessage.Location = new System.Drawing.Point(6, 7);
             this.chooseBlockMessage.Name = "chooseBlockMessage";
-            this.chooseBlockMessage.Size = new System.Drawing.Size(99, 15);
+            this.chooseBlockMessage.Size = new System.Drawing.Size(87, 13);
             this.chooseBlockMessage.TabIndex = 12;
             this.chooseBlockMessage.Text = "Выберите блок:";
             // 
@@ -871,27 +892,16 @@
             this.defaultMessage.AutoSize = true;
             this.defaultMessage.Location = new System.Drawing.Point(162, 4);
             this.defaultMessage.Name = "defaultMessage";
-            this.defaultMessage.Size = new System.Drawing.Size(288, 15);
+            this.defaultMessage.Size = new System.Drawing.Size(251, 13);
             this.defaultMessage.TabIndex = 13;
             this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
             // 
-            // label8
+            // changeTxtFile
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(456, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 15);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Доступные марки";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(453, 171);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 15);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Отображенные марки";
+            this.changeTxtFile.Name = "changeTxtFile";
+            this.changeTxtFile.Size = new System.Drawing.Size(292, 22);
+            this.changeTxtFile.Text = "Указать новый файл с документацией";
+            this.changeTxtFile.Click += new System.EventHandler(this.changeTxtFile_Click);
             // 
             // MainForm
             // 
@@ -1010,6 +1020,7 @@
         private System.Windows.Forms.ListBox availableMarks;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripMenuItem changeTxtFile;
     }
 }
 

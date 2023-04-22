@@ -74,42 +74,33 @@ namespace CourseWorkRebuild2
                 }
                 else txtFilePath = Path.GetFullPath(Directory.GetFiles(projectRoot, "*.txt")[0]);
 
-                if (dbFilePath == "")
+                if (!txtFilePath.Equals(""))
                 {
-                    // throw new FilesNotFoundException("Не найден файл с базой данных");
-                }
-                if (pngFilePath == "")
-                {
-                    // throw new FilesNotFoundException("Не найдена схема объекта");
-                }
-                if (txtFilePath == "")
-                {
-                    // throw new FilesNotFoundException("Не найден файл с данными об объекте");
-                }
+                    List<String> valueLines = File.ReadAllLines(txtFilePath, Encoding.Unicode).ToList();
 
-                List<String> valueLines = File.ReadAllLines(txtFilePath, Encoding.Unicode).ToList();
-
-                foreach (String valueLine in valueLines)
-                {
-                    if (valueLine.StartsWith("Точность измерений"))
+                    foreach (String valueLine in valueLines)
                     {
-                        List<String> line = valueLine.Split(' ').ToList();
-                        valueOfT = line[2].Split('м')[0];
+                        if (valueLine.StartsWith("Точность измерений"))
+                        {
+                            List<String> line = valueLine.Split(' ').ToList();
+                            valueOfT = line[2].Split('м')[0];
 
-                    }
-                    if (valueLine.StartsWith("Количество структурных блоков"))
-                    {
-                        List<String> line = valueLine.Split(' ').ToList();
-                        buildingCount = line[3];
+                        }
+                        if (valueLine.StartsWith("Количество структурных блоков"))
+                        {
+                            List<String> line = valueLine.Split(' ').ToList();
+                            buildingCount = line[3];
 
-                    }
-                    if (valueLine.StartsWith("Количество геодезических марок, закрепленных в теле объекта"))
-                    {
-                        List<String> line = valueLine.Split(' ').ToList();
-                        markCount = line[7];
+                        }
+                        if (valueLine.StartsWith("Количество геодезических марок, закрепленных в теле объекта"))
+                        {
+                            List<String> line = valueLine.Split(' ').ToList();
+                            markCount = line[7];
 
+                        }
                     }
                 }
+               
             }
             result.Add(dbFilePath); //0
             result.Add(pngFilePath); //1
@@ -143,7 +134,14 @@ namespace CourseWorkRebuild2
                     archivePath = Path.GetFullPath(chooseRarFile.FileName);
                 }
 
-                String filePath = "D:\\Projects";
+                FolderBrowserDialog chooseDirectory = new FolderBrowserDialog();
+                chooseDirectory.Description = "Выберите папку для сохранения проекта";
+                String filePath = "";
+                if (chooseDirectory.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = Path.GetFullPath(chooseDirectory.SelectedPath);
+                }
+                
 
                 if (archivePath != "")
                 {
@@ -188,6 +186,38 @@ namespace CourseWorkRebuild2
                 filePath = Path.GetFullPath(chooseFile.FileName);
             }
             return filePath;
+        }
+
+        public List<String> ReadValuesFromTxtFile(String txtFilePath)
+        {
+            List<String> values = new List<String>();
+            List<String> valueLines = File.ReadAllLines(txtFilePath, Encoding.Unicode).ToList();
+            if (!txtFilePath.Equals(""))
+            {
+                foreach (String valueLine in valueLines)
+                {
+                    if (valueLine.StartsWith("Точность измерений"))
+                    {
+                        List<String> line = valueLine.Split(' ').ToList();
+                        values.Add(line[2].Split('м')[0]);
+
+                    }
+                    if (valueLine.StartsWith("Количество структурных блоков"))
+                    {
+                        List<String> line = valueLine.Split(' ').ToList();
+                        values.Add(line[3]);
+
+                    }
+                    if (valueLine.StartsWith("Количество геодезических марок, закрепленных в теле объекта"))
+                    {
+                        List<String> line = valueLine.Split(' ').ToList();
+                        values.Add(line[7]);
+
+                    }
+                }
+            }
+            
+            return values;
         }
     }
 
