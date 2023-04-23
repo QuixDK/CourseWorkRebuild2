@@ -91,6 +91,7 @@ namespace CourseWorkRebuild
 
         public DataGridView UpdateValue(DataGridView elevatorTable, int currentColumn, int currentRow, Double newValue)
         {
+            GetTableNames();
             String updateQuery = "UPDATE [" + tableName + "] SET \"" + currentColumn + "\" = \"" + newValue + "\" WHERE Эпоха = \'" + currentRow + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = updateQuery;
@@ -100,6 +101,7 @@ namespace CourseWorkRebuild
 
         public void AddNewValuesInRow(int column, int row, Double value)
         {
+            GetTableNames();
             String SQLQuery = "UPDATE [" + tableName + "] SET \"" + column + "\" = \"" + value + "\" WHERE Эпоха = \'" + row + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
@@ -107,6 +109,7 @@ namespace CourseWorkRebuild
         }
         public void AddNewRow(int index)
         {
+            GetTableNames();
             String SQLQuery = "INSERT INTO [" + tableName + "] (Эпоха) VALUES (\"" + index + "\")";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;
@@ -114,6 +117,7 @@ namespace CourseWorkRebuild
         }
         public void DeleteRow(String index)
         {
+            GetTableNames();
             String SQLQuery = "DELETE FROM [" + tableName + "] WHERE Эпоха = \'" + index + "\'";
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText = SQLQuery;

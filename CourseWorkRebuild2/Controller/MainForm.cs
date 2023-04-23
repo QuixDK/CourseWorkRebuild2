@@ -54,13 +54,12 @@ namespace CourseWorkRebuild2
 
         private void initEpochCount()
         {
-            if (openForms.Count > 0)
+
+            if (epochCount == 0)
             {
-                if (epochCount == 0)
-                {
-                    epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
-                }
+                epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
             }
+            
 
         }
 
@@ -415,7 +414,9 @@ namespace CourseWorkRebuild2
             {
                 OpenProject openProject = new OpenProject();
                 values = openProject.Open();
+                activeForm++;
                 reDrawMainForm();
+                activeForm--;
                 if (!(values[0] == "") & !(values[1] == "") & !(values[7] == ""))
                 {
                     activeForm++;
@@ -797,8 +798,8 @@ namespace CourseWorkRebuild2
             List<String> newValues = new List<String>();
             newValues = openProject.ReadValuesFromTxtFile(values[7]);
             values[2] = newValues[2];
-            values[5] = newValues[1];
-            values[4] = newValues[0];
+            values[5] = newValues[0];
+            values[4] = newValues[1];
             reDrawValues();
         }
     }
