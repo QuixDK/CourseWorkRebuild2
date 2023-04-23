@@ -65,6 +65,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.changeElevatorTablePath = new System.Windows.Forms.ToolStripMenuItem();
             this.changeObjectPicture = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTxtFile = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.chartButton = new System.Windows.Forms.ToolStripMenuItem();
             this.expSmoothChartButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +115,6 @@
             this.chooseBlock2 = new System.Windows.Forms.ComboBox();
             this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.defaultMessage = new System.Windows.Forms.Label();
-            this.changeTxtFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -278,7 +278,7 @@
             // addEpochButton
             // 
             this.addEpochButton.Name = "addEpochButton";
-            this.addEpochButton.Size = new System.Drawing.Size(292, 22);
+            this.addEpochButton.Size = new System.Drawing.Size(283, 22);
             this.addEpochButton.Text = "Добавить эпоху";
             this.addEpochButton.Click += new System.EventHandler(this.addNewRow_Click);
             // 
@@ -288,7 +288,7 @@
             this.epochCountBox,
             this.deleteEpochButton});
             this.chooseEpochToDelete.Name = "chooseEpochToDelete";
-            this.chooseEpochToDelete.Size = new System.Drawing.Size(292, 22);
+            this.chooseEpochToDelete.Size = new System.Drawing.Size(283, 22);
             this.chooseEpochToDelete.Text = "Удалить эпоху";
             // 
             // epochCountBox
@@ -306,7 +306,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(289, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(280, 6);
             // 
             // changeTValue
             // 
@@ -314,7 +314,7 @@
             this.newTValue,
             this.acceptNewTValue});
             this.changeTValue.Name = "changeTValue";
-            this.changeTValue.Size = new System.Drawing.Size(292, 22);
+            this.changeTValue.Size = new System.Drawing.Size(283, 22);
             this.changeTValue.Text = "Изменить значение T";
             // 
             // newTValue
@@ -339,8 +339,8 @@
             this.newAValue,
             this.acceptNewAValue});
             this.changeAValue.Name = "changeAValue";
-            this.changeAValue.Size = new System.Drawing.Size(292, 22);
-            this.changeAValue.Text = "Изменить значение decompositionLevel";
+            this.changeAValue.Size = new System.Drawing.Size(283, 22);
+            this.changeAValue.Text = "Изменить значение a";
             // 
             // newAValue
             // 
@@ -354,7 +354,7 @@
             // acceptNewAValue
             // 
             this.acceptNewAValue.Name = "acceptNewAValue";
-            this.acceptNewAValue.Size = new System.Drawing.Size(160, 22);
+            this.acceptNewAValue.Size = new System.Drawing.Size(180, 22);
             this.acceptNewAValue.Text = "Применить";
             this.acceptNewAValue.Click += new System.EventHandler(this.newAValue_Enter);
             // 
@@ -364,7 +364,7 @@
             this.newBlocksCount,
             this.acceptNewBlocksCount});
             this.changeBuildingsCount.Name = "changeBuildingsCount";
-            this.changeBuildingsCount.Size = new System.Drawing.Size(292, 22);
+            this.changeBuildingsCount.Size = new System.Drawing.Size(283, 22);
             this.changeBuildingsCount.Text = "Изменить количество объектов";
             // 
             // newBlocksCount
@@ -386,21 +386,28 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(289, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(280, 6);
             // 
             // changeElevatorTablePath
             // 
             this.changeElevatorTablePath.Name = "changeElevatorTablePath";
-            this.changeElevatorTablePath.Size = new System.Drawing.Size(292, 22);
+            this.changeElevatorTablePath.Size = new System.Drawing.Size(283, 22);
             this.changeElevatorTablePath.Text = "Указать новую таблицу";
             this.changeElevatorTablePath.Click += new System.EventHandler(this.changeElevatorTablePath_Click);
             // 
             // changeObjectPicture
             // 
             this.changeObjectPicture.Name = "changeObjectPicture";
-            this.changeObjectPicture.Size = new System.Drawing.Size(292, 22);
+            this.changeObjectPicture.Size = new System.Drawing.Size(283, 22);
             this.changeObjectPicture.Text = "Указать новую схему объекта";
             this.changeObjectPicture.Click += new System.EventHandler(this.changeObjectPicture_Click);
+            // 
+            // changeTxtFile
+            // 
+            this.changeTxtFile.Name = "changeTxtFile";
+            this.changeTxtFile.Size = new System.Drawing.Size(283, 22);
+            this.changeTxtFile.Text = "Указать новый файл с документацией";
+            this.changeTxtFile.Click += new System.EventHandler(this.changeTxtFile_Click);
             // 
             // windowsMenu
             // 
@@ -895,13 +902,6 @@
             this.defaultMessage.Size = new System.Drawing.Size(251, 13);
             this.defaultMessage.TabIndex = 13;
             this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
-            // 
-            // changeTxtFile
-            // 
-            this.changeTxtFile.Name = "changeTxtFile";
-            this.changeTxtFile.Size = new System.Drawing.Size(292, 22);
-            this.changeTxtFile.Text = "Указать новый файл с документацией";
-            this.changeTxtFile.Click += new System.EventHandler(this.changeTxtFile_Click);
             // 
             // MainForm
             // 
