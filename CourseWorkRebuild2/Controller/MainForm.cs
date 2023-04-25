@@ -60,7 +60,6 @@ namespace CourseWorkRebuild2
                 epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
             }
             
-
         }
 
         private void reDrawMainForm()
@@ -562,7 +561,7 @@ namespace CourseWorkRebuild2
             reDrawMainForm();
             Save save = new Save();
             save.SaveTxtFile(values[7], Convert.ToDouble(values[2]), Convert.ToInt32(values[5]), Convert.ToInt32(values[4]));
-            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(values[1], oldObjectPicturePath, "*.png"); }
+            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(tempPngFile, oldObjectPicturePath, "*.png"); }
             if (oldElevatorTablePath != "" & oldElevatorTablePath != tempTableFile) { save.SaveNewFile(tempTableFile, oldElevatorTablePath, "*.sqlite"); }
             values[0] = tempTableFile;
             values[1] = tempPngFile;

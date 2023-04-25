@@ -11,11 +11,13 @@ public class ChartDiagramService
 
     public Chart AddXYLine(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart)
     {
+
         chart.ChartAreas[0].AxisX.Title = "Эпоха";
         chart.ChartAreas[0].AxisY.Title = "Значение";
-        chart.ChartAreas[0].AxisY.Maximum = listOfYValues.Max();
-        chart.ChartAreas[0].AxisY.Minimum = listOfYValues.Min();
+        
         chart.Series.Add(serieName);
+        chart.ChartAreas[0].AxisY.IsStartedFromZero = false;
+        
         chart.Series[serieName].MarkerStyle = MarkerStyle.Circle;
         chart.Series[serieName].MarkerSize = 6;
         chart.Series[serieName].MarkerColor = chart.Series[serieName].Color;
@@ -25,6 +27,7 @@ public class ChartDiagramService
         for (int i = 0; i < listOfYValues.Count; i++)
         {
             chart.Series[serieName].Points.AddXY(listOfXValues[i], listOfYValues[i]);
+            
 
         }
         return chart;
@@ -40,11 +43,12 @@ public class ChartDiagramService
         chart.Series[serieName].MarkerColor = chart.Series[serieName].Color;
         chart.Series[serieName].ChartType = SeriesChartType.Line;
         chart.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
+        
         for (int i = 0; i < listOfMValues.Count; i++)
         {
             
             chart.Series[serieName].Points.AddXY(listOfMValues[i], listOfAValues[i]);
-            
+            chart.Series[serieName].Points[i].Label = i.ToString();
         }
 
         return chart;
