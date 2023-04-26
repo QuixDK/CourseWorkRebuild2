@@ -16,6 +16,7 @@ public class ChartDiagramService
         chart.ChartAreas[0].AxisY.Title = "Значение";
         
         chart.Series.Add(serieName);
+
         chart.ChartAreas[0].AxisY.IsStartedFromZero = false;
         
         chart.Series[serieName].MarkerStyle = MarkerStyle.Circle;

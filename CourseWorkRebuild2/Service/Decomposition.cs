@@ -17,6 +17,81 @@ namespace CourseWorkRebuild2
         private List<Double> forecastMValue = new List<Double>();
         Calculations calculations = new Calculations();
 
+        public void ThirdLevelFillDistanceTable(DataGridView distanceBetweenMarks, List<List<String>> marks, ComboBox chooseBlock, DataGridView initialTable, DataGridView marksExcess, ListBox strongConnectionsListBox, String T)
+        {
+            strongConnectionsListBox.Items.Clear();
+            distanceBetweenMarks.Columns.Clear();
+            distanceBetweenMarks.Rows.Clear();
+            marksExcess.Columns.Clear();
+            marksExcess.Rows.Clear();
+            int index = 1;
+            distanceBetweenMarks.Columns.Add(new DataGridViewTextBoxColumn());
+            distanceBetweenMarks.Columns[0].Name = "Эпоха";
+            marksExcess.Columns.Add(new DataGridViewTextBoxColumn());
+            marksExcess.Columns[0].Name = "Эпоха";
+            for (int i = 0; i < marks[chooseBlock.SelectedIndex].Count; i++)
+            {
+                for (int j = 1; j < marks[chooseBlock.SelectedIndex].Count + 1; j++)
+                {
+                    if (i == (j - 1))
+                    {
+                        continue;
+                    }
+                    if ((j > i) | (j == marks[chooseBlock.SelectedIndex].Count & i == marks[chooseBlock.SelectedIndex].Count - 1))
+                    {
+                        marksExcess.Columns.Add(new DataGridViewTextBoxColumn());
+                        distanceBetweenMarks.Columns.Add(new DataGridViewTextBoxColumn());
+                        marksExcess.Columns[index].Name = marks[chooseBlock.SelectedIndex][i] + "-" + marks[chooseBlock.SelectedIndex][j - 1];
+                        distanceBetweenMarks.Columns[index].Name = marks[chooseBlock.SelectedIndex][i] + "-" + marks[chooseBlock.SelectedIndex][j - 1];
+                        index++;
+                    }
+                }
+            }
+            for (int i = 0; i < initialTable.Rows.Count - 1; i++)
+            {
+                distanceBetweenMarks.Rows.Add();
+                distanceBetweenMarks.Rows[i].Cells[0].Value = initialTable.Rows[i].Cells[0].Value;
+                marksExcess.Rows.Add();
+                marksExcess.Rows[i].Cells[0].Value = initialTable.Rows[i].Cells[0].Value;
+            }
+            for (int i = 0; i < distanceBetweenMarks.Rows.Count - 1; i++)
+            {
+                for (int j = 1; j < distanceBetweenMarks.Columns.Count; j++)
+                {
+                    String columnName = distanceBetweenMarks.Columns[j].Name;
+                    string[] indexes = columnName.Split('-');
+                    string firstIndex = indexes[0];
+                    string secondIndex = indexes[1];
+                    //[marks[chooseBlock.SelectedIndex].IndexOf(firstIndex) + 1]
+                    distanceBetweenMarks.Rows[i].Cells[j].Value = Math.Abs(Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[firstIndex].Index].Value) - Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[secondIndex].Index].Value));
+                }
+            }
+            for (int i = 1; i < marksExcess.Columns.Count; i++)
+            {
+                for (int j = 0; j < marksExcess.Rows.Count - 1; j++)
+                {
+                    marksExcess.Rows[j].Cells[i].Value = Math.Abs(Convert.ToDouble(distanceBetweenMarks.Rows[0].Cells[i].Value) - Convert.ToDouble(distanceBetweenMarks.Rows[j].Cells[i].Value));
+                }
+            }
+            bool flag = true;
+            for (int i = 1; i < marksExcess.Columns.Count; i++)
+            {
+                for (int j = 0; j < marksExcess.Rows.Count - 1; j++)
+                {
+                    if (Convert.ToDouble(marksExcess.Rows[j].Cells[i].Value) >= (Convert.ToDouble(T) + 0.007d))
+                    {
+                        flag = false; break;
+                    }
+                }
+                if (flag == true)
+                {
+                    strongConnectionsListBox.Items.Add(marksExcess.Columns[i].Name);
+                }
+                flag = true;
+            }
+
+
+        }
         public void FourthLevelChartAddLine(String mark, DataGridView elevatorTable, List<String> values, Chart fourthLevelChart)
         {
             ChartDiagramService chartDiagramService = new ChartDiagramService();

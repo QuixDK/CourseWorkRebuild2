@@ -25,6 +25,7 @@ namespace CourseWorkRebuild2
         private List<ListBox> listsForSecondLevel = new List<ListBox>();
         private CheckValuesForm checkValuesForm;
         Calculations calculations = new Calculations();
+        Dictionary<int, String> blockDictionary;
         private int activeForm = 0;
         private int epochCount = 0;
         private int needMarksCount;
@@ -50,6 +51,12 @@ namespace CourseWorkRebuild2
             listsForSecondLevel.Add(checkValuesForm.GetListBox10());
             listsForSecondLevel.Add(checkValuesForm.GetListBox11());
             listsForSecondLevel.Add(checkValuesForm.GetListBox12());
+
+            blockDictionary = new Dictionary<int, String>();
+            blockDictionary.Add(0, "A");
+            blockDictionary.Add(1, "Б");
+            blockDictionary.Add(2, "В");
+            blockDictionary.Add(3, "Г");
         }
 
         private void initEpochCount()
@@ -104,6 +111,7 @@ namespace CourseWorkRebuild2
 
         private void secondLevel_Enter(object sender, EventArgs e)
         {
+            
             if (marker == 0)
             {
                 reSortMarks.Hide();
@@ -121,7 +129,7 @@ namespace CourseWorkRebuild2
             }
             needMarksCount = startMarksCount / Convert.ToInt32(values[5]);
             label4.Text = "Всего марок: " + values[4];
-            label5.Text = "Блок " + blockIndex;
+            label5.Text = "Блок " + blockDictionary[blockIndex];
             label6.Text = "Количество структурных блоков: " + values[5];
             if (Convert.ToInt32(values[4]) % 2 == 0)
             {
@@ -192,7 +200,7 @@ namespace CourseWorkRebuild2
                 }
                 blockIndex++;
                 sortedMarks.Items.Clear();
-                label5.Text = "Блок " + blockIndex;
+                label5.Text = "Блок " + blockDictionary[blockIndex];
             }
             if (blockIndex == Convert.ToInt32(values[5]))
             {
@@ -210,7 +218,7 @@ namespace CourseWorkRebuild2
                 reSortMarks.Show();
                 for (int i = 0; i < Convert.ToInt32(values[5]); i++)
                 {
-                    chooseBlock.Items.Add(i);
+                    chooseBlock.Items.Add(blockDictionary[i]);
                 }
 
                 decomposition.SecondLevel(elevatorTable, values, listsForSecondLevel, marksByBlocks, chooseBlock);
@@ -249,7 +257,7 @@ namespace CourseWorkRebuild2
                 chooseBlock2.Items.Clear();
                 for (int i = 0; i < Convert.ToInt32(values[5]); i++)
                 {
-                    chooseBlock2.Items.Add(i);
+                    chooseBlock2.Items.Add(blockDictionary[i]);
                 }
 
             }
@@ -800,6 +808,87 @@ namespace CourseWorkRebuild2
             values[5] = newValues[0];
             values[4] = newValues[1];
             reDrawValues();
+        }
+
+        private void thirdLevel_Enter(object sender, EventArgs e)
+        {
+            if (marksByBlocks.Count > 0)
+            {
+                defaultMessage2.Hide();
+                label12.Hide();
+                label13.Hide();
+                marksOnSubblocksListBox.Hide();
+                strongConnectionsListBox.Hide();
+                label10.Show();
+                label11.Show();
+                nextStageButton.Show();
+                chooseBlock3.Items.Clear();
+                chooseBlock3.Show();
+                chooseBlockLabel.Show();
+                distanceBetweenMarks.Show();
+                marksExcess.Show();
+                pastStageButton.Hide();
+                button1.Hide();
+                addConnectionToSubblock.Hide();
+                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                {
+                    chooseBlock3.Items.Add(blockDictionary[i]);
+                }
+
+            }
+            else
+            {
+                pastStageButton.Hide();
+                label13.Hide();
+                marksOnSubblocksListBox.Hide();
+                label12.Hide();
+                strongConnectionsListBox.Hide();
+                label10.Hide();
+                label11.Hide();
+                nextStageButton.Hide();
+                chooseBlock3.Hide();
+                chooseBlockLabel.Hide();
+                distanceBetweenMarks.Hide();
+                marksExcess.Hide();
+                button1.Hide();
+                addConnectionToSubblock.Hide();
+            }
+        }
+
+        private void chooseBlock3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocks, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, values[2]);
+        }
+
+        private void nextStageButton_Click(object sender, EventArgs e)
+        {
+            button1.Show();
+            addConnectionToSubblock.Show();
+            pastStageButton.Show();
+            label13.Show();
+            marksOnSubblocksListBox.Show();
+            label10.Hide();
+            label11.Hide();
+            distanceBetweenMarks.Hide();
+            marksExcess.Hide();
+            label12.Show();
+            strongConnectionsListBox.Show();
+
+        }
+
+        private void pastStageButton_Click(object sender, EventArgs e)
+        {
+            pastStageButton.Hide();
+            label13.Hide();
+            marksOnSubblocksListBox.Hide();
+            label10.Show();
+            label11.Show();
+            distanceBetweenMarks.Show();
+            marksExcess.Show();
+            label12.Hide();
+            strongConnectionsListBox.Hide();
+            button1.Hide();
+            addConnectionToSubblock.Hide();
         }
     }
         
