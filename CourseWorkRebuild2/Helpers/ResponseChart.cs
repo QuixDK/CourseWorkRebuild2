@@ -128,5 +128,10 @@ namespace CourseWorkRebuild2
                 forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

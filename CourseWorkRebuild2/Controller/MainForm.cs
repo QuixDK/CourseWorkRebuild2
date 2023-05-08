@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Windows.Forms.VisualStyles;
 
 namespace CourseWorkRebuild2
 {
@@ -308,7 +306,7 @@ namespace CourseWorkRebuild2
             }
 
         }
-
+        
         private void reDrawObjectPicture()
         {
             //Если есть путь к картинке
@@ -889,6 +887,11 @@ namespace CourseWorkRebuild2
             strongConnectionsListBox.Hide();
             button1.Hide();
             addConnectionToSubblock.Hide();
+        }
+
+        private void displayedMarks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
         

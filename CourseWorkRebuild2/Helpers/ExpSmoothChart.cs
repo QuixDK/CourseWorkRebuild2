@@ -45,55 +45,28 @@ namespace CourseWorkRebuild2.Helpers
 
         private void MChart_CheckedChanged(object sender, EventArgs e)
         {
-            if (MValues.Max() > smoothMValues.Max())
-            {
-                String serieName2 = "Длина вектора М (сглаженное)";
-                if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-                else chartDiagramService.AddXYLine(serieName2, epochList, smoothMValues, expSmooth);
 
-                String serieName = "Длина вектора М (реальное)";
-                if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-                else chartDiagramService.AddXYLine(serieName, epochList, MValues, expSmooth);
-            }
-            else
-            {
-                String serieName = "Длина вектора М (реальное)";
-                if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-                else chartDiagramService.AddXYLine(serieName, epochList, MValues, expSmooth);
+            String serieName2 = "Длина вектора М (сглаженное)";
+            if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
+            else chartDiagramService.AddXYLine(serieName2, epochList, smoothMValues, expSmooth);
 
-                String serieName2 = "Длина вектора М (сглаженное)";
-                if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-                else chartDiagramService.AddXYLine(serieName2, epochList, smoothMValues, expSmooth);
-            }
-            
-
-            
+            String serieName = "Длина вектора М (реальное)";
+            if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
+            else chartDiagramService.AddXYLine(serieName, epochList, MValues, expSmooth);
 
             applySettings(sender, e);
         }
 
         private void alphaChart_CheckedChanged(object sender, EventArgs e)
         {
-            if (AValues.Max() > smoothAValues.Max())
-            {
-                String serieName2 = "Угол а (сглаженное)";
-                if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-                else chartDiagramService.AddXYLine(serieName2, epochList, smoothAValues, expSmooth);
 
-                String serieName = "Угол а (реальное)";
-                if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-                else chartDiagramService.AddXYLine(serieName, epochList, AValues, expSmooth);
-            }
-            else
-            {
-                String serieName = "Угол а (реальное)";
-                if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-                else chartDiagramService.AddXYLine(serieName, epochList, AValues, expSmooth);
+            String serieName2 = "Угол а (сглаженное)";
+            if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
+            else chartDiagramService.AddXYLine(serieName2, epochList, smoothAValues, expSmooth);
 
-                String serieName2 = "Угол а (сглаженное)";
-                if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-                else chartDiagramService.AddXYLine(serieName2, epochList, smoothAValues, expSmooth);
-            }
+            String serieName = "Угол а (реальное)";
+            if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
+            else chartDiagramService.AddXYLine(serieName, epochList, AValues, expSmooth);     
 
             applySettings(sender, e);
         }

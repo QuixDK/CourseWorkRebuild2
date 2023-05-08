@@ -109,6 +109,7 @@ namespace CourseWorkRebuild2
             listOfSmoothValues = calculations.GetForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
             chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
             String forecastMark = "Прогноз " + mark;
+            listOfEpoch.Add(listOfEpoch.Last() + 1);
             chartDiagramService.AddForecastValue(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
 
         }

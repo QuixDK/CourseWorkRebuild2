@@ -62,7 +62,7 @@ namespace CourseWorkRebuild2
                     delta = 0;
                 }
 
-                averageDelta /= elevatorTable.Rows.Count;
+                averageDelta /= elevatorTable.Rows.Count - 1;
                 newCellValue = random.NextDouble() * (averageDelta - (-averageDelta)) + averageDelta;
                 elevatorTable.Rows[newRow].Cells[i].Value = Math.Round(newCellValue + Convert.ToDouble(elevatorTable.Rows[newRow - 1].Cells[i].Value), 4);
                 repository.AddNewValuesInRow(i, epochCount, Convert.ToDouble(elevatorTable.Rows[newRow].Cells[i].Value));
@@ -165,6 +165,7 @@ namespace CourseWorkRebuild2
                 }
                 summPr /= listOfMValues[0];
                 summPr /= listOfMValues[i + 1];
+                summPr = Math.Round(summPr, 15);
                 calculateAcos = Math.Acos(summPr);
                 listOfAlphaValues.Add(calculateAcos);
 
@@ -204,6 +205,7 @@ namespace CourseWorkRebuild2
                 
                 summPr /= listOfMValues[0];
                 summPr /= listOfMValues[i+1];
+                summPr = Math.Round(summPr, 15);
                 calculateAcos = Math.Acos(summPr);
                 listOfAlphaValues.Add(calculateAcos);
 
@@ -215,27 +217,31 @@ namespace CourseWorkRebuild2
         public List<Double> GetForecastValue(List<Double> listOfValues, Double a)
         {
             List<Double> forecastValues = new List<Double>();
-            Double summValues = 0;
-            for (int i = 0; i < listOfValues.Count; i++)
+            Double averageSumm = 0;
+            Double value = 0;
+
+            if (listOfValues[0] == 0)
             {
-                summValues += listOfValues[i];
+                for (int i = 1; i < listOfValues.Count; i++)
+                {
+                    averageSumm += listOfValues[i];
+                }
+                averageSumm /= listOfValues.Count;
+                value = a * listOfValues[0] + (1 - a) * averageSumm;
+                forecastValues.Add(value);
             }
-            summValues /= listOfValues.Count;
-            Double value = a * listOfValues[0] + (1 - a) * summValues;
-            forecastValues.Add(value);
+            else
+            {
+                value = a * listOfValues[0] + (1 - a) * listOfValues.Average();
+                forecastValues.Add(value);
+            }
+
             for (int i = 1; i < listOfValues.Count; i++)
             {
-                value = 0;
                 value = a * listOfValues[i] + (1 - a) * forecastValues[i - 1];
                 forecastValues.Add(value);
             }
-            value = 0;
-            summValues = 0;
-            for (int i = 0; i < forecastValues.Count; i++)
-            {
-                summValues += forecastValues[i];
-            }
-            summValues /= forecastValues.Count;
+
             value = a * forecastValues.Average() + (1 - a) * forecastValues.Last();
             forecastValues.Add(value);
 

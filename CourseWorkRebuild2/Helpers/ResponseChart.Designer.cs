@@ -46,20 +46,20 @@
             this.functionDiagrams.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.functionDiagrams.Legends.Add(legend1);
-            this.functionDiagrams.Location = new System.Drawing.Point(9, 10);
-            this.functionDiagrams.Margin = new System.Windows.Forms.Padding(2);
+            this.functionDiagrams.Location = new System.Drawing.Point(12, 12);
+            this.functionDiagrams.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.functionDiagrams.Name = "functionDiagrams";
-            this.functionDiagrams.Size = new System.Drawing.Size(808, 448);
+            this.functionDiagrams.Size = new System.Drawing.Size(1077, 551);
             this.functionDiagrams.TabIndex = 0;
             this.functionDiagrams.Text = "chart1";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(821, 10);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox1.Location = new System.Drawing.Point(1095, 12);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(129, 19);
+            this.checkBox1.Size = new System.Drawing.Size(142, 20);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Функция отклика";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -68,10 +68,10 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(821, 38);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox2.Location = new System.Drawing.Point(1095, 47);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(178, 19);
+            this.checkBox2.Size = new System.Drawing.Size(200, 20);
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Прогнозное значение ФО";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -80,10 +80,10 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(821, 67);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox3.Location = new System.Drawing.Point(1095, 82);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(128, 19);
+            this.checkBox3.Size = new System.Drawing.Size(139, 20);
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "Верхняя граница";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(821, 98);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox4.Location = new System.Drawing.Point(1095, 121);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(173, 19);
+            this.checkBox4.Size = new System.Drawing.Size(195, 20);
             this.checkBox4.TabIndex = 4;
             this.checkBox4.Text = "Прогнозное значение ВГ";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(821, 128);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox5.Location = new System.Drawing.Point(1095, 158);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(125, 19);
+            this.checkBox5.Size = new System.Drawing.Size(135, 20);
             this.checkBox5.TabIndex = 5;
             this.checkBox5.Text = "Нижняя граница";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -116,20 +116,20 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(821, 156);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox6.Location = new System.Drawing.Point(1095, 192);
+            this.checkBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(174, 19);
+            this.checkBox6.Size = new System.Drawing.Size(196, 20);
             this.checkBox6.TabIndex = 6;
             this.checkBox6.Text = "Прогнозное значение НГ";
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.Click += new System.EventHandler(this.forecastBottomValues_CheckedChanged);
             // 
-            // ChartForm
+            // ResponseChart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 467);
+            this.ClientSize = new System.Drawing.Size(1340, 575);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
@@ -137,8 +137,8 @@
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.functionDiagrams);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "ChartForm";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "ResponseChart";
             this.Text = "График z(t) + Прогноз";
             this.Load += new System.EventHandler(this.Chart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.functionDiagrams)).EndInit();

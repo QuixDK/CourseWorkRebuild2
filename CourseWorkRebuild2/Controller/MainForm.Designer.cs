@@ -96,7 +96,6 @@
             this.reSortMarks = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.chooseBlock = new System.Windows.Forms.ComboBox();
-            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.removeMarkFromBlock = new System.Windows.Forms.Button();
             this.addMarkToBlock = new System.Windows.Forms.Button();
@@ -105,7 +104,18 @@
             this.sortedMarks = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.marksBox = new System.Windows.Forms.ListBox();
+            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.thirdLevel = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.addConnectionToSubblock = new System.Windows.Forms.Button();
+            this.pastStageButton = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.marksOnSubblocksListBox = new System.Windows.Forms.ListBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.strongConnectionsListBox = new System.Windows.Forms.ListBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nextStageButton = new System.Windows.Forms.Button();
             this.marksExcess = new System.Windows.Forms.DataGridView();
             this.distanceBetweenMarks = new System.Windows.Forms.DataGridView();
             this.chooseBlockLabel = new System.Windows.Forms.Label();
@@ -120,16 +130,6 @@
             this.chooseBlock2 = new System.Windows.Forms.ComboBox();
             this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.defaultMessage = new System.Windows.Forms.Label();
-            this.nextStageButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.strongConnectionsListBox = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.marksOnSubblocksListBox = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pastStageButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.addConnectionToSubblock = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -138,8 +138,8 @@
             this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
             this.secondLevel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             this.thirdLevel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBetweenMarks)).BeginInit();
@@ -532,7 +532,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataPage.Size = new System.Drawing.Size(831, 394);
+            this.dataPage.Size = new System.Drawing.Size(831, 396);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -700,7 +700,7 @@
             this.secondLevel.Margin = new System.Windows.Forms.Padding(4);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(4);
-            this.secondLevel.Size = new System.Drawing.Size(831, 394);
+            this.secondLevel.Size = new System.Drawing.Size(831, 396);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -736,16 +736,6 @@
             this.chooseBlock.Size = new System.Drawing.Size(160, 24);
             this.chooseBlock.TabIndex = 9;
             this.chooseBlock.SelectedIndexChanged += new System.EventHandler(this.chooseBlock_SelectedIndexChanged);
-            // 
-            // secondLevelOfDecompositionTable
-            // 
-            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(11, 32);
-            this.secondLevelOfDecompositionTable.Margin = new System.Windows.Forms.Padding(4);
-            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
-            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(812, 351);
-            this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // label6
             // 
@@ -826,6 +816,16 @@
             this.marksBox.TabIndex = 0;
             this.marksBox.DoubleClick += new System.EventHandler(this.marksBox_DoubleClick);
             // 
+            // secondLevelOfDecompositionTable
+            // 
+            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(11, 32);
+            this.secondLevelOfDecompositionTable.Margin = new System.Windows.Forms.Padding(4);
+            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
+            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(812, 351);
+            this.secondLevelOfDecompositionTable.TabIndex = 8;
+            // 
             // thirdLevel
             // 
             this.thirdLevel.Controls.Add(this.button1);
@@ -852,6 +852,100 @@
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
             this.thirdLevel.Enter += new System.EventHandler(this.thirdLevel_Enter);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(136, 207);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 28);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "<-";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // addConnectionToSubblock
+            // 
+            this.addConnectionToSubblock.Location = new System.Drawing.Point(137, 171);
+            this.addConnectionToSubblock.Margin = new System.Windows.Forms.Padding(4);
+            this.addConnectionToSubblock.Name = "addConnectionToSubblock";
+            this.addConnectionToSubblock.Size = new System.Drawing.Size(41, 28);
+            this.addConnectionToSubblock.TabIndex = 26;
+            this.addConnectionToSubblock.Text = "->";
+            this.addConnectionToSubblock.UseVisualStyleBackColor = true;
+            // 
+            // pastStageButton
+            // 
+            this.pastStageButton.Location = new System.Drawing.Point(566, 37);
+            this.pastStageButton.Name = "pastStageButton";
+            this.pastStageButton.Size = new System.Drawing.Size(257, 24);
+            this.pastStageButton.TabIndex = 25;
+            this.pastStageButton.Text = "Вернуться к прошлому шагу  <--";
+            this.pastStageButton.UseVisualStyleBackColor = true;
+            this.pastStageButton.Click += new System.EventHandler(this.pastStageButton_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(169, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(152, 16);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Подструктурный блок";
+            // 
+            // marksOnSubblocksListBox
+            // 
+            this.marksOnSubblocksListBox.FormattingEnabled = true;
+            this.marksOnSubblocksListBox.ItemHeight = 16;
+            this.marksOnSubblocksListBox.Location = new System.Drawing.Point(185, 69);
+            this.marksOnSubblocksListBox.Name = "marksOnSubblocksListBox";
+            this.marksOnSubblocksListBox.Size = new System.Drawing.Size(124, 308);
+            this.marksOnSubblocksListBox.TabIndex = 23;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 50);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(103, 16);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Крепкие связи";
+            // 
+            // strongConnectionsListBox
+            // 
+            this.strongConnectionsListBox.FormattingEnabled = true;
+            this.strongConnectionsListBox.ItemHeight = 16;
+            this.strongConnectionsListBox.Location = new System.Drawing.Point(6, 69);
+            this.strongConnectionsListBox.Name = "strongConnectionsListBox";
+            this.strongConnectionsListBox.Size = new System.Drawing.Size(124, 308);
+            this.strongConnectionsListBox.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 210);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 16);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Таблица превышений";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 41);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(245, 16);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Таблица расстояния между точками";
+            // 
+            // nextStageButton
+            // 
+            this.nextStageButton.Location = new System.Drawing.Point(566, 10);
+            this.nextStageButton.Name = "nextStageButton";
+            this.nextStageButton.Size = new System.Drawing.Size(257, 24);
+            this.nextStageButton.TabIndex = 18;
+            this.nextStageButton.Text = "Перейти к следующему шагу -->";
+            this.nextStageButton.UseVisualStyleBackColor = true;
+            this.nextStageButton.Click += new System.EventHandler(this.nextStageButton_Click);
             // 
             // marksExcess
             // 
@@ -917,7 +1011,7 @@
             this.fourthLevel.Margin = new System.Windows.Forms.Padding(4);
             this.fourthLevel.Name = "fourthLevel";
             this.fourthLevel.Padding = new System.Windows.Forms.Padding(4);
-            this.fourthLevel.Size = new System.Drawing.Size(831, 394);
+            this.fourthLevel.Size = new System.Drawing.Size(831, 396);
             this.fourthLevel.TabIndex = 4;
             this.fourthLevel.Text = "Уровень 4";
             this.fourthLevel.UseVisualStyleBackColor = true;
@@ -952,6 +1046,7 @@
             this.displayedMarks.Name = "displayedMarks";
             this.displayedMarks.Size = new System.Drawing.Size(213, 148);
             this.displayedMarks.TabIndex = 15;
+            this.displayedMarks.SelectedIndexChanged += new System.EventHandler(this.displayedMarks_SelectedIndexChanged);
             this.displayedMarks.DoubleClick += new System.EventHandler(this.displayedMarks_DoubleClick);
             // 
             // availableMarks
@@ -1008,100 +1103,6 @@
             this.defaultMessage.TabIndex = 13;
             this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
             // 
-            // nextStageButton
-            // 
-            this.nextStageButton.Location = new System.Drawing.Point(566, 10);
-            this.nextStageButton.Name = "nextStageButton";
-            this.nextStageButton.Size = new System.Drawing.Size(257, 24);
-            this.nextStageButton.TabIndex = 18;
-            this.nextStageButton.Text = "Перейти к следующему шагу -->";
-            this.nextStageButton.UseVisualStyleBackColor = true;
-            this.nextStageButton.Click += new System.EventHandler(this.nextStageButton_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 41);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(245, 16);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Таблица расстояния между точками";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 210);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(149, 16);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Таблица превышений";
-            // 
-            // strongConnectionsListBox
-            // 
-            this.strongConnectionsListBox.FormattingEnabled = true;
-            this.strongConnectionsListBox.ItemHeight = 16;
-            this.strongConnectionsListBox.Location = new System.Drawing.Point(6, 69);
-            this.strongConnectionsListBox.Name = "strongConnectionsListBox";
-            this.strongConnectionsListBox.Size = new System.Drawing.Size(124, 308);
-            this.strongConnectionsListBox.TabIndex = 21;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 50);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 16);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Крепкие связи";
-            // 
-            // marksOnSubblocksListBox
-            // 
-            this.marksOnSubblocksListBox.FormattingEnabled = true;
-            this.marksOnSubblocksListBox.ItemHeight = 16;
-            this.marksOnSubblocksListBox.Location = new System.Drawing.Point(185, 69);
-            this.marksOnSubblocksListBox.Name = "marksOnSubblocksListBox";
-            this.marksOnSubblocksListBox.Size = new System.Drawing.Size(124, 308);
-            this.marksOnSubblocksListBox.TabIndex = 23;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(169, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(152, 16);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Подструктурный блок";
-            // 
-            // pastStageButton
-            // 
-            this.pastStageButton.Location = new System.Drawing.Point(566, 37);
-            this.pastStageButton.Name = "pastStageButton";
-            this.pastStageButton.Size = new System.Drawing.Size(257, 24);
-            this.pastStageButton.TabIndex = 25;
-            this.pastStageButton.Text = "Вернуться к прошлому шагу  <--";
-            this.pastStageButton.UseVisualStyleBackColor = true;
-            this.pastStageButton.Click += new System.EventHandler(this.pastStageButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(136, 207);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 28);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "<-";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // addConnectionToSubblock
-            // 
-            this.addConnectionToSubblock.Location = new System.Drawing.Point(137, 171);
-            this.addConnectionToSubblock.Margin = new System.Windows.Forms.Padding(4);
-            this.addConnectionToSubblock.Name = "addConnectionToSubblock";
-            this.addConnectionToSubblock.Size = new System.Drawing.Size(41, 28);
-            this.addConnectionToSubblock.TabIndex = 26;
-            this.addConnectionToSubblock.Text = "->";
-            this.addConnectionToSubblock.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1124,8 +1125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
             this.secondLevel.ResumeLayout(false);
             this.secondLevel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             this.thirdLevel.ResumeLayout(false);
             this.thirdLevel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).EndInit();
