@@ -157,19 +157,19 @@ namespace CourseWorkRebuild2
             forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
             forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
 
-            result.Add(listOfBottomLineMValues);
-            result.Add(forecastBottomLineMValue);
-            result.Add(listOfMValues);
-            result.Add(forecastMValue);
-            result.Add(listOfTopLineMValues);
-            result.Add(forecastTopLineMValue);
+            result.Add(listOfBottomLineMValues); //0
+            result.Add(forecastBottomLineMValue); //1
+            result.Add(listOfMValues); //2
+            result.Add(forecastMValue); //3
+            result.Add(listOfTopLineMValues); //4
+            result.Add(forecastTopLineMValue); //5
 
-            result.Add(listOfBottomLineAValues);
-            result.Add(forecastBottomLineAValue);
-            result.Add(listOfAValues);
-            result.Add(forecastAValue);
-            result.Add(listOfTopLineAValues);
-            result.Add(forecastTopLineAValue);
+            result.Add(listOfBottomLineAValues); //6
+            result.Add(forecastBottomLineAValue); //7
+            result.Add(listOfAValues); //8
+            result.Add(forecastAValue); //9
+            result.Add(listOfTopLineAValues); //10
+            result.Add(forecastTopLineAValue); //11
 
             return result;
         }
