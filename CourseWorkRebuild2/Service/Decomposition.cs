@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace CourseWorkRebuild2
 {
@@ -62,7 +63,6 @@ namespace CourseWorkRebuild2
                     string[] indexes = columnName.Split('-');
                     string firstIndex = indexes[0];
                     string secondIndex = indexes[1];
-                    //[marks[chooseBlock.SelectedIndex].IndexOf(firstIndex) + 1]
                     distanceBetweenMarks.Rows[i].Cells[j].Value = Math.Abs(Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[firstIndex].Index].Value) - Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[secondIndex].Index].Value));
                 }
             }
@@ -121,13 +121,12 @@ namespace CourseWorkRebuild2
             chartDiagramService.RemoveLine(fourthLevelChart, forecastMark);
         }
 
-        public List<ListBox> SecondLevel(DataGridView elevatorTable, List<String> values, List<ListBox> lists, List<List<String>> marks, ComboBox chooseBlock)
+        public List<List<Double>> SecondLevel(DataGridView elevatorTable, List<String> values, List<List<String>> marks, ComboBox chooseBlock)
         {
-            foreach (ListBox listBox in lists)
-            {
-                listBox.Items.Clear();
-            }
+            List<List<Double>> result = new List<List<Double>>();
+
             List<String> mark = new List<String>();
+
             mark = marks[0];
 
             if (chooseBlock.SelectedItem != null)
@@ -146,15 +145,20 @@ namespace CourseWorkRebuild2
             listOfMValues = calculations.CalculateMValues(elevatorTable, mark);
             forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
 
-            return fillListBoxes(lists);
+            result.Add(listOfBottomLineMValues);
+            result.Add(forecastBottomLineMValue);
+            result.Add(listOfMValues);
+            result.Add(forecastMValue);
+            result.Add(listOfTopLineMValues);
+            result.Add(forecastTopLineMValue);
+
+            return result;
         }
 
-        public List<ListBox> FirstLevel(DataGridView elevatorTable, DataTable dataTable, List<String> values, List<ListBox> lists)
+        public List<List<Double>> FirstLevel(DataGridView elevatorTable, DataTable dataTable, List<String> values)
         {
-            foreach (ListBox listBox in lists)
-            {
-                listBox.Items.Clear();
-            }
+            List<List<Double>> result = new List<List<Double>>();  
+
             Double T = Convert.ToDouble(values[2]);
             Double Alpha = Convert.ToDouble(values[3]);
             DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "-");
@@ -166,7 +170,14 @@ namespace CourseWorkRebuild2
             listOfMValues = calculations.CalculateMValues(elevatorTable);
             forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
 
-            return fillListBoxes(lists);
+            result.Add(listOfBottomLineMValues);
+            result.Add(forecastBottomLineMValue);
+            result.Add(listOfMValues);
+            result.Add(forecastMValue);
+            result.Add(listOfTopLineMValues);
+            result.Add(forecastTopLineMValue);
+
+            return result;
         }
 
         public DataGridView ClearTable(DataGridView dataTable)
@@ -175,8 +186,8 @@ namespace CourseWorkRebuild2
             dataTable.Rows.Clear();
             return dataTable;
         }
-        
-        public DataGridView FillTable(DataGridView dataTable, List<ListBox> lists, DataGridView elevatorTable)
+
+        public DataGridView FillTable(DataGridView dataTable, List<List<Double>> values, DataGridView table)
         {
             dataTable.Rows.Clear();
             dataTable.Columns.Clear();
@@ -199,74 +210,57 @@ namespace CourseWorkRebuild2
 
             int forecastIndex = 0;
             //Записываем эпохи
-            for (int i = 0; i < elevatorTable.RowCount; i++)
+            for (int i = 0; i < table.RowCount; i++)
             {
                 dataTable.Rows.Add();
-                dataTable.Rows[i].Cells[0].Value = elevatorTable.Rows[i].Cells[0].Value;
+                dataTable.Rows[i].Cells[0].Value = table.Rows[i].Cells[0].Value;
                 forecastIndex = i + 1;
             }
-            dataTable.Rows[forecastIndex-1].Cells[0].Value = Convert.ToDouble(elevatorTable.Rows[forecastIndex-2].Cells[0].Value) + 1;
-            //Заполняем таблицу из листбоксов
-            int counter = 0;
-            for (int i = 0; i < lists.Count-1; i++)
+            dataTable.Rows[forecastIndex - 1].Cells[0].Value = Convert.ToDouble(table.Rows[forecastIndex - 2].Cells[0].Value) + 1;
+            //Заполняем таблицу значениями M(низ) + прогноз
+            for (int i = 0; i < values[0].Count; i++)
             {
-                
-                foreach (Double s in lists[i].Items)
-                {
-                    dataTable.Rows[counter].Cells[i+1].Value = s;
-                    dataTable.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    counter++;
-                }
-                counter = 0;
+                dataTable.Rows[i].Cells[1].Value = values[0][i];
+
             }
-            foreach (String s in lists[5].Items)
+            dataTable.Rows[table.Rows.Count - 1].Cells[1].Value = values[1].Last();
+            //Заполняем таблицу значениями M(вверх) + прогноз
+            for (int i = 0; i < values[4].Count; i++)
             {
-                dataTable.Rows[counter].Cells[6].Value = s;
-                counter++;
+                dataTable.Rows[i].Cells[3].Value = values[4][i];
+
+            }
+            dataTable.Rows[table.Rows.Count - 1].Cells[3].Value = values[5].Last();
+            //Заполняем таблицу значениями M(исходное) + прогноз
+            for (int i = 0; i < values[2].Count; i++)
+            {
+                dataTable.Rows[i].Cells[2].Value = values[2][i];
+
+            }
+            dataTable.Rows[table.Rows.Count - 1].Cells[2].Value = values[3].Last();
+            //Считаем значение 2Е (по модулю (М(верх) - М(низ)))
+            for (int i = 0; i < dataTable.Rows.Count - 1; i++)
+            {
+                dataTable.Rows[i].Cells[4].Value = Math.Abs(Convert.ToDouble(dataTable.Rows[i].Cells[1].Value) - Convert.ToDouble(dataTable.Rows[i].Cells[3].Value));
+            }
+            //Считаем L (по модулю (M(0) - M(i)))
+            for (int i = 0; i < dataTable.Rows.Count - 1; i++)
+            {
+                dataTable.Rows[i].Cells[5].Value = Math.Abs(Convert.ToDouble(dataTable.Rows[0].Cells[2].Value) - Convert.ToDouble(dataTable.Rows[i].Cells[2].Value));
+            }
+            //Считаем есть ли выход за границу
+            for (int i = 0; i < dataTable.Rows.Count - 1; i++)
+            {
+                if (Convert.ToDouble(dataTable.Rows[i].Cells[5].Value) < Convert.ToDouble(dataTable.Rows[i].Cells[4].Value) / 2)
+                {
+                    dataTable.Rows[i].Cells[6].Value = "В пределе";
+                }
+                else dataTable.Rows[i].Cells[6].Value = "Выход за границу";
             }
             return dataTable;
         }
-        
-        private List<ListBox> fillListBoxes(List<ListBox> lists)
-        {
-            foreach (Double value in listOfBottomLineMValues)
-            {
-                lists[0].Items.Add(value);
-            }
-            foreach (Double value in listOfTopLineMValues)
-            {
-                lists[2].Items.Add(value);
-            }
-            foreach (Double value in listOfMValues)
-            {
-                lists[1].Items.Add(value);
-            }
 
-            lists[0].Items.Add(forecastBottomLineMValue.Last());
-            lists[1].Items.Add(forecastMValue.Last());
-            lists[2].Items.Add(forecastTopLineMValue.Last());
-            for (int i = 0; i < lists[0].Items.Count; i++)
-            {
-                lists[3].Items.Add(Math.Abs(Convert.ToDouble(lists[0].Items[i]) - Convert.ToDouble(lists[2].Items[i])));
-            }
-            for (int i = 0; i < lists[1].Items.Count; i++)
-            {
-                lists[4].Items.Add(Math.Abs(Convert.ToDouble(lists[1].Items[i]) - Convert.ToDouble(lists[1].Items[0])));
-            }
-            for (int i = 0; i < lists[4].Items.Count; i++)
-            {
-                if (Convert.ToDouble(lists[4].Items[i]) < (Convert.ToDouble(lists[3].Items[i]) / 2))
-                {
-                    lists[5].Items.Add("В пределе");
-                }
-                else if (Convert.ToDouble(lists[4].Items[i]) == (Convert.ToDouble(lists[3].Items[i]) / 2))
-                {
-                    lists[5].Items.Add("Точка бифуркации");
-                }
-                else lists[5].Items.Add("Выход за границу");
-            }
-            return lists;
-        }
+
     }
 
 }

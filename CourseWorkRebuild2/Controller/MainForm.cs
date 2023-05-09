@@ -19,8 +19,7 @@ namespace CourseWorkRebuild2
         private String oldElevatorTablePath = "";
         private String oldTxtFile = "";
         private Decomposition decomposition = new Decomposition();
-        private List<ListBox> lists = new List<ListBox>();
-        private List<ListBox> listsForSecondLevel = new List<ListBox>();
+
         private PhaseCoordinates checkValuesForm;
         Calculations calculations = new Calculations();
         Dictionary<int, String> blockDictionary;
@@ -36,19 +35,6 @@ namespace CourseWorkRebuild2
             InitializeComponent();
             disableStartButtons();
             checkValuesForm = new PhaseCoordinates();
-            lists.Add(checkValuesForm.GetListBox1());
-            lists.Add(checkValuesForm.GetListBox2());
-            lists.Add(checkValuesForm.GetListBox3());
-            lists.Add(checkValuesForm.GetListBox4());
-            lists.Add(checkValuesForm.GetListBox5());
-            lists.Add(checkValuesForm.GetListBox6());
-
-            listsForSecondLevel.Add(checkValuesForm.GetListBox7());
-            listsForSecondLevel.Add(checkValuesForm.GetListBox8());
-            listsForSecondLevel.Add(checkValuesForm.GetListBox9());
-            listsForSecondLevel.Add(checkValuesForm.GetListBox10());
-            listsForSecondLevel.Add(checkValuesForm.GetListBox11());
-            listsForSecondLevel.Add(checkValuesForm.GetListBox12());
 
             blockDictionary = new Dictionary<int, String>();
             blockDictionary.Add(0, "A");
@@ -95,9 +81,9 @@ namespace CourseWorkRebuild2
             {
                 Int32 epochCount = elevatorTable.RowCount;
                 //Тут получаем значения из расчетов
-                lists = decomposition.FirstLevel(elevatorTable, dataTable, values, lists);
+                List<List<Double>> valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, values);
                 //А тут заполняем табличку
-                firstLevelOfDecompositionTable = decomposition.FillTable(firstLevelOfDecompositionTable, lists, elevatorTable);
+                firstLevelOfDecompositionTable = decomposition.FillTable(firstLevelOfDecompositionTable, valuesForFirstLevel, elevatorTable);
             }
             decompositionLevel = 1;
         }
@@ -204,13 +190,14 @@ namespace CourseWorkRebuild2
                     chooseBlock.Items.Add(blockDictionary[i]);
                 }
 
-                decomposition.SecondLevel(elevatorTable, values, listsForSecondLevel, marksByBlocks, chooseBlock);
+                List<List<Double>> valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, values, marksByBlocks, chooseBlock);
+                decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
             }
         }
         private void chooseBlock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listsForSecondLevel = decomposition.SecondLevel(elevatorTable, values, lists, marksByBlocks, chooseBlock);
-            decomposition.FillTable(secondLevelOfDecompositionTable, listsForSecondLevel, elevatorTable);
+            List<List<Double>> valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, values, marksByBlocks, chooseBlock);
+            decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
         }
 
         private void removeMarkFromBlock_Click(object sender, EventArgs e)
