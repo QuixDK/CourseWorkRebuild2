@@ -22,5 +22,9 @@ namespace CourseWorkRebuild2
 
         }
 
+        public DataGridView GetTable()
+        {
+            return this.dataGridView1;
+        }
     }
 }

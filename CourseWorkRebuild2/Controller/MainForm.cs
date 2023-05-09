@@ -10,7 +10,7 @@ namespace CourseWorkRebuild2
 {
     public partial class MainForm : Form
     {
-        private List<String> values = new List<String>();
+        private List<String> pathToFilesAndData = new List<String>();
         private List<NewProjectForm> openForms = new List<NewProjectForm>();
         private DataTable dataTable = new DataTable();
         private System.Data.SQLite.SQLiteConnection sqlConnection;
@@ -18,16 +18,16 @@ namespace CourseWorkRebuild2
         private String oldObjectPicturePath = "";
         private String oldElevatorTablePath = "";
         private String oldTxtFile = "";
+        List<List<Double>> valuesForSecondLevel;
         private Decomposition decomposition = new Decomposition();
 
-        private PhaseCoordinates checkValuesForm;
+        private PhaseCoordinates checkValuesForm = new PhaseCoordinates();
         Calculations calculations = new Calculations();
         Dictionary<int, String> blockDictionary;
         private int activeForm = 0;
         private int epochCount = 0;
         private int needMarksCount;
         private int blockIndex = 0;
-        private int marker = 0;
         private int decompositionLevel = 0;
         private List<List<String>> marksByBlocks = new List<List<String>>();
         public MainForm()
@@ -49,12 +49,10 @@ namespace CourseWorkRebuild2
 
         private void initEpochCount()
         {
-
             if (epochCount == 0)
             {
                 epochCount = Convert.ToInt32(elevatorTable.Rows[(elevatorTable.Rows.Count - 2)].Cells[0].Value) + 1;
             }
-            
         }
 
         private void reDrawMainForm()
@@ -63,9 +61,9 @@ namespace CourseWorkRebuild2
             initEpochCount();
             reDrawValues();
             reDrawObjectPicture();
-            if (values[6] != null & values[6] != "")
+            if (pathToFilesAndData[6] != null & pathToFilesAndData[6] != "")
             {
-                this.Text = values[6];
+                this.Text = pathToFilesAndData[6];
                 this.closeButton.Enabled = true;
                 this.saveAsButton.Enabled = true;
                 this.closeAllButton.Enabled = true;
@@ -77,14 +75,16 @@ namespace CourseWorkRebuild2
         private void firstLevelDecomposition_Enter(object sender, EventArgs e)
         {
             //Если достаточно данных для расчетов
-            if (values.Count > 0 && values[0] != "" & values[2] != "" & values[3] != "")
+            if (pathToFilesAndData.Count > 0 && pathToFilesAndData[0] != "" & pathToFilesAndData[2] != "" & pathToFilesAndData[3] != "")
             {
-                Int32 epochCount = elevatorTable.RowCount;
+
                 //Тут получаем значения из расчетов
-                List<List<Double>> valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, values);
+                List<List<Double>> valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, pathToFilesAndData);
                 //А тут заполняем табличку
-                firstLevelOfDecompositionTable = decomposition.FillTable(firstLevelOfDecompositionTable, valuesForFirstLevel, elevatorTable);
+                decomposition.FillTable(firstLevelOfDecompositionTable, valuesForFirstLevel, elevatorTable);
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForFirstLevel, checkValuesForm.GetTable());
             }
+
             decompositionLevel = 1;
         }
 
@@ -103,17 +103,17 @@ namespace CourseWorkRebuild2
             sortedMarks.Items.Clear();
             marksBox.Items.Clear();
 
-            int startMarksCount = Convert.ToInt32(values[4]);
-            while (startMarksCount % Convert.ToInt32(values[5]) != 0)
+            int startMarksCount = Convert.ToInt32(pathToFilesAndData[4]);
+            while (startMarksCount % Convert.ToInt32(pathToFilesAndData[5]) != 0)
             {
                 startMarksCount--;
             }
 
-            needMarksCount = startMarksCount / Convert.ToInt32(values[5]);
+            needMarksCount = startMarksCount / Convert.ToInt32(pathToFilesAndData[5]);
 
-            label4.Text = "Всего марок: " + values[4];
+            label4.Text = "Всего марок: " + pathToFilesAndData[4];
             label5.Text = "Блок " + blockDictionary[blockIndex];
-            label6.Text = "Количество структурных блоков: " + values[5];
+            label6.Text = "Количество структурных блоков: " + pathToFilesAndData[5];
 
 
             for (int i = 1; i < elevatorTable.Columns.Count; i++)
@@ -121,9 +121,9 @@ namespace CourseWorkRebuild2
                 marksBox.Items.Add(elevatorTable.Columns[i].Name);
             }
 
-            if (values[1] != null & values[1] != "")
+            if (pathToFilesAndData[1] != null & pathToFilesAndData[1] != "")
             {
-                objectDiagram.Load(values[1]);
+                objectDiagram.Load(pathToFilesAndData[1]);
                 objectDiagram.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             else objectDiagram.Image = null;
@@ -177,7 +177,7 @@ namespace CourseWorkRebuild2
                 sortedMarks.Items.Clear();
                 label5.Text = "Блок " + blockDictionary[blockIndex];
             }
-            if (blockIndex == Convert.ToInt32(values[5]))
+            if (blockIndex == Convert.ToInt32(pathToFilesAndData[5]))
             {
                 sortMarksGroupBox.Hide();
                 objectDiagram.Hide();
@@ -185,19 +185,21 @@ namespace CourseWorkRebuild2
                 reSortMarksPanel.Show();
                 secondLevelOfDecompositionTable.Show();
 
-                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
                 {
                     chooseBlock.Items.Add(blockDictionary[i]);
                 }
 
-                List<List<Double>> valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, values, marksByBlocks, chooseBlock);
+                valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
                 decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
             }
         }
         private void chooseBlock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<List<Double>> valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, values, marksByBlocks, chooseBlock);
+            valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
             decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
+            decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
         }
 
         private void removeMarkFromBlock_Click(object sender, EventArgs e)
@@ -222,7 +224,7 @@ namespace CourseWorkRebuild2
                 displayedMarks.Items.Clear();
                 chooseBlock2.Items.Clear();
 
-                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
                 {
                     chooseBlock2.Items.Add(blockDictionary[i]);
                 }
@@ -252,7 +254,7 @@ namespace CourseWorkRebuild2
             if (availableMarks.SelectedItem != null)
             {
                 displayedMarks.Items.Add(availableMarks.SelectedItem);
-                decomposition.FourthLevelChartAddLine(availableMarks.SelectedItem.ToString(), elevatorTable, values, fourthLevelChart);
+                decomposition.FourthLevelChartAddLine(availableMarks.SelectedItem.ToString(), elevatorTable, pathToFilesAndData, fourthLevelChart);
                 availableMarks.Items.Remove(availableMarks.SelectedItem);
             }
 
@@ -272,9 +274,9 @@ namespace CourseWorkRebuild2
         private void reDrawObjectPicture()
         {
             //Если есть путь к картинке
-            if (values[1] != null & values[1] != "")
+            if (pathToFilesAndData[1] != null & pathToFilesAndData[1] != "")
             {
-                objectPicture.Load(values[1]);
+                objectPicture.Load(pathToFilesAndData[1]);
                 objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.closeButton.Enabled = true;
                 this.saveAsButton.Enabled = true;
@@ -291,9 +293,9 @@ namespace CourseWorkRebuild2
         private void reDrawValues()
         {
             //Если есть значение Т
-            if (values[2] != null & values[2] != "")
+            if (pathToFilesAndData[2] != null & pathToFilesAndData[2] != "")
             {
-                valueOfTLabel.Text = "T: " + values[2];
+                valueOfTLabel.Text = "T: " + pathToFilesAndData[2];
                 enableButtonsForValues();
             }
             else
@@ -301,9 +303,9 @@ namespace CourseWorkRebuild2
                 valueOfTLabel.Text = "Значение T не найдено";
             }
             //Если есть значение А (для сглаживания)
-            if (values[3] != null & values[3] != "")
+            if (pathToFilesAndData[3] != null & pathToFilesAndData[3] != "")
             {
-                valueOfALabel.Text = "A: " + values[3];
+                valueOfALabel.Text = "A: " + pathToFilesAndData[3];
                 enableButtonsForValues();
             }
             else
@@ -311,15 +313,15 @@ namespace CourseWorkRebuild2
                 valueOfALabel.Text = "Значение А не найдено";
             }
             //Если известно количество марок
-            if (values[4] != null & values[4] != "")
+            if (pathToFilesAndData[4] != null & pathToFilesAndData[4] != "")
             {
-                markCount.Text = "Количество марок: " + values[4];
+                markCount.Text = "Количество марок: " + pathToFilesAndData[4];
             }
             else markCount.Text = "Количество марок не найдено";
             //Если известно количество объектов
-            if (values[5] != null & values[5] != "")
+            if (pathToFilesAndData[5] != null & pathToFilesAndData[5] != "")
             {
-                buildingCountValue.Text = "Количество объектов: " + values[5];
+                buildingCountValue.Text = "Количество объектов: " + pathToFilesAndData[5];
 
             }
             else buildingCountValue.Text = "Количество объектов не найдено";
@@ -328,10 +330,10 @@ namespace CourseWorkRebuild2
         private void reDrawElevatorTable()
         {
             //Если есть путь к БД
-            if (values[0] != null & values[0] != "")
+            if (pathToFilesAndData[0] != null & pathToFilesAndData[0] != "")
             {
                 epochCountBox.Items.Clear();
-                repository = new Repository(values[0]);
+                repository = new Repository(pathToFilesAndData[0]);
                 sqlConnection = repository.GetDbConnection();
                 elevatorTable = repository.ShowTable(dataTable, elevatorTable);
                 for (int row = 0; row < elevatorTable.Rows.Count - 1; row++)
@@ -380,11 +382,11 @@ namespace CourseWorkRebuild2
             else
             {
                 OpenProject openProject = new OpenProject();
-                values = openProject.Open();
+                pathToFilesAndData = openProject.Open();
                 activeForm++;
                 reDrawMainForm();
                 activeForm--;
-                if (!(values[0] == "") & !(values[1] == "") & !(values[7] == ""))
+                if (!(pathToFilesAndData[0] == "") & !(pathToFilesAndData[1] == "") & !(pathToFilesAndData[7] == ""))
                 {
                     activeForm++;
                 }
@@ -404,7 +406,7 @@ namespace CourseWorkRebuild2
             else
             {
                 OpenProject openProject = new OpenProject();
-                values = openProject.UnzipRar();
+                pathToFilesAndData = openProject.UnzipRar();
                 reDrawMainForm();
                 activeForm++;
             }
@@ -426,9 +428,9 @@ namespace CourseWorkRebuild2
         }
         private void closeButton_Click(object sender, EventArgs e)
         {
-            for (int value = 0; value < values.Count; value++)
+            for (int value = 0; value < pathToFilesAndData.Count; value++)
             {
-                values[value] = "";
+                pathToFilesAndData[value] = "";
             }
             decomposition.ClearTable(firstLevelOfDecompositionTable);
             decomposition.ClearTable(secondLevelOfDecompositionTable);
@@ -480,17 +482,17 @@ namespace CourseWorkRebuild2
         private String getPathToSave()
         {
             String sourceDirectory = "";
-            if (values[0] != "" & values[0] != null)
+            if (pathToFilesAndData[0] != "" & pathToFilesAndData[0] != null)
             {
-                sourceDirectory = Path.GetDirectoryName(values[0]);
+                sourceDirectory = Path.GetDirectoryName(pathToFilesAndData[0]);
             }
-            else if (values[1] != "" & values[1] != null)
+            else if (pathToFilesAndData[1] != "" & pathToFilesAndData[1] != null)
             {
-                sourceDirectory = Path.GetDirectoryName(values[1]);
+                sourceDirectory = Path.GetDirectoryName(pathToFilesAndData[1]);
             }
-            else if (values[7] != "" & values[7] != null)
+            else if (pathToFilesAndData[7] != "" & pathToFilesAndData[7] != null)
             {
-                sourceDirectory = Path.GetDirectoryName(values[7]);
+                sourceDirectory = Path.GetDirectoryName(pathToFilesAndData[7]);
             }
             return sourceDirectory;
         }
@@ -522,35 +524,35 @@ namespace CourseWorkRebuild2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            String tempTableFile = values[0];
-            String tempPngFile = values[1];
-            values[0] = "";
-            values[1] = "";
+            String tempTableFile = pathToFilesAndData[0];
+            String tempPngFile = pathToFilesAndData[1];
+            pathToFilesAndData[0] = "";
+            pathToFilesAndData[1] = "";
             reDrawMainForm();
             Save save = new Save();
-            save.SaveTxtFile(values[7], Convert.ToDouble(values[2]), Convert.ToInt32(values[5]), Convert.ToInt32(values[4]));
-            if (oldObjectPicturePath != "" & oldObjectPicturePath != values[1]) { save.SaveNewFile(tempPngFile, oldObjectPicturePath, "*.png"); }
+            save.SaveTxtFile(pathToFilesAndData[7], Convert.ToDouble(pathToFilesAndData[2]), Convert.ToInt32(pathToFilesAndData[5]), Convert.ToInt32(pathToFilesAndData[4]));
+            if (oldObjectPicturePath != "" & oldObjectPicturePath != pathToFilesAndData[1]) { save.SaveNewFile(tempPngFile, oldObjectPicturePath, "*.png"); }
             if (oldElevatorTablePath != "" & oldElevatorTablePath != tempTableFile) { save.SaveNewFile(tempTableFile, oldElevatorTablePath, "*.sqlite"); }
-            values[0] = tempTableFile;
-            values[1] = tempPngFile;
+            pathToFilesAndData[0] = tempTableFile;
+            pathToFilesAndData[1] = tempPngFile;
             reDrawMainForm();
         }
 
         private void newBlocksCount_Enter(object sender, EventArgs e)
         {
-            values[5] = this.newBlocksCount.Text;
+            pathToFilesAndData[5] = this.newBlocksCount.Text;
             reDrawValues();
         }
 
         private void newAValue_Enter(object sender, EventArgs e)
         {
-            values[3] = this.newAValue.Text;
+            pathToFilesAndData[3] = this.newAValue.Text;
             reDrawValues();
         }
 
         private void newTValue_Enter(object sender, EventArgs e)
         {
-            values[2] = this.newTValue.Text;
+            pathToFilesAndData[2] = this.newTValue.Text;
             reDrawValues();
         }
 
@@ -594,11 +596,11 @@ namespace CourseWorkRebuild2
         {
             String title = "Выберите таблицу высот";
             String filter = "SQLite files (*.sqlite)|*.sqlite";
-            oldElevatorTablePath = values[0];
-            values[0] = getNewFilePath(title, filter);
-            if (values[0] == "")
+            oldElevatorTablePath = pathToFilesAndData[0];
+            pathToFilesAndData[0] = getNewFilePath(title, filter);
+            if (pathToFilesAndData[0] == "")
             {
-                values[0] = oldElevatorTablePath;
+                pathToFilesAndData[0] = oldElevatorTablePath;
             }
             reDrawElevatorTable();
         }
@@ -607,11 +609,11 @@ namespace CourseWorkRebuild2
         {
             String title = "Выберите схему объекта";
             String filter = "PNG files (*.png)|*.png";
-            oldObjectPicturePath = values[1];
-            values[1] = getNewFilePath(title, filter);
-            if (values[1] == "")
+            oldObjectPicturePath = pathToFilesAndData[1];
+            pathToFilesAndData[1] = getNewFilePath(title, filter);
+            if (pathToFilesAndData[1] == "")
             {
-                values[1] = oldObjectPicturePath;
+                pathToFilesAndData[1] = oldObjectPicturePath;
             }
             reDrawObjectPicture();
         }
@@ -620,12 +622,12 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, decompositionLevel);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, values, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
+                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
         }
@@ -634,12 +636,12 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, decompositionLevel);
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, values, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
+                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
                 chartForm.Show();
             }
 
@@ -648,7 +650,7 @@ namespace CourseWorkRebuild2
 
         private void checkValues_Click(object sender, EventArgs e)
         {
-            checkValuesForm.ShowDialog();
+            checkValuesForm.Show();
         }
 
         private void enableButtonsForTable()
@@ -756,17 +758,17 @@ namespace CourseWorkRebuild2
             OpenProject openProject = new OpenProject();
             String title = "Выберите файл с документацией";
             String filter = "Txt files (*.txt)|*.txt";
-            oldTxtFile = values[7];
-            values[7] = getNewFilePath(title, filter);
-            if (values[7] == "")
+            oldTxtFile = pathToFilesAndData[7];
+            pathToFilesAndData[7] = getNewFilePath(title, filter);
+            if (pathToFilesAndData[7] == "")
             {
-                values[7] = oldTxtFile;
+                pathToFilesAndData[7] = oldTxtFile;
             }
             List<String> newValues = new List<String>();
-            newValues = openProject.ReadValuesFromTxtFile(values[7]);
-            values[2] = newValues[2];
-            values[5] = newValues[0];
-            values[4] = newValues[1];
+            newValues = openProject.ReadValuesFromTxtFile(pathToFilesAndData[7]);
+            pathToFilesAndData[2] = newValues[2];
+            pathToFilesAndData[5] = newValues[0];
+            pathToFilesAndData[4] = newValues[1];
             reDrawValues();
         }
 
@@ -790,7 +792,7 @@ namespace CourseWorkRebuild2
                 pastStageButton.Hide();
                 button1.Hide();
                 addConnectionToSubblock.Hide();
-                for (int i = 0; i < Convert.ToInt32(values[5]); i++)
+                for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
                 {
                     chooseBlock3.Items.Add(blockDictionary[i]);
                 }
@@ -817,7 +819,7 @@ namespace CourseWorkRebuild2
 
         private void chooseBlock3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocks, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, values[2]);
+            decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocks, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
         }
 
         private void nextStageButton_Click(object sender, EventArgs e)
@@ -856,10 +858,6 @@ namespace CourseWorkRebuild2
 
         }
 
-        private void phaseCoordinates_Click(object sender, EventArgs e)
-        {
-
-        }
     }
         
 }

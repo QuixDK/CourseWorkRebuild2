@@ -94,8 +94,6 @@
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.secondLevel = new System.Windows.Forms.TabPage();
             this.reSortMarksPanel = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.reSortMarks = new System.Windows.Forms.Button();
             this.chooseBlock = new System.Windows.Forms.ComboBox();
@@ -717,32 +715,13 @@
             // 
             // reSortMarksPanel
             // 
-            this.reSortMarksPanel.Controls.Add(this.comboBox1);
-            this.reSortMarksPanel.Controls.Add(this.label16);
             this.reSortMarksPanel.Controls.Add(this.label7);
             this.reSortMarksPanel.Controls.Add(this.reSortMarks);
             this.reSortMarksPanel.Controls.Add(this.chooseBlock);
             this.reSortMarksPanel.Location = new System.Drawing.Point(399, 3);
             this.reSortMarksPanel.Name = "reSortMarksPanel";
-            this.reSortMarksPanel.Size = new System.Drawing.Size(301, 100);
+            this.reSortMarksPanel.Size = new System.Drawing.Size(301, 62);
             this.reSortMarksPanel.TabIndex = 13;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(110, 62);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 21);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 65);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(103, 13);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Выберите таблицу:";
             // 
             // label7
             // 
@@ -885,10 +864,10 @@
             // secondLevelOfDecompositionTable
             // 
             this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 104);
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 71);
             this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
             this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(694, 277);
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(694, 310);
             this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // thirdLevel
@@ -1314,8 +1293,6 @@
         private System.Windows.Forms.Label label14;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel reSortMarksPanel;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel fourthLevelChartPanel;
     }
 }

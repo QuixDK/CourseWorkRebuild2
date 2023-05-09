@@ -16,6 +16,12 @@ namespace CourseWorkRebuild2
         private List<Double> forecastTopLineMValue = new List<Double>();
         private List<Double> forecastBottomLineMValue = new List<Double>();
         private List<Double> forecastMValue = new List<Double>();
+        private List<Double> listOfTopLineAValues = new List<Double>();
+        private List<Double> forecastTopLineAValue = new List<Double>();
+        private List<Double> listOfAValues = new List<Double>();
+        private List<Double> listOfBottomLineAValues = new List<Double>();
+        private List<Double> forecastBottomLineAValue = new List<Double>();
+        private List<Double> forecastAValue = new List<Double>();
         Calculations calculations = new Calculations();
 
         public void ThirdLevelFillDistanceTable(DataGridView distanceBetweenMarks, List<List<String>> marks, ComboBox chooseBlock, DataGridView initialTable, DataGridView marksExcess, ListBox strongConnectionsListBox, String T)
@@ -139,11 +145,17 @@ namespace CourseWorkRebuild2
             DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "-");
             DataGridView topLineTable = calculations.CalculateBottomOrTopLineTableToSecondLevel(elevatorTable, mark, T, "+");
             listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+            listOfBottomLineAValues = calculations.CalculateAValues(bottomLineTable, listOfBottomLineMValues);
             listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+            listOfTopLineAValues = calculations.CalculateAValues(topLineTable, listOfTopLineMValues);
             forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
             forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+            forecastTopLineAValue = calculations.GetForecastValue(listOfTopLineAValues, Alpha);
+            forecastBottomLineAValue = calculations.GetForecastValue(listOfBottomLineAValues, Alpha);
             listOfMValues = calculations.CalculateMValues(elevatorTable, mark);
+            listOfAValues = calculations.CalculateAValues(elevatorTable, listOfMValues, mark);
             forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
+            forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
 
             result.Add(listOfBottomLineMValues);
             result.Add(forecastBottomLineMValue);
@@ -151,6 +163,13 @@ namespace CourseWorkRebuild2
             result.Add(forecastMValue);
             result.Add(listOfTopLineMValues);
             result.Add(forecastTopLineMValue);
+
+            result.Add(listOfBottomLineAValues);
+            result.Add(forecastBottomLineAValue);
+            result.Add(listOfAValues);
+            result.Add(forecastAValue);
+            result.Add(listOfTopLineAValues);
+            result.Add(forecastTopLineAValue);
 
             return result;
         }
@@ -164,11 +183,17 @@ namespace CourseWorkRebuild2
             DataGridView bottomLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "-");
             DataGridView topLineTable = calculations.CalculateBottomOrTopLineTable(dataTable, T, elevatorTable, "+");
             listOfBottomLineMValues = calculations.CalculateMValues(bottomLineTable);
+            listOfBottomLineAValues = calculations.CalculateAValues(bottomLineTable, listOfBottomLineMValues);
             listOfTopLineMValues = calculations.CalculateMValues(topLineTable);
+            listOfTopLineAValues = calculations.CalculateAValues(topLineTable, listOfTopLineMValues);
             forecastTopLineMValue = calculations.GetForecastValue(listOfTopLineMValues, Alpha);
+            forecastTopLineAValue = calculations.GetForecastValue(listOfTopLineAValues, Alpha);
             forecastBottomLineMValue = calculations.GetForecastValue(listOfBottomLineMValues, Alpha);
+            forecastBottomLineAValue = calculations.GetForecastValue(listOfBottomLineAValues, Alpha);
             listOfMValues = calculations.CalculateMValues(elevatorTable);
+            listOfAValues = calculations.CalculateAValues(elevatorTable, listOfMValues);
             forecastMValue = calculations.GetForecastValue(listOfMValues, Alpha);
+            forecastAValue = calculations.GetForecastValue(listOfAValues, Alpha);
 
             result.Add(listOfBottomLineMValues);
             result.Add(forecastBottomLineMValue);
@@ -176,6 +201,13 @@ namespace CourseWorkRebuild2
             result.Add(forecastMValue);
             result.Add(listOfTopLineMValues);
             result.Add(forecastTopLineMValue);
+
+            result.Add(listOfBottomLineAValues);
+            result.Add(forecastBottomLineAValue);
+            result.Add(listOfAValues);
+            result.Add(forecastAValue);
+            result.Add(listOfTopLineAValues);
+            result.Add(forecastTopLineAValue);
 
             return result;
         }
@@ -260,7 +292,56 @@ namespace CourseWorkRebuild2
             return dataTable;
         }
 
+        public void FillPhaseCoordinatesTable(DataGridView elevationTable, List<List<Double>> Values, DataGridView table)
+        {
 
+            table.Columns.Clear();
+
+            for (int i = 0; i < 13; i++)
+            {
+                table.Columns.Add(new DataGridViewTextBoxColumn());
+            }
+
+            table.Columns[0].Name = "Эпоха";
+            table.Columns[1].Name = "Исходное М";
+            table.Columns[2].Name = "Верхнее М";
+            table.Columns[3].Name = "Нижнее М";
+            table.Columns[4].Name = "Исходное Альфа";
+            table.Columns[5].Name = "Верхнее Альфа";
+            table.Columns[6].Name = "Нижнее Альфа";
+            table.Columns[7].Name = "Сглаженное M";
+            table.Columns[8].Name = "Сглаженное М верхнее";
+            table.Columns[9].Name = "Сглаженное М нижнее";
+            table.Columns[10].Name = "Сглаженное Альфа";
+            table.Columns[11].Name = "Сглаженное Aльфа верхнее";
+            table.Columns[12].Name = "Сглаженное Aльфа нижнее";
+
+            for (int i = 0; i < elevationTable.Rows.Count - 1; i++)
+            {
+                table.Rows.Add();
+                table.Rows[i].Cells[0].Value = elevationTable.Rows[i].Cells[0].Value;
+                table.Rows[i].Cells[1].Value = Values[2][i];
+                table.Rows[i].Cells[2].Value = Values[4][i];
+                table.Rows[i].Cells[3].Value = Values[0][i];
+                table.Rows[i].Cells[4].Value = Values[8][i];
+                table.Rows[i].Cells[5].Value = Values[10][i];
+                table.Rows[i].Cells[6].Value = Values[6][i];
+            }
+            table.Rows.Add();
+            int lastIndex = table.Rows.GetLastRow(0x0);
+            table.Rows[lastIndex - 1].Cells[0].Value = Convert.ToDouble(elevationTable.Rows[lastIndex - 2].Cells[0].Value) + 1;
+
+            for (int i = 0; i < elevationTable.Rows.Count; i++)
+            {
+                table.Rows[i].Cells[7].Value = Values[3][i];
+                table.Rows[i].Cells[8].Value = Values[5][i];
+                table.Rows[i].Cells[9].Value = Values[1][i];
+                table.Rows[i].Cells[10].Value = Values[9][i];
+                table.Rows[i].Cells[11].Value = Values[11][i];
+                table.Rows[i].Cells[12].Value = Values[7][i];
+            }
+
+        }
     }
 
 }
