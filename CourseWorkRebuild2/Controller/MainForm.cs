@@ -19,6 +19,7 @@ namespace CourseWorkRebuild2
         private String oldElevatorTablePath = "";
         private String oldTxtFile = "";
         List<List<Double>> valuesForSecondLevel;
+        List<List<Double>> valuesForFirstLevel;
         private Decomposition decomposition = new Decomposition();
 
         private PhaseCoordinates checkValuesForm = new PhaseCoordinates();
@@ -79,7 +80,7 @@ namespace CourseWorkRebuild2
             {
 
                 //Тут получаем значения из расчетов
-                List<List<Double>> valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, pathToFilesAndData);
+                valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, pathToFilesAndData);
                 //А тут заполняем табличку
                 decomposition.FillTable(firstLevelOfDecompositionTable, valuesForFirstLevel, elevatorTable);
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForFirstLevel, checkValuesForm.GetTable());
@@ -622,12 +623,12 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel);
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForFirstLevel);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForSecondLevel);
                 chartForm.Show();
             }
         }
@@ -636,12 +637,12 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel);
+                ResponseChart chartForm = new ResponseChart(valuesForFirstLevel);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ResponseChart chartForm = new ResponseChart(elevatorTable, dataTable, pathToFilesAndData, decompositionLevel, marksByBlocks[chooseBlock.SelectedIndex]);
+                ResponseChart chartForm = new ResponseChart(valuesForSecondLevel);
                 chartForm.Show();
             }
 

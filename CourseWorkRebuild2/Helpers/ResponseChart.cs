@@ -9,12 +9,11 @@ namespace CourseWorkRebuild2
     public partial class ResponseChart : Form
     {
         ChartDiagramService chartDiagramService = new ChartDiagramService();
-        private List<String> data;
         private List<List<Double>> values;
-        public ResponseChart(DataGridView elevatorTable, DataTable dataTable, List<string> data, List<List<Double>> values)
+
+        public ResponseChart(List<List<Double>> values)
         {
             InitializeComponent();
-            this.data = data;
             this.values = values;
         }
 
@@ -55,11 +54,6 @@ namespace CourseWorkRebuild2
             String serieName = "Верхняя граница";
             if (functionDiagrams.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(functionDiagrams, serieName);
             else chartDiagramService.AddMALine(values[4], values[10], functionDiagrams, serieName);
-        }
-
-        private void Chart_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }
