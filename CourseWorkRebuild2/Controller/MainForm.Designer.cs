@@ -110,20 +110,20 @@
             this.sortedMarks = new System.Windows.Forms.ListBox();
             this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.thirdLevel = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.addConnectionToSubblock = new System.Windows.Forms.Button();
-            this.pastStageButton = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.marksOnSubblocksListBox = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.levelThirdPanel = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.strongConnectionsListBox = new System.Windows.Forms.ListBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.nextStageButton = new System.Windows.Forms.Button();
-            this.marksExcess = new System.Windows.Forms.DataGridView();
-            this.distanceBetweenMarks = new System.Windows.Forms.DataGridView();
+            this.removeMarkFromSubblock = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.chooseBlockLabel = new System.Windows.Forms.Label();
+            this.addConnectionToSubblock = new System.Windows.Forms.Button();
             this.chooseBlock3 = new System.Windows.Forms.ComboBox();
+            this.distanceBetweenMarks = new System.Windows.Forms.DataGridView();
+            this.marksExcess = new System.Windows.Forms.DataGridView();
+            this.blockLabel = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.marksOnSubblocksListBox = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.defaultMessage2 = new System.Windows.Forms.Label();
             this.fourthLevel = new System.Windows.Forms.TabPage();
             this.fourthLevelChartPanel = new System.Windows.Forms.Panel();
@@ -136,6 +136,14 @@
             this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.defaultMessage = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.nextStageButton = new System.Windows.Forms.Button();
+            this.subblockSettingPanel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.acceptButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -149,11 +157,14 @@
             this.sortMarksGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             this.thirdLevel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).BeginInit();
+            this.levelThirdPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBetweenMarks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).BeginInit();
             this.fourthLevel.SuspendLayout();
             this.fourthLevelChartPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).BeginInit();
+            this.subblockSettingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -167,7 +178,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(711, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(981, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -520,7 +531,7 @@
             this.tabContol.Margin = new System.Windows.Forms.Padding(2);
             this.tabContol.Name = "tabContol";
             this.tabContol.SelectedIndex = 0;
-            this.tabContol.Size = new System.Drawing.Size(711, 410);
+            this.tabContol.Size = new System.Drawing.Size(981, 416);
             this.tabContol.TabIndex = 1;
             // 
             // dataPage
@@ -541,14 +552,14 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2);
-            this.dataPage.Size = new System.Drawing.Size(703, 384);
+            this.dataPage.Size = new System.Drawing.Size(972, 386);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
             // 
             // deleteSelectedRowsButton
             // 
-            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(237, 140);
+            this.deleteSelectedRowsButton.Location = new System.Drawing.Point(237, 175);
             this.deleteSelectedRowsButton.Margin = new System.Windows.Forms.Padding(2);
             this.deleteSelectedRowsButton.Name = "deleteSelectedRowsButton";
             this.deleteSelectedRowsButton.Size = new System.Drawing.Size(89, 41);
@@ -610,7 +621,7 @@
             // 
             // DeleteLastEpoch
             // 
-            this.DeleteLastEpoch.Location = new System.Drawing.Point(122, 140);
+            this.DeleteLastEpoch.Location = new System.Drawing.Point(122, 175);
             this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLastEpoch.Name = "DeleteLastEpoch";
             this.DeleteLastEpoch.Size = new System.Drawing.Size(111, 41);
@@ -621,7 +632,7 @@
             // 
             // AddNewEpochButton
             // 
-            this.AddNewEpochButton.Location = new System.Drawing.Point(6, 140);
+            this.AddNewEpochButton.Location = new System.Drawing.Point(6, 175);
             this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewEpochButton.Name = "AddNewEpochButton";
             this.AddNewEpochButton.Size = new System.Drawing.Size(111, 41);
@@ -634,7 +645,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(612, 20);
+            this.label2.Location = new System.Drawing.Point(881, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
@@ -644,10 +655,10 @@
             // objectPicture
             // 
             this.objectPicture.BackColor = System.Drawing.Color.White;
-            this.objectPicture.Location = new System.Drawing.Point(463, 37);
+            this.objectPicture.Location = new System.Drawing.Point(530, 37);
             this.objectPicture.Margin = new System.Windows.Forms.Padding(2);
             this.objectPicture.Name = "objectPicture";
-            this.objectPicture.Size = new System.Drawing.Size(233, 145);
+            this.objectPicture.Size = new System.Drawing.Size(435, 178);
             this.objectPicture.TabIndex = 2;
             this.objectPicture.TabStop = false;
             // 
@@ -655,7 +666,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(6, 124);
+            this.label1.Location = new System.Drawing.Point(6, 159);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
@@ -665,12 +676,12 @@
             // elevatorTable
             // 
             this.elevatorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elevatorTable.Location = new System.Drawing.Point(6, 186);
+            this.elevatorTable.Location = new System.Drawing.Point(6, 219);
             this.elevatorTable.Margin = new System.Windows.Forms.Padding(2);
             this.elevatorTable.Name = "elevatorTable";
             this.elevatorTable.RowHeadersWidth = 51;
             this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(690, 191);
+            this.elevatorTable.Size = new System.Drawing.Size(959, 158);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             this.elevatorTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.elevatorTable_EditingControlShowing);
@@ -682,7 +693,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(703, 384);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(972, 386);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -695,7 +706,7 @@
             this.firstLevelOfDecompositionTable.Location = new System.Drawing.Point(2, 2);
             this.firstLevelOfDecompositionTable.Name = "firstLevelOfDecompositionTable";
             this.firstLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(699, 380);
+            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(968, 382);
             this.firstLevelOfDecompositionTable.TabIndex = 0;
             // 
             // secondLevel
@@ -707,7 +718,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.secondLevel.Size = new System.Drawing.Size(703, 384);
+            this.secondLevel.Size = new System.Drawing.Size(972, 386);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -718,9 +729,9 @@
             this.reSortMarksPanel.Controls.Add(this.label7);
             this.reSortMarksPanel.Controls.Add(this.reSortMarks);
             this.reSortMarksPanel.Controls.Add(this.chooseBlock);
-            this.reSortMarksPanel.Location = new System.Drawing.Point(399, 3);
+            this.reSortMarksPanel.Location = new System.Drawing.Point(399, 6);
             this.reSortMarksPanel.Name = "reSortMarksPanel";
-            this.reSortMarksPanel.Size = new System.Drawing.Size(301, 62);
+            this.reSortMarksPanel.Size = new System.Drawing.Size(565, 62);
             this.reSortMarksPanel.TabIndex = 13;
             // 
             // label7
@@ -736,7 +747,7 @@
             // 
             this.reSortMarks.Location = new System.Drawing.Point(4, 3);
             this.reSortMarks.Name = "reSortMarks";
-            this.reSortMarks.Size = new System.Drawing.Size(294, 23);
+            this.reSortMarks.Size = new System.Drawing.Size(558, 23);
             this.reSortMarks.TabIndex = 11;
             this.reSortMarks.Text = "Перераспределить марки";
             this.reSortMarks.UseVisualStyleBackColor = true;
@@ -747,15 +758,15 @@
             this.chooseBlock.FormattingEnabled = true;
             this.chooseBlock.Location = new System.Drawing.Point(92, 31);
             this.chooseBlock.Name = "chooseBlock";
-            this.chooseBlock.Size = new System.Drawing.Size(206, 21);
+            this.chooseBlock.Size = new System.Drawing.Size(460, 21);
             this.chooseBlock.TabIndex = 9;
             this.chooseBlock.SelectedIndexChanged += new System.EventHandler(this.chooseBlock_SelectedIndexChanged);
             // 
             // objectDiagram
             // 
-            this.objectDiagram.Location = new System.Drawing.Point(399, 104);
+            this.objectDiagram.Location = new System.Drawing.Point(399, 74);
             this.objectDiagram.Name = "objectDiagram";
-            this.objectDiagram.Size = new System.Drawing.Size(301, 277);
+            this.objectDiagram.Size = new System.Drawing.Size(562, 304);
             this.objectDiagram.TabIndex = 4;
             this.objectDiagram.TabStop = false;
             // 
@@ -864,180 +875,179 @@
             // secondLevelOfDecompositionTable
             // 
             this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 71);
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 74);
             this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
             this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(694, 310);
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(955, 307);
             this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // thirdLevel
             // 
-            this.thirdLevel.Controls.Add(this.button1);
-            this.thirdLevel.Controls.Add(this.addConnectionToSubblock);
-            this.thirdLevel.Controls.Add(this.pastStageButton);
-            this.thirdLevel.Controls.Add(this.label13);
-            this.thirdLevel.Controls.Add(this.marksOnSubblocksListBox);
-            this.thirdLevel.Controls.Add(this.label12);
-            this.thirdLevel.Controls.Add(this.strongConnectionsListBox);
-            this.thirdLevel.Controls.Add(this.label11);
-            this.thirdLevel.Controls.Add(this.label10);
-            this.thirdLevel.Controls.Add(this.nextStageButton);
-            this.thirdLevel.Controls.Add(this.marksExcess);
-            this.thirdLevel.Controls.Add(this.distanceBetweenMarks);
-            this.thirdLevel.Controls.Add(this.chooseBlockLabel);
-            this.thirdLevel.Controls.Add(this.chooseBlock3);
+            this.thirdLevel.Controls.Add(this.dataGridView1);
+            this.thirdLevel.Controls.Add(this.levelThirdPanel);
             this.thirdLevel.Controls.Add(this.defaultMessage2);
             this.thirdLevel.Location = new System.Drawing.Point(4, 22);
             this.thirdLevel.Name = "thirdLevel";
             this.thirdLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.thirdLevel.Size = new System.Drawing.Size(703, 384);
+            this.thirdLevel.Size = new System.Drawing.Size(973, 390);
             this.thirdLevel.TabIndex = 3;
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
             this.thirdLevel.Enter += new System.EventHandler(this.thirdLevel_Enter);
             // 
-            // button1
+            // levelThirdPanel
             // 
-            this.button1.Location = new System.Drawing.Point(102, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "<-";
-            this.button1.UseVisualStyleBackColor = true;
+            this.levelThirdPanel.Controls.Add(this.subblockSettingPanel);
+            this.levelThirdPanel.Controls.Add(this.nextStageButton);
+            this.levelThirdPanel.Controls.Add(this.listBox1);
+            this.levelThirdPanel.Controls.Add(this.strongConnectionsListBox);
+            this.levelThirdPanel.Controls.Add(this.removeMarkFromSubblock);
+            this.levelThirdPanel.Controls.Add(this.label12);
+            this.levelThirdPanel.Controls.Add(this.chooseBlockLabel);
+            this.levelThirdPanel.Controls.Add(this.addConnectionToSubblock);
+            this.levelThirdPanel.Controls.Add(this.chooseBlock3);
+            this.levelThirdPanel.Controls.Add(this.distanceBetweenMarks);
+            this.levelThirdPanel.Controls.Add(this.marksExcess);
+            this.levelThirdPanel.Controls.Add(this.blockLabel);
+            this.levelThirdPanel.Controls.Add(this.label11);
+            this.levelThirdPanel.Controls.Add(this.marksOnSubblocksListBox);
+            this.levelThirdPanel.Controls.Add(this.label10);
+            this.levelThirdPanel.Location = new System.Drawing.Point(3, 3);
+            this.levelThirdPanel.Name = "levelThirdPanel";
+            this.levelThirdPanel.Size = new System.Drawing.Size(968, 382);
+            this.levelThirdPanel.TabIndex = 28;
             // 
-            // addConnectionToSubblock
+            // listBox1
             // 
-            this.addConnectionToSubblock.Location = new System.Drawing.Point(103, 139);
-            this.addConnectionToSubblock.Name = "addConnectionToSubblock";
-            this.addConnectionToSubblock.Size = new System.Drawing.Size(31, 23);
-            this.addConnectionToSubblock.TabIndex = 26;
-            this.addConnectionToSubblock.Text = "->";
-            this.addConnectionToSubblock.UseVisualStyleBackColor = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(4, 59);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(86, 134);
+            this.listBox1.TabIndex = 28;
             // 
-            // pastStageButton
+            // strongConnectionsListBox
             // 
-            this.pastStageButton.Location = new System.Drawing.Point(424, 30);
-            this.pastStageButton.Margin = new System.Windows.Forms.Padding(2);
-            this.pastStageButton.Name = "pastStageButton";
-            this.pastStageButton.Size = new System.Drawing.Size(193, 20);
-            this.pastStageButton.TabIndex = 25;
-            this.pastStageButton.Text = "Вернуться к прошлому шагу  <--";
-            this.pastStageButton.UseVisualStyleBackColor = true;
-            this.pastStageButton.Click += new System.EventHandler(this.pastStageButton_Click);
+            this.strongConnectionsListBox.FormattingEnabled = true;
+            this.strongConnectionsListBox.Location = new System.Drawing.Point(837, 34);
+            this.strongConnectionsListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.strongConnectionsListBox.Name = "strongConnectionsListBox";
+            this.strongConnectionsListBox.Size = new System.Drawing.Size(124, 342);
+            this.strongConnectionsListBox.TabIndex = 21;
             // 
-            // label13
+            // removeMarkFromSubblock
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(127, 41);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 13);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Подструктурный блок";
-            // 
-            // marksOnSubblocksListBox
-            // 
-            this.marksOnSubblocksListBox.FormattingEnabled = true;
-            this.marksOnSubblocksListBox.Location = new System.Drawing.Point(139, 56);
-            this.marksOnSubblocksListBox.Margin = new System.Windows.Forms.Padding(2);
-            this.marksOnSubblocksListBox.Name = "marksOnSubblocksListBox";
-            this.marksOnSubblocksListBox.Size = new System.Drawing.Size(94, 251);
-            this.marksOnSubblocksListBox.TabIndex = 23;
+            this.removeMarkFromSubblock.Location = new System.Drawing.Point(96, 170);
+            this.removeMarkFromSubblock.Name = "removeMarkFromSubblock";
+            this.removeMarkFromSubblock.Size = new System.Drawing.Size(31, 23);
+            this.removeMarkFromSubblock.TabIndex = 27;
+            this.removeMarkFromSubblock.Text = "<-";
+            this.removeMarkFromSubblock.UseVisualStyleBackColor = true;
+            this.removeMarkFromSubblock.Click += new System.EventHandler(this.removeMarkFromSubblock_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 41);
+            this.label12.Location = new System.Drawing.Point(834, 19);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 13);
             this.label12.TabIndex = 22;
             this.label12.Text = "Крепкие связи";
             // 
-            // strongConnectionsListBox
+            // chooseBlockLabel
             // 
-            this.strongConnectionsListBox.FormattingEnabled = true;
-            this.strongConnectionsListBox.Location = new System.Drawing.Point(4, 56);
-            this.strongConnectionsListBox.Margin = new System.Windows.Forms.Padding(2);
-            this.strongConnectionsListBox.Name = "strongConnectionsListBox";
-            this.strongConnectionsListBox.Size = new System.Drawing.Size(94, 251);
-            this.strongConnectionsListBox.TabIndex = 21;
+            this.chooseBlockLabel.AutoSize = true;
+            this.chooseBlockLabel.Location = new System.Drawing.Point(3, 16);
+            this.chooseBlockLabel.Name = "chooseBlockLabel";
+            this.chooseBlockLabel.Size = new System.Drawing.Size(87, 13);
+            this.chooseBlockLabel.TabIndex = 14;
+            this.chooseBlockLabel.Text = "Выберите блок:";
+            // 
+            // addConnectionToSubblock
+            // 
+            this.addConnectionToSubblock.Location = new System.Drawing.Point(96, 59);
+            this.addConnectionToSubblock.Name = "addConnectionToSubblock";
+            this.addConnectionToSubblock.Size = new System.Drawing.Size(31, 23);
+            this.addConnectionToSubblock.TabIndex = 26;
+            this.addConnectionToSubblock.Text = "->";
+            this.addConnectionToSubblock.UseVisualStyleBackColor = true;
+            this.addConnectionToSubblock.Click += new System.EventHandler(this.addConnectionToSubblock_Click);
+            // 
+            // chooseBlock3
+            // 
+            this.chooseBlock3.FormattingEnabled = true;
+            this.chooseBlock3.Location = new System.Drawing.Point(3, 32);
+            this.chooseBlock3.Name = "chooseBlock3";
+            this.chooseBlock3.Size = new System.Drawing.Size(87, 21);
+            this.chooseBlock3.TabIndex = 13;
+            this.chooseBlock3.SelectedIndexChanged += new System.EventHandler(this.chooseBlock3_SelectedIndexChanged);
+            // 
+            // distanceBetweenMarks
+            // 
+            this.distanceBetweenMarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.distanceBetweenMarks.Location = new System.Drawing.Point(221, 34);
+            this.distanceBetweenMarks.Margin = new System.Windows.Forms.Padding(2);
+            this.distanceBetweenMarks.Name = "distanceBetweenMarks";
+            this.distanceBetweenMarks.RowHeadersWidth = 51;
+            this.distanceBetweenMarks.RowTemplate.Height = 24;
+            this.distanceBetweenMarks.Size = new System.Drawing.Size(612, 121);
+            this.distanceBetweenMarks.TabIndex = 16;
+            // 
+            // marksExcess
+            // 
+            this.marksExcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.marksExcess.Location = new System.Drawing.Point(221, 181);
+            this.marksExcess.Margin = new System.Windows.Forms.Padding(2);
+            this.marksExcess.Name = "marksExcess";
+            this.marksExcess.RowHeadersWidth = 51;
+            this.marksExcess.RowTemplate.Height = 24;
+            this.marksExcess.Size = new System.Drawing.Size(612, 191);
+            this.marksExcess.TabIndex = 17;
+            // 
+            // blockLabel
+            // 
+            this.blockLabel.AutoSize = true;
+            this.blockLabel.Location = new System.Drawing.Point(129, 4);
+            this.blockLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.blockLabel.MaximumSize = new System.Drawing.Size(100, 0);
+            this.blockLabel.Name = "blockLabel";
+            this.blockLabel.Size = new System.Drawing.Size(32, 13);
+            this.blockLabel.TabIndex = 24;
+            this.blockLabel.Text = "Блок";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 171);
+            this.label11.Location = new System.Drawing.Point(221, 166);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 13);
             this.label11.TabIndex = 20;
             this.label11.Text = "Таблица превышений";
             // 
+            // marksOnSubblocksListBox
+            // 
+            this.marksOnSubblocksListBox.FormattingEnabled = true;
+            this.marksOnSubblocksListBox.Location = new System.Drawing.Point(132, 31);
+            this.marksOnSubblocksListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.marksOnSubblocksListBox.Name = "marksOnSubblocksListBox";
+            this.marksOnSubblocksListBox.Size = new System.Drawing.Size(85, 160);
+            this.marksOnSubblocksListBox.TabIndex = 23;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 33);
+            this.label10.Location = new System.Drawing.Point(221, 16);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(193, 13);
             this.label10.TabIndex = 19;
             this.label10.Text = "Таблица расстояния между точками";
             // 
-            // nextStageButton
-            // 
-            this.nextStageButton.Location = new System.Drawing.Point(424, 8);
-            this.nextStageButton.Margin = new System.Windows.Forms.Padding(2);
-            this.nextStageButton.Name = "nextStageButton";
-            this.nextStageButton.Size = new System.Drawing.Size(193, 20);
-            this.nextStageButton.TabIndex = 18;
-            this.nextStageButton.Text = "Перейти к следующему шагу -->";
-            this.nextStageButton.UseVisualStyleBackColor = true;
-            this.nextStageButton.Click += new System.EventHandler(this.nextStageButton_Click);
-            // 
-            // marksExcess
-            // 
-            this.marksExcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.marksExcess.Location = new System.Drawing.Point(6, 186);
-            this.marksExcess.Margin = new System.Windows.Forms.Padding(2);
-            this.marksExcess.Name = "marksExcess";
-            this.marksExcess.RowHeadersWidth = 51;
-            this.marksExcess.RowTemplate.Height = 24;
-            this.marksExcess.Size = new System.Drawing.Size(612, 130);
-            this.marksExcess.TabIndex = 17;
-            // 
-            // distanceBetweenMarks
-            // 
-            this.distanceBetweenMarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.distanceBetweenMarks.Location = new System.Drawing.Point(5, 54);
-            this.distanceBetweenMarks.Margin = new System.Windows.Forms.Padding(2);
-            this.distanceBetweenMarks.Name = "distanceBetweenMarks";
-            this.distanceBetweenMarks.RowHeadersWidth = 51;
-            this.distanceBetweenMarks.RowTemplate.Height = 24;
-            this.distanceBetweenMarks.Size = new System.Drawing.Size(612, 107);
-            this.distanceBetweenMarks.TabIndex = 16;
-            // 
-            // chooseBlockLabel
-            // 
-            this.chooseBlockLabel.AutoSize = true;
-            this.chooseBlockLabel.Location = new System.Drawing.Point(7, 11);
-            this.chooseBlockLabel.Name = "chooseBlockLabel";
-            this.chooseBlockLabel.Size = new System.Drawing.Size(87, 13);
-            this.chooseBlockLabel.TabIndex = 14;
-            this.chooseBlockLabel.Text = "Выберите блок:";
-            // 
-            // chooseBlock3
-            // 
-            this.chooseBlock3.FormattingEnabled = true;
-            this.chooseBlock3.Location = new System.Drawing.Point(112, 8);
-            this.chooseBlock3.Name = "chooseBlock3";
-            this.chooseBlock3.Size = new System.Drawing.Size(121, 21);
-            this.chooseBlock3.TabIndex = 13;
-            this.chooseBlock3.SelectedIndexChanged += new System.EventHandler(this.chooseBlock3_SelectedIndexChanged);
-            // 
             // defaultMessage2
             // 
             this.defaultMessage2.AutoSize = true;
-            this.defaultMessage2.Location = new System.Drawing.Point(184, 11);
+            this.defaultMessage2.Location = new System.Drawing.Point(195, 12);
             this.defaultMessage2.Name = "defaultMessage2";
             this.defaultMessage2.Size = new System.Drawing.Size(251, 13);
             this.defaultMessage2.TabIndex = 15;
@@ -1050,7 +1060,7 @@
             this.fourthLevel.Location = new System.Drawing.Point(4, 22);
             this.fourthLevel.Name = "fourthLevel";
             this.fourthLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.fourthLevel.Size = new System.Drawing.Size(703, 384);
+            this.fourthLevel.Size = new System.Drawing.Size(972, 386);
             this.fourthLevel.TabIndex = 4;
             this.fourthLevel.Text = "Уровень 4";
             this.fourthLevel.UseVisualStyleBackColor = true;
@@ -1065,7 +1075,7 @@
             this.fourthLevelChartPanel.Controls.Add(this.availableMarks);
             this.fourthLevelChartPanel.Controls.Add(this.displayedMarks);
             this.fourthLevelChartPanel.Controls.Add(this.fourthLevelChart);
-            this.fourthLevelChartPanel.Location = new System.Drawing.Point(6, 20);
+            this.fourthLevelChartPanel.Location = new System.Drawing.Point(3, 3);
             this.fourthLevelChartPanel.Name = "fourthLevelChartPanel";
             this.fourthLevelChartPanel.Size = new System.Drawing.Size(694, 368);
             this.fourthLevelChartPanel.TabIndex = 18;
@@ -1122,7 +1132,6 @@
             this.displayedMarks.Name = "displayedMarks";
             this.displayedMarks.Size = new System.Drawing.Size(126, 173);
             this.displayedMarks.TabIndex = 15;
-            this.displayedMarks.SelectedIndexChanged += new System.EventHandler(this.displayedMarks_SelectedIndexChanged);
             this.displayedMarks.DoubleClick += new System.EventHandler(this.displayedMarks_DoubleClick);
             // 
             // fourthLevelChart
@@ -1146,17 +1155,90 @@
             this.defaultMessage.TabIndex = 13;
             this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
             // 
+            // nextStageButton
+            // 
+            this.nextStageButton.Location = new System.Drawing.Point(4, 199);
+            this.nextStageButton.Name = "nextStageButton";
+            this.nextStageButton.Size = new System.Drawing.Size(212, 43);
+            this.nextStageButton.TabIndex = 29;
+            this.nextStageButton.Text = "Продолжить";
+            this.nextStageButton.UseVisualStyleBackColor = true;
+            this.nextStageButton.Click += new System.EventHandler(this.nextStageButton_Click);
+            // 
+            // subblockSettingPanel
+            // 
+            this.subblockSettingPanel.Controls.Add(this.acceptButton);
+            this.subblockSettingPanel.Controls.Add(this.textBox2);
+            this.subblockSettingPanel.Controls.Add(this.textBox1);
+            this.subblockSettingPanel.Controls.Add(this.label16);
+            this.subblockSettingPanel.Controls.Add(this.label13);
+            this.subblockSettingPanel.Location = new System.Drawing.Point(6, 248);
+            this.subblockSettingPanel.Name = "subblockSettingPanel";
+            this.subblockSettingPanel.Size = new System.Drawing.Size(210, 124);
+            this.subblockSettingPanel.TabIndex = 30;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 9);
+            this.label13.MaximumSize = new System.Drawing.Size(100, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 26);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Количество подблоков";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 50);
+            this.label16.MaximumSize = new System.Drawing.Size(100, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(58, 26);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Марок на подблоке";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(90, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(90, 56);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 3;
+            // 
+            // acceptButton
+            // 
+            this.acceptButton.Location = new System.Drawing.Point(6, 82);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(201, 39);
+            this.acceptButton.TabIndex = 31;
+            this.acceptButton.Text = "Подтвердить";
+            this.acceptButton.UseVisualStyleBackColor = true;
+            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(222, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(742, 367);
+            this.dataGridView1.TabIndex = 29;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 434);
+            this.ClientSize = new System.Drawing.Size(981, 440);
             this.Controls.Add(this.tabContol);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabContol.ResumeLayout(false);
@@ -1175,13 +1257,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             this.thirdLevel.ResumeLayout(false);
             this.thirdLevel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).EndInit();
+            this.levelThirdPanel.ResumeLayout(false);
+            this.levelThirdPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBetweenMarks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).EndInit();
             this.fourthLevel.ResumeLayout(false);
             this.fourthLevel.PerformLayout();
             this.fourthLevelChartPanel.ResumeLayout(false);
             this.fourthLevelChartPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).EndInit();
+            this.subblockSettingPanel.ResumeLayout(false);
+            this.subblockSettingPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1279,13 +1366,11 @@
         private System.Windows.Forms.Label defaultMessage2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button nextStageButton;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox strongConnectionsListBox;
-        private System.Windows.Forms.Button pastStageButton;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label blockLabel;
         private System.Windows.Forms.ListBox marksOnSubblocksListBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeMarkFromSubblock;
         private System.Windows.Forms.Button addConnectionToSubblock;
         private System.Windows.Forms.ToolStripMenuItem phaseCoordinates;
         private System.Windows.Forms.GroupBox sortMarksGroupBox;
@@ -1294,6 +1379,16 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel reSortMarksPanel;
         private System.Windows.Forms.Panel fourthLevelChartPanel;
+        private System.Windows.Forms.Panel levelThirdPanel;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button nextStageButton;
+        private System.Windows.Forms.Panel subblockSettingPanel;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

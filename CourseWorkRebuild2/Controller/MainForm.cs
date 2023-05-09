@@ -20,6 +20,7 @@ namespace CourseWorkRebuild2
         private String oldTxtFile = "";
         List<List<Double>> valuesForSecondLevel;
         List<List<Double>> valuesForFirstLevel;
+        List<List<Double>> valuesForThirdLevel;
         private Decomposition decomposition = new Decomposition();
 
         private PhaseCoordinates checkValuesForm = new PhaseCoordinates();
@@ -30,7 +31,13 @@ namespace CourseWorkRebuild2
         private int needMarksCount;
         private int blockIndex = 0;
         private int decompositionLevel = 0;
+        private int subblockCount = 0;
+        private int marksOnSubblock = 0;
+        int stage = 0;
         private List<List<String>> marksByBlocks = new List<List<String>>();
+        private List<List<String>> marksByBlocksForThirdLevel = new List<List<String>>();
+        private List<List<String>> marksBySubBlocks = new List<List<String>>();
+        private List<String> unsortedMarks = new List<String>();
         public MainForm()
         {
             InitializeComponent();
@@ -139,6 +146,9 @@ namespace CourseWorkRebuild2
             marksBox.Items.Clear();
             sortedMarks.Items.Clear();
             chooseBlock.Items.Clear();
+
+            unsortedMarks.Clear();
+
             foreach (List<String> list in marksByBlocks)
             {
                 list.Clear();
@@ -191,6 +201,12 @@ namespace CourseWorkRebuild2
                     chooseBlock.Items.Add(blockDictionary[i]);
                 }
 
+                for (int i = 0; i < marksBox.Items.Count; i++)
+                {
+                    unsortedMarks.Add(marksBox.Items[i].ToString());
+                }
+
+                chooseBlock.SelectedItem = chooseBlock.Items[0];
                 valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
                 decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
@@ -631,6 +647,11 @@ namespace CourseWorkRebuild2
                 ExpSmoothChart chartForm = new ExpSmoothChart(valuesForSecondLevel);
                 chartForm.Show();
             }
+            else if (decompositionLevel == 3)
+            {
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForThirdLevel);
+                chartForm.Show();
+            }
         }
 
         private void chartButton_Click(object sender, EventArgs e)
@@ -643,6 +664,11 @@ namespace CourseWorkRebuild2
             else if (decompositionLevel == 2)
             {
                 ResponseChart chartForm = new ResponseChart(valuesForSecondLevel);
+                chartForm.Show();
+            }
+            else if (decompositionLevel == 3)
+            {
+                ResponseChart chartForm = new ResponseChart(valuesForThirdLevel);
                 chartForm.Show();
             }
 
@@ -777,88 +803,178 @@ namespace CourseWorkRebuild2
         {
             if (marksByBlocks.Count > 0)
             {
+                stage = 1;
+
                 defaultMessage2.Hide();
-                label12.Hide();
-                label13.Hide();
-                marksOnSubblocksListBox.Hide();
-                strongConnectionsListBox.Hide();
-                label10.Show();
-                label11.Show();
-                nextStageButton.Show();
+                levelThirdPanel.Show();
+                subblockSettingPanel.Hide();
+                dataGridView1.Hide();
+
                 chooseBlock3.Items.Clear();
-                chooseBlock3.Show();
-                chooseBlockLabel.Show();
-                distanceBetweenMarks.Show();
-                marksExcess.Show();
-                pastStageButton.Hide();
-                button1.Hide();
-                addConnectionToSubblock.Hide();
+
+                for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
+                {
+                    marksByBlocksForThirdLevel.Add(new List<String>());
+                }
+                
+                for (int i = 0; i < marksByBlocks.Count; i++)
+                {
+                    for (int j = 0; j < marksByBlocks[i].Count; j++)
+                    {
+                        marksByBlocksForThirdLevel[i].Add(marksByBlocks[i][j]);
+                    }
+                }
+
                 for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
                 {
                     chooseBlock3.Items.Add(blockDictionary[i]);
                 }
 
+                chooseBlock3.SelectedItem = chooseBlock3.Items[0];
+                marksOnSubblocksListBox.Items.Clear();
+
+                for (int i = 0; i < marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count; i++)
+                {
+                    marksOnSubblocksListBox.Items.Add(marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex][i]);
+                }
+
+                if (unsortedMarks.Count > 0)
+                {
+                    blockLabel.Text = "Блок " + blockDictionary[chooseBlock3.SelectedIndex];
+                    listBox1.Items.Clear();
+                    for (int i = 0; i < unsortedMarks.Count; i++)
+                    {
+                        listBox1.Items.Add(unsortedMarks[i]);
+                    }
+                }
+
             }
             else
             {
-                pastStageButton.Hide();
-                label13.Hide();
-                marksOnSubblocksListBox.Hide();
-                label12.Hide();
-                strongConnectionsListBox.Hide();
-                label10.Hide();
-                label11.Hide();
-                nextStageButton.Hide();
-                chooseBlock3.Hide();
-                chooseBlockLabel.Hide();
-                distanceBetweenMarks.Hide();
-                marksExcess.Hide();
-                button1.Hide();
-                addConnectionToSubblock.Hide();
+                defaultMessage2.Show();
+                levelThirdPanel.Hide();
             }
         }
 
         private void chooseBlock3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocks, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
+            if (stage == 1)
+            {
+                marksOnSubblocksListBox.Items.Clear();
+
+                blockLabel.Text = "Блок " + blockDictionary[chooseBlock3.SelectedIndex];
+
+                for (int i = 0; i < marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count; i++)
+                {
+                    marksOnSubblocksListBox.Items.Add(marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex][i]);
+                }
+            }
+            else if (stage == 2)
+            {
+                decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocksForThirdLevel, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
+            }
+            else if (stage == 3)
+            {
+                marksOnSubblocksListBox.Items.Clear();
+                for (int i = 0; i < marksBySubBlocks[chooseBlock3.SelectedIndex].Count; i++)
+                {
+                    marksOnSubblocksListBox.Items.Add(marksBySubBlocks[chooseBlock3.SelectedIndex][i]);
+                }
+            }
+
+            
+        }
+
+        private void addConnectionToSubblock_Click(object sender, EventArgs e)
+        {
+            if (stage == 1)
+            {
+                unsortedMarks.Remove(listBox1.Items[0].ToString());
+                marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
+                marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
+                listBox1.Items.Remove(listBox1.Items[0]);
+            }
+            if (stage == 3)
+            {
+                marksBySubBlocks[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
+                marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
+                listBox1.Items.Remove(listBox1.Items[0]);
+            }
+        }
+
+        private void removeMarkFromSubblock_Click(object sender, EventArgs e)
+        {
+            if (stage == 1)
+            {
+                unsortedMarks.Add(marksOnSubblocksListBox.Items[0].ToString());
+                marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
+                listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
+                marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+            }
+            if (stage == 3)
+            {
+                marksBySubBlocks[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
+                listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
+                marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+            }
         }
 
         private void nextStageButton_Click(object sender, EventArgs e)
         {
-            button1.Show();
-            addConnectionToSubblock.Show();
-            pastStageButton.Show();
-            label13.Show();
-            marksOnSubblocksListBox.Show();
-            label10.Hide();
-            label11.Hide();
-            distanceBetweenMarks.Hide();
-            marksExcess.Hide();
-            label12.Show();
-            strongConnectionsListBox.Show();
+            if (stage == 1)
+            {
+                subblockSettingPanel.Show();
 
+                stage = 2;
+                decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocksForThirdLevel, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
+
+                addConnectionToSubblock.Enabled = false;
+                removeMarkFromBlock.Enabled = false;
+            }
+            if (stage == 3)
+            {
+                dataGridView1.Show();
+                decompositionLevel = 3;
+                valuesForThirdLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksBySubBlocks, chooseBlock3);
+                decomposition.FillTable(dataGridView1, valuesForThirdLevel, elevatorTable);
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForThirdLevel, checkValuesForm.GetTable());
+            }
         }
 
-        private void pastStageButton_Click(object sender, EventArgs e)
+        private void acceptButton_Click(object sender, EventArgs e)
         {
-            pastStageButton.Hide();
-            label13.Hide();
-            marksOnSubblocksListBox.Hide();
-            label10.Show();
-            label11.Show();
-            distanceBetweenMarks.Show();
-            marksExcess.Show();
-            label12.Hide();
-            strongConnectionsListBox.Hide();
-            button1.Hide();
-            addConnectionToSubblock.Hide();
+            subblockCount = Convert.ToInt32(textBox1.Text);
+            marksOnSubblock = Convert.ToInt32(textBox2.Text);
+
+            addConnectionToSubblock.Enabled = true;
+            removeMarkFromBlock.Enabled = true;
+            listBox1.Items.Clear();
+
+            for (int i = 0; i < marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count; i++)
+            {
+                listBox1.Items.Add(marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex][i]);
+            }
+
+            chooseBlock3.Items.Clear();
+
+            for (int i = 0; i < subblockCount; i++)
+            {
+                chooseBlock3.Items.Add(blockDictionary[i]);
+            }
+
+            chooseBlockLabel.Text = "Выберите подБлок";
+
+            chooseBlock3.SelectedItem = chooseBlock3.Items[0];
+            marksOnSubblocksListBox.Items.Clear();
+
+            for (int i = 0; i < subblockCount; i++)
+            {
+                marksBySubBlocks.Add(new List<String>());
+            }
+
+            blockLabel.Text = "Подблок " + blockDictionary[0];
+            stage = 3;
         }
-
-        private void displayedMarks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
         
 }

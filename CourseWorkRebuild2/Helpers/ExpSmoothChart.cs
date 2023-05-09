@@ -14,15 +14,12 @@ namespace CourseWorkRebuild2.Helpers
     {
         private ChartDiagramService chartDiagramService = new ChartDiagramService();
         private List<List<Double>> values;
-        private List<String> mark;
         private List<Double> epochList = new List<Double>();
-        private int a = 0;
         
         public ExpSmoothChart(List<List<Double>> values)
         {
             InitializeComponent();
             this.values = values;
-            
         }
 
         private void MChart_CheckedChanged(object sender, EventArgs e)
