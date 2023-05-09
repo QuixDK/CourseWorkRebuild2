@@ -21,7 +21,7 @@ namespace CourseWorkRebuild2
         private Decomposition decomposition = new Decomposition();
         private List<ListBox> lists = new List<ListBox>();
         private List<ListBox> listsForSecondLevel = new List<ListBox>();
-        private CheckValuesForm checkValuesForm;
+        private PhaseCoordinates checkValuesForm;
         Calculations calculations = new Calculations();
         Dictionary<int, String> blockDictionary;
         private int activeForm = 0;
@@ -35,7 +35,7 @@ namespace CourseWorkRebuild2
         {
             InitializeComponent();
             disableStartButtons();
-            checkValuesForm = new CheckValuesForm();
+            checkValuesForm = new PhaseCoordinates();
             lists.Add(checkValuesForm.GetListBox1());
             lists.Add(checkValuesForm.GetListBox2());
             lists.Add(checkValuesForm.GetListBox3());
@@ -234,6 +234,7 @@ namespace CourseWorkRebuild2
                 availableMarks.Items.Clear();
                 displayedMarks.Items.Clear();
                 chooseBlock2.Items.Clear();
+
                 for (int i = 0; i < Convert.ToInt32(values[5]); i++)
                 {
                     chooseBlock2.Items.Add(blockDictionary[i]);
@@ -249,7 +250,6 @@ namespace CourseWorkRebuild2
 
         private void chooseBlock2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             availableMarks.Items.Clear();
             displayedMarks.Items.Clear();
             foreach (String mark in marksByBlocks[chooseBlock2.SelectedIndex])
@@ -679,7 +679,7 @@ namespace CourseWorkRebuild2
             this.saveButton.Enabled = true;
             this.deleteSelectedRowsButton.Enabled = true;
             this.tabContol.Enabled = true;
-            this.checkValues.Enabled = true;
+            this.phaseCoordinates.Enabled = true;
             this.chartButton.Enabled = true;
             this.expSmoothChartButton.Enabled = true;
         }
@@ -696,7 +696,7 @@ namespace CourseWorkRebuild2
             this.tabContol.Enabled = false;
             this.chartButton.Enabled = false;
             this.expSmoothChartButton.Enabled = false;
-            this.checkValues.Enabled = false;
+            this.phaseCoordinates.Enabled = false;
         }
 
         private void disableStartButtons()
