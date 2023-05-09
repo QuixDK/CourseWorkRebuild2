@@ -226,7 +226,7 @@ namespace CourseWorkRebuild2
                 {
                     averageSumm += listOfValues[i];
                 }
-                averageSumm /= listOfValues.Count;
+                averageSumm /= listOfValues.Count - 1;
                 value = a * listOfValues[0] + (1 - a) * averageSumm;
                 forecastValues.Add(value);
             }

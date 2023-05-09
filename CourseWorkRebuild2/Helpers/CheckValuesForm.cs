@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
 {
-    public partial class CheckValuesForm : Form
+    public partial class PhaseCoordinates : Form
     {
-        public CheckValuesForm()
+        public PhaseCoordinates()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace CourseWorkRebuild2
 {
-    partial class CheckValuesForm
+    partial class PhaseCoordinates
     {
         /// <summary>
         /// Required designer variable.
@@ -138,11 +138,11 @@
             this.listBox12.Size = new System.Drawing.Size(132, 303);
             this.listBox12.TabIndex = 6;
             // 
-            // CheckValuesForm
+            // PhaseCoordinates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 685);
+            this.ClientSize = new System.Drawing.Size(1040, 672);
             this.Controls.Add(this.listBox7);
             this.Controls.Add(this.listBox8);
             this.Controls.Add(this.listBox9);
@@ -155,8 +155,8 @@
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
-            this.Name = "CheckValuesForm";
-            this.Text = "CheckValuesForm";
+            this.Name = "PhaseCoordinates";
+            this.Text = "Фазовые координаты";
             this.Load += new System.EventHandler(this.CheckValuesForm_Load);
             this.ResumeLayout(false);
 

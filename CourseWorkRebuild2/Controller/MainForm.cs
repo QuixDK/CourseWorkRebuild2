@@ -55,6 +55,10 @@ namespace CourseWorkRebuild2
             blockDictionary.Add(1, "Б");
             blockDictionary.Add(2, "В");
             blockDictionary.Add(3, "Г");
+            blockDictionary.Add(4, "Д");
+
+            reSortMarksPanel.Hide();
+            secondLevelOfDecompositionTable.Hide();
         }
 
         private void initEpochCount()
@@ -109,42 +113,35 @@ namespace CourseWorkRebuild2
 
         private void secondLevel_Enter(object sender, EventArgs e)
         {
-            
-            if (marker == 0)
-            {
-                reSortMarks.Hide();
-                chooseBlock.Hide();
-                label7.Hide();
-                secondLevelOfDecompositionTable.Hide();
-            }
-            marker = 1;
+
             sortedMarks.Items.Clear();
             marksBox.Items.Clear();
+
             int startMarksCount = Convert.ToInt32(values[4]);
             while (startMarksCount % Convert.ToInt32(values[5]) != 0)
             {
                 startMarksCount--;
             }
+
             needMarksCount = startMarksCount / Convert.ToInt32(values[5]);
+
             label4.Text = "Всего марок: " + values[4];
             label5.Text = "Блок " + blockDictionary[blockIndex];
             label6.Text = "Количество структурных блоков: " + values[5];
-            if (Convert.ToInt32(values[4]) % 2 == 0)
-            {
-            }
+
+
             for (int i = 1; i < elevatorTable.Columns.Count; i++)
             {
                 marksBox.Items.Add(elevatorTable.Columns[i].Name);
             }
+
             if (values[1] != null & values[1] != "")
             {
                 objectDiagram.Load(values[1]);
                 objectDiagram.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            else
-            {
-                objectDiagram.Image = null;
-            }
+            else objectDiagram.Image = null;
+
             decompositionLevel = 2;
         }
 
@@ -154,23 +151,18 @@ namespace CourseWorkRebuild2
             secondLevelOfDecompositionTable.Columns.Clear();
             marksBox.Items.Clear();
             sortedMarks.Items.Clear();
+            chooseBlock.Items.Clear();
             foreach (List<String> list in marksByBlocks)
             {
                 list.Clear();
             }
-            chooseBlock.Items.Clear();
-            marksBox.Show();
-            sortedMarks.Show();
-            label5.Show();
-            label6.Show();
-            label4.Show();
-            addMarkToBlock.Show();
-            removeMarkFromBlock.Show();
+
+            sortMarksGroupBox.Show();
             objectDiagram.Show();
-            reSortMarks.Hide();
-            chooseBlock.Hide();
-            label7.Hide();
+
+            reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
+
             blockIndex = 0;
             secondLevel_Enter(sender, e);
         }
@@ -179,7 +171,6 @@ namespace CourseWorkRebuild2
 
             if (marksBox.Items.Count > 0)
             {
-
                 sortedMarks.Items.Add(marksBox.Items[0]);
                 marksBox.Items.Remove(marksBox.Items[0]);
                 sortMarks();
@@ -202,18 +193,12 @@ namespace CourseWorkRebuild2
             }
             if (blockIndex == Convert.ToInt32(values[5]))
             {
-                marksBox.Hide();
-                sortedMarks.Hide();
-                label7.Show();
-                label5.Hide();
-                label6.Hide();
-                label4.Hide();
-                addMarkToBlock.Hide();
-                removeMarkFromBlock.Hide();
+                sortMarksGroupBox.Hide();
                 objectDiagram.Hide();
-                chooseBlock.Show();
+
+                reSortMarksPanel.Show();
                 secondLevelOfDecompositionTable.Show();
-                reSortMarks.Show();
+
                 for (int i = 0; i < Convert.ToInt32(values[5]); i++)
                 {
                     chooseBlock.Items.Add(blockDictionary[i]);
@@ -243,13 +228,9 @@ namespace CourseWorkRebuild2
             {
                 fourthLevelChart.Series.Clear();
                 defaultMessage.Hide();
-                fourthLevelChart.Show();
-                chooseBlock2.Show();
-                chooseBlockMessage.Show();
-                availableMarks.Show();
-                displayedMarks.Show();
-                label8.Show();
-                label9.Show();
+
+                fourthLevelChartPanel.Show();
+
                 availableMarks.Items.Clear();
                 displayedMarks.Items.Clear();
                 chooseBlock2.Items.Clear();
@@ -262,13 +243,7 @@ namespace CourseWorkRebuild2
             else
             {
                 defaultMessage.Show();
-                fourthLevelChart.Hide();
-                chooseBlock2.Hide();
-                chooseBlockMessage.Hide();
-                availableMarks.Hide();
-                displayedMarks.Hide();
-                label8.Hide();
-                label9.Hide();
+                fourthLevelChartPanel.Hide();
             }
         }
 
@@ -890,6 +865,11 @@ namespace CourseWorkRebuild2
         }
 
         private void displayedMarks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phaseCoordinates_Click(object sender, EventArgs e)
         {
 
         }
