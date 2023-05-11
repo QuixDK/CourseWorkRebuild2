@@ -209,14 +209,14 @@
             // closeButton
             // 
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(224, 26);
+            this.closeButton.Size = new System.Drawing.Size(216, 26);
             this.closeButton.Text = "Закрыть";
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(224, 26);
+            this.saveButton.Size = new System.Drawing.Size(216, 26);
             this.saveButton.Text = "Сохранить";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
@@ -227,7 +227,7 @@
             this.saveAsRarArchive,
             this.saveAsNewFolder});
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(224, 26);
+            this.saveAsButton.Size = new System.Drawing.Size(216, 26);
             this.saveAsButton.Text = "Сохранить как...";
             // 
             // saveAsZipArchieve
@@ -254,19 +254,19 @@
             // saveCopyButton
             // 
             this.saveCopyButton.Name = "saveCopyButton";
-            this.saveCopyButton.Size = new System.Drawing.Size(224, 26);
+            this.saveCopyButton.Size = new System.Drawing.Size(216, 26);
             this.saveCopyButton.Text = "Сохранить копию";
             this.saveCopyButton.Click += new System.EventHandler(this.saveAsNewFolder_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(213, 6);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(224, 26);
+            this.exitButton.Size = new System.Drawing.Size(216, 26);
             this.exitButton.Text = "Выход";
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
@@ -474,6 +474,7 @@
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
             this.toolStripMenuItem13.Size = new System.Drawing.Size(265, 26);
             this.toolStripMenuItem13.Text = "Справка по программе...";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
             // aboutProgramButton
             // 

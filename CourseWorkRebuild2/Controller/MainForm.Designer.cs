@@ -77,20 +77,28 @@
             this.infoAboutSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabContol = new System.Windows.Forms.TabControl();
             this.dataPage = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.deleteSelectedRowsButton = new System.Windows.Forms.Button();
+            this.DeleteLastEpoch = new System.Windows.Forms.Button();
+            this.AddNewEpochButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.objectPicture = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.elevatorTable = new System.Windows.Forms.DataGridView();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.noImageIcon = new System.Windows.Forms.PictureBox();
+            this.noDBConnectionIcon = new System.Windows.Forms.PictureBox();
             this.markCount = new System.Windows.Forms.Label();
             this.buildingCountValue = new System.Windows.Forms.Label();
             this.valueOfALabel = new System.Windows.Forms.Label();
             this.valueOfTLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.DeleteLastEpoch = new System.Windows.Forms.Button();
-            this.AddNewEpochButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.elevatorTable = new System.Windows.Forms.DataGridView();
             this.firstLevelDecompositionTable = new System.Windows.Forms.TabPage();
             this.firstLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.secondLevel = new System.Windows.Forms.TabPage();
+            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
             this.reSortMarksPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.reSortMarks = new System.Windows.Forms.Button();
@@ -105,9 +113,8 @@
             this.addMarkToBlock = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.sortedMarks = new System.Windows.Forms.ListBox();
-            this.secondLevelOfDecompositionTable = new System.Windows.Forms.DataGridView();
+            this.objectDiagram = new System.Windows.Forms.PictureBox();
             this.thirdLevel = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.levelThirdPanel = new System.Windows.Forms.Panel();
             this.subblockSettingPanel = new System.Windows.Forms.Panel();
             this.acceptButton = new System.Windows.Forms.Button();
@@ -130,56 +137,49 @@
             this.marksOnSubblocksListBox = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.defaultMessage2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fourthLevel = new System.Windows.Forms.TabPage();
             this.fourthLevelChartPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.availableMarks = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.displayedMarks = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.chooseBlock2 = new System.Windows.Forms.ComboBox();
             this.chooseBlockMessage = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.availableMarks = new System.Windows.Forms.ListBox();
-            this.displayedMarks = new System.Windows.Forms.ListBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.fourthLevelChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.defaultMessage = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.objectPicture = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.noImageIcon = new System.Windows.Forms.PictureBox();
-            this.noDBConnectionIcon = new System.Windows.Forms.PictureBox();
-            this.objectDiagram = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).BeginInit();
             this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
             this.secondLevel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             this.reSortMarksPanel.SuspendLayout();
             this.sortMarksGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
             this.thirdLevel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.levelThirdPanel.SuspendLayout();
             this.subblockSettingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBetweenMarks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.fourthLevel.SuspendLayout();
             this.fourthLevelChartPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -508,6 +508,7 @@
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
             this.toolStripMenuItem13.Size = new System.Drawing.Size(265, 26);
             this.toolStripMenuItem13.Text = "Справка по программе...";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
             // aboutProgramButton
             // 
@@ -560,10 +561,23 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataPage.Size = new System.Drawing.Size(1300, 483);
+            this.dataPage.Size = new System.Drawing.Size(1300, 485);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.deleteSelectedRowsButton);
+            this.panel3.Controls.Add(this.DeleteLastEpoch);
+            this.panel3.Controls.Add(this.AddNewEpochButton);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(3, 148);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(472, 111);
+            this.panel3.TabIndex = 19;
             // 
             // deleteSelectedRowsButton
             // 
@@ -575,6 +589,125 @@
             this.deleteSelectedRowsButton.Text = "Удалить выделенные";
             this.deleteSelectedRowsButton.UseVisualStyleBackColor = true;
             this.deleteSelectedRowsButton.Click += new System.EventHandler(this.deleteSelectedRowsButton_Click);
+            // 
+            // DeleteLastEpoch
+            // 
+            this.DeleteLastEpoch.Location = new System.Drawing.Point(159, 54);
+            this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DeleteLastEpoch.Name = "DeleteLastEpoch";
+            this.DeleteLastEpoch.Size = new System.Drawing.Size(148, 50);
+            this.DeleteLastEpoch.TabIndex = 5;
+            this.DeleteLastEpoch.Text = "Удалить последнюю эпоху";
+            this.DeleteLastEpoch.UseVisualStyleBackColor = true;
+            this.DeleteLastEpoch.Click += new System.EventHandler(this.deleteLastEpoch_Click);
+            // 
+            // AddNewEpochButton
+            // 
+            this.AddNewEpochButton.Location = new System.Drawing.Point(5, 54);
+            this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddNewEpochButton.Name = "AddNewEpochButton";
+            this.AddNewEpochButton.Size = new System.Drawing.Size(148, 50);
+            this.AddNewEpochButton.TabIndex = 4;
+            this.AddNewEpochButton.Text = "Добавить эпоху";
+            this.AddNewEpochButton.UseVisualStyleBackColor = true;
+            this.AddNewEpochButton.Click += new System.EventHandler(this.addNewRow_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(5, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Таблица высот";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.objectPicture);
+            this.panel2.Location = new System.Drawing.Point(782, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(510, 255);
+            this.panel2.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(391, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Схема объекта";
+            // 
+            // objectPicture
+            // 
+            this.objectPicture.BackColor = System.Drawing.Color.White;
+            this.objectPicture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectPicture.Location = new System.Drawing.Point(0, 0);
+            this.objectPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.objectPicture.Name = "objectPicture";
+            this.objectPicture.Size = new System.Drawing.Size(510, 255);
+            this.objectPicture.TabIndex = 2;
+            this.objectPicture.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.elevatorTable);
+            this.panel1.Location = new System.Drawing.Point(3, 265);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1289, 212);
+            this.panel1.TabIndex = 17;
+            // 
+            // elevatorTable
+            // 
+            this.elevatorTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.elevatorTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.elevatorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elevatorTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elevatorTable.Location = new System.Drawing.Point(0, 0);
+            this.elevatorTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.elevatorTable.Name = "elevatorTable";
+            this.elevatorTable.RowHeadersWidth = 51;
+            this.elevatorTable.RowTemplate.Height = 24;
+            this.elevatorTable.Size = new System.Drawing.Size(1289, 212);
+            this.elevatorTable.TabIndex = 0;
+            this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
+            this.elevatorTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.elevatorTable_DataBindingComplete);
+            this.elevatorTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.elevatorTable_EditingControlShowing);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(292, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(48, 46);
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            // 
+            // noImageIcon
+            // 
+            this.noImageIcon.Image = global::CourseWorkRebuild2.Properties.Resources.noImageIcon;
+            this.noImageIcon.Location = new System.Drawing.Point(400, 15);
+            this.noImageIcon.Name = "noImageIcon";
+            this.noImageIcon.Size = new System.Drawing.Size(48, 46);
+            this.noImageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.noImageIcon.TabIndex = 15;
+            this.noImageIcon.TabStop = false;
+            // 
+            // noDBConnectionIcon
+            // 
+            this.noDBConnectionIcon.Image = global::CourseWorkRebuild2.Properties.Resources.DBErroConnectionIcon;
+            this.noDBConnectionIcon.Location = new System.Drawing.Point(346, 15);
+            this.noDBConnectionIcon.Name = "noDBConnectionIcon";
+            this.noDBConnectionIcon.Size = new System.Drawing.Size(48, 46);
+            this.noDBConnectionIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.noDBConnectionIcon.TabIndex = 14;
+            this.noDBConnectionIcon.TabStop = false;
             // 
             // markCount
             // 
@@ -622,65 +755,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Начальные данные";
             // 
-            // DeleteLastEpoch
-            // 
-            this.DeleteLastEpoch.Location = new System.Drawing.Point(159, 54);
-            this.DeleteLastEpoch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DeleteLastEpoch.Name = "DeleteLastEpoch";
-            this.DeleteLastEpoch.Size = new System.Drawing.Size(148, 50);
-            this.DeleteLastEpoch.TabIndex = 5;
-            this.DeleteLastEpoch.Text = "Удалить последнюю эпоху";
-            this.DeleteLastEpoch.UseVisualStyleBackColor = true;
-            this.DeleteLastEpoch.Click += new System.EventHandler(this.deleteLastEpoch_Click);
-            // 
-            // AddNewEpochButton
-            // 
-            this.AddNewEpochButton.Location = new System.Drawing.Point(5, 54);
-            this.AddNewEpochButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AddNewEpochButton.Name = "AddNewEpochButton";
-            this.AddNewEpochButton.Size = new System.Drawing.Size(148, 50);
-            this.AddNewEpochButton.TabIndex = 4;
-            this.AddNewEpochButton.Text = "Добавить эпоху";
-            this.AddNewEpochButton.UseVisualStyleBackColor = true;
-            this.AddNewEpochButton.Click += new System.EventHandler(this.addNewRow_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(391, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Схема объекта";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(5, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Таблица высот";
-            // 
-            // elevatorTable
-            // 
-            this.elevatorTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.elevatorTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.elevatorTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elevatorTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elevatorTable.Location = new System.Drawing.Point(0, 0);
-            this.elevatorTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.elevatorTable.Name = "elevatorTable";
-            this.elevatorTable.RowHeadersWidth = 51;
-            this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(1289, 212);
-            this.elevatorTable.TabIndex = 0;
-            this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
-            this.elevatorTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.elevatorTable_DataBindingComplete);
-            this.elevatorTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.elevatorTable_EditingControlShowing);
-            // 
             // firstLevelDecompositionTable
             // 
             this.firstLevelDecompositionTable.Controls.Add(this.firstLevelOfDecompositionTable);
@@ -722,6 +796,19 @@
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
             this.secondLevel.Enter += new System.EventHandler(this.secondLevel_Enter);
+            // 
+            // secondLevelOfDecompositionTable
+            // 
+            this.secondLevelOfDecompositionTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(8, 91);
+            this.secondLevelOfDecompositionTable.Margin = new System.Windows.Forms.Padding(4);
+            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
+            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(1277, 378);
+            this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // reSortMarksPanel
             // 
@@ -881,18 +968,17 @@
             this.sortedMarks.Size = new System.Drawing.Size(225, 276);
             this.sortedMarks.TabIndex = 2;
             // 
-            // secondLevelOfDecompositionTable
+            // objectDiagram
             // 
-            this.secondLevelOfDecompositionTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.objectDiagram.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.secondLevelOfDecompositionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(8, 91);
-            this.secondLevelOfDecompositionTable.Margin = new System.Windows.Forms.Padding(4);
-            this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
-            this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(1277, 378);
-            this.secondLevelOfDecompositionTable.TabIndex = 8;
+            this.objectDiagram.Location = new System.Drawing.Point(532, 91);
+            this.objectDiagram.Margin = new System.Windows.Forms.Padding(4);
+            this.objectDiagram.Name = "objectDiagram";
+            this.objectDiagram.Size = new System.Drawing.Size(749, 374);
+            this.objectDiagram.TabIndex = 4;
+            this.objectDiagram.TabStop = false;
             // 
             // thirdLevel
             // 
@@ -908,18 +994,6 @@
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
             this.thirdLevel.Enter += new System.EventHandler(this.thirdLevel_Enter);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(296, 15);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(989, 452);
-            this.dataGridView1.TabIndex = 29;
             // 
             // levelThirdPanel
             // 
@@ -1162,6 +1236,18 @@
             this.defaultMessage2.TabIndex = 15;
             this.defaultMessage2.Text = "Сначала распределите марки на втором уровне";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(296, 15);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(989, 452);
+            this.dataGridView1.TabIndex = 29;
+            // 
             // fourthLevel
             // 
             this.fourthLevel.Controls.Add(this.fourthLevelChartPanel);
@@ -1189,6 +1275,61 @@
             this.fourthLevelChartPanel.Size = new System.Drawing.Size(1292, 477);
             this.fourthLevelChartPanel.TabIndex = 18;
             // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.availableMarks);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.displayedMarks);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Location = new System.Drawing.Point(1097, 30);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(192, 443);
+            this.panel5.TabIndex = 19;
+            // 
+            // availableMarks
+            // 
+            this.availableMarks.FormattingEnabled = true;
+            this.availableMarks.ItemHeight = 16;
+            this.availableMarks.Location = new System.Drawing.Point(13, 31);
+            this.availableMarks.Margin = new System.Windows.Forms.Padding(4);
+            this.availableMarks.Name = "availableMarks";
+            this.availableMarks.Size = new System.Drawing.Size(167, 148);
+            this.availableMarks.TabIndex = 14;
+            this.availableMarks.DoubleClick += new System.EventHandler(this.availableMarks_DoubleClick);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 11);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Доступные марки";
+            // 
+            // displayedMarks
+            // 
+            this.displayedMarks.FormattingEnabled = true;
+            this.displayedMarks.ItemHeight = 16;
+            this.displayedMarks.Location = new System.Drawing.Point(16, 230);
+            this.displayedMarks.Margin = new System.Windows.Forms.Padding(4);
+            this.displayedMarks.Name = "displayedMarks";
+            this.displayedMarks.Size = new System.Drawing.Size(167, 212);
+            this.displayedMarks.TabIndex = 15;
+            this.displayedMarks.DoubleClick += new System.EventHandler(this.displayedMarks_DoubleClick);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 210);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(149, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Отображенные марки";
+            // 
             // chooseBlock2
             // 
             this.chooseBlock2.FormattingEnabled = true;
@@ -1209,47 +1350,16 @@
             this.chooseBlockMessage.TabIndex = 12;
             this.chooseBlockMessage.Text = "Выберите блок:";
             // 
-            // label8
+            // panel4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 11);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Доступные марки";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 210);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(149, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Отображенные марки";
-            // 
-            // availableMarks
-            // 
-            this.availableMarks.FormattingEnabled = true;
-            this.availableMarks.ItemHeight = 16;
-            this.availableMarks.Location = new System.Drawing.Point(13, 31);
-            this.availableMarks.Margin = new System.Windows.Forms.Padding(4);
-            this.availableMarks.Name = "availableMarks";
-            this.availableMarks.Size = new System.Drawing.Size(167, 148);
-            this.availableMarks.TabIndex = 14;
-            this.availableMarks.DoubleClick += new System.EventHandler(this.availableMarks_DoubleClick);
-            // 
-            // displayedMarks
-            // 
-            this.displayedMarks.FormattingEnabled = true;
-            this.displayedMarks.ItemHeight = 16;
-            this.displayedMarks.Location = new System.Drawing.Point(16, 230);
-            this.displayedMarks.Margin = new System.Windows.Forms.Padding(4);
-            this.displayedMarks.Name = "displayedMarks";
-            this.displayedMarks.Size = new System.Drawing.Size(167, 212);
-            this.displayedMarks.TabIndex = 15;
-            this.displayedMarks.DoubleClick += new System.EventHandler(this.displayedMarks_DoubleClick);
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.fourthLevelChart);
+            this.panel4.Location = new System.Drawing.Point(8, 47);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1086, 427);
+            this.panel4.TabIndex = 18;
             // 
             // fourthLevelChart
             // 
@@ -1275,115 +1385,6 @@
             this.defaultMessage.TabIndex = 13;
             this.defaultMessage.Text = "Сначала распределите марки на втором уровне";
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.elevatorTable);
-            this.panel1.Location = new System.Drawing.Point(3, 265);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1289, 212);
-            this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.objectPicture);
-            this.panel2.Location = new System.Drawing.Point(782, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(510, 255);
-            this.panel2.TabIndex = 18;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.deleteSelectedRowsButton);
-            this.panel3.Controls.Add(this.DeleteLastEpoch);
-            this.panel3.Controls.Add(this.AddNewEpochButton);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(3, 148);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(472, 111);
-            this.panel3.TabIndex = 19;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.fourthLevelChart);
-            this.panel4.Location = new System.Drawing.Point(8, 47);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1086, 427);
-            this.panel4.TabIndex = 18;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.availableMarks);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.displayedMarks);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Location = new System.Drawing.Point(1097, 30);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(192, 443);
-            this.panel5.TabIndex = 19;
-            // 
-            // objectPicture
-            // 
-            this.objectPicture.BackColor = System.Drawing.Color.White;
-            this.objectPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.objectPicture.Location = new System.Drawing.Point(0, 0);
-            this.objectPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.objectPicture.Name = "objectPicture";
-            this.objectPicture.Size = new System.Drawing.Size(510, 255);
-            this.objectPicture.TabIndex = 2;
-            this.objectPicture.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(292, 15);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(48, 46);
-            this.pictureBox3.TabIndex = 16;
-            this.pictureBox3.TabStop = false;
-            // 
-            // noImageIcon
-            // 
-            this.noImageIcon.Image = global::CourseWorkRebuild2.Properties.Resources.noImageIcon;
-            this.noImageIcon.Location = new System.Drawing.Point(400, 15);
-            this.noImageIcon.Name = "noImageIcon";
-            this.noImageIcon.Size = new System.Drawing.Size(48, 46);
-            this.noImageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.noImageIcon.TabIndex = 15;
-            this.noImageIcon.TabStop = false;
-            // 
-            // noDBConnectionIcon
-            // 
-            this.noDBConnectionIcon.Image = global::CourseWorkRebuild2.Properties.Resources.DBErroConnectionIcon;
-            this.noDBConnectionIcon.Location = new System.Drawing.Point(346, 15);
-            this.noDBConnectionIcon.Name = "noDBConnectionIcon";
-            this.noDBConnectionIcon.Size = new System.Drawing.Size(48, 46);
-            this.noDBConnectionIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.noDBConnectionIcon.TabIndex = 14;
-            this.noDBConnectionIcon.TabStop = false;
-            // 
-            // objectDiagram
-            // 
-            this.objectDiagram.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.objectDiagram.Location = new System.Drawing.Point(532, 91);
-            this.objectDiagram.Margin = new System.Windows.Forms.Padding(4);
-            this.objectDiagram.Name = "objectDiagram";
-            this.objectDiagram.Size = new System.Drawing.Size(749, 374);
-            this.objectDiagram.TabIndex = 4;
-            this.objectDiagram.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1399,42 +1400,42 @@
             this.tabContol.ResumeLayout(false);
             this.dataPage.ResumeLayout(false);
             this.dataPage.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).EndInit();
             this.firstLevelDecompositionTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
             this.secondLevel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
             this.reSortMarksPanel.ResumeLayout(false);
             this.reSortMarksPanel.PerformLayout();
             this.sortMarksGroupBox.ResumeLayout(false);
             this.sortMarksGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
             this.thirdLevel.ResumeLayout(false);
             this.thirdLevel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.levelThirdPanel.ResumeLayout(false);
             this.levelThirdPanel.PerformLayout();
             this.subblockSettingPanel.ResumeLayout(false);
             this.subblockSettingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBetweenMarks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marksExcess)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.fourthLevel.ResumeLayout(false);
             this.fourthLevel.PerformLayout();
             this.fourthLevelChartPanel.ResumeLayout(false);
             this.fourthLevelChartPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

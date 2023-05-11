@@ -940,6 +940,12 @@ namespace CourseWorkRebuild2
         private void elevatorTable_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
         }
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            ReferenceForm referenceForm = new ReferenceForm();
+            referenceForm.Show();
+        }
     }
         
 }

@@ -406,11 +406,10 @@ namespace CourseWorkRebuild2
             {
                 OpenProject openProject = new OpenProject();
                 pathToFilesAndData = openProject.Open();
-                activeForm++;
-                reDrawMainForm();
                 if (!(pathToFilesAndData[0] == "") & !(pathToFilesAndData[1] == "") & !(pathToFilesAndData[7] == ""))
                 {
                     activeForm++;
+                    reDrawMainForm();
                 }
             }
         }
