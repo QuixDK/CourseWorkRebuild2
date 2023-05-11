@@ -165,9 +165,9 @@ namespace CourseWorkRebuild2
                 }
                 summPr /= listOfMValues[0];
                 summPr /= listOfMValues[i + 1];
-                summPr = Math.Round(summPr, 15);
+                summPr = Math.Round(summPr, 13);
                 calculateAcos = Math.Acos(summPr);
-                listOfAlphaValues.Add(calculateAcos);
+                listOfAlphaValues.Add(calculateAcos * 180 / Math.PI);
 
             }
             return listOfAlphaValues;
@@ -205,9 +205,9 @@ namespace CourseWorkRebuild2
                 
                 summPr /= listOfMValues[0];
                 summPr /= listOfMValues[i+1];
-                summPr = Math.Round(summPr, 15);
+                summPr = Math.Round(summPr, 13);
                 calculateAcos = Math.Acos(summPr);
-                listOfAlphaValues.Add(calculateAcos);
+                listOfAlphaValues.Add(calculateAcos * 180 / Math.PI);
 
             }
             return listOfAlphaValues;

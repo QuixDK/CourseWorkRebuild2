@@ -238,6 +238,9 @@
   <ItemGroup>
     <None Include="Resources\okDBIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spinner.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

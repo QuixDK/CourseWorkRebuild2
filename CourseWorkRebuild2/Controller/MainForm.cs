@@ -54,6 +54,7 @@ namespace CourseWorkRebuild2
             reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
             dataGridView1.Hide();
+        
         }
 
         private void initEpochCount()
@@ -993,6 +994,10 @@ namespace CourseWorkRebuild2
         {
             AboutProgramForm aboutProgramForm = new AboutProgramForm();
             aboutProgramForm.Show();
+        }
+
+        private void elevatorTable_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
         }
     }
         
