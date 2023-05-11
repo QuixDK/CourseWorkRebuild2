@@ -53,6 +53,7 @@ namespace CourseWorkRebuild2
 
             reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
+            dataGridView1.Hide();
         }
 
         private void initEpochCount()
@@ -293,6 +294,7 @@ namespace CourseWorkRebuild2
             //Если есть путь к картинке
             if (pathToFilesAndData[1] != null & pathToFilesAndData[1] != "")
             {
+                noImageIcon.Image = Properties.Resources.okImageicon;
                 objectPicture.Load(pathToFilesAndData[1]);
                 objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.closeButton.Enabled = true;
@@ -304,6 +306,7 @@ namespace CourseWorkRebuild2
             else
             {
                 objectPicture.Image = null;
+                noImageIcon.Image = Properties.Resources.noImageIcon;
             }
         }
 
@@ -349,6 +352,7 @@ namespace CourseWorkRebuild2
             //Если есть путь к БД
             if (pathToFilesAndData[0] != null & pathToFilesAndData[0] != "")
             {
+                noDBConnectionIcon.Image = Properties.Resources.okDBIcon;
                 epochCountBox.Items.Clear();
                 repository = new Repository(pathToFilesAndData[0]);
                 sqlConnection = repository.GetDbConnection();
@@ -362,6 +366,7 @@ namespace CourseWorkRebuild2
             }
             else
             {
+                noDBConnectionIcon.Image = Properties.Resources.DBErroConnectionIcon;
                 elevatorTable.Rows.Clear();
                 elevatorTable.Columns.Clear();
                 disableButtonsForTable();
@@ -933,6 +938,14 @@ namespace CourseWorkRebuild2
             }
             if (stage == 3)
             {
+                for (int i = 0; i < subblockCount; i++)
+                {
+                    if (marksBySubBlocks[i].Count != marksOnSubblock)
+                    {
+                        MessageBox.Show("На каждом структурном подблоке должно быть " + marksOnSubblock + " марок");
+                        return;
+                    }
+                }
                 dataGridView1.Show();
                 decompositionLevel = 3;
                 valuesForThirdLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksBySubBlocks, chooseBlock3);
@@ -974,6 +987,12 @@ namespace CourseWorkRebuild2
 
             blockLabel.Text = "Подблок " + blockDictionary[0];
             stage = 3;
+        }
+
+        private void aboutProgramButton_Click(object sender, EventArgs e)
+        {
+            AboutProgramForm aboutProgramForm = new AboutProgramForm();
+            aboutProgramForm.Show();
         }
     }
         

@@ -28,52 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.expSmooth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MChart = new System.Windows.Forms.CheckBox();
             this.alphaChart = new System.Windows.Forms.CheckBox();
             this.chartSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.markerSizeComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelsOnMarksCheckBox = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.markerTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.markerTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelsOnMarksCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.markerSizeComboBox = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.expSmooth)).BeginInit();
             this.chartSettingsGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // expSmooth
             // 
-            chartArea6.Name = "ChartArea1";
-            this.expSmooth.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.expSmooth.Legends.Add(legend6);
-            this.expSmooth.Location = new System.Drawing.Point(12, 13);
+            chartArea1.Name = "ChartArea1";
+            this.expSmooth.ChartAreas.Add(chartArea1);
+            this.expSmooth.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.expSmooth.Legends.Add(legend1);
+            this.expSmooth.Location = new System.Drawing.Point(0, 0);
+            this.expSmooth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.expSmooth.Name = "expSmooth";
-            this.expSmooth.Size = new System.Drawing.Size(639, 426);
+            this.expSmooth.Size = new System.Drawing.Size(867, 550);
             this.expSmooth.TabIndex = 0;
             this.expSmooth.Text = "chart1";
             // 
             // MChart
             // 
             this.MChart.AutoSize = true;
-            this.MChart.Location = new System.Drawing.Point(670, 12);
+            this.MChart.Location = new System.Drawing.Point(20, 17);
+            this.MChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MChart.Name = "MChart";
-            this.MChart.Size = new System.Drawing.Size(139, 19);
+            this.MChart.Size = new System.Drawing.Size(149, 20);
             this.MChart.TabIndex = 1;
             this.MChart.Text = "Длина вектора (M)";
             this.MChart.UseVisualStyleBackColor = true;
@@ -82,9 +89,10 @@
             // alphaChart
             // 
             this.alphaChart.AutoSize = true;
-            this.alphaChart.Location = new System.Drawing.Point(670, 37);
+            this.alphaChart.Location = new System.Drawing.Point(20, 45);
+            this.alphaChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alphaChart.Name = "alphaChart";
-            this.alphaChart.Size = new System.Drawing.Size(74, 19);
+            this.alphaChart.Size = new System.Drawing.Size(79, 20);
             this.alphaChart.TabIndex = 2;
             this.alphaChart.Text = "Угол (a)";
             this.alphaChart.UseVisualStyleBackColor = true;
@@ -101,100 +109,14 @@
             this.chartSettingsGroupBox.Controls.Add(this.label2);
             this.chartSettingsGroupBox.Controls.Add(this.label1);
             this.chartSettingsGroupBox.Controls.Add(this.markerSizeComboBox);
-            this.chartSettingsGroupBox.Location = new System.Drawing.Point(657, 93);
+            this.chartSettingsGroupBox.Location = new System.Drawing.Point(4, 73);
+            this.chartSettingsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartSettingsGroupBox.Name = "chartSettingsGroupBox";
-            this.chartSettingsGroupBox.Size = new System.Drawing.Size(187, 346);
+            this.chartSettingsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartSettingsGroupBox.Size = new System.Drawing.Size(249, 426);
             this.chartSettingsGroupBox.TabIndex = 3;
             this.chartSettingsGroupBox.TabStop = false;
             this.chartSettingsGroupBox.Text = "Настройки диаграммы";
-            // 
-            // markerSizeComboBox
-            // 
-            this.markerSizeComboBox.FormattingEnabled = true;
-            this.markerSizeComboBox.Location = new System.Drawing.Point(9, 87);
-            this.markerSizeComboBox.Name = "markerSizeComboBox";
-            this.markerSizeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.markerSizeComboBox.TabIndex = 0;
-            this.markerSizeComboBox.SelectedIndexChanged += new System.EventHandler(this.markerSizeComboBox_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Размер маркеров";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Включить метки над точками";
-            // 
-            // labelsOnMarksCheckBox
-            // 
-            this.labelsOnMarksCheckBox.AutoSize = true;
-            this.labelsOnMarksCheckBox.Location = new System.Drawing.Point(9, 174);
-            this.labelsOnMarksCheckBox.Name = "labelsOnMarksCheckBox";
-            this.labelsOnMarksCheckBox.Size = new System.Drawing.Size(45, 19);
-            this.labelsOnMarksCheckBox.TabIndex = 3;
-            this.labelsOnMarksCheckBox.Text = "Да";
-            this.labelsOnMarksCheckBox.UseVisualStyleBackColor = true;
-            this.labelsOnMarksCheckBox.Click += new System.EventHandler(this.labelsOnMarksCheckBox_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Вид маркеров";
-            // 
-            // markerTypeComboBox
-            // 
-            this.markerTypeComboBox.FormattingEnabled = true;
-            this.markerTypeComboBox.Location = new System.Drawing.Point(9, 129);
-            this.markerTypeComboBox.Name = "markerTypeComboBox";
-            this.markerTypeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.markerTypeComboBox.TabIndex = 5;
-            this.markerTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.markerTypeComboBox_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Вид графика";
-            // 
-            // chartTypeComboBox
-            // 
-            this.chartTypeComboBox.FormattingEnabled = true;
-            this.chartTypeComboBox.Location = new System.Drawing.Point(9, 45);
-            this.chartTypeComboBox.Name = "chartTypeComboBox";
-            this.chartTypeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.chartTypeComboBox.TabIndex = 7;
-            this.chartTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.chartTypeComboBox_SelectedIndexChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(75, 20);
-            this.textBox2.TabIndex = 9;
             // 
             // groupBox1
             // 
@@ -206,72 +128,200 @@
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 199);
+            this.groupBox1.Location = new System.Drawing.Point(8, 245);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(181, 141);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(241, 174);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Настройка осей";
             // 
-            // textBox3
+            // label8
             // 
-            this.textBox3.Location = new System.Drawing.Point(97, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(75, 20);
-            this.textBox3.TabIndex = 10;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(97, 95);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(75, 20);
-            this.textBox4.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "MaxY";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(94, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 15);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "MaxX";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(125, 95);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 16);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "MinX";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 77);
+            this.label7.Location = new System.Drawing.Point(9, 95);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 15);
+            this.label7.Size = new System.Drawing.Size(37, 16);
             this.label7.TabIndex = 14;
             this.label7.Text = "MinY";
             // 
-            // label8
+            // label6
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(94, 77);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 15);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "MinX";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(125, 38);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "MaxX";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 38);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "MaxY";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(129, 117);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(99, 22);
+            this.textBox4.TabIndex = 11;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(129, 60);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(99, 22);
+            this.textBox3.TabIndex = 10;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(8, 117);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(99, 22);
+            this.textBox2.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 60);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(99, 22);
+            this.textBox1.TabIndex = 8;
+            // 
+            // chartTypeComboBox
+            // 
+            this.chartTypeComboBox.FormattingEnabled = true;
+            this.chartTypeComboBox.Location = new System.Drawing.Point(12, 55);
+            this.chartTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartTypeComboBox.Name = "chartTypeComboBox";
+            this.chartTypeComboBox.Size = new System.Drawing.Size(160, 24);
+            this.chartTypeComboBox.TabIndex = 7;
+            this.chartTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.chartTypeComboBox_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 33);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Вид графика";
+            // 
+            // markerTypeComboBox
+            // 
+            this.markerTypeComboBox.FormattingEnabled = true;
+            this.markerTypeComboBox.Location = new System.Drawing.Point(12, 159);
+            this.markerTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.markerTypeComboBox.Name = "markerTypeComboBox";
+            this.markerTypeComboBox.Size = new System.Drawing.Size(160, 24);
+            this.markerTypeComboBox.TabIndex = 5;
+            this.markerTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.markerTypeComboBox_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 137);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Вид маркеров";
+            // 
+            // labelsOnMarksCheckBox
+            // 
+            this.labelsOnMarksCheckBox.AutoSize = true;
+            this.labelsOnMarksCheckBox.Location = new System.Drawing.Point(12, 214);
+            this.labelsOnMarksCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelsOnMarksCheckBox.Name = "labelsOnMarksCheckBox";
+            this.labelsOnMarksCheckBox.Size = new System.Drawing.Size(46, 20);
+            this.labelsOnMarksCheckBox.TabIndex = 3;
+            this.labelsOnMarksCheckBox.Text = "Да";
+            this.labelsOnMarksCheckBox.UseVisualStyleBackColor = true;
+            this.labelsOnMarksCheckBox.Click += new System.EventHandler(this.labelsOnMarksCheckBox_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 192);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Включить метки над точками";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 85);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Размер маркеров";
+            // 
+            // markerSizeComboBox
+            // 
+            this.markerSizeComboBox.FormattingEnabled = true;
+            this.markerSizeComboBox.Location = new System.Drawing.Point(12, 107);
+            this.markerSizeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.markerSizeComboBox.Name = "markerSizeComboBox";
+            this.markerSizeComboBox.Size = new System.Drawing.Size(160, 24);
+            this.markerSizeComboBox.TabIndex = 0;
+            this.markerSizeComboBox.SelectedIndexChanged += new System.EventHandler(this.markerSizeComboBox_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.expSmooth);
+            this.panel1.Location = new System.Drawing.Point(2, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(867, 550);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.MChart);
+            this.panel2.Controls.Add(this.chartSettingsGroupBox);
+            this.panel2.Controls.Add(this.alphaChart);
+            this.panel2.Location = new System.Drawing.Point(875, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 550);
+            this.panel2.TabIndex = 5;
             // 
             // ExpSmoothChart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 451);
-            this.Controls.Add(this.chartSettingsGroupBox);
-            this.Controls.Add(this.alphaChart);
-            this.Controls.Add(this.MChart);
-            this.Controls.Add(this.expSmooth);
+            this.ClientSize = new System.Drawing.Size(1129, 555);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ExpSmoothChart";
             this.Text = "Экспоненциальное сглаживание";
             this.Load += new System.EventHandler(this.ExpSmoothChart_Load);
@@ -280,8 +330,10 @@
             this.chartSettingsGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -308,5 +360,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox chartTypeComboBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
