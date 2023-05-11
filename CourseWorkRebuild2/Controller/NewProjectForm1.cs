@@ -8,10 +8,9 @@ using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
 {
-    public partial class MainForm : Form
+    public partial class NewProjectForm1 : Form
     {
         private List<String> pathToFilesAndData = new List<String>();
-        private List<NewProjectForm1> openForms = new List<NewProjectForm1>();
         private DataTable dataTable = new DataTable();
         private System.Data.SQLite.SQLiteConnection sqlConnection;
         private Repository repository;
@@ -38,7 +37,7 @@ namespace CourseWorkRebuild2
         private List<List<String>> marksByBlocksForThirdLevel = new List<List<String>>();
         private List<List<String>> marksBySubBlocks = new List<List<String>>();
         private List<String> unsortedMarks = new List<String>();
-        public MainForm()
+        public NewProjectForm1()
         {
             InitializeComponent();
             disableStartButtons();
@@ -50,7 +49,9 @@ namespace CourseWorkRebuild2
             blockDictionary.Add(2, "В");
             blockDictionary.Add(3, "Г");
             blockDictionary.Add(4, "Д");
-
+            OpenProject open = new OpenProject();
+            pathToFilesAndData = open.Open();
+            reDrawMainForm();
             reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
             dataGridView1.Hide();
@@ -76,7 +77,6 @@ namespace CourseWorkRebuild2
                 this.Text = pathToFilesAndData[6];
                 this.closeButton.Enabled = true;
                 this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
                 this.saveCopyButton.Enabled = true;
                 this.saveButton.Enabled = true;
             }
@@ -300,7 +300,6 @@ namespace CourseWorkRebuild2
                 objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.closeButton.Enabled = true;
                 this.saveAsButton.Enabled = true;
-                this.closeAllButton.Enabled = true;
                 this.saveCopyButton.Enabled = true;
                 this.saveButton.Enabled = true;
             }
@@ -393,60 +392,7 @@ namespace CourseWorkRebuild2
             elevatorTable = repository.UpdateValue(elevatorTable, currentColumn, currentRow, newValue);
         }
 
-        private void openButton_Click(object sender, EventArgs e)
-        {
-            if (activeForm > 0)
-            {
-                NewProjectForm1 newProjectForm = new NewProjectForm1();
-                openForms.Add(newProjectForm);
-                newProjectForm.Show();
-                activeForm++;
-            }
-            else
-            {
-                OpenProject openProject = new OpenProject();
-                pathToFilesAndData = openProject.Open();
-                activeForm++;
-                reDrawMainForm();
-                if (!(pathToFilesAndData[0] == "") & !(pathToFilesAndData[1] == "") & !(pathToFilesAndData[7] == ""))
-                {
-                    activeForm++;
-                }
-            }
-        }
 
-        private void openRarButton_Click(object sender, EventArgs e)
-        {
-            if (activeForm > 0)
-            {
-                NewProjectForm1 newProjectForm = new NewProjectForm1();
-                openForms.Add(newProjectForm);
-                newProjectForm.Show();
-                activeForm++;
-            }
-            else
-            {
-                OpenProject openProject = new OpenProject();
-                pathToFilesAndData = openProject.UnzipRar();
-                reDrawMainForm();
-                activeForm++;
-            }
-
-        }
-
-        private void closeAllButton_Click(object sender, EventArgs e)
-        {
-            //Очищаем пути ко всем Файлам и все известные значения
-            closeButton_Click(sender, e);
-
-            //Дропаем все открытые формы
-            foreach (NewProjectForm1 form in openForms)
-            {
-                form.Close();
-            }
-            openForms.Clear();
-            reDrawMainForm();
-        }
         private void closeButton_Click(object sender, EventArgs e)
         {
             for (int value = 0; value < pathToFilesAndData.Count; value++)
@@ -694,7 +640,6 @@ namespace CourseWorkRebuild2
             this.chooseEpochToDelete.Enabled = true;
             this.closeButton.Enabled = true;
             this.saveAsButton.Enabled = true;
-            this.closeAllButton.Enabled = true;
             this.saveCopyButton.Enabled = true;
             this.saveButton.Enabled = true;
             this.deleteSelectedRowsButton.Enabled = true;
@@ -722,7 +667,6 @@ namespace CourseWorkRebuild2
         private void disableStartButtons()
         {
             disableButtonsForTable();
-            this.closeAllButton.Enabled = false;
             this.closeButton.Enabled = false;
             this.saveAsButton.Enabled = false;
             this.saveButton.Enabled = false;
@@ -733,7 +677,6 @@ namespace CourseWorkRebuild2
         {
             this.closeButton.Enabled = true;
             this.saveAsButton.Enabled = true;
-            this.closeAllButton.Enabled = true;
             this.saveCopyButton.Enabled = true;
             this.saveButton.Enabled = true;
         }
