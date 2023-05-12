@@ -141,6 +141,11 @@
     <Compile Include="Helpers\ExpSmoothChart.Designer.cs">
       <DependentUpon>ExpSmoothChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ReferenceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,14 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Helpers\SystemInfo.resx">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,9 +233,6 @@
     <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Без имени-1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DBErroConnectionIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -248,7 +245,22 @@
     <None Include="Resources\okDBIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\spinner.png" />
+    <None Include="Resources\step1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redactorMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

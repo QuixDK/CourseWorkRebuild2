@@ -138,7 +138,7 @@ namespace CourseWorkRebuild2
             }
             else objectDiagram.Image = null;
 
-            decompositionLevel = 2;
+            
         }
 
         private void reSortMarks_Click(object sender, EventArgs e)
@@ -209,9 +209,11 @@ namespace CourseWorkRebuild2
                 }
 
                 chooseBlock.SelectedItem = chooseBlock.Items[0];
+                decompositionLevel = 2;
                 valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
                 decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
+                
             }
         }
         private void chooseBlock_SelectedIndexChanged(object sender, EventArgs e)
@@ -406,7 +408,7 @@ namespace CourseWorkRebuild2
             {
                 OpenProject openProject = new OpenProject();
                 pathToFilesAndData = openProject.Open();
-                if (!(pathToFilesAndData[0] == "") & !(pathToFilesAndData[1] == "") & !(pathToFilesAndData[7] == ""))
+                if (!(pathToFilesAndData[0] == "")  & !(pathToFilesAndData[7] == ""))
                 {
                     activeForm++;
                     reDrawMainForm();
@@ -995,6 +997,12 @@ namespace CourseWorkRebuild2
 
         private void elevatorTable_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+        }
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            ReferenceForm referenceForm = new ReferenceForm();
+            referenceForm.Show();
         }
     }
         
