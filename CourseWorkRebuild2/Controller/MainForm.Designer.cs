@@ -691,7 +691,6 @@
             // 
             // noImageIcon
             // 
-            this.noImageIcon.Image = global::CourseWorkRebuild2.Properties.Resources.noImageIcon;
             this.noImageIcon.Location = new System.Drawing.Point(400, 15);
             this.noImageIcon.Name = "noImageIcon";
             this.noImageIcon.Size = new System.Drawing.Size(48, 46);
@@ -701,7 +700,6 @@
             // 
             // noDBConnectionIcon
             // 
-            this.noDBConnectionIcon.Image = global::CourseWorkRebuild2.Properties.Resources.DBErroConnectionIcon;
             this.noDBConnectionIcon.Location = new System.Drawing.Point(346, 15);
             this.noDBConnectionIcon.Name = "noDBConnectionIcon";
             this.noDBConnectionIcon.Size = new System.Drawing.Size(48, 46);
@@ -1164,8 +1162,6 @@
             // 
             // distanceBetweenMarks
             // 
-            this.distanceBetweenMarks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.distanceBetweenMarks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.distanceBetweenMarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.distanceBetweenMarks.Location = new System.Drawing.Point(295, 42);
             this.distanceBetweenMarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1177,8 +1173,6 @@
             // 
             // marksExcess
             // 
-            this.marksExcess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.marksExcess.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.marksExcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.marksExcess.Location = new System.Drawing.Point(295, 223);
             this.marksExcess.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

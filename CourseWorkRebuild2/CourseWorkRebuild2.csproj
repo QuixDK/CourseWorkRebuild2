@@ -115,10 +115,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutProgramForm.cs">
+    <Compile Include="Helpers\AboutProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutProgramForm.Designer.cs">
+    <Compile Include="Helpers\AboutProgramForm.Designer.cs">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\NewProjectForm1.cs">
@@ -146,10 +146,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReferenceForm.cs">
+    <Compile Include="Helpers\ReferenceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReferenceForm.Designer.cs">
+    <Compile Include="Helpers\ReferenceForm.Designer.cs">
       <DependentUpon>ReferenceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\Calculations.cs" />
@@ -184,7 +184,7 @@
     <Compile Include="Helpers\SystemInfo.Designer.cs">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutProgramForm.resx">
+    <EmbeddedResource Include="Helpers\AboutProgramForm.resx">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\NewProjectForm1.resx">
@@ -213,7 +213,7 @@
     <EmbeddedResource Include="Helpers\SystemInfo.resx">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReferenceForm.resx">
+    <EmbeddedResource Include="Helpers\ReferenceForm.resx">
       <DependentUpon>ReferenceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
