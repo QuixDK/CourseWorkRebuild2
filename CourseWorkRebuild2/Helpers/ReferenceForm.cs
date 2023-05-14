@@ -12,14 +12,13 @@ namespace CourseWorkRebuild2
 {
     public partial class ReferenceForm : Form
     {
-        private int step = 2;
+        private int step = 1;
         private int step2 = 1;
         private int step3 = 1;
         public ReferenceForm()
         {
             InitializeComponent();
-            label1.Text = "Для работы с программой, нужно открыть проект во вкладке Файл";
-            pictureBox1.Image = Properties.Resources.step1;
+
         }
 
         private void nextStepButton_Click(object sender, EventArgs e)
@@ -89,11 +88,6 @@ namespace CourseWorkRebuild2
                     step = 5;
                     break;
             }
-        }
-
-        private void ReferenceForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

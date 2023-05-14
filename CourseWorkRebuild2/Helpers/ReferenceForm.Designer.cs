@@ -341,7 +341,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ReferenceForm";
             this.Text = "Справка";
-            this.Load += new System.EventHandler(this.ReferenceForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
