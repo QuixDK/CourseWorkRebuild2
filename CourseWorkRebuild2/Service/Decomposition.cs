@@ -69,14 +69,14 @@ namespace CourseWorkRebuild2
                     string[] indexes = columnName.Split('-');
                     string firstIndex = indexes[0];
                     string secondIndex = indexes[1];
-                    distanceBetweenMarks.Rows[i].Cells[j].Value = Math.Abs(Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[firstIndex].Index].Value) - Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[secondIndex].Index].Value));
+                    distanceBetweenMarks.Rows[i].Cells[j].Value = Math.Round(Math.Abs(Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[firstIndex].Index].Value) - Convert.ToDouble(initialTable.Rows[i].Cells[initialTable.Columns[secondIndex].Index].Value)), 4);
                 }
             }
             for (int i = 1; i < marksExcess.Columns.Count; i++)
             {
                 for (int j = 0; j < marksExcess.Rows.Count - 1; j++)
                 {
-                    marksExcess.Rows[j].Cells[i].Value = Math.Abs(Convert.ToDouble(distanceBetweenMarks.Rows[0].Cells[i].Value) - Convert.ToDouble(distanceBetweenMarks.Rows[j].Cells[i].Value));
+                    marksExcess.Rows[j].Cells[i].Value = Math.Round(Math.Abs(Convert.ToDouble(distanceBetweenMarks.Rows[0].Cells[i].Value) - Convert.ToDouble(distanceBetweenMarks.Rows[j].Cells[i].Value)),4);
                 }
             }
             bool flag = true;

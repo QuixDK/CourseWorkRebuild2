@@ -33,7 +33,9 @@ namespace CourseWorkRebuild2
         private int decompositionLevel = 0;
         private int subblockCount = 0;
         private int marksOnSubblock = 0;
+        private bool f = true;
         int stage = 0;
+        private int selectedIndex;
         private List<List<String>> marksByBlocks = new List<List<String>>();
         private List<List<String>> marksByBlocksForThirdLevel = new List<List<String>>();
         private List<List<String>> marksBySubBlocks = new List<List<String>>();
@@ -806,6 +808,10 @@ namespace CourseWorkRebuild2
 
         private void thirdLevel_Enter(object sender, EventArgs e)
         {
+            if (f == false)
+            {
+                return;
+            }
             if (marksByBlocks.Count > 0)
             {
                 stage = 1;
@@ -852,6 +858,7 @@ namespace CourseWorkRebuild2
                         listBox1.Items.Add(unsortedMarks[i]);
                     }
                 }
+                f = false;
 
             }
             else
@@ -880,6 +887,7 @@ namespace CourseWorkRebuild2
             }
             else if (stage == 3)
             {
+                blockLabel.Text = "Подблок " + chooseBlock3.SelectedItem; 
                 marksOnSubblocksListBox.Items.Clear();
                 for (int i = 0; i < marksBySubBlocks[chooseBlock3.SelectedIndex].Count; i++)
                 {
@@ -929,12 +937,15 @@ namespace CourseWorkRebuild2
             if (stage == 1)
             {
                 subblockSettingPanel.Show();
+                dataGridView1.Hide();
 
                 stage = 2;
                 decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocksForThirdLevel, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
 
                 addConnectionToSubblock.Enabled = false;
-                removeMarkFromBlock.Enabled = false;
+                removeMarkFromSubblock.Enabled = false;
+
+                selectedIndex = chooseBlock3.SelectedIndex;
             }
             if (stage == 3)
             {
@@ -959,13 +970,18 @@ namespace CourseWorkRebuild2
             subblockCount = Convert.ToInt32(textBox1.Text);
             marksOnSubblock = Convert.ToInt32(textBox2.Text);
 
+            for (int i = 0; i < marksBySubBlocks.Count; i++)
+            {
+                marksBySubBlocks[i].Clear();
+            }
+
             addConnectionToSubblock.Enabled = true;
-            removeMarkFromBlock.Enabled = true;
+            removeMarkFromSubblock.Enabled = true;
             listBox1.Items.Clear();
 
-            for (int i = 0; i < marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count; i++)
+            for (int i = 0; i < marksByBlocksForThirdLevel[selectedIndex].Count; i++)
             {
-                listBox1.Items.Add(marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex][i]);
+                listBox1.Items.Add(marksByBlocksForThirdLevel[selectedIndex][i]);
             }
 
             chooseBlock3.Items.Clear();
@@ -986,6 +1002,8 @@ namespace CourseWorkRebuild2
             }
 
             blockLabel.Text = "Подблок " + blockDictionary[0];
+
+            nextStageButton.Text = "Рассчитать";
             stage = 3;
         }
 
@@ -1003,6 +1021,29 @@ namespace CourseWorkRebuild2
         {
             ReferenceForm referenceForm = new ReferenceForm();
             referenceForm.Show();
+        }
+
+        private void changeBlockButton_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            chooseBlock3.Items.Clear();
+            
+            chooseBlockLabel.Text = "Выберите блок: ";
+            marksOnSubblocksListBox.Items.Clear();   
+
+            for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]);  i++)
+            {
+                chooseBlock3.Items.Add(blockDictionary[i]);
+            }
+
+            chooseBlock3.SelectedItem = null;
+            chooseBlock3.SelectedIndex = 0;
+            stage = 1;
+
+            addConnectionToSubblock.Enabled = true;
+            removeMarkFromSubblock.Enabled = true;
+            subblockSettingPanel.Hide();
+            nextStageButton.Text = "Потвердить блок";
         }
     }
         
