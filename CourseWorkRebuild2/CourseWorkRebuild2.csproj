@@ -262,6 +262,16 @@
   <ItemGroup>
     <None Include="Resources\step4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\2step1.jpg" />
+    <None Include="Resources\3step2.jpg" />
+    <None Include="Resources\3step3.jpg" />
+    <None Include="Resources\2step31.jpg" />
+    <None Include="Resources\2step21.jpg" />
+    <None Include="Resources\2step11.jpg" />
+    <Content Include="Resources\2step2.jpg" />
+    <Content Include="Resources\2step3.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

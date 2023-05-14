@@ -490,7 +490,7 @@
             // 
             this.phaseCoordinates.Name = "phaseCoordinates";
             this.phaseCoordinates.Size = new System.Drawing.Size(304, 22);
-            this.phaseCoordinates.Text = "Проверка";
+            this.phaseCoordinates.Text = "Фазовые координаты";
             this.phaseCoordinates.Click += new System.EventHandler(this.checkValues_Click);
             // 
             // refMenu
@@ -801,7 +801,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.secondLevel.Size = new System.Drawing.Size(973, 392);
+            this.secondLevel.Size = new System.Drawing.Size(973, 388);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -816,7 +816,7 @@
             this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 74);
             this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
             this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(958, 307);
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(958, 303);
             this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // reSortMarksPanel
@@ -871,7 +871,7 @@
             this.sortMarksGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.sortMarksGroupBox.Location = new System.Drawing.Point(3, 3);
             this.sortMarksGroupBox.Name = "sortMarksGroupBox";
-            this.sortMarksGroupBox.Size = new System.Drawing.Size(390, 386);
+            this.sortMarksGroupBox.Size = new System.Drawing.Size(390, 382);
             this.sortMarksGroupBox.TabIndex = 12;
             this.sortMarksGroupBox.TabStop = false;
             this.sortMarksGroupBox.Text = "Сгруппируйте марки";
@@ -967,7 +967,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.objectDiagram.Location = new System.Drawing.Point(399, 74);
             this.objectDiagram.Name = "objectDiagram";
-            this.objectDiagram.Size = new System.Drawing.Size(562, 304);
+            this.objectDiagram.Size = new System.Drawing.Size(562, 300);
             this.objectDiagram.TabIndex = 4;
             this.objectDiagram.TabStop = false;
             // 

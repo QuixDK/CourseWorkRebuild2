@@ -13,6 +13,8 @@ namespace CourseWorkRebuild2
     public partial class ReferenceForm : Form
     {
         private int step = 2;
+        private int step2 = 1;
+        private int step3 = 1;
         public ReferenceForm()
         {
             InitializeComponent();
@@ -92,6 +94,76 @@ namespace CourseWorkRebuild2
         private void ReferenceForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch (step2)
+            {
+                case 1:
+                    label2.Text = "При переключении на вкладку Уровень 2, вы увидите 2 листа, в одном все марки объекта, в другом марки блока";
+                    pictureBox2.Image = Properties.Resources._2step1;
+                    step2 = 2;
+                    button1_Click(sender, e);
+                    break;
+                case 2:
+                    pictureBox2.Image = Properties.Resources._2step2;
+                    label2.Text = "Добавлять метки можно с помощью двойного клика или с использованием соответсвующих кнопок, блоки меняются автоматически, после добавления определенного количества марок";
+                    step2 = 3;
+                    break;
+                case 3:
+                    pictureBox2.Image = Properties.Resources._2step3;
+                    label2.Text = "После распределения всех марок, автоматически загрузится таблица состояния объекта, а также меню, где можно сменить блок, или перераспределить марки";
+                    break;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            switch (step2)
+            {
+
+                case 2:
+                    pictureBox2.Image = Properties.Resources._2step1;
+                    label2.Text = "При переключении на вкладку Уровень 2, вы увидите 2 листа, в одном все марки объекта, в другом марки блока";
+                    step2 = 1;
+                    break;
+                case 3:
+                    pictureBox2.Image = Properties.Resources._2step2;
+                    label2.Text = "Добавлять метки можно с помощью двойного клика или с использованием соответсвующих кнопок, блоки меняются автоматически, после добавления определенного количества марок";
+                    step2 = 2;
+                    break;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            switch (step3)
+            {
+                case 1:
+                    label3.Text = "При переключении на вкладку Уровень 4 надо убедится, что вы распределили марки на втором уровне, если да, то перед вами появится выбор блока, а так же два листа с доступными марками и отображенными";
+                    pictureBox3.Image = Properties.Resources._3step3;
+                    step3 = 2;
+                    button3_Click(sender, e);
+                    break;
+                case 2:
+                    pictureBox3.Image = Properties.Resources._3step2;
+                    label3.Text = "Добавлять марки можно с помощью двойного клика по ней, как и убирать";
+                    break;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            switch (step3)
+            {
+
+                case 2:
+                    pictureBox3.Image = Properties.Resources._3step3;
+                    label3.Text = "При переключении на вкладку Уровень 4 надо убедится, что вы распределили марки на втором уровне, если да, то перед вами появится выбор блока, а так же два листа с доступными марками и отображенными";
+                    step3 = 1;
+                    break;
+            }
         }
     }
 }
