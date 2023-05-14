@@ -819,7 +819,7 @@ namespace CourseWorkRebuild2
                 defaultMessage2.Hide();
                 levelThirdPanel.Show();
                 subblockSettingPanel.Hide();
-                dataGridView1.Hide();
+                panel6.Hide();
 
                 chooseBlock3.Items.Clear();
 
@@ -937,7 +937,7 @@ namespace CourseWorkRebuild2
             if (stage == 1)
             {
                 subblockSettingPanel.Show();
-                dataGridView1.Hide();
+                panel6.Hide();
 
                 stage = 2;
                 decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocksForThirdLevel, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);

@@ -84,12 +84,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.objectPicture = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.elevatorTable = new System.Windows.Forms.DataGridView();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.noImageIcon = new System.Windows.Forms.PictureBox();
-            this.noDBConnectionIcon = new System.Windows.Forms.PictureBox();
             this.markCount = new System.Windows.Forms.Label();
             this.buildingCountValue = new System.Windows.Forms.Label();
             this.valueOfALabel = new System.Windows.Forms.Label();
@@ -113,7 +109,6 @@
             this.addMarkToBlock = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.sortedMarks = new System.Windows.Forms.ListBox();
-            this.objectDiagram = new System.Windows.Forms.PictureBox();
             this.thirdLevel = new System.Windows.Forms.TabPage();
             this.levelThirdPanel = new System.Windows.Forms.Panel();
             this.subblockSettingPanel = new System.Windows.Forms.Panel();
@@ -152,24 +147,26 @@
             this.defaultMessage = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.changeBlockButton = new System.Windows.Forms.Button();
+            this.objectPicture = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.noImageIcon = new System.Windows.Forms.PictureBox();
+            this.noDBConnectionIcon = new System.Windows.Forms.PictureBox();
+            this.objectDiagram = new System.Windows.Forms.PictureBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).BeginInit();
             this.firstLevelDecompositionTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).BeginInit();
             this.secondLevel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secondLevelOfDecompositionTable)).BeginInit();
             this.reSortMarksPanel.SuspendLayout();
             this.sortMarksGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
             this.thirdLevel.SuspendLayout();
             this.levelThirdPanel.SuspendLayout();
             this.subblockSettingPanel.SuspendLayout();
@@ -181,6 +178,13 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -194,7 +198,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(981, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -542,7 +546,7 @@
             this.tabContol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabContol.Name = "tabContol";
             this.tabContol.SelectedIndex = 0;
-            this.tabContol.Size = new System.Drawing.Size(981, 414);
+            this.tabContol.Size = new System.Drawing.Size(983, 416);
             this.tabContol.TabIndex = 1;
             // 
             // dataPage
@@ -562,7 +566,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataPage.Size = new System.Drawing.Size(973, 390);
+            this.dataPage.Size = new System.Drawing.Size(973, 388);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -647,17 +651,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Схема объекта";
             // 
-            // objectPicture
-            // 
-            this.objectPicture.BackColor = System.Drawing.Color.White;
-            this.objectPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.objectPicture.Location = new System.Drawing.Point(0, 0);
-            this.objectPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.objectPicture.Name = "objectPicture";
-            this.objectPicture.Size = new System.Drawing.Size(382, 207);
-            this.objectPicture.TabIndex = 2;
-            this.objectPicture.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -667,7 +660,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 215);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(967, 170);
+            this.panel1.Size = new System.Drawing.Size(967, 168);
             this.panel1.TabIndex = 17;
             // 
             // elevatorTable
@@ -681,40 +674,11 @@
             this.elevatorTable.Name = "elevatorTable";
             this.elevatorTable.RowHeadersWidth = 51;
             this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(967, 170);
+            this.elevatorTable.Size = new System.Drawing.Size(967, 168);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             this.elevatorTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.elevatorTable_DataBindingComplete);
             this.elevatorTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.elevatorTable_EditingControlShowing);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(219, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(36, 37);
-            this.pictureBox3.TabIndex = 16;
-            this.pictureBox3.TabStop = false;
-            // 
-            // noImageIcon
-            // 
-            this.noImageIcon.Location = new System.Drawing.Point(300, 12);
-            this.noImageIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.noImageIcon.Name = "noImageIcon";
-            this.noImageIcon.Size = new System.Drawing.Size(36, 37);
-            this.noImageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.noImageIcon.TabIndex = 15;
-            this.noImageIcon.TabStop = false;
-            // 
-            // noDBConnectionIcon
-            // 
-            this.noDBConnectionIcon.Location = new System.Drawing.Point(260, 12);
-            this.noDBConnectionIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.noDBConnectionIcon.Name = "noDBConnectionIcon";
-            this.noDBConnectionIcon.Size = new System.Drawing.Size(36, 37);
-            this.noDBConnectionIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.noDBConnectionIcon.TabIndex = 14;
-            this.noDBConnectionIcon.TabStop = false;
             // 
             // markCount
             // 
@@ -774,7 +738,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(973, 392);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(973, 388);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -789,7 +753,7 @@
             this.firstLevelOfDecompositionTable.Location = new System.Drawing.Point(2, 2);
             this.firstLevelOfDecompositionTable.Name = "firstLevelOfDecompositionTable";
             this.firstLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(969, 388);
+            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(969, 384);
             this.firstLevelOfDecompositionTable.TabIndex = 0;
             // 
             // secondLevel
@@ -960,26 +924,14 @@
             this.sortedMarks.Size = new System.Drawing.Size(170, 225);
             this.sortedMarks.TabIndex = 2;
             // 
-            // objectDiagram
-            // 
-            this.objectDiagram.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.objectDiagram.Location = new System.Drawing.Point(399, 74);
-            this.objectDiagram.Name = "objectDiagram";
-            this.objectDiagram.Size = new System.Drawing.Size(562, 300);
-            this.objectDiagram.TabIndex = 4;
-            this.objectDiagram.TabStop = false;
-            // 
             // thirdLevel
             // 
-            this.thirdLevel.Controls.Add(this.dataGridView1);
-            this.thirdLevel.Controls.Add(this.defaultMessage2);
             this.thirdLevel.Controls.Add(this.levelThirdPanel);
+            this.thirdLevel.Controls.Add(this.defaultMessage2);
             this.thirdLevel.Location = new System.Drawing.Point(4, 22);
             this.thirdLevel.Name = "thirdLevel";
             this.thirdLevel.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.thirdLevel.Size = new System.Drawing.Size(973, 388);
+            this.thirdLevel.Size = new System.Drawing.Size(975, 390);
             this.thirdLevel.TabIndex = 3;
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
@@ -987,22 +939,18 @@
             // 
             // levelThirdPanel
             // 
+            this.levelThirdPanel.Controls.Add(this.panel6);
+            this.levelThirdPanel.Controls.Add(this.panel7);
             this.levelThirdPanel.Controls.Add(this.changeBlockButton);
             this.levelThirdPanel.Controls.Add(this.subblockSettingPanel);
             this.levelThirdPanel.Controls.Add(this.nextStageButton);
             this.levelThirdPanel.Controls.Add(this.listBox1);
-            this.levelThirdPanel.Controls.Add(this.strongConnectionsListBox);
             this.levelThirdPanel.Controls.Add(this.removeMarkFromSubblock);
-            this.levelThirdPanel.Controls.Add(this.label12);
             this.levelThirdPanel.Controls.Add(this.chooseBlockLabel);
             this.levelThirdPanel.Controls.Add(this.addConnectionToSubblock);
             this.levelThirdPanel.Controls.Add(this.chooseBlock3);
-            this.levelThirdPanel.Controls.Add(this.marksExcess);
             this.levelThirdPanel.Controls.Add(this.blockLabel);
-            this.levelThirdPanel.Controls.Add(this.label11);
             this.levelThirdPanel.Controls.Add(this.marksOnSubblocksListBox);
-            this.levelThirdPanel.Controls.Add(this.label10);
-            this.levelThirdPanel.Controls.Add(this.distanceBetweenMarks);
             this.levelThirdPanel.Location = new System.Drawing.Point(3, 3);
             this.levelThirdPanel.Name = "levelThirdPanel";
             this.levelThirdPanel.Size = new System.Drawing.Size(968, 382);
@@ -1085,7 +1033,7 @@
             // strongConnectionsListBox
             // 
             this.strongConnectionsListBox.FormattingEnabled = true;
-            this.strongConnectionsListBox.Location = new System.Drawing.Point(837, 34);
+            this.strongConnectionsListBox.Location = new System.Drawing.Point(618, 27);
             this.strongConnectionsListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.strongConnectionsListBox.Name = "strongConnectionsListBox";
             this.strongConnectionsListBox.Size = new System.Drawing.Size(124, 342);
@@ -1104,7 +1052,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(834, 19);
+            this.label12.Location = new System.Drawing.Point(615, 12);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 13);
@@ -1142,7 +1090,7 @@
             // distanceBetweenMarks
             // 
             this.distanceBetweenMarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.distanceBetweenMarks.Location = new System.Drawing.Point(221, 34);
+            this.distanceBetweenMarks.Location = new System.Drawing.Point(2, 27);
             this.distanceBetweenMarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.distanceBetweenMarks.Name = "distanceBetweenMarks";
             this.distanceBetweenMarks.RowHeadersWidth = 51;
@@ -1153,7 +1101,7 @@
             // marksExcess
             // 
             this.marksExcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.marksExcess.Location = new System.Drawing.Point(221, 181);
+            this.marksExcess.Location = new System.Drawing.Point(2, 174);
             this.marksExcess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.marksExcess.Name = "marksExcess";
             this.marksExcess.RowHeadersWidth = 51;
@@ -1175,7 +1123,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(221, 166);
+            this.label11.Location = new System.Drawing.Point(2, 159);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 13);
@@ -1194,7 +1142,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(221, 16);
+            this.label10.Location = new System.Drawing.Point(2, 9);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(193, 13);
@@ -1215,10 +1163,11 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(224, 7);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(740, 372);
+            this.dataGridView1.Size = new System.Drawing.Size(746, 378);
             this.dataGridView1.TabIndex = 29;
             // 
             // fourthLevel
@@ -1228,7 +1177,7 @@
             this.fourthLevel.Location = new System.Drawing.Point(4, 22);
             this.fourthLevel.Name = "fourthLevel";
             this.fourthLevel.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.fourthLevel.Size = new System.Drawing.Size(973, 392);
+            this.fourthLevel.Size = new System.Drawing.Size(973, 388);
             this.fourthLevel.TabIndex = 4;
             this.fourthLevel.Text = "Уровень 4";
             this.fourthLevel.UseVisualStyleBackColor = true;
@@ -1243,7 +1192,7 @@
             this.fourthLevelChartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fourthLevelChartPanel.Location = new System.Drawing.Point(3, 3);
             this.fourthLevelChartPanel.Name = "fourthLevelChartPanel";
-            this.fourthLevelChartPanel.Size = new System.Drawing.Size(967, 386);
+            this.fourthLevelChartPanel.Size = new System.Drawing.Size(967, 382);
             this.fourthLevelChartPanel.TabIndex = 18;
             // 
             // panel5
@@ -1257,7 +1206,7 @@
             this.panel5.Location = new System.Drawing.Point(821, 24);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(144, 358);
+            this.panel5.Size = new System.Drawing.Size(144, 354);
             this.panel5.TabIndex = 19;
             // 
             // availableMarks
@@ -1323,7 +1272,7 @@
             this.panel4.Location = new System.Drawing.Point(6, 38);
             this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(812, 345);
+            this.panel4.Size = new System.Drawing.Size(812, 341);
             this.panel4.TabIndex = 18;
             // 
             // fourthLevelChart
@@ -1335,7 +1284,7 @@
             this.fourthLevelChart.Legends.Add(legend1);
             this.fourthLevelChart.Location = new System.Drawing.Point(0, 0);
             this.fourthLevelChart.Name = "fourthLevelChart";
-            this.fourthLevelChart.Size = new System.Drawing.Size(812, 345);
+            this.fourthLevelChart.Size = new System.Drawing.Size(812, 341);
             this.fourthLevelChart.TabIndex = 0;
             this.fourthLevelChart.Text = "chart1";
             // 
@@ -1358,11 +1307,85 @@
             this.changeBlockButton.UseVisualStyleBackColor = true;
             this.changeBlockButton.Click += new System.EventHandler(this.changeBlockButton_Click);
             // 
+            // objectPicture
+            // 
+            this.objectPicture.BackColor = System.Drawing.Color.White;
+            this.objectPicture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectPicture.Location = new System.Drawing.Point(0, 0);
+            this.objectPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.objectPicture.Name = "objectPicture";
+            this.objectPicture.Size = new System.Drawing.Size(382, 207);
+            this.objectPicture.TabIndex = 2;
+            this.objectPicture.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(219, 12);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(36, 37);
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            // 
+            // noImageIcon
+            // 
+            this.noImageIcon.Location = new System.Drawing.Point(300, 12);
+            this.noImageIcon.Margin = new System.Windows.Forms.Padding(2);
+            this.noImageIcon.Name = "noImageIcon";
+            this.noImageIcon.Size = new System.Drawing.Size(36, 37);
+            this.noImageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.noImageIcon.TabIndex = 15;
+            this.noImageIcon.TabStop = false;
+            // 
+            // noDBConnectionIcon
+            // 
+            this.noDBConnectionIcon.Location = new System.Drawing.Point(260, 12);
+            this.noDBConnectionIcon.Margin = new System.Windows.Forms.Padding(2);
+            this.noDBConnectionIcon.Name = "noDBConnectionIcon";
+            this.noDBConnectionIcon.Size = new System.Drawing.Size(36, 37);
+            this.noDBConnectionIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.noDBConnectionIcon.TabIndex = 14;
+            this.noDBConnectionIcon.TabStop = false;
+            // 
+            // objectDiagram
+            // 
+            this.objectDiagram.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.objectDiagram.Location = new System.Drawing.Point(399, 74);
+            this.objectDiagram.Name = "objectDiagram";
+            this.objectDiagram.Size = new System.Drawing.Size(562, 300);
+            this.objectDiagram.TabIndex = 4;
+            this.objectDiagram.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Location = new System.Drawing.Point(223, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(746, 378);
+            this.panel6.TabIndex = 30;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.distanceBetweenMarks);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.label11);
+            this.panel7.Controls.Add(this.marksExcess);
+            this.panel7.Controls.Add(this.label12);
+            this.panel7.Controls.Add(this.strongConnectionsListBox);
+            this.panel7.Location = new System.Drawing.Point(223, 15);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(745, 364);
+            this.panel7.TabIndex = 31;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 438);
+            this.ClientSize = new System.Drawing.Size(983, 440);
             this.Controls.Add(this.tabContol);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1377,12 +1400,8 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.elevatorTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).EndInit();
             this.firstLevelDecompositionTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.firstLevelOfDecompositionTable)).EndInit();
             this.secondLevel.ResumeLayout(false);
@@ -1391,7 +1410,6 @@
             this.reSortMarksPanel.PerformLayout();
             this.sortMarksGroupBox.ResumeLayout(false);
             this.sortMarksGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
             this.thirdLevel.ResumeLayout(false);
             this.thirdLevel.PerformLayout();
             this.levelThirdPanel.ResumeLayout(false);
@@ -1409,6 +1427,14 @@
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fourthLevelChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noImageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noDBConnectionIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDiagram)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1537,6 +1563,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button changeBlockButton;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
     }
 }
 
