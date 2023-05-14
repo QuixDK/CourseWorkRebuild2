@@ -154,6 +154,7 @@
             this.objectDiagram = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabContol.SuspendLayout();
             this.dataPage.SuspendLayout();
@@ -503,7 +504,8 @@
             this.toolStripMenuItem13,
             this.aboutProgramButton,
             this.toolStripSeparator3,
-            this.infoAboutSystem});
+            this.infoAboutSystem,
+            this.toolStripMenuItem1});
             this.refMenu.Name = "refMenu";
             this.refMenu.Size = new System.Drawing.Size(65, 20);
             this.refMenu.Text = "Справка";
@@ -1381,6 +1383,13 @@
             this.panel7.Size = new System.Drawing.Size(745, 364);
             this.panel7.TabIndex = 31;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
+            this.toolStripMenuItem1.Text = "О разработчике";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1565,6 +1574,7 @@
         private System.Windows.Forms.Button changeBlockButton;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

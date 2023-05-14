@@ -115,6 +115,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Author.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Author.Designer.cs">
+      <DependentUpon>Author.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AboutProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     <Compile Include="Helpers\SystemInfo.Designer.cs">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Author.resx">
+      <DependentUpon>Author.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Helpers\AboutProgramForm.resx">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\2step1.jpg" />
+    <None Include="Resources\Screenshot_2.jpg" />
     <None Include="Resources\3step2.jpg" />
     <None Include="Resources\3step3.jpg" />
     <None Include="Resources\2step31.jpg" />

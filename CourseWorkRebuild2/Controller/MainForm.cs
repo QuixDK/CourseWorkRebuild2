@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -158,10 +159,6 @@ namespace CourseWorkRebuild2
             unsortedMarks.Clear();
             marksByBlocks.Clear();
 
-           /* for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
-            {
-                marksByBlocks.Add(new List<String>());
-            }*/
 
             sortMarksGroupBox.Show();
             objectDiagram.Show();
@@ -1058,6 +1055,12 @@ namespace CourseWorkRebuild2
                 thirdLevel_Enter(sender, e);
             }
             else MessageBox.Show("Сначала перераспределите марки на втором уровне");
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Author author = new Author();
+            author.Show();
         }
     }
         
