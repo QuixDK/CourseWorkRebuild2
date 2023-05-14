@@ -198,7 +198,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(980, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -430,7 +430,7 @@
             // acceptNewBlocksCount
             // 
             this.acceptNewBlocksCount.Name = "acceptNewBlocksCount";
-            this.acceptNewBlocksCount.Size = new System.Drawing.Size(160, 22);
+            this.acceptNewBlocksCount.Size = new System.Drawing.Size(180, 22);
             this.acceptNewBlocksCount.Text = "Применить";
             this.acceptNewBlocksCount.Click += new System.EventHandler(this.newBlocksCount_Enter);
             // 
@@ -546,7 +546,7 @@
             this.tabContol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabContol.Name = "tabContol";
             this.tabContol.SelectedIndex = 0;
-            this.tabContol.Size = new System.Drawing.Size(983, 416);
+            this.tabContol.Size = new System.Drawing.Size(980, 413);
             this.tabContol.TabIndex = 1;
             // 
             // dataPage
@@ -566,7 +566,7 @@
             this.dataPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataPage.Name = "dataPage";
             this.dataPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataPage.Size = new System.Drawing.Size(973, 388);
+            this.dataPage.Size = new System.Drawing.Size(972, 387);
             this.dataPage.TabIndex = 0;
             this.dataPage.Text = "Данные";
             this.dataPage.UseVisualStyleBackColor = true;
@@ -582,7 +582,7 @@
             this.panel3.Location = new System.Drawing.Point(2, 120);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(354, 90);
+            this.panel3.Size = new System.Drawing.Size(353, 90);
             this.panel3.TabIndex = 19;
             // 
             // deleteSelectedRowsButton
@@ -634,7 +634,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.objectPicture);
-            this.panel2.Location = new System.Drawing.Point(586, 4);
+            this.panel2.Location = new System.Drawing.Point(585, 4);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(382, 207);
@@ -660,7 +660,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 215);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(967, 168);
+            this.panel1.Size = new System.Drawing.Size(966, 167);
             this.panel1.TabIndex = 17;
             // 
             // elevatorTable
@@ -674,7 +674,7 @@
             this.elevatorTable.Name = "elevatorTable";
             this.elevatorTable.RowHeadersWidth = 51;
             this.elevatorTable.RowTemplate.Height = 24;
-            this.elevatorTable.Size = new System.Drawing.Size(967, 168);
+            this.elevatorTable.Size = new System.Drawing.Size(966, 167);
             this.elevatorTable.TabIndex = 0;
             this.elevatorTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.elevatorTable_CellEndEdit);
             this.elevatorTable.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.elevatorTable_DataBindingComplete);
@@ -738,7 +738,7 @@
             this.firstLevelDecompositionTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.firstLevelDecompositionTable.Name = "firstLevelDecompositionTable";
             this.firstLevelDecompositionTable.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(973, 388);
+            this.firstLevelDecompositionTable.Size = new System.Drawing.Size(972, 387);
             this.firstLevelDecompositionTable.TabIndex = 1;
             this.firstLevelDecompositionTable.Text = "Уровень 1";
             this.firstLevelDecompositionTable.UseVisualStyleBackColor = true;
@@ -753,7 +753,7 @@
             this.firstLevelOfDecompositionTable.Location = new System.Drawing.Point(2, 2);
             this.firstLevelOfDecompositionTable.Name = "firstLevelOfDecompositionTable";
             this.firstLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(969, 384);
+            this.firstLevelOfDecompositionTable.Size = new System.Drawing.Size(968, 383);
             this.firstLevelOfDecompositionTable.TabIndex = 0;
             // 
             // secondLevel
@@ -765,7 +765,7 @@
             this.secondLevel.Location = new System.Drawing.Point(4, 22);
             this.secondLevel.Name = "secondLevel";
             this.secondLevel.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.secondLevel.Size = new System.Drawing.Size(973, 388);
+            this.secondLevel.Size = new System.Drawing.Size(972, 387);
             this.secondLevel.TabIndex = 2;
             this.secondLevel.Text = "Уровень 2";
             this.secondLevel.UseVisualStyleBackColor = true;
@@ -780,7 +780,7 @@
             this.secondLevelOfDecompositionTable.Location = new System.Drawing.Point(6, 74);
             this.secondLevelOfDecompositionTable.Name = "secondLevelOfDecompositionTable";
             this.secondLevelOfDecompositionTable.RowHeadersWidth = 51;
-            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(958, 303);
+            this.secondLevelOfDecompositionTable.Size = new System.Drawing.Size(957, 302);
             this.secondLevelOfDecompositionTable.TabIndex = 8;
             // 
             // reSortMarksPanel
@@ -835,7 +835,7 @@
             this.sortMarksGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.sortMarksGroupBox.Location = new System.Drawing.Point(3, 3);
             this.sortMarksGroupBox.Name = "sortMarksGroupBox";
-            this.sortMarksGroupBox.Size = new System.Drawing.Size(390, 382);
+            this.sortMarksGroupBox.Size = new System.Drawing.Size(390, 381);
             this.sortMarksGroupBox.TabIndex = 12;
             this.sortMarksGroupBox.TabStop = false;
             this.sortMarksGroupBox.Text = "Сгруппируйте марки";
@@ -931,7 +931,7 @@
             this.thirdLevel.Location = new System.Drawing.Point(4, 22);
             this.thirdLevel.Name = "thirdLevel";
             this.thirdLevel.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.thirdLevel.Size = new System.Drawing.Size(975, 390);
+            this.thirdLevel.Size = new System.Drawing.Size(972, 387);
             this.thirdLevel.TabIndex = 3;
             this.thirdLevel.Text = "Уровень 3";
             this.thirdLevel.UseVisualStyleBackColor = true;
@@ -1167,7 +1167,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 378);
+            this.dataGridView1.Size = new System.Drawing.Size(745, 373);
             this.dataGridView1.TabIndex = 29;
             // 
             // fourthLevel
@@ -1354,7 +1354,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.objectDiagram.Location = new System.Drawing.Point(399, 74);
             this.objectDiagram.Name = "objectDiagram";
-            this.objectDiagram.Size = new System.Drawing.Size(562, 300);
+            this.objectDiagram.Size = new System.Drawing.Size(561, 299);
             this.objectDiagram.TabIndex = 4;
             this.objectDiagram.TabStop = false;
             // 
@@ -1362,9 +1362,9 @@
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.dataGridView1);
-            this.panel6.Location = new System.Drawing.Point(223, 4);
+            this.panel6.Location = new System.Drawing.Point(223, 9);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(746, 378);
+            this.panel6.Size = new System.Drawing.Size(745, 373);
             this.panel6.TabIndex = 30;
             // 
             // panel7
@@ -1385,7 +1385,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 440);
+            this.ClientSize = new System.Drawing.Size(980, 437);
             this.Controls.Add(this.tabContol);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
