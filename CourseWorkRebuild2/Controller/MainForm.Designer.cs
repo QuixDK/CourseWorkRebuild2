@@ -1068,7 +1068,7 @@
             // 
             this.nextStageButton.Location = new System.Drawing.Point(4, 196);
             this.nextStageButton.Name = "nextStageButton";
-            this.nextStageButton.Size = new System.Drawing.Size(212, 22);
+            this.nextStageButton.Size = new System.Drawing.Size(213, 22);
             this.nextStageButton.TabIndex = 29;
             this.nextStageButton.Text = "Подтвердить блок";
             this.nextStageButton.UseVisualStyleBackColor = true;
@@ -1215,10 +1215,10 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(222, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(224, 7);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(742, 367);
+            this.dataGridView1.Size = new System.Drawing.Size(740, 372);
             this.dataGridView1.TabIndex = 29;
             // 
             // fourthLevel
