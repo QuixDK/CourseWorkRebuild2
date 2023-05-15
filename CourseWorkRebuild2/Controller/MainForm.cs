@@ -440,6 +440,8 @@ namespace CourseWorkRebuild2
             //Очищаем пути ко всем Файлам и все известные значения
             closeButton_Click(sender, e);
 
+            disableStartButtons();
+            disableButtonsForTable();
             //Дропаем все открытые формы
             foreach (NewProjectForm1 form in openForms)
             {
@@ -457,6 +459,8 @@ namespace CourseWorkRebuild2
             decomposition.ClearTable(firstLevelOfDecompositionTable);
             decomposition.ClearTable(secondLevelOfDecompositionTable);
             activeForm = 0;
+            disableStartButtons();
+            disableButtonsForTable();
             reDrawMainForm();
         }
 
