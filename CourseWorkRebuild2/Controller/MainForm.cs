@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
@@ -33,7 +34,9 @@ namespace CourseWorkRebuild2
         private int decompositionLevel = 0;
         private int subblockCount = 0;
         private int marksOnSubblock = 0;
+        private bool f = true;
         int stage = 0;
+        private int selectedIndex;
         private List<List<String>> marksByBlocks = new List<List<String>>();
         private List<List<String>> marksByBlocksForThirdLevel = new List<List<String>>();
         private List<List<String>> marksBySubBlocks = new List<List<String>>();
@@ -50,6 +53,10 @@ namespace CourseWorkRebuild2
             blockDictionary.Add(2, "В");
             blockDictionary.Add(3, "Г");
             blockDictionary.Add(4, "Д");
+            blockDictionary.Add(5, "Е");
+            blockDictionary.Add(6, "Ё");
+            blockDictionary.Add(7, "Ж");
+            blockDictionary.Add(8, "З");
 
             reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
@@ -150,11 +157,8 @@ namespace CourseWorkRebuild2
             chooseBlock.Items.Clear();
 
             unsortedMarks.Clear();
+            marksByBlocks.Clear();
 
-            foreach (List<String> list in marksByBlocks)
-            {
-                list.Clear();
-            }
 
             sortMarksGroupBox.Show();
             objectDiagram.Show();
@@ -810,6 +814,10 @@ namespace CourseWorkRebuild2
 
         private void thirdLevel_Enter(object sender, EventArgs e)
         {
+            if (f == false)
+            {
+                return;
+            }
             if (marksByBlocks.Count > 0)
             {
                 stage = 1;
@@ -817,9 +825,10 @@ namespace CourseWorkRebuild2
                 defaultMessage2.Hide();
                 levelThirdPanel.Show();
                 subblockSettingPanel.Hide();
-                dataGridView1.Hide();
+                panel6.Hide();
 
                 chooseBlock3.Items.Clear();
+                marksByBlocksForThirdLevel.Clear();
 
                 for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
                 {
@@ -856,6 +865,7 @@ namespace CourseWorkRebuild2
                         listBox1.Items.Add(unsortedMarks[i]);
                     }
                 }
+                f = false;
 
             }
             else
@@ -884,6 +894,7 @@ namespace CourseWorkRebuild2
             }
             else if (stage == 3)
             {
+                blockLabel.Text = "Подблок " + chooseBlock3.SelectedItem; 
                 marksOnSubblocksListBox.Items.Clear();
                 for (int i = 0; i < marksBySubBlocks[chooseBlock3.SelectedIndex].Count; i++)
                 {
@@ -933,12 +944,15 @@ namespace CourseWorkRebuild2
             if (stage == 1)
             {
                 subblockSettingPanel.Show();
+                panel6.Hide();
 
                 stage = 2;
                 decomposition.ThirdLevelFillDistanceTable(distanceBetweenMarks, marksByBlocksForThirdLevel, chooseBlock3, elevatorTable, marksExcess, strongConnectionsListBox, pathToFilesAndData[2]);
 
                 addConnectionToSubblock.Enabled = false;
-                removeMarkFromBlock.Enabled = false;
+                removeMarkFromSubblock.Enabled = false;
+
+                selectedIndex = chooseBlock3.SelectedIndex;
             }
             if (stage == 3)
             {
@@ -951,6 +965,7 @@ namespace CourseWorkRebuild2
                     }
                 }
                 dataGridView1.Show();
+                panel6.Show();
                 decompositionLevel = 3;
                 valuesForThirdLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksBySubBlocks, chooseBlock3);
                 decomposition.FillTable(dataGridView1, valuesForThirdLevel, elevatorTable);
@@ -963,13 +978,18 @@ namespace CourseWorkRebuild2
             subblockCount = Convert.ToInt32(textBox1.Text);
             marksOnSubblock = Convert.ToInt32(textBox2.Text);
 
+            for (int i = 0; i < marksBySubBlocks.Count; i++)
+            {
+                marksBySubBlocks[i].Clear();
+            }
+
             addConnectionToSubblock.Enabled = true;
-            removeMarkFromBlock.Enabled = true;
+            removeMarkFromSubblock.Enabled = true;
             listBox1.Items.Clear();
 
-            for (int i = 0; i < marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count; i++)
+            for (int i = 0; i < marksByBlocksForThirdLevel[selectedIndex].Count; i++)
             {
-                listBox1.Items.Add(marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex][i]);
+                listBox1.Items.Add(marksByBlocksForThirdLevel[selectedIndex][i]);
             }
 
             chooseBlock3.Items.Clear();
@@ -990,6 +1010,8 @@ namespace CourseWorkRebuild2
             }
 
             blockLabel.Text = "Подблок " + blockDictionary[0];
+
+            nextStageButton.Text = "Рассчитать";
             stage = 3;
         }
 
@@ -1007,6 +1029,42 @@ namespace CourseWorkRebuild2
         {
             ReferenceForm referenceForm = new ReferenceForm();
             referenceForm.Show();
+        }
+
+        private void changeBlockButton_Click(object sender, EventArgs e)
+        {
+            if (marksByBlocks.Count == Convert.ToInt32(pathToFilesAndData[5]))
+            {
+                listBox1.Items.Clear();
+                chooseBlock3.Items.Clear();
+
+                chooseBlockLabel.Text = "Выберите блок: ";
+                marksOnSubblocksListBox.Items.Clear();
+
+
+                for (int i = 0; i < Convert.ToInt32(pathToFilesAndData[5]); i++)
+                {
+                    chooseBlock3.Items.Add(blockDictionary[i]);
+                }
+
+                chooseBlock3.SelectedItem = null;
+                chooseBlock3.SelectedIndex = 0;
+                stage = 1;
+
+                addConnectionToSubblock.Enabled = true;
+                removeMarkFromSubblock.Enabled = true;
+                subblockSettingPanel.Hide();
+                nextStageButton.Text = "Потвердить блок";
+                f = true;
+                thirdLevel_Enter(sender, e);
+            }
+            else MessageBox.Show("Сначала перераспределите марки на втором уровне");
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Author author = new Author();
+            author.Show();
         }
     }
         

@@ -63,6 +63,56 @@ namespace CourseWorkRebuild2.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2step1 {
+            get {
+                object obj = ResourceManager.GetObject("2step1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2step2 {
+            get {
+                object obj = ResourceManager.GetObject("2step2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2step3 {
+            get {
+                object obj = ResourceManager.GetObject("2step3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3step2 {
+            get {
+                object obj = ResourceManager.GetObject("3step2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3step3 {
+            get {
+                object obj = ResourceManager.GetObject("3step3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DBErroConnectionIcon {
             get {
                 object obj = ResourceManager.GetObject("DBErroConnectionIcon", resourceCulture);
@@ -106,6 +156,16 @@ namespace CourseWorkRebuild2.Properties {
         internal static System.Drawing.Bitmap redactorMenu {
             get {
                 object obj = ResourceManager.GetObject("redactorMenu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
