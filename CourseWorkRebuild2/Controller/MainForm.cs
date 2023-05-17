@@ -1031,7 +1031,7 @@ namespace CourseWorkRebuild2
                 return;
             }
 
-            if (Convert.ToInt32(textBox2.Text) > Convert.ToInt32(textBox1.Text) / marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count)
+            if (Convert.ToInt32(textBox2.Text) > (marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count)/ Convert.ToInt32(textBox1.Text))
             {
                 MessageBox.Show("Всего марок на подблоках, не должно превышать количество доступных марок для распределения");
                 return;
