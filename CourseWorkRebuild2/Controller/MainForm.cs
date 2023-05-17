@@ -27,6 +27,7 @@ namespace CourseWorkRebuild2
         private PhaseCoordinates checkValuesForm = new PhaseCoordinates();
         Calculations calculations = new Calculations();
         Dictionary<int, String> blockDictionary;
+        Dictionary<int, String> subblockDictionary;
         private int activeForm = 0;
         private int epochCount = 0;
         private int needMarksCount;
@@ -48,6 +49,8 @@ namespace CourseWorkRebuild2
             checkValuesForm = new PhaseCoordinates();
 
             blockDictionary = new Dictionary<int, String>();
+            subblockDictionary = new Dictionary<int, String>();
+
             blockDictionary.Add(0, "A");
             blockDictionary.Add(1, "Б");
             blockDictionary.Add(2, "В");
@@ -57,6 +60,13 @@ namespace CourseWorkRebuild2
             blockDictionary.Add(6, "Ё");
             blockDictionary.Add(7, "Ж");
             blockDictionary.Add(8, "З");
+
+            subblockDictionary.Add(0, "A1");
+            subblockDictionary.Add(1, "A2");
+            subblockDictionary.Add(2, "A3");
+            subblockDictionary.Add(3, "A4");
+            subblockDictionary.Add(4, "A5");
+            subblockDictionary.Add(5, "A6");
 
             reSortMarksPanel.Hide();
             secondLevelOfDecompositionTable.Hide();
@@ -99,6 +109,7 @@ namespace CourseWorkRebuild2
                 valuesForFirstLevel = decomposition.FirstLevel(elevatorTable, dataTable, pathToFilesAndData);
                 //А тут заполняем табличку
                 decomposition.FillTable(firstLevelOfDecompositionTable, valuesForFirstLevel, elevatorTable);
+                checkValuesForm = new PhaseCoordinates();
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForFirstLevel, checkValuesForm.GetTable());
             }
 
@@ -216,6 +227,8 @@ namespace CourseWorkRebuild2
                 decompositionLevel = 2;
                 valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
                 decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
+
+                checkValuesForm = new PhaseCoordinates();
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
                 
             }
@@ -224,6 +237,7 @@ namespace CourseWorkRebuild2
         {
             valuesForSecondLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksByBlocks, chooseBlock);
             decomposition.FillTable(secondLevelOfDecompositionTable, valuesForSecondLevel, elevatorTable);
+            checkValuesForm = new PhaseCoordinates();
             decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, checkValuesForm.GetTable());
         }
 
@@ -690,7 +704,25 @@ namespace CourseWorkRebuild2
 
         private void checkValues_Click(object sender, EventArgs e)
         {
-            checkValuesForm.Show();
+            if (decompositionLevel == 1)
+            {
+                PhaseCoordinates phaseCoordinates = new PhaseCoordinates();
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForFirstLevel, phaseCoordinates.GetTable());
+                phaseCoordinates.Show();
+            }
+            else if (decompositionLevel == 2)
+            {
+                
+                PhaseCoordinates phaseCoordinates = new PhaseCoordinates();
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForSecondLevel, phaseCoordinates.GetTable());
+                phaseCoordinates.Show();
+            }
+            else if (decompositionLevel == 3)
+            {
+                PhaseCoordinates phaseCoordinates = new PhaseCoordinates();
+                decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForThirdLevel, phaseCoordinates.GetTable());
+                phaseCoordinates.Show();
+            }
         }
 
         private void enableButtonsForTable()
@@ -969,14 +1001,42 @@ namespace CourseWorkRebuild2
                 decompositionLevel = 3;
                 valuesForThirdLevel = decomposition.SecondLevel(elevatorTable, pathToFilesAndData, marksBySubBlocks, chooseBlock3);
                 decomposition.FillTable(dataGridView1, valuesForThirdLevel, elevatorTable);
+                checkValuesForm = new PhaseCoordinates();
                 decomposition.FillPhaseCoordinatesTable(elevatorTable, valuesForThirdLevel, checkValuesForm.GetTable());
             }
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            subblockCount = Convert.ToInt32(textBox1.Text);
-            marksOnSubblock = Convert.ToInt32(textBox2.Text);
+            try
+            {
+                subblockCount = Convert.ToInt32(textBox1.Text);
+                marksOnSubblock = Convert.ToInt32(textBox2.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Невалидные данные");
+                return;
+            }
+
+            if (Convert.ToInt32(textBox1.Text) < 2)
+            {
+                MessageBox.Show("Количество подблоков не может быть меньше 2-х");
+                return;
+            }
+
+            if (Convert.ToInt32(textBox2.Text) < 2)
+            {
+                MessageBox.Show("Количество марок на подблоках не может быть меньше 2-х");
+                return;
+            }
+
+            if (Convert.ToInt32(textBox2.Text) > Convert.ToInt32(textBox1.Text) / marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count)
+            {
+                MessageBox.Show("Всего марок на подблоках, не должно превышать количество доступных марок для распределения");
+                return;
+            }
+
 
             for (int i = 0; i < marksBySubBlocks.Count; i++)
             {
@@ -996,7 +1056,7 @@ namespace CourseWorkRebuild2
 
             for (int i = 0; i < subblockCount; i++)
             {
-                chooseBlock3.Items.Add(blockDictionary[i]);
+                chooseBlock3.Items.Add(subblockDictionary[i]);
             }
 
             chooseBlockLabel.Text = "Выберите подБлок";
@@ -1009,7 +1069,7 @@ namespace CourseWorkRebuild2
                 marksBySubBlocks.Add(new List<String>());
             }
 
-            blockLabel.Text = "Подблок " + blockDictionary[0];
+            blockLabel.Text = "Подблок " + subblockDictionary[0];
 
             nextStageButton.Text = "Рассчитать";
             stage = 3;
@@ -1065,6 +1125,30 @@ namespace CourseWorkRebuild2
         {
             Author author = new Author();
             author.Show();
+        }
+
+        private void displayAllMarksButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < availableMarks.Items.Count; i++)
+            {
+                displayedMarks.Items.Add(availableMarks.Items[i]);
+                decomposition.FourthLevelChartAddLine(availableMarks.Items[i].ToString(), elevatorTable, pathToFilesAndData, fourthLevelChart);
+                
+            }
+            availableMarks.Items.Clear();
+            
+        }
+
+        private void hideAllMarksButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < displayedMarks.Items.Count; i++)
+            {
+                availableMarks.Items.Add(displayedMarks.Items[i]);
+                decomposition.FourthLevelChartRemoveLine(displayedMarks.Items[i].ToString(), fourthLevelChart);
+                
+            }
+            displayedMarks.Items.Clear();
+
         }
     }
         

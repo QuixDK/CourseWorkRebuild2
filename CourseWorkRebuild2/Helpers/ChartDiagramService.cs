@@ -11,9 +11,16 @@ public class ChartDiagramService
 
     public Chart AddXYLine(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart)
     {
-
-        chart.ChartAreas[0].AxisX.Title = "Эпоха";
-        chart.ChartAreas[0].AxisY.Title = "Значение";
+        if (listOfXValues[0] < 2)
+        {
+            chart.ChartAreas[0].AxisX.Title = "Эпоха";
+            chart.ChartAreas[0].AxisY.Title = "Значение A";
+        }
+        else
+        {
+            chart.ChartAreas[0].AxisX.Title = "Эпоха";
+            chart.ChartAreas[0].AxisY.Title = "Значение M";
+        }
         
         chart.Series.Add(serieName);
 
@@ -37,7 +44,7 @@ public class ChartDiagramService
     public Chart AddMALine(List<Double> listOfMValues, List<Double> listOfAValues, Chart chart, String serieName)
     {
         chart.ChartAreas[0].AxisX.Title = "M";
-        chart.ChartAreas[0].AxisY.Title = "Alpha";
+        chart.ChartAreas[0].AxisY.Title = "Alpha°";
         chart.ChartAreas[0].AxisY.IsStartedFromZero = false;
         chart.Series.Add(serieName);
         chart.Series[serieName].MarkerStyle = MarkerStyle.Circle; // стиль маркера точки данных

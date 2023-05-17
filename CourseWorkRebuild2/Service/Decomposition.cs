@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 using System.Collections;
+using System.Drawing;
 
 namespace CourseWorkRebuild2
 {
@@ -77,6 +78,11 @@ namespace CourseWorkRebuild2
                 for (int j = 0; j < marksExcess.Rows.Count - 1; j++)
                 {
                     marksExcess.Rows[j].Cells[i].Value = Math.Round(Math.Abs(Convert.ToDouble(distanceBetweenMarks.Rows[0].Cells[i].Value) - Convert.ToDouble(distanceBetweenMarks.Rows[j].Cells[i].Value)),4);
+                    if (Convert.ToDouble(marksExcess.Rows[j].Cells[i].Value) <= (Convert.ToDouble(T) + 0.007d))
+                    {
+                        marksExcess.Rows[j].Cells[i].Style.BackColor = Color.LightGreen;
+                    }
+                    else marksExcess.Rows[j].Cells[i].Style.BackColor = Color.IndianRed;
                 }
             }
             bool flag = true;
@@ -86,6 +92,7 @@ namespace CourseWorkRebuild2
                 {
                     if (Convert.ToDouble(marksExcess.Rows[j].Cells[i].Value) >= (Convert.ToDouble(T) + 0.007d))
                     {
+
                         flag = false; break;
                     }
                 }
@@ -306,15 +313,15 @@ namespace CourseWorkRebuild2
             table.Columns[1].Name = "Исходное М";
             table.Columns[2].Name = "Верхнее М";
             table.Columns[3].Name = "Нижнее М";
-            table.Columns[4].Name = "Исходное Альфа";
-            table.Columns[5].Name = "Верхнее Альфа";
-            table.Columns[6].Name = "Нижнее Альфа";
+            table.Columns[4].Name = "Исходное Альфа°";
+            table.Columns[5].Name = "Верхнее Альфа°";
+            table.Columns[6].Name = "Нижнее Альфа°";
             table.Columns[7].Name = "Сглаженное M";
             table.Columns[8].Name = "Сглаженное М верхнее";
             table.Columns[9].Name = "Сглаженное М нижнее";
-            table.Columns[10].Name = "Сглаженное Альфа";
-            table.Columns[11].Name = "Сглаженное Aльфа верхнее";
-            table.Columns[12].Name = "Сглаженное Aльфа нижнее";
+            table.Columns[10].Name = "Сглаженное Альфа°";
+            table.Columns[11].Name = "Сглаженное Aльфа° верхнее";
+            table.Columns[12].Name = "Сглаженное Aльфа° нижнее";
 
             for (int i = 0; i < elevationTable.Rows.Count - 1; i++)
             {

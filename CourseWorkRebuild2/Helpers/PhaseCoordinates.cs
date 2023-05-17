@@ -26,5 +26,10 @@ namespace CourseWorkRebuild2
         {
             return this.dataGridView1;
         }
+
+        private void PhaseCoordinates_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
     }
 }
