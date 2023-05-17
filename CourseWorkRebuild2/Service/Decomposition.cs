@@ -124,6 +124,8 @@ namespace CourseWorkRebuild2
             String forecastMark = "Прогноз " + mark;
             listOfEpoch.Add(listOfEpoch.Last() + 1);
             chartDiagramService.AddForecastValue(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
+            fourthLevelChart.ChartAreas[0].AxisY.Title = "Высота Z, м";
+            fourthLevelChart.ChartAreas[0].AxisX.Title = "Эпоха";
 
         }
         public void FourthLevelChartRemoveLine(String mark, Chart fourthLevelChart)
