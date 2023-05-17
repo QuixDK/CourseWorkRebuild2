@@ -27,11 +27,11 @@ namespace CourseWorkRebuild2.Helpers
 
             String serieName2 = "Длина вектора М (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-            else chartDiagramService.AddXYLine(serieName2, epochList, values[3], expSmooth);
+            else chartDiagramService.AddXYLine(serieName2, epochList, values[3], expSmooth); expSmooth.ChartAreas[0].AxisY.Title = "Длина вектора М, м";
 
             String serieName = "Длина вектора М (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-            else chartDiagramService.AddXYLine(serieName, epochList, values[2], expSmooth);
+            else chartDiagramService.AddXYLine(serieName, epochList, values[2], expSmooth); 
 
             applySettings(sender, e);
         }
@@ -41,7 +41,7 @@ namespace CourseWorkRebuild2.Helpers
 
             String serieName2 = "Угол а (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-            else chartDiagramService.AddXYLine(serieName2, epochList, values[9], expSmooth);
+            else chartDiagramService.AddXYLine(serieName2, epochList, values[9], expSmooth); expSmooth.ChartAreas[0].AxisY.Title = "Угол наклона А,°";
 
             String serieName = "Угол а (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
