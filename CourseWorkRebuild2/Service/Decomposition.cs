@@ -287,7 +287,7 @@ namespace CourseWorkRebuild2
             //Считаем L (по модулю (M(0) - M(i)))
             for (int i = 0; i < dataTable.Rows.Count - 1; i++)
             {
-                dataTable.Rows[i].Cells[5].Value = Math.Abs(Convert.ToDouble(dataTable.Rows[0].Cells[2].Value) - Convert.ToDouble(dataTable.Rows[i].Cells[2].Value));
+                dataTable.Rows[i].Cells[5].Value = Math.Round(Math.Abs(Convert.ToDouble(dataTable.Rows[0].Cells[2].Value) - Convert.ToDouble(dataTable.Rows[i].Cells[2].Value)),12);
             }
             //Считаем есть ли выход за границу
             for (int i = 0; i < dataTable.Rows.Count - 1; i++)
@@ -296,7 +296,14 @@ namespace CourseWorkRebuild2
                 {
                     dataTable.Rows[i].Cells[6].Value = "В пределе";
                 }
-                else dataTable.Rows[i].Cells[6].Value = "Выход за границу";
+                else
+                {
+                    dataTable.Rows[i].Cells[6].Value = "Выход за границу";
+                    for (int j = 0; j <  dataTable.Columns.Count; j++)
+                    {
+                        dataTable.Rows[i].Cells[j].Style.BackColor = Color.PeachPuff;
+                    }
+                }
             }
             return dataTable;
         }

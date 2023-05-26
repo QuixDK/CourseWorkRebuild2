@@ -941,16 +941,23 @@ namespace CourseWorkRebuild2
         {
             if (stage == 1)
             {
-                unsortedMarks.Remove(listBox1.Items[0].ToString());
-                marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
-                marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
-                listBox1.Items.Remove(listBox1.Items[0]);
+                if (listBox1.Items.Count > 0)
+                {
+                    unsortedMarks.Remove(listBox1.Items[0].ToString());
+                    marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
+                    marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
+                    listBox1.Items.Remove(listBox1.Items[0]);
+                }
+                
             }
             if (stage == 3)
             {
-                marksBySubBlocks[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
-                marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
-                listBox1.Items.Remove(listBox1.Items[0]);
+                if (listBox1.Items.Count > 0)
+                {
+                    marksBySubBlocks[chooseBlock3.SelectedIndex].Add(listBox1.Items[0].ToString());
+                    marksOnSubblocksListBox.Items.Add(listBox1.Items[0]);
+                    listBox1.Items.Remove(listBox1.Items[0]);
+                }
             }
         }
 
@@ -958,16 +965,23 @@ namespace CourseWorkRebuild2
         {
             if (stage == 1)
             {
-                unsortedMarks.Add(marksOnSubblocksListBox.Items[0].ToString());
-                marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
-                listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
-                marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+                if (marksOnSubblocksListBox.Items.Count > 0)
+                {
+                    unsortedMarks.Add(marksOnSubblocksListBox.Items[0].ToString());
+                    marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
+                    listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
+                    marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+                }
+                
             }
             if (stage == 3)
             {
-                marksBySubBlocks[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
-                listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
-                marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+                if (marksOnSubblocksListBox.Items.Count > 0)
+                {
+                    marksBySubBlocks[chooseBlock3.SelectedIndex].Remove(marksOnSubblocksListBox.Items[0].ToString());
+                    listBox1.Items.Add(marksOnSubblocksListBox.Items[0]);
+                    marksOnSubblocksListBox.Items.Remove(marksOnSubblocksListBox.Items[0]);
+                }
             }
         }
 
@@ -1031,7 +1045,7 @@ namespace CourseWorkRebuild2
                 return;
             }
 
-            if (Convert.ToInt32(textBox2.Text) > (marksByBlocksForThirdLevel[chooseBlock3.SelectedIndex].Count)/ Convert.ToInt32(textBox1.Text))
+            if (Convert.ToInt32(textBox2.Text) > (marksByBlocksForThirdLevel[selectedIndex].Count)/ Convert.ToInt32(textBox1.Text))
             {
                 MessageBox.Show("Всего марок на подблоках, не должно превышать количество доступных марок для распределения");
                 return;
