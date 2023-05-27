@@ -141,7 +141,7 @@ namespace CourseWorkRebuild2
                 {
                     filePath = Path.GetFullPath(chooseDirectory.SelectedPath);
                 }
-                
+                bool f = true;
 
                 if (archivePath != "")
                 {
@@ -161,12 +161,13 @@ namespace CourseWorkRebuild2
                                 Overwrite = true
                             });
 
-                            if (archive.Entries.Count() == 4)
+                            if (archive.Entries.Count() == 4 & f == true)
                             {
                                 projectRoot = Path.GetFullPath(Path.GetDirectoryName(outputPath));
-                                break;
+                                f = false;
                             }
                         }
+
                     }
                 }
                 return Open();

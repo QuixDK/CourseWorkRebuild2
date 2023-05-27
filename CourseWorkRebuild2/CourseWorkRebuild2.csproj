@@ -115,16 +115,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Author.cs">
+    <Compile Include="Helpers\HelperForms\Author.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Author.Designer.cs">
+    <Compile Include="Helpers\HelperForms\Author.Designer.cs">
       <DependentUpon>Author.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\AboutProgramForm.cs">
+    <Compile Include="Helpers\HelperForms\AboutProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\AboutProgramForm.Designer.cs">
+    <Compile Include="Helpers\HelperForms\AboutProgramForm.Designer.cs">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\NewProjectForm1.cs">
@@ -140,39 +140,39 @@
       <DependentUpon>ChooseTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\UserInterface.cs" />
-    <Compile Include="Helpers\ChartUserSettings.cs" />
-    <Compile Include="Helpers\ExpSmoothChart.cs">
+    <Compile Include="Helpers\Charts\ChartUserSettings.cs" />
+    <Compile Include="Helpers\Charts\ExpSmoothChart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\ExpSmoothChart.Designer.cs">
+    <Compile Include="Helpers\Charts\ExpSmoothChart.Designer.cs">
       <DependentUpon>ExpSmoothChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HelperForms\ReferenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\HelperForms\ReferenceForm.Designer.cs">
+      <DependentUpon>ReferenceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ReferenceForm.cs">
+    <Compile Include="Service\Calculations\Calculations.cs" />
+    <Compile Include="Helpers\Charts\ResponseChart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\ReferenceForm.Designer.cs">
-      <DependentUpon>ReferenceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Service\Calculations.cs" />
-    <Compile Include="Helpers\ResponseChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Helpers\ResponseChart.Designer.cs">
+    <Compile Include="Helpers\Charts\ResponseChart.Designer.cs">
       <DependentUpon>ResponseChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ChartDiagramService.cs" />
-    <Compile Include="Helpers\PhaseCoordinates.cs">
+    <Compile Include="Helpers\Charts\ChartDiagramService.cs" />
+    <Compile Include="Helpers\HelperForms\PhaseCoordinates.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\PhaseCoordinates.Designer.cs">
+    <Compile Include="Helpers\HelperForms\PhaseCoordinates.Designer.cs">
       <DependentUpon>PhaseCoordinates.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service\Decomposition.cs" />
+    <Compile Include="Service\Calculations\Decomposition.cs" />
     <Compile Include="Controller\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,18 +182,18 @@
     <Compile Include="Service\OpenProject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\Repository\Repository.cs" />
     <Compile Include="Service\Save.cs" />
-    <Compile Include="Helpers\SystemInfo.cs">
+    <Compile Include="Helpers\HelperForms\SystemInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\SystemInfo.Designer.cs">
+    <Compile Include="Helpers\HelperForms\SystemInfo.Designer.cs">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Author.resx">
+    <EmbeddedResource Include="Helpers\HelperForms\Author.resx">
       <DependentUpon>Author.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\AboutProgramForm.resx">
+    <EmbeddedResource Include="Helpers\HelperForms\AboutProgramForm.resx">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\NewProjectForm1.resx">
@@ -202,13 +202,13 @@
     <EmbeddedResource Include="Models\ChooseTableForm.resx">
       <DependentUpon>ChooseTableForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\ExpSmoothChart.resx">
+    <EmbeddedResource Include="Helpers\Charts\ExpSmoothChart.resx">
       <DependentUpon>ExpSmoothChart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\ResponseChart.resx">
+    <EmbeddedResource Include="Helpers\Charts\ResponseChart.resx">
       <DependentUpon>ResponseChart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\PhaseCoordinates.resx">
+    <EmbeddedResource Include="Helpers\HelperForms\PhaseCoordinates.resx">
       <DependentUpon>PhaseCoordinates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\MainForm.resx">
@@ -219,10 +219,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\SystemInfo.resx">
+    <EmbeddedResource Include="Helpers\HelperForms\SystemInfo.resx">
       <DependentUpon>SystemInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\ReferenceForm.resx">
+    <EmbeddedResource Include="Helpers\HelperForms\ReferenceForm.resx">
       <DependentUpon>ReferenceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
@@ -242,45 +242,45 @@
     <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DBErroConnectionIcon.png" />
+    <None Include="Resources\StatusIcons\DBErroConnectionIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\noImageIcon.png" />
+    <None Include="Resources\StatusIcons\noImageIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\okImageicon.png" />
+    <None Include="Resources\StatusIcons\okImageicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\okDBIcon.png" />
+    <None Include="Resources\StatusIcons\okDBIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\step1.png" />
+    <None Include="Resources\Reference\step1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\step2.png" />
+    <None Include="Resources\Reference\step2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\step3.png" />
+    <None Include="Resources\Reference\step3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Screenshot_5.png" />
+    <None Include="Resources\Reference\Screenshot_5.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\redactorMenu.png" />
+    <None Include="Resources\Reference\redactorMenu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\step4.png" />
+    <None Include="Resources\Reference\step4.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\2step1.jpg" />
-    <None Include="Resources\Screenshot_2.jpg" />
-    <None Include="Resources\3step2.jpg" />
-    <None Include="Resources\3step3.jpg" />
-    <None Include="Resources\2step31.jpg" />
-    <None Include="Resources\2step21.jpg" />
-    <None Include="Resources\2step11.jpg" />
-    <Content Include="Resources\2step2.jpg" />
-    <Content Include="Resources\2step3.jpg" />
+    <Content Include="Resources\Reference\2step1.jpg" />
+    <None Include="Resources\Reference\Screenshot_2.jpg" />
+    <None Include="Resources\Reference\3step2.jpg" />
+    <None Include="Resources\Reference\3step3.jpg" />
+    <None Include="Resources\Reference\2step31.jpg" />
+    <None Include="Resources\Reference\2step21.jpg" />
+    <None Include="Resources\Reference\2step11.jpg" />
+    <Content Include="Resources\Reference\2step2.jpg" />
+    <Content Include="Resources\Reference\2step3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
