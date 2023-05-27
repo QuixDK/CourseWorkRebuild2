@@ -34,15 +34,6 @@
             this.MChart = new System.Windows.Forms.CheckBox();
             this.alphaChart = new System.Windows.Forms.CheckBox();
             this.chartSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.markerTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -55,7 +46,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.expSmooth)).BeginInit();
             this.chartSettingsGroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +58,7 @@
             legend1.Name = "Legend1";
             this.expSmooth.Legends.Add(legend1);
             this.expSmooth.Location = new System.Drawing.Point(0, 0);
-            this.expSmooth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.expSmooth.Margin = new System.Windows.Forms.Padding(4);
             this.expSmooth.Name = "expSmooth";
             this.expSmooth.Size = new System.Drawing.Size(867, 550);
             this.expSmooth.TabIndex = 0;
@@ -77,8 +67,8 @@
             // MChart
             // 
             this.MChart.AutoSize = true;
-            this.MChart.Location = new System.Drawing.Point(20, 17);
-            this.MChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MChart.Location = new System.Drawing.Point(12, 17);
+            this.MChart.Margin = new System.Windows.Forms.Padding(4);
             this.MChart.Name = "MChart";
             this.MChart.Size = new System.Drawing.Size(149, 20);
             this.MChart.TabIndex = 1;
@@ -89,8 +79,8 @@
             // alphaChart
             // 
             this.alphaChart.AutoSize = true;
-            this.alphaChart.Location = new System.Drawing.Point(20, 45);
-            this.alphaChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.alphaChart.Location = new System.Drawing.Point(12, 45);
+            this.alphaChart.Margin = new System.Windows.Forms.Padding(4);
             this.alphaChart.Name = "alphaChart";
             this.alphaChart.Size = new System.Drawing.Size(79, 20);
             this.alphaChart.TabIndex = 2;
@@ -100,7 +90,6 @@
             // 
             // chartSettingsGroupBox
             // 
-            this.chartSettingsGroupBox.Controls.Add(this.groupBox1);
             this.chartSettingsGroupBox.Controls.Add(this.chartTypeComboBox);
             this.chartSettingsGroupBox.Controls.Add(this.label4);
             this.chartSettingsGroupBox.Controls.Add(this.markerTypeComboBox);
@@ -110,110 +99,19 @@
             this.chartSettingsGroupBox.Controls.Add(this.label1);
             this.chartSettingsGroupBox.Controls.Add(this.markerSizeComboBox);
             this.chartSettingsGroupBox.Location = new System.Drawing.Point(4, 73);
-            this.chartSettingsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartSettingsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.chartSettingsGroupBox.Name = "chartSettingsGroupBox";
-            this.chartSettingsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chartSettingsGroupBox.Size = new System.Drawing.Size(249, 426);
+            this.chartSettingsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.chartSettingsGroupBox.Size = new System.Drawing.Size(242, 473);
             this.chartSettingsGroupBox.TabIndex = 3;
             this.chartSettingsGroupBox.TabStop = false;
             this.chartSettingsGroupBox.Text = "Настройки диаграммы";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(8, 245);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(241, 174);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Настройка осей";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(125, 95);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 16);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "MinX";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 95);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 16);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "MinY";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(125, 38);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 16);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "MaxX";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 38);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "MaxY";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(129, 117);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(99, 22);
-            this.textBox4.TabIndex = 11;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(129, 60);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(99, 22);
-            this.textBox3.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(8, 117);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(99, 22);
-            this.textBox2.TabIndex = 9;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 60);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(99, 22);
-            this.textBox1.TabIndex = 8;
             // 
             // chartTypeComboBox
             // 
             this.chartTypeComboBox.FormattingEnabled = true;
             this.chartTypeComboBox.Location = new System.Drawing.Point(12, 55);
-            this.chartTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartTypeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.chartTypeComboBox.Name = "chartTypeComboBox";
             this.chartTypeComboBox.Size = new System.Drawing.Size(160, 24);
             this.chartTypeComboBox.TabIndex = 7;
@@ -233,7 +131,7 @@
             // 
             this.markerTypeComboBox.FormattingEnabled = true;
             this.markerTypeComboBox.Location = new System.Drawing.Point(12, 159);
-            this.markerTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.markerTypeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.markerTypeComboBox.Name = "markerTypeComboBox";
             this.markerTypeComboBox.Size = new System.Drawing.Size(160, 24);
             this.markerTypeComboBox.TabIndex = 5;
@@ -253,7 +151,7 @@
             // 
             this.labelsOnMarksCheckBox.AutoSize = true;
             this.labelsOnMarksCheckBox.Location = new System.Drawing.Point(12, 214);
-            this.labelsOnMarksCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelsOnMarksCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.labelsOnMarksCheckBox.Name = "labelsOnMarksCheckBox";
             this.labelsOnMarksCheckBox.Size = new System.Drawing.Size(46, 20);
             this.labelsOnMarksCheckBox.TabIndex = 3;
@@ -285,7 +183,7 @@
             // 
             this.markerSizeComboBox.FormattingEnabled = true;
             this.markerSizeComboBox.Location = new System.Drawing.Point(12, 107);
-            this.markerSizeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.markerSizeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.markerSizeComboBox.Name = "markerSizeComboBox";
             this.markerSizeComboBox.Size = new System.Drawing.Size(160, 24);
             this.markerSizeComboBox.TabIndex = 0;
@@ -321,15 +219,13 @@
             this.ClientSize = new System.Drawing.Size(1129, 555);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ExpSmoothChart";
             this.Text = "Экспоненциальное сглаживание";
             this.Load += new System.EventHandler(this.ExpSmoothChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.expSmooth)).EndInit();
             this.chartSettingsGroupBox.ResumeLayout(false);
             this.chartSettingsGroupBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -349,15 +245,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox markerSizeComboBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox chartTypeComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;

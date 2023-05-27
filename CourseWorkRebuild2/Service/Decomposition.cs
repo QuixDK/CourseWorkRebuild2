@@ -120,10 +120,10 @@ namespace CourseWorkRebuild2
                 listOfMarkValues.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[mark].Value));
             }
             listOfSmoothValues = calculations.GetForecastValue(listOfMarkValues, Convert.ToDouble(values[3]));
-            chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart);
+            chartDiagramService.AddXYLine(mark, listOfEpoch, listOfMarkValues, fourthLevelChart, elevatorTable);
             String forecastMark = "Прогноз " + mark;
             listOfEpoch.Add(listOfEpoch.Last() + 1);
-            chartDiagramService.AddForecastValue(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart);
+            chartDiagramService.AddForecastValue(forecastMark, listOfEpoch, listOfSmoothValues, fourthLevelChart, elevatorTable);
             fourthLevelChart.ChartAreas[0].AxisY.Title = "Высота Z, м";
             fourthLevelChart.ChartAreas[0].AxisX.Title = "Эпоха";
 

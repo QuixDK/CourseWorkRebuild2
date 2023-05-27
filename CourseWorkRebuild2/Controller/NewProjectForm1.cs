@@ -589,17 +589,17 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForFirstLevel);
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForFirstLevel, elevatorTable);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForSecondLevel);
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForSecondLevel, elevatorTable);
                 chartForm.Show();
             }
             else if (decompositionLevel == 3)
             {
-                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForThirdLevel);
+                ExpSmoothChart chartForm = new ExpSmoothChart(valuesForThirdLevel, elevatorTable);
                 chartForm.Show();
             }
         }
@@ -608,17 +608,17 @@ namespace CourseWorkRebuild2
         {
             if (decompositionLevel == 1)
             {
-                ResponseChart chartForm = new ResponseChart(valuesForFirstLevel);
+                ResponseChart chartForm = new ResponseChart(valuesForFirstLevel, elevatorTable);
                 chartForm.Show();
             }
             else if (decompositionLevel == 2)
             {
-                ResponseChart chartForm = new ResponseChart(valuesForSecondLevel);
+                ResponseChart chartForm = new ResponseChart(valuesForSecondLevel, elevatorTable);
                 chartForm.Show();
             }
             else if (decompositionLevel == 3)
             {
-                ResponseChart chartForm = new ResponseChart(valuesForThirdLevel);
+                ResponseChart chartForm = new ResponseChart(valuesForThirdLevel, elevatorTable);
                 chartForm.Show();
             }
 

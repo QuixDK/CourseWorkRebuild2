@@ -15,37 +15,38 @@ namespace CourseWorkRebuild2.Helpers
         private ChartDiagramService chartDiagramService = new ChartDiagramService();
         private List<List<Double>> values;
         private List<Double> epochList = new List<Double>();
-        
-        public ExpSmoothChart(List<List<Double>> values)
+        private DataGridView elevatorTable = new DataGridView();
+        public ExpSmoothChart(List<List<Double>> values, DataGridView elevatorTable)
         {
             InitializeComponent();
             this.values = values;
+            this.elevatorTable = elevatorTable;
         }
 
         private void MChart_CheckedChanged(object sender, EventArgs e)
         {
-
+            alphaChart.Checked = false;
             String serieName2 = "Длина вектора М (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-            else chartDiagramService.AddXYLine(serieName2, epochList, values[3], expSmooth); expSmooth.ChartAreas[0].AxisY.Title = "Длина вектора М, м";
+            else chartDiagramService.AddXYLine(serieName2, epochList, values[3], expSmooth, elevatorTable); expSmooth.ChartAreas[0].AxisY.Title = "Длина вектора М, м";
 
             String serieName = "Длина вектора М (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-            else chartDiagramService.AddXYLine(serieName, epochList, values[2], expSmooth); 
+            else chartDiagramService.AddXYLine(serieName, epochList, values[2], expSmooth, elevatorTable); 
 
             applySettings(sender, e);
         }
 
         private void alphaChart_CheckedChanged(object sender, EventArgs e)
         {
-
+            MChart.Checked = false;
             String serieName2 = "Угол а (сглаженное)";
             if (expSmooth.Series.IndexOf(serieName2) != -1) chartDiagramService.RemoveLine(expSmooth, serieName2);
-            else chartDiagramService.AddXYLine(serieName2, epochList, values[9], expSmooth); expSmooth.ChartAreas[0].AxisY.Title = "Угол наклона А,°";
+            else chartDiagramService.AddXYLine(serieName2, epochList, values[9], expSmooth, elevatorTable); expSmooth.ChartAreas[0].AxisY.Title = "Угол наклона А,°";
 
             String serieName = "Угол а (реальное)";
             if (expSmooth.Series.IndexOf(serieName) != -1) chartDiagramService.RemoveLine(expSmooth, serieName);
-            else chartDiagramService.AddXYLine(serieName, epochList, values[8], expSmooth);     
+            else chartDiagramService.AddXYLine(serieName, epochList, values[8], expSmooth, elevatorTable);     
 
             applySettings(sender, e);
         }
@@ -57,13 +58,11 @@ namespace CourseWorkRebuild2.Helpers
             {
                 return;
             }
-            int forecastIndex = 0;
-            for (int i = 0; i < values[0].Count; i++)
+            for (int i = 0; i < elevatorTable.Rows.Count-1; i++)
             {
-                epochList.Add(i);
-                forecastIndex = i;
+                epochList.Add(Convert.ToDouble(elevatorTable.Rows[i].Cells[0].Value));
             }
-            epochList.Add(forecastIndex + 1);
+            epochList.Add(epochList.Last()+1);
 
         }
 
@@ -127,6 +126,5 @@ namespace CourseWorkRebuild2.Helpers
             labelsOnMarksCheckBox_Click(sender, e);
         }
 
- 
     }
 }

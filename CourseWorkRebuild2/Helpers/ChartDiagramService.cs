@@ -9,7 +9,7 @@ using System.Drawing;
 public class ChartDiagramService
 {
 
-    public Chart AddXYLine(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart)
+    public Chart AddXYLine(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart, DataGridView elevatorTable)
     {
 
 
@@ -28,13 +28,13 @@ public class ChartDiagramService
         for (int i = 0; i < listOfYValues.Count; i++)
         {
             chart.Series[serieName].Points.AddXY(listOfXValues[i], listOfYValues[i]);
-            chart.Series[serieName].Points[i].Label = i.ToString() ;
+            chart.Series[serieName].Points[i].Label = listOfXValues[i].ToString() ;
 
         }
         return chart;
     }
 
-    public Chart AddMALine(List<Double> listOfMValues, List<Double> listOfAValues, Chart chart, String serieName)
+    public Chart AddMALine(List<Double> listOfMValues, List<Double> listOfAValues, Chart chart, String serieName, DataGridView elevatorTable)
     {
         chart.ChartAreas[0].AxisX.Title = "M, м";
         chart.ChartAreas[0].AxisY.Title = "Alpha, °";
@@ -50,13 +50,13 @@ public class ChartDiagramService
         {
             
             chart.Series[serieName].Points.AddXY(listOfMValues[i], listOfAValues[i]);
-            chart.Series[serieName].Points[i].Label = i.ToString();
+            chart.Series[serieName].Points[i].Label = elevatorTable.Rows[i].Cells[0].Value.ToString();
         }
 
         return chart;
     }
 
-    public Chart AddForecastValue(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart)
+    public Chart AddForecastValue(String serieName, List<Double> listOfXValues, List<Double> listOfYValues, Chart chart, DataGridView elevatorTable)
     {
 
         chart.Series.Add(serieName);
@@ -65,7 +65,7 @@ public class ChartDiagramService
         chart.Series[serieName].MarkerStyle = MarkerStyle.Circle;
         chart.Series[serieName].MarkerSize = 10;
         chart.Series[serieName].Points.AddXY(listOfXValues.Last(), listOfYValues.Last());
-        chart.Series[serieName].Points.Last().Label = (listOfXValues.Count - 1).ToString();
+        chart.Series[serieName].Points.Last().Label = (Convert.ToInt32(elevatorTable.Rows[elevatorTable.RowCount-2].Cells[0].Value) + 1).ToString();
         chart.Series[serieName].ToolTip = "X = #VALX, Y = #VALY";
 
 
