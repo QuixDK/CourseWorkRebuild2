@@ -12,7 +12,7 @@ namespace CourseWorkRebuild2
     public partial class MainForm : Form
     {
         private List<String> pathToFilesAndData = new List<String>();
-        private List<NewProjectForm1> openForms = new List<NewProjectForm1>();
+        private List<NewProjectForm> openForms = new List<NewProjectForm>();
         private DataTable dataTable = new DataTable();
         private System.Data.SQLite.SQLiteConnection sqlConnection;
         private Repository repository;
@@ -422,7 +422,7 @@ namespace CourseWorkRebuild2
         {
             if (activeForm > 0)
             {
-                NewProjectForm1 newProjectForm = new NewProjectForm1();
+                NewProjectForm newProjectForm = new NewProjectForm();
                 openForms.Add(newProjectForm);
                 newProjectForm.Show();
                 activeForm++;
@@ -443,7 +443,7 @@ namespace CourseWorkRebuild2
         {
             if (activeForm > 0)
             {
-                NewProjectForm1 newProjectForm = new NewProjectForm1();
+                NewProjectForm newProjectForm = new NewProjectForm();
                 openForms.Add(newProjectForm);
                 newProjectForm.Show();
                 activeForm++;
@@ -466,7 +466,7 @@ namespace CourseWorkRebuild2
             disableStartButtons();
             disableButtonsForTable();
             //Дропаем все открытые формы
-            foreach (NewProjectForm1 form in openForms)
+            foreach (NewProjectForm form in openForms)
             {
                 form.Close();
             }
@@ -566,7 +566,8 @@ namespace CourseWorkRebuild2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Сохранение не удалось, попробуйте еще раз");
+                MessageBox.Show("Сохранение не удалось, попробуйте еще раз \n" + ex.Message);
+
             }
 
         }
@@ -1034,7 +1035,7 @@ namespace CourseWorkRebuild2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Невалидные данные");
+                MessageBox.Show("Невалидные данные \n" + ex.Message);
                 return;
             }
 

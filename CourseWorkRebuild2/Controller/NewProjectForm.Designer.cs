@@ -1,6 +1,6 @@
 ﻿namespace CourseWorkRebuild2
 {
-    partial class NewProjectForm1
+    partial class NewProjectForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProjectForm1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProjectForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.closeButton = new System.Windows.Forms.ToolStripMenuItem();

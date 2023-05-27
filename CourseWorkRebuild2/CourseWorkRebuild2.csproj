@@ -127,11 +127,11 @@
     <Compile Include="Helpers\HelperForms\AboutProgramForm.Designer.cs">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\NewProjectForm1.cs">
+    <Compile Include="Controller\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\NewProjectForm1.Designer.cs">
-      <DependentUpon>NewProjectForm1.cs</DependentUpon>
+    <Compile Include="Controller\NewProjectForm.Designer.cs">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ChooseTableForm.cs">
       <SubType>Form</SubType>
@@ -179,11 +179,11 @@
     <Compile Include="Controller\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service\OpenProject.cs" />
+    <Compile Include="Service\File\OpenProject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Repository\Repository.cs" />
-    <Compile Include="Service\Save.cs" />
+    <Compile Include="Service\File\Save.cs" />
     <Compile Include="Helpers\HelperForms\SystemInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,8 +196,8 @@
     <EmbeddedResource Include="Helpers\HelperForms\AboutProgramForm.resx">
       <DependentUpon>AboutProgramForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\NewProjectForm1.resx">
-      <DependentUpon>NewProjectForm1.cs</DependentUpon>
+    <EmbeddedResource Include="Controller\NewProjectForm.resx">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\ChooseTableForm.resx">
       <DependentUpon>ChooseTableForm.cs</DependentUpon>

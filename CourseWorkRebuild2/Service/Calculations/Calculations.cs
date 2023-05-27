@@ -143,7 +143,6 @@ namespace CourseWorkRebuild2
         public List<Double> CalculateAValues(DataGridView elevatorTable, List<Double> listOfMValues, List<String> marks)
         {
             Double calculateAcos = 0;
-            Double calculateDegree = 0;
             Double summPr = 0;
             Double firstValue = 0;
             Double secondValue = 0;
@@ -176,7 +175,6 @@ namespace CourseWorkRebuild2
         public List<Double> CalculateAValues(DataGridView elevatorTable, List<Double> listOfMValues)
         {
             Double calculateAcos = 0;
-            Double calculateDegree = 0;
             Double summPr = 0;
             Double firstValue = 0;
             Double secondValue = 0;

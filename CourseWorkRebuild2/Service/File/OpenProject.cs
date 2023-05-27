@@ -174,7 +174,7 @@ namespace CourseWorkRebuild2
             }
             catch (System.IO.IOException ex)
             {
-                MessageBox.Show("Файл уже открыт в другом окне, выберите другой файл");
+                MessageBox.Show("Файл уже открыт в другом окне, выберите другой файл \n" + ex.Message);
                 projectRoot = "";
                 return Open();
             }

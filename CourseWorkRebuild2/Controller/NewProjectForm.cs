@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CourseWorkRebuild2
 {
-    public partial class NewProjectForm1 : Form
+    public partial class NewProjectForm : Form
     {
         private List<String> pathToFilesAndData = new List<String>();
         private DataTable dataTable = new DataTable();
@@ -37,7 +37,7 @@ namespace CourseWorkRebuild2
         private List<List<String>> marksByBlocksForThirdLevel = new List<List<String>>();
         private List<List<String>> marksBySubBlocks = new List<List<String>>();
         private List<String> unsortedMarks = new List<String>();
-        public NewProjectForm1()
+        public NewProjectForm()
         {
             InitializeComponent();
             disableStartButtons();
